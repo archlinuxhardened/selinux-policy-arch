@@ -86,6 +86,7 @@ kernel_read_system_state(mcelog_t)
 
 dev_read_raw_memory(mcelog_t)
 dev_read_kmsg(mcelog_t)
+dev_rw_cpu_microcode(mcelog_t)
 dev_rw_sysfs(mcelog_t)
 
 files_read_etc_files(mcelog_t)

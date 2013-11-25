@@ -210,7 +210,7 @@ tunable_policy(`use_samba_home_dirs',`
 # Agent local policy
 #
 
-allow gpg_agent_t self:process setrlimit;
+allow gpg_agent_t self:process { setrlimit signal_perms };
 allow gpg_agent_t self:unix_stream_socket { create_stream_socket_perms connectto };
 allow gpg_agent_t self:fifo_file rw_fifo_file_perms;
 
@@ -229,7 +229,10 @@ filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "log-so
 domtrans_pattern(gpg_agent_t, pinentry_exec_t, gpg_pinentry_t)
 
 kernel_dontaudit_search_sysctl(gpg_agent_t)
+kernel_read_core_if(gpg_agent_t)
+kernel_read_system_state(gpg_agent_t)
 
+corecmd_exec_bin(gpg_agent_t)
 corecmd_exec_shell(gpg_agent_t)
 
 dev_read_rand(gpg_agent_t)

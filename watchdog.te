@@ -23,10 +23,11 @@ files_pid_file(watchdog_var_run_t)
 # Local policy
 #
 
-allow watchdog_t self:capability { sys_admin net_admin sys_boot ipc_lock sys_pacct sys_nice sys_resource };
+allow watchdog_t self:capability { sys_admin net_admin sys_boot ipc_lock sys_pacct sys_nice sys_resource net_raw };
 dontaudit watchdog_t self:capability sys_tty_config;
 allow watchdog_t self:process { setsched signal_perms };
 allow watchdog_t self:fifo_file rw_fifo_file_perms;
+allow watchdog_t self:rawip_socket create_socket_perms;
 allow watchdog_t self:tcp_socket { accept listen };
 
 allow watchdog_t watchdog_log_t:file { append_file_perms create_file_perms setattr_file_perms };

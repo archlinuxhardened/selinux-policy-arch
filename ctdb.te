@@ -88,6 +88,8 @@ domain_dontaudit_read_all_domains_state(ctdbd_t)
 files_read_etc_files(ctdbd_t)
 files_search_all_mountpoints(ctdbd_t)
 
+fs_getattr_all_fs(ctdbd_t)
+
 logging_send_syslog_msg(ctdbd_t)
 
 miscfiles_read_localization(ctdbd_t)

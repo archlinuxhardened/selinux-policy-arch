@@ -1,4 +1,4 @@
-policy_module(virt, 1.7.5)
+policy_module(virt, 1.7.6)
 
 ########################################
 #
@@ -931,6 +931,7 @@ storage_manage_fixed_disk(virtd_lxc_t)
 kernel_read_all_sysctls(virtd_lxc_t)
 kernel_read_network_state(virtd_lxc_t)
 kernel_read_system_state(virtd_lxc_t)
+kernel_list_unlabeled(virtd_lxc_t)
 
 corecmd_exec_bin(virtd_lxc_t)
 corecmd_exec_shell(virtd_lxc_t)
@@ -950,7 +951,6 @@ files_relabel_rootfs(virtd_lxc_t)
 files_mounton_non_security(virtd_lxc_t)
 files_mount_all_file_type_fs(virtd_lxc_t)
 files_unmount_all_file_type_fs(virtd_lxc_t)
-files_list_isid_type_dirs(virtd_lxc_t)
 files_root_filetrans(virtd_lxc_t, svirt_lxc_file_t, dir_file_class_set)
 
 fs_getattr_all_fs(virtd_lxc_t)

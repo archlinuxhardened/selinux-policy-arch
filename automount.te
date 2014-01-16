@@ -1,4 +1,4 @@
-policy_module(automount, 1.14.1)
+policy_module(automount, 1.14.2)
 
 ########################################
 #
@@ -62,6 +62,7 @@ kernel_read_proc_symlinks(automount_t)
 kernel_read_system_state(automount_t)
 kernel_read_network_state(automount_t)
 kernel_list_proc(automount_t)
+kernel_getattr_unlabeled_dirs(automount_t)
 kernel_dontaudit_search_xen_state(automount_t)
 
 corecmd_exec_bin(automount_t)
@@ -93,7 +94,6 @@ files_dontaudit_write_var_dirs(automount_t)
 files_getattr_all_dirs(automount_t)
 files_getattr_default_dirs(automount_t)
 files_getattr_home_dir(automount_t)
-files_getattr_isid_type_dirs(automount_t)
 files_exec_etc_files(automount_t)
 files_list_mnt(automount_t)
 files_manage_non_security_dirs(automount_t)

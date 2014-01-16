@@ -1,4 +1,4 @@
-policy_module(ccs, 1.6.0)
+policy_module(ccs, 1.6.1)
 
 ########################################
 #
@@ -110,8 +110,8 @@ userdom_manage_unpriv_user_shared_mem(ccs_t)
 userdom_manage_unpriv_user_semaphores(ccs_t)
 
 ifdef(`hide_broken_symptoms',`
+	kernel_manage_unlabeled_files(ccs_t)
 	corecmd_dontaudit_write_bin_dirs(ccs_t)
-	files_manage_isid_type_files(ccs_t)
 ')
 
 optional_policy(`

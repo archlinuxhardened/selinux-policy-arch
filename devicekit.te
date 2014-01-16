@@ -1,4 +1,4 @@
-policy_module(devicekit, 1.3.2)
+policy_module(devicekit, 1.3.3)
 
 ########################################
 #
@@ -92,6 +92,7 @@ kernel_read_system_state(devicekit_disk_t)
 kernel_read_vm_sysctls(devicekit_disk_t)
 kernel_request_load_module(devicekit_disk_t)
 kernel_setsched(devicekit_disk_t)
+kernel_manage_unlabeled_dirs(devicekit_disk_t)
 
 corecmd_exec_bin(devicekit_disk_t)
 corecmd_exec_shell(devicekit_disk_t)
@@ -115,7 +116,6 @@ files_getattr_all_dirs(devicekit_disk_t)
 files_getattr_all_files(devicekit_disk_t)
 files_getattr_all_pipes(devicekit_disk_t)
 files_manage_boot_dirs(devicekit_disk_t)
-files_manage_isid_type_dirs(devicekit_disk_t)
 files_manage_mnt_dirs(devicekit_disk_t)
 files_read_etc_runtime_files(devicekit_disk_t)
 files_read_usr_files(devicekit_disk_t)

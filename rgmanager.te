@@ -1,4 +1,4 @@
-policy_module(rgmanager, 1.3.0)
+policy_module(rgmanager, 1.3.1)
 
 ########################################
 #
@@ -63,6 +63,7 @@ kernel_read_system_state(rgmanager_t)
 kernel_rw_rpc_sysctls(rgmanager_t)
 kernel_search_debugfs(rgmanager_t)
 kernel_search_network_state(rgmanager_t)
+kernel_manage_unlabeled_dirs(rgmanager_t)
 
 corenet_all_recvfrom_unlabeled(rgmanager_t)
 corenet_all_recvfrom_netlabel(rgmanager_t)
@@ -83,7 +84,6 @@ domain_dontaudit_ptrace_all_domains(rgmanager_t)
 files_list_all(rgmanager_t)
 files_getattr_all_symlinks(rgmanager_t)
 files_manage_mnt_dirs(rgmanager_t)
-files_manage_isid_type_dirs(rgmanager_t)
 files_read_non_security_files(rgmanager_t)
 
 fs_getattr_all_fs(rgmanager_t)

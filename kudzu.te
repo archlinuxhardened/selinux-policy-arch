@@ -1,4 +1,4 @@
-policy_module(kudzu, 1.9.0)
+policy_module(kudzu, 1.9.1)
 
 ########################################
 #
@@ -49,6 +49,7 @@ kernel_read_network_state(kudzu_t)
 kernel_read_system_state(kudzu_t)
 kernel_rw_hotplug_sysctls(kudzu_t)
 kernel_rw_kernel_sysctl(kudzu_t)
+kernel_dontaudit_search_unlabeled(kudzu_t)
 
 corecmd_exec_all_executables(kudzu_t)
 
@@ -71,7 +72,6 @@ files_etc_filetrans_etc_runtime(kudzu_t, file)
 files_manage_mnt_files(kudzu_t)
 files_manage_mnt_symlinks(kudzu_t)
 files_dontaudit_search_src(kudzu_t)
-files_dontaudit_search_isid_type_dirs(kudzu_t)
 
 fs_search_auto_mountpoints(kudzu_t)
 fs_write_ramfs_sockets(kudzu_t)

@@ -10,6 +10,7 @@
 /usr/lib/postfix/master	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
 /usr/lib/postfix/pickup	--	gen_context(system_u:object_r:postfix_pickup_exec_t,s0)
 /usr/lib/postfix/(n)?qmgr	--	gen_context(system_u:object_r:postfix_qmgr_exec_t,s0)
+/usr/lib/postfix/showq	--	gen_context(system_u:object_r:postfix_showq_exec_t,s0)
 /usr/lib/postfix/smtp	--	gen_context(system_u:object_r:postfix_smtp_exec_t,s0)
 /usr/lib/postfix/lmtp	--	gen_context(system_u:object_r:postfix_smtp_exec_t,s0)
 /usr/lib/postfix/scache	--	gen_context(system_u:object_r:postfix_smtp_exec_t,s0)

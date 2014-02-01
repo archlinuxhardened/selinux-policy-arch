@@ -9,6 +9,10 @@ type couchdb_t;
 type couchdb_exec_t;
 init_daemon_domain(couchdb_t, couchdb_exec_t)
 
+type couchdb_js_t;
+type couchdb_js_exec_t;
+init_daemon_domain(couchdb_js_t, couchdb_js_exec_t)
+
 type couchdb_initrc_exec_t;
 init_script_file(couchdb_initrc_exec_t)
 
@@ -30,7 +34,7 @@ init_daemon_run_dir(couchdb_var_run_t, "couchdb")
 
 ########################################
 #
-# Local policy
+# couchdb policy
 #
 
 allow couchdb_t self:process { getsched setsched signal signull sigkill };
@@ -88,3 +92,15 @@ fs_getattr_xattr_fs(couchdb_t)
 auth_use_nsswitch(couchdb_t)
 
 miscfiles_read_localization(couchdb_t)
+
+domtrans_pattern(couchdb_t, couchdb_js_exec_t, couchdb_js_t)
+
+########################################
+#
+# couchdb_js policy
+#
+
+allow couchdb_js_t self:process { execmem getsched setsched };
+
+files_read_usr_files(couchdb_js_t)
+miscfiles_read_localization(couchdb_js_t)

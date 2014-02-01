@@ -87,7 +87,12 @@ dev_read_urand(couchdb_t)
 
 files_read_usr_files(couchdb_t)
 
+# disksup tries to monitor the local disks
 fs_getattr_xattr_fs(couchdb_t)
+fs_dontaudit_getattr_all_fs(couchdb_t)
+files_dontaudit_getattr_lost_found_dirs(couchdb_t)
+files_dontaudit_list_var(couchdb_t)
+files_dontaudit_search_all_mountpoints(couchdb_t)
 
 auth_use_nsswitch(couchdb_t)
 

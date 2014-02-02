@@ -193,6 +193,24 @@ interface(`gpg_rw_agent_pipes',`
 
 ########################################
 ## <summary>
+##	Connect to gpg agent socket
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`gpg_agent_connect',`
+	gen_require(`
+		type gpg_agent_t, gpg_agent_tmp_t;
+	')
+
+	stream_connect_pattern($1, gpg_agent_tmp_t, gpg_agent_tmp_t, gpg_agent_t)
+')
+
+########################################
+## <summary>
 ##	Send messages to and from gpg
 ##	pinentry over DBUS.
 ## </summary>

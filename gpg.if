@@ -201,7 +201,7 @@ interface(`gpg_rw_agent_pipes',`
 ##	</summary>
 ## </param>
 #
-interface(`gpg_agent_connect',`
+interface(`gpg_stream_connect_agent',`
 	gen_require(`
 		type gpg_agent_t, gpg_agent_tmp_t;
 	')

@@ -54,6 +54,8 @@ template(`screen_role_template',`
 	dontaudit $3 $1_screen_t:unix_stream_socket { read write };
 	allow $1_screen_t $3:process signal;
 
+	dontaudit $1_screen_t self:capability sys_tty_config;
+
 	allow $3 screen_tmp_t:dir { manage_dir_perms relabel_dir_perms };
 	allow $3 screen_tmp_t:file { manage_file_perms relabel_file_perms };
 	allow $3 screen_tmp_t:fifo_file { manage_fifo_file_perms relabel_fifo_file_perms };

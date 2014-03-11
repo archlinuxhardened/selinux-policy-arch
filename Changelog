@@ -1,3 +1,340 @@
+* Tue Mar 11 2014 Chris PeBenito <selinux@tresys.com> - 2.20140311
+Chris PeBenito (17):
+      Minor rearrangement of minidlna lines.
+      Module version bump for openvpn tmp files from Sven Vermeulen.
+      Update modules for file_t merge into unlabeled_t.
+      Module version bump for postfix showq fc from Laurent Bigonville.
+      Rename gpg_agent_connect to gpg_stream_connect_agent.
+      Module version bump for gpg agent interface from Luis Ressel.
+      Whitespace fixes in git.fc.
+      Module version bump for debian git fc entries from Laurent Bigonville.
+      Move bin_t fc to corecommands.
+      Move exec/transition lines in couchdb.
+      Add comment about couchdb_js policy.
+      Module version bump for couchdb updates from Luis Ressel.
+      Module version bump for pcscd fix from Luis Ressel.
+      Move screen dontaudit rule.
+      Module version bump for screen fix from Luis Ressel.
+      Module version bump for git fc fix from Nicolas Iooss.
+      Bump module versions for release.
+
+Dan Walsh (28):
+      Allow irc_t to use tcp sockets
+      Add labels for apache logs under miq package
+      Allow smbcontrol to create content in /var/lib/samba
+      Allow ktalkd to bind to the ktalkd_port
+      Allow memcache to read sysfs data
+      Allow mdadm to getattr any file system
+      Allow cupsd_lpd_t to bind to the printer port
+      Allow rlogind to bind to the rlogin_port
+      Allow cvs to bind to the cvs_port
+      svirt domains neeed to create kobject_uevint_sockets
+      Lots of new access required for sosreport
+      Allow tgtd_t to connect to isns ports
+      openct needs to be able to create netlink_object_uevent_sockets
+      Allow glusterd to create sock_file in /run
+      Add support for tmp directories to openvswitch
+      Allow virt_domain with USB devices to look at dos file systems
+      Additional access for MLS
+      Additional access for MLS window manager
+      Additional access for MLS window manager
+      Additional access for MLS window manager
+      Allow rpcbind to use nsswitch
+      Allow gpg_agent to use ssh-add
+      Add apache labeling for glpi
+      Allow pegasus to transition to dmidecode
+      Allow mcelog to use the /dev/cpu device
+      Allow apmd to request the kernel load modules
+      Allow postfix programs to getattr on all executables
+      label mate-keyring-daemon with gkeyringd_exec_t
+
+Dominick Grift (126):
+      Typo fix in ksmtuned_admin() by Shintaro Fujiwara
+      Fix monolithic built
+      Change file context spec for aide log files to catch suffixes
+      Module version bumps for changes in various policy modules by Sven    
+         Vermeulen
+      Squid: Use a single pattern for brevity
+      Irc was already allowed to create tcp sockets, it only needed an    
+         additional accept, and listen to be able to act as a proxy
+      Its probably a better idea to use the httpd_sys_ra_content_t type sid    
+         for logs in these locations
+      Module version bump for changes to the tcsd policy module by Lukas    
+         Vrabec
+      Module version bump for changes to various policy modules by Miroslav    
+         Grepl
+      Module version bump for changes to the samba policy module by Dan Walsh
+      Module version bump for changes to the telepathy policy module by    
+         Miroslav Grepl
+      We do not have a boinc domain type attribute     Change boolean
+         description a bit
+      Additional rabbitmq couchdb support
+      Module version bumps for changes to various policy modules by Miroslav    
+         Grepl
+      Additional git tcp networking rules
+      Additional ktalkd udp networking rules
+      Module version bump for changes to various policy modules by Dan Walsh
+      Addtional cups ldp tcp networking rules
+      Should be server packets because it is binding, and not connecting
+      Clean up telnet, and rlogin networking rules
+      Additional cvs tcp networking rules
+      Module version bump for changes to various policy modules by Dan     Walsh
+      Addtional tgtd tcp networking rules
+      Additional polipo tcp networking rules
+      Fix asterisk files_spool_filetrans()
+      Module version bump for changes to the networkmanager policy module by    
+         Lukas Vrabec
+      Additional fs_tmpfs_filetrans() for munin service plugin content on    
+         tmpfs
+      Module version bump for changes to various policy modules by Miroslav    
+         Grepl
+      Support rlogind, and telnetd as init daemon domains ( i think fedora is   
+          campaigning to get rid of (x)?inetd )
+      Support mariadb logging, file context specification for mariadb specific  
+           config location
+      Change logwatch boolean identifier to something more self-documenting.    
+         Additional tcp networking rules
+      Module version bump for changes to various policy modules by Miroslav    
+         Grepl
+      Fix inconsistencies in the pkcs policy module
+      Fix fetchmail inconsistencies
+      Module version bump for changes in various policy modules by Dan Walsh
+      Support for window managers to stream socket connect to pulseaudio
+      Logwatch does not need to be able to bind tcp sockets to generic nodes    
+         since its only connecting
+      Adds userhelper_exec_consolehelper for window managers
+      Remove duplicate rules due to addition of auth_use_nsswitch()
+      We dont use the arbt domain types template.     Use a more uniform boolean
+         discription
+      Clean up libstoragemngmt policy module     We do not yet support systemd
+      Change type from etc_rw to conf for readability     admin access to
+         condor_conf_t
+      Hit by a nasty optional policy nesting issue
+      We will find another way to run pa as a system server
+      Module version bump for changes to various policy modules by Miroslav    
+         Grepl
+      Clean up hypervkvp policy module (seems incomplete)
+      Clean up initial redis policy module
+      Additional openvpn tcp networking rules
+      redis: allow redis to bind tcp sockets to redis_port_t type ports
+      bluetooth: bluetooth_t acquires org.bluez service on dbus system bus
+      wm: associate wm_exec_t to core command executable files so that initrc_t
+         (/sbin/start-stop-daemon) can access it (metacity)
+      logrotate restarts syslogd via init script in Debian
+      This file is called just man-db in Debian.
+      exim: exim owns directory /var/lib/exim4
+      accountsd: accounts-daemon lists /var/log
+      alsa: alsactl listing /dev/shm alsa: alsactl reading /dev/urandom alsa:
+         alsactl getting attributes of devtmpfs / (/dev) alsa: alsactl maintains
+         a pulseaudio tmpfs file
+      Cron: /sbin/runlevel reads /run/utmp cron: anacron (system_cronjob_t)
+         reading, writing inherited random crond tmp files (/tmp/tmpfk1VT2O)
+      dbus: allow system, and session bus clients to answer to dbus unconfined
+         domains
+      apt: Run apt system cronjobs in the apt_t domain apt: apt system cronjob
+         creates dpkg.status.* files in /var/backup
+      devicekit: upowerd reads own unix stream socket devicekit:
+         devicekit_power_t (runlevel) read /run/utmp
+      mandb: Make the man-db cronjob work on Debian
+      rtkit: traverse /proc to get to process state files
+      networkmanager: NetworkManager reads /run/udev/data/n2 file
+      avahi: create a avahi_initrc_domtrans for udev_t: udev runs a avahi dns
+         check script which does, i guess, a dns check. If needed it starts, or
+         stops avahi via its init script. I also created a
+         avahi_manage_pid_files() for udev_t because the script manages a file
+         called "checked_nameservers.*" in /run/avahi-daemon
+      Cleanups of various modules with regard to regular expressions and white  
+           space
+      apt: As it turns out the /var/backups directory is labeled in the backup  
+           module (which i incidentally did not have installed earlier). Instead
+         of     creating this file with a file type transition to
+         apt_var_cache_t, allow     apt_t to manage backup_store files
+      mta: this needs to be verified again, it should just have been running    
+         in exim_t. I might have taken this from old logs
+      mandb: /etc/cron.daily/man-db executes dpkg, reads dpkg db on Debian
+      slocate: catch /usr/bin/updatedb.mlocate, and /etc/cron.daily/mlocate on  
+           Debian
+      dpkg: catch /etc/cron.daily/dpkg on Debian     dpkg: allow
+         /etc/cron.daily/dpkg to manage backup store files on Debian
+      cron: consistent usage of regular expressions     cron: prelink no longer
+         runs in the system cronjob domain
+      alsa: alsactl wants to associate pulse-shm-.* to device_t type    
+         filesystems. This happens early on but i do not understand how that    
+         (/dev) relates to /dev/shm in this regard
+      devicekit: reads udev pid files     modemmanager: reads udev pid files
+      vdagent: spice-vdagentd uses /dev/vport1p1 virtio console
+      tmpreaper: mountall-bootcl in the tmpreaper_t domain reads, writes    
+         /dev/pts/0 inherited from init script
+      revert regular expressions
+      wm: allow $1_wm_t to stream connect to $1_gkeyringd_t
+      mta: allow system_mail_t (user_mail_domains) to read kernel sysctls and   
+          to read exim var lib files.
+      mta: These are duplicates because system_mail_t is a user_mail_domain,    
+         as it is based off of the mta_base_mail_template() which assigns that  
+           type attribute
+      locate: extra rules needed by debian /etc/cron.daily/locate script
+      backup: in Debian /etc/cron.daily/passwd backs-up shadow, passwd etc to   
+          /var/backups
+      avahi: create interfaces that will allow calles to create avahi pid dirs  
+           and create specifc avahi pid objects with a type transition (for
+         udev,     which runs: /usr/lib/avahi/avahi-daemon-check-dns.sh in
+         Debian
+      Initial gdomap policy module
+      Initial minissdpd policy module
+      alsa: due to a bug in gnome 3.4, in debian, alsactl does all kinds of    
+         weird things related to pulseaudio
+      various: revert regex fixes: fcsort does not want this now
+      gdomap: gdomap_port_t is now available, gdomap binds tcp, and udp socket
+         to it
+      alsa: make alsa_t and pulseaudio_client so that pulseaudio_client rules
+         apply to it. alsactl does not actually run pulseaudio it seems though.
+      pulseaudio: allow all pulseaudio_client to send null signals to
+         unconfined_t, since unconfined_t is not actually a pulseaudio_client (
+         unconfined_t runs pulseaudio without a domain transition)
+      avahi: create avahi_setattr_pid_dirs() for udev (avahi dns check script
+         run by udev in Debian)
+      These { read write } tty_device_t chr files on boot up in Debian
+      colord: colord executable file locations in Debian
+      colord: reads /proc/1, reads /run/udev files
+      vdagent: read/write mtrr file
+      mandb: dpkg running in the mandb_t domain in Debian (mandb cronjob)
+         traverses /root
+      exim: traverses sysfs, uses system cronjob file descriptors (/dev/null) in
+         Debian (/etc/cron.daily/exim)
+      minissdpd fixes
+      devicekit: disk reads /proc/sys/vm/overcommit_memory
+      devicekit: edit devicekit_append_inherited_log_files to include get
+         attribute permission so that it can be also used for fsadm
+      devicekit: 95hdparm-apm (devicekit_power_t) gets attributes of /dev/sda
+         (fixed_disk_device_t)
+      networkmanager: added interfaces that fedora calls for dhcpc. In Debian it
+         was confirmed that at least dhclient manages
+         /var/lib/NetworkManager/dhclient-eth0.conf
+      firewalld: various fixes that i borrowed from Fedora but that also apply
+         to Debian (confirmed)
+      firewalld: interfaces created for iptables
+      irqbalance: getsched from Debian
+      colord: colord reads /proc/3412/cmdline (cupsd state files)
+      virt: libvirtd reads /run/udev/data/+input:input3
+      firewalld: traverses / on sysfs
+      rngd: needs ipc_lock capability, maintains /run/rngd.pid
+      tmpreaper: mountall-bootcl executes /bin/plymouth on Debian
+      minissdpd: deal with assertion violation (sys_module)
+      gdomap: missing networking rules, it traverses /tmp for some reason
+      ntp: create ntp_read_drift_files() for dhclient
+      dpkg: allow dpkg, and dpkg script to domain transition to initrc_t on any
+         init script file type rather than only the generic initrc_exec_t init
+         script file type
+      exim: exim4 reads online
+      apt: apt runs /usr/bin/apt-get apt: on_ac_power (apt_t) lists
+         /sys/class/power_supply
+      exim: exim_manage_var_lib_files created for init: init script runs helper
+         apps that create/manage /var/lib/exim4/config.autogenerated.tmp
+      gdomap/minissdpd: create read_config interfaces for initrc_t
+      exim: make exim init script create /var/run/exim4 with a proper context
+      pulseaudio: pulsaudio_t needs to be able to read user_tmpfs_files
+         (/run/shm/pulse-shm-.*)
+      dnsmasq: add support for /etc/dnsmasq.d/
+      Module version bumps for various policy modules
+      Module version bump for changes to the logrotate module by Luis Ressel
+      Git: git daemons can list and read git personal repositories
+      Module version bumps for changes to various policy modules by Fedora
+      redis, lsm: typo fixes
+      userhelper: append newline
+
+James Carter (8):
+      - Fixed typo in contrib/avahi.if
+      - Fixed typo in contrib/glusterfs.te
+      - Fixed typo in contrib/jabber.if
+      - Fixed typo in contrib/keystone.if
+      - Fixed typo in contrib/mailscanner.if
+      - Fixed typo in contrib/qpid.if
+      - Fixed typo in contrib/readahead.fc.
+      - Fixed typo in contrib/rpm.if.
+
+Laurent Bigonville (2):
+      Label /usr/lib/postfix/showq as postfix_showq_exec_t
+      Properly label git-daemon and gitweb.cgi on Debian
+
+Luis Ressel (10):
+      Allow initrc_t to create /var/run/opendkim
+      Label /etc/cron.daily/logrotate correctly.
+      gpg: Create gpg_agent_connect interface
+      Minor updates to couchdb policy
+      couchdb: Add separate domain for couchjs
+      couchdb: Dontaudit denials caused by Erlang's disksup
+      Reformat couchdb.fc
+      pcscd.if: Permit access to pid files inside /var/run/pcscd/.
+      Allow gpg-agent's scdaemon to connect to pcscd.
+      Dontaudit screen asking for the sys_tty_config capability
+
+Lukas Vrabec (8):
+      Allow tcsd to read utmp file
+      fix boinc policy
+      Add support for couchdb in rabbitmq policy
+      Fix transition rules in asterisk policy
+      Add fowner capability to networkmanager policy
+      Add policy for lsmd
+      Add policy for hypervkvpd
+      Add policy for redis-server
+
+Mika Pflüger (1):
+      Correct typo in passenger module name
+
+Miroslav Grepl (40):
+      Allow passenger to execute ifconfig
+      Allow mpd setcap which is needed by pulseaudio
+      Allow block_suspend cap for samba-net
+      Allow t-mission-control to manage gabble cache files
+      Allow nslcd to read /sys/devices/system/cpu
+      Add labeling for ~/.cache/telepathy/avatars/gabble
+      Allow firewalld to read NM state
+      Allow systemd running as git_systemd to bind git port
+      Fix labeling for fetchmail pid files/dirs
+      Fix polipo.te
+      Fix cupsd.te
+      Allow munin service plugins to manage own tmpfs files/dirs
+      Make ktalk as init domain
+      Allow mysqld_safe_t to handle also symlinks in /var/log/mariadb
+      Add logwatch_can_sendmail boolean
+      Allow rhsmcertd to read init state
+      Allow fsetid for pkcsslotd
+      Allow fetchmail to create own pid with correct labeling
+      Fix rhcs_domain_template()
+      Add support for abrt-upload-watch
+      Allow virtd to relabel unix stream socket
+      Fix lsm.fc for pid files
+      Also sock_file trans rule is needed in lsm
+      Update condor_master rules to allow read system state info and allow
+         logging
+      Add labeling for /etc/condor and allow condor domain to write it (bug)
+      Allow condor domains to manage own logs
+      Allow glusterd to read domains state
+      Add openvpn_can_network_connect() boolean
+      Fix minissdpd_admin()
+      Allow ctdb to getattr on al filesystems
+      Watchdog opens the raw socket
+      Allow watchdog to read network state info
+      Add setroubleshoot_signull() interface
+      Allow sosreport to send signull to setroubleshootd
+      Allow sosreport all signal perms
+      Allow sosreport to dbus chat with rpm
+      Allow zabbix_agentd to read all domain state
+      Allow smoltclient to execute ldconfig
+      Allow sosreport to request the kernel to load a module
+      Allow setpgid for sosreport
+
+Nicolas Iooss (1):
+      git: fix file pattern after whitespace fixes
+
+Sven Vermeulen (6):
+      Add minidlna policy
+      Allow openvpn temporary files
+      Add aide bin /usr/bin and mark /var/lib/aide
+      Provide alsa_write_lib interface
+      Run dmidecode after newrole or on terminals
+      Grant write privileges to squid on its log files
+
 * Wed Apr 24 2013 Chris PeBenito <selinux@tresys.com> - 2.20130424
 Chris PeBenito (18):
       Rewrite of mcelog module from Guido Trentalancia

@@ -1,4 +1,4 @@
-policy_module(telnet, 1.11.3)
+policy_module(telnet, 1.12.0)
 
 ########################################
 #

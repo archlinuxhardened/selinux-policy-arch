@@ -1,4 +1,4 @@
-policy_module(logwatch, 1.12.2)
+policy_module(logwatch, 1.13.0)
 
 #################################
 #

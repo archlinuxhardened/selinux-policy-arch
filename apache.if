@@ -15,6 +15,7 @@ template(`apache_content_template',`
 	gen_require(`
 		attribute httpdcontent, httpd_exec_scripts, httpd_script_exec_type;
 		attribute httpd_script_domains, httpd_htaccess_type;
+		attribute httpd_rw_content, httpd_ra_content;
 		type httpd_t, httpd_suexec_t;
 	')
 
@@ -48,11 +49,11 @@ template(`apache_content_template',`
 	corecmd_shell_entry_type(httpd_$1_script_t)
 	domain_entry_file(httpd_$1_script_t, httpd_$1_script_exec_t)
 
-	type httpd_$1_rw_content_t, httpdcontent; # customizable
+	type httpd_$1_rw_content_t, httpdcontent, httpd_rw_content; # customizable
 	typealias httpd_$1_rw_content_t alias { httpd_$1_script_rw_t httpd_$1_content_rw_t };
 	files_type(httpd_$1_rw_content_t)
 
-	type httpd_$1_ra_content_t, httpdcontent; # customizable
+	type httpd_$1_ra_content_t, httpdcontent, httpd_ra_content; # customizable
 	typealias httpd_$1_ra_content_t alias { httpd_$1_script_ra_t httpd_$1_content_ra_t };
 	files_type(httpd_$1_ra_content_t)
 
@@ -387,6 +388,121 @@ interface(`apache_dontaudit_rw_tcp_sockets',`
 	')
 
 	dontaudit $1 httpd_t:tcp_socket { read write };
+')
+
+########################################
+## <summary>
+##	Read all appendable content
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`apache_read_all_ra_content',`
+	gen_require(`
+		attribute httpd_ra_content;
+	')
+
+	read_files_pattern($1, httpd_ra_content, httpd_ra_content)
+	read_lnk_files_pattern($1, httpd_ra_content, httpd_ra_content)
+')
+
+########################################
+## <summary>
+##	Append to all appendable web content
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`apache_append_all_ra_content',`
+	gen_require(`
+		attribute httpd_ra_content;
+	')
+
+	append_files_pattern($1, httpd_ra_content, httpd_ra_content)
+')
+
+########################################
+## <summary>
+##	Read all read/write content
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`apache_read_all_rw_content',`
+	gen_require(`
+		attribute httpd_rw_content;
+	')
+
+	read_files_pattern($1, httpd_rw_content, httpd_rw_content)
+	read_lnk_files_pattern($1, httpd_rw_content, httpd_rw_content)
+')
+
+########################################
+## <summary>
+##	Manage all read/write content
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`apache_manage_all_rw_content',`
+	gen_require(`
+		attribute httpd_rw_content;
+	')
+
+	manage_dirs_pattern($1, httpd_rw_content, httpd_rw_content)
+	manage_files_pattern($1, httpd_rw_content, httpd_rw_content)
+	manage_lnk_files_pattern($1, httpd_rw_content, httpd_rw_content)
+')
+########################################
+## <summary>
+##	Read all web content.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`apache_read_all_content',`
+	gen_require(`
+		attribute httpdcontent, httpd_script_exec_type;
+	')
+
+	read_files_pattern($1, httpdcontent, httpdcontent)
+	read_lnk_files_pattern($1, httpdcontent, httpdcontent)
+
+	read_files_pattern($1, httpd_script_exec_type, httpd_script_exec_type)
+	read_lnk_files_pattern($1, httpd_script_exec_type, httpd_script_exec_type)
+')
+
+#######################################
+## <summary>
+##	Search all apache content.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`apache_search_all_content',`
+	gen_require(`
+		attribute httpdcontent;
+	')
+
+	allow $1 httpdcontent:dir search_dir_perms;
 ')
 
 ########################################

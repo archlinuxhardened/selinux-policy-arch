@@ -257,6 +257,9 @@ attribute httpd_htaccess_type;
 # domains that can exec all scripts
 attribute httpd_exec_scripts;
 
+attribute httpd_ra_content;
+attribute httpd_rw_content;
+
 attribute httpd_script_exec_type;
 
 # all script domains

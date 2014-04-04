@@ -1,4 +1,4 @@
-policy_module(shibboleth, 2.0.0)
+policy_module(shibboleth, 1.0.0)
 
 ########################################
 #

@@ -41,7 +41,6 @@ manage_files_pattern(shibboleth_t, shibboleth_log_t, shibboleth_log_t)
 manage_files_pattern(shibboleth_t, shibboleth_var_run_t, shibboleth_var_run_t)
 manage_sock_files_pattern(shibboleth_t, shibboleth_var_run_t, shibboleth_var_run_t)
 
-
 corenet_all_recvfrom_netlabel(shibboleth_t)
 corenet_all_recvfrom_unlabeled(shibboleth_t)
 corenet_tcp_connect_http_port(shibboleth_t)
@@ -61,14 +60,12 @@ term_dontaudit_search_ptys(shibboleth_t)
 term_dontaudit_use_all_ptys(shibboleth_t)
 term_dontaudit_use_all_ttys(shibboleth_t)
 
-
 logging_log_filetrans(shibboleth_t, shibboleth_log_t, { file dir })
 logging_send_syslog_msg(shibboleth_t)
 
 miscfiles_read_localization(shibboleth_t)
 
 sysnet_dns_name_resolve(shibboleth_t)
-
 
 # permissions for the configuration files
 # there is shared information between apache and shibboleth, e.g., certificates

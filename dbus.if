@@ -426,7 +426,7 @@ interface(`dbus_session_domain',`
 #
 interface(`dbus_all_session_domain',`
 	gen_require(`
-		type session_bus_type;
+		attribute session_bus_type;
 	')
 
 	domtrans_pattern(session_bus_type, $2, $1)

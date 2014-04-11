@@ -671,6 +671,26 @@ interface(`gnome_dbus_chat_all_gkeyringd',`
 
 ########################################
 ## <summary>
+##	Run all gkeyringd in gkeyringd domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+#
+interface(`gnome_spec_domtrans_all_gkeyringd',`
+	gen_require(`
+		attribute gkeyringd_domain;
+		type gkeyringd_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	spec_domtrans_pattern($1, gkeyringd_exec_t, gkeyringd_domain)
+')
+
+########################################
+## <summary>
 ##	Connect to gnome keyring daemon
 ##	with a unix stream socket.
 ## </summary>

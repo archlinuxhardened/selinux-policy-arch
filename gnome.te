@@ -91,6 +91,12 @@ userdom_manage_user_tmp_dirs(gconfd_t)
 userdom_tmp_filetrans_user_tmp(gconfd_t, dir)
 
 optional_policy(`
+	dbus_all_session_domain(gconfd_t, gconfd_exec_t)
+
+	dbus_system_bus_client(gconfd_t)
+')
+
+optional_policy(`
 	nscd_dontaudit_search_pid(gconfd_t)
 ')
 

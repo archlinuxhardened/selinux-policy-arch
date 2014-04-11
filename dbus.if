@@ -463,7 +463,7 @@ interface(`dbus_spec_session_domain',`
 		type $1_dbusd_t;
 	')
 
-	domtrans_pattern($1_dbusd_t, $2, $3)
+	domtrans_pattern($1_dbusd_t, $3, $2)
 
 	dbus_spec_session_bus_client($1, $2)
 	dbus_connect_spec_session_bus($1, $2)

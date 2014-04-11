@@ -109,7 +109,7 @@ template(`gnome_role_template',`
 	gnome_stream_connect_gkeyringd($1, $3)
 
 	optional_policy(`
-		dbus_spec_session_domain($1, gkeyringd_exec_t, $1_gkeyringd_t)
+		dbus_spec_session_domain($1, $1_gkeyringd_t, gkeyringd_exec_t)
 
 		optional_policy(`
 			gnome_dbus_chat_gkeyringd($1, $3)

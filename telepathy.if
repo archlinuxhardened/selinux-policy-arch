@@ -78,15 +78,15 @@ template(`telepathy_role_template',`
 	telepathy_msn_stream_connect($3)
 	telepathy_salut_stream_connect($3)
 
-	dbus_spec_session_domain($1, telepathy_gabble_exec_t, telepathy_gabble_t)
-	dbus_spec_session_domain($1, telepathy_sofiasip_exec_t, telepathy_sofiasip_t)
-	dbus_spec_session_domain($1, telepathy_idle_exec_t, telepathy_idle_t)
-	dbus_spec_session_domain($1, telepathy_logger_exec_t, telepathy_logger_t)
-	dbus_spec_session_domain($1, telepathy_mission_control_exec_t, telepathy_mission_control_t)
-	dbus_spec_session_domain($1, telepathy_salut_exec_t, telepathy_salut_t)
-	dbus_spec_session_domain($1, telepathy_sunshine_exec_t, telepathy_sunshine_t)
-	dbus_spec_session_domain($1, telepathy_stream_engine_exec_t, telepathy_stream_engine_t)
-	dbus_spec_session_domain($1, telepathy_msn_exec_t, telepathy_msn_t)
+	dbus_spec_session_domain($1, telepathy_gabble_t, telepathy_gabble_exec_t)
+	dbus_spec_session_domain($1, telepathy_sofiasip_t, telepathy_sofiasip_exec_t)
+	dbus_spec_session_domain($1, telepathy_idle_t, telepathy_idle_exec_t)
+	dbus_spec_session_domain($1, telepathy_logger_t, telepathy_logger_exec_t)
+	dbus_spec_session_domain($1, telepathy_mission_control_t, telepathy_mission_control_exec_t)
+	dbus_spec_session_domain($1, telepathy_salut_t, telepathy_salut_exec_t)
+	dbus_spec_session_domain($1, telepathy_sunshine_t, telepathy_sunshine_exec_t)
+	dbus_spec_session_domain($1, telepathy_stream_engine_t, telepathy_stream_engine_exec_t)
+	dbus_spec_session_domain($1, telepathy_msn_t, telepathy_msn_exec_t)
 
 	allow $3 { telepathy_mission_control_cache_home_t telepathy_cache_home_t telepathy_logger_cache_home_t }:dir { manage_dir_perms relabel_dir_perms };
 	allow $3 { telepathy_gabble_cache_home_t telepathy_mission_control_home_t telepathy_data_home_t }:dir { manage_dir_perms relabel_dir_perms };

@@ -277,6 +277,11 @@ interface(`cron_admin_role',`
 		dontaudit $2 cronjob_t:process { ptrace signal_perms };
 	')
 
+	tunable_policy(`crond_fcron',`
+		# Support for fcrondyn
+		stream_connect_pattern($2, crond_var_run_t, crond_var_run_t, crond_t)
+	')
+
 	optional_policy(`
 		gen_require(`
 			class dbus send_msg;

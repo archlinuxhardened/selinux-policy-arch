@@ -232,6 +232,7 @@ logging_log_filetrans(crond_t, cron_log_t, file)
 
 manage_files_pattern(crond_t, crond_var_run_t, crond_var_run_t)
 files_pid_filetrans(crond_t, crond_var_run_t, file)
+files_pid_filetrans(crond_t, crond_var_run_t, sock_file, "fcron.fifo")
 
 manage_files_pattern(crond_t, cron_spool_t, cron_spool_t)
 
@@ -347,6 +348,7 @@ tunable_policy(`allow_polyinstantiation',`
 
 tunable_policy(`fcron_crond',`
 	allow crond_t { system_cron_spool_t user_cron_spool_t }:file manage_file_perms;
+	allow crond_t crond_var_run_t:sock_file manage_sock_file_perms;
 ')
 
 optional_policy(`

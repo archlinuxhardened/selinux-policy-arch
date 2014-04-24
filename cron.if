@@ -222,7 +222,7 @@ interface(`cron_admin_role',`
 	gen_require(`
 		type cronjob_t, crontab_exec_t, admin_crontab_t;
 		class passwd crontab;
-		type crond_t, user_cron_spool_t;
+		type crond_t, crond_var_run_t, user_cron_spool_t;
 		bool cron_userdomain_transition;
 	')
 

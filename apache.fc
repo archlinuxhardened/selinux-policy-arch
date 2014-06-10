@@ -125,6 +125,7 @@ ifdef(`distro_suse',`
 /var/log/cherokee(/.*)?	gen_context(system_u:object_r:httpd_log_t,s0)
 /var/log/dirsrv/admin-serv(/.*)?	gen_context(system_u:object_r:httpd_log_t,s0)
 /var/log/glpi(/.*)?	gen_context(system_u:object_r:httpd_log_t,s0)
+/var/log/mlogc(/.*)?	gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
 /var/log/httpd(/.*)?	gen_context(system_u:object_r:httpd_log_t,s0)
 /var/log/horde2(/.*)?	gen_context(system_u:object_r:httpd_log_t,s0)
 /var/log/lighttpd(/.*)?	gen_context(system_u:object_r:httpd_log_t,s0)

@@ -53,7 +53,7 @@ allow ntpd_t self:tcp_socket { accept listen };
 
 manage_dirs_pattern(ntpd_t, ntp_drift_t, ntp_drift_t)
 manage_files_pattern(ntpd_t, ntp_drift_t, ntp_drift_t)
-files_var_filetrans(ntpd_t, ntp_drift_t, file, "ntp-kod")
+files_var_filetrans(ntpd_t, ntp_drift_t, file)
 
 allow ntpd_t ntp_conf_t:file read_file_perms;
 

@@ -17,7 +17,7 @@ files_tmpfs_file(consolekit_tmpfs_t)
 
 type consolekit_var_run_t;
 files_pid_file(consolekit_var_run_t)
-init_daemon_run_dir(consolekit_var_run_t, "ConsoleKit")
+init_daemon_pid_file(consolekit_var_run_t, dir, "ConsoleKit")
 
 ########################################
 #

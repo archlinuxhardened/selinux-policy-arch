@@ -64,7 +64,7 @@ type exim_var_run_t;
 files_pid_file(exim_var_run_t)
 
 ifdef(`distro_debian',`
-	init_daemon_run_dir(exim_var_run_t, "exim4")
+	init_daemon_pid_file(exim_var_run_t, dir, "exim4")
 ')
 
 ########################################

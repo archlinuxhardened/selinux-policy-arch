@@ -15,7 +15,7 @@ typealias readahead_var_lib_t alias readahead_etc_rw_t;
 
 type readahead_var_run_t;
 files_pid_file(readahead_var_run_t)
-init_daemon_run_dir(readahead_var_run_t, "readahead")
+init_daemon_pid_file(readahead_var_run_t, dir, "readahead")
 
 ########################################
 #

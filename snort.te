@@ -23,7 +23,7 @@ files_tmp_file(snort_tmp_t)
 
 type snort_var_run_t;
 files_pid_file(snort_var_run_t)
-init_daemon_run_dir(snort_var_run_t, "snort")
+init_daemon_pid_file(snort_var_run_t, dir, "snort")
 
 ########################################
 #

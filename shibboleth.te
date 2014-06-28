@@ -17,7 +17,7 @@ logging_log_file(shibboleth_log_t)
 
 type shibboleth_var_run_t;
 files_pid_file(shibboleth_var_run_t)
-init_daemon_run_dir(shibboleth_var_run_t, "shibboleth")
+init_daemon_pid_file(shibboleth_var_run_t, dir, "shibboleth")
 
 ########################################
 #

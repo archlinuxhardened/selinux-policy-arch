@@ -30,7 +30,7 @@ files_type(couchdb_var_lib_t)
 
 type couchdb_var_run_t;
 files_pid_file(couchdb_var_run_t)
-init_daemon_run_dir(couchdb_var_run_t, "couchdb")
+init_daemon_pid_file(couchdb_var_run_t, dir, "couchdb")
 
 ########################################
 #

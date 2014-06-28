@@ -21,7 +21,7 @@ attribute_role nscd_roles;
 
 type nscd_var_run_t;
 files_pid_file(nscd_var_run_t)
-init_daemon_run_dir(nscd_var_run_t, "nscd")
+init_daemon_pid_file(nscd_var_run_t, dir, "nscd")
 
 type nscd_t;
 type nscd_exec_t;

@@ -24,6 +24,9 @@ files_tmpfs_file(alsa_tmpfs_t)
 type alsa_var_lib_t;
 files_type(alsa_var_lib_t)
 
+type alsa_var_lock_t;
+files_lock_file(alsa_var_lock_t)
+
 type alsa_home_t;
 userdom_user_home_content(alsa_home_t)
 
@@ -56,6 +59,9 @@ fs_tmpfs_filetrans(alsa_t, alsa_tmpfs_t, file)
 
 manage_dirs_pattern(alsa_t, alsa_var_lib_t, alsa_var_lib_t)
 manage_files_pattern(alsa_t, alsa_var_lib_t, alsa_var_lib_t)
+
+allow alsa_t alsa_var_lock_t:file manage_file_perms;
+files_lock_filetrans(alsa_t, alsa_var_lock_t, file);
 
 kernel_read_system_state(alsa_t)
 

@@ -302,7 +302,7 @@ interface(`networkmanager_admin',`
 	role_transition $2 NetworkManager_initrc_exec_t system_r;
 	allow $2 system_r;
 
-	logging_search_etc($1)
+	files_search_etc($1)
 	admin_pattern($1, { NetworkManager_etc_t NetworkManager_etc_rw_t })
 
 	logging_search_logs($1)

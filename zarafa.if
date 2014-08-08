@@ -163,7 +163,7 @@ interface(`zarafa_admin',`
 	files_search_tmp($1)
 	admin_pattern($1, { zarafa_deliver_tmp_t zarafa_indexer_tmp_t zarafa_server_tmp_t })
 
-	logging_search_log($1)
+	logging_search_logs($1)
 	admin_pattern($1, zarafa_logfile)
 
 	files_search_var_lib($1)

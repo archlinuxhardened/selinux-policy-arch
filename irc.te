@@ -50,6 +50,9 @@ allow irc_t self:unix_stream_socket { accept listen };
 
 allow irc_t irc_conf_t:file read_file_perms;
 
+can_exec(irc_t, irc_exec_t)
+corecmd_search_bin(irc_t)
+
 manage_dirs_pattern(irc_t, irc_home_t, irc_home_t)
 manage_files_pattern(irc_t, irc_home_t, irc_home_t)
 manage_lnk_files_pattern(irc_t, irc_home_t, irc_home_t)
@@ -69,9 +72,6 @@ manage_sock_files_pattern(irc_t, irc_tmp_t, irc_tmp_t)
 files_tmp_filetrans(irc_t, irc_tmp_t, { file dir lnk_file sock_file fifo_file })
 
 kernel_read_system_state(irc_t)
-
-can_exec(irc_t, irc_exec_t)
-corecmd_search_bin(irc_t)
 
 corenet_all_recvfrom_unlabeled(irc_t)
 corenet_all_recvfrom_netlabel(irc_t)

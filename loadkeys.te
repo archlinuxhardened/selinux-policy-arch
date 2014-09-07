@@ -27,6 +27,8 @@ corecmd_exec_shell(loadkeys_t)
 
 files_read_etc_files(loadkeys_t)
 files_read_etc_runtime_files(loadkeys_t)
+# keymap files are in /usr/share/keymaps or /usr/share/kbd/keymaps
+files_read_usr_files(loadkeys_t)
 
 term_dontaudit_use_console(loadkeys_t)
 term_use_unallocated_ttys(loadkeys_t)

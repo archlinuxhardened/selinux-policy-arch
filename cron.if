@@ -223,7 +223,7 @@ interface(`cron_admin_role',`
 		type cronjob_t, crontab_exec_t, admin_crontab_t;
 		class passwd crontab;
 		type crond_t, crond_var_run_t, user_cron_spool_t;
-		bool cron_userdomain_transition;
+		bool cron_userdomain_transition, fcron_crond;
 	')
 
 	##############################
@@ -277,7 +277,7 @@ interface(`cron_admin_role',`
 		dontaudit $2 cronjob_t:process { ptrace signal_perms };
 	')
 
-	tunable_policy(`crond_fcron',`
+	tunable_policy(`fcron_crond',`
 		# Support for fcrondyn
 		stream_connect_pattern($2, crond_var_run_t, crond_var_run_t, crond_t)
 	')

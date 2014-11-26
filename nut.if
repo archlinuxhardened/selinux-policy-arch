@@ -24,7 +24,7 @@ interface(`nut_admin',`
 	')
 
 	allow $1 nut_domain:process { ptrace signal_perms };
-	ps_process_pattern($1, nut_domain_t)
+	ps_process_pattern($1, nut_domain)
 
 	init_labeled_script_domtrans($1, nut_initrc_exec_t)
 	domain_system_change_exemption($1)

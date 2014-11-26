@@ -490,8 +490,8 @@ interface(`kerberos_admin',`
 		type krb5kdc_var_run_t, krb5_host_rcache_t;
 	')
 
-	allow $1 { kadmind_t krb5kdc_t kpropd }:process { ptrace signal_perms };
-	ps_process_pattern($1, { kadmind_t krb5kdc_t kpropd })
+	allow $1 { kadmind_t krb5kdc_t kpropd_t }:process { ptrace signal_perms };
+	ps_process_pattern($1, { kadmind_t krb5kdc_t kpropd_t })
 
 	init_labeled_script_domtrans($1, kerberos_initrc_exec_t)
 	domain_system_change_exemption($1)

@@ -31,5 +31,5 @@ interface(`svnserve_admin',`
 	allow $2 system_r;
 
 	files_search_pids($1)
-	admin_pattern($1, httpd_var_run_t)
+	admin_pattern($1, svnserve_var_run_t)
 ')

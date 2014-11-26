@@ -404,5 +404,6 @@ interface(`spamassassin_admin',`
 	files_list_pids($1)
 	admin_pattern($1, spamd_var_run_t)
 
-	spamassassin_role($2, $1)
+	# This makes it impossible to apply _admin if _role has already been applied
+	#spamassassin_role($2, $1)
 ')

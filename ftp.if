@@ -179,7 +179,7 @@ interface(`ftp_admin',`
 		type ftpd_keytab_t;
 	')
 
-	allow $1 { ftpd_t ftpdctl_t sftpd_t anon_sftpd }:process { ptrace signal_perms };
+	allow $1 { ftpd_t ftpdctl_t sftpd_t anon_sftpd_t }:process { ptrace signal_perms };
 	ps_process_pattern($1, { ftpd_t ftpdctl_t sftpd_t anon_sftpd_t })
 
 	init_labeled_script_domtrans($1, ftpd_initrc_exec_t)

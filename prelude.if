@@ -120,6 +120,7 @@ interface(`prelude_admin',`
 		type prelude_var_run_t, prelude_var_lib_t, prelude_log_t;
 		type prelude_audisp_t, prelude_audisp_var_run_t;
 		type prelude_initrc_exec_t, prelude_lml_t, prelude_lml_tmp_t;
+		type prelude_correlator_t;
 	')
 
 	allow $1 { prelude_t prelude_audisp_t prelude_lml_t prelude_correlator_t }:process { ptrace signal_perms };

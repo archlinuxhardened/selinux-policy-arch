@@ -138,9 +138,9 @@ interface(`zabbix_agent_tcp_connect',`
 #
 interface(`zabbix_admin',`
 	gen_require(`
-		type zabbix_t, zabbix_log_t, zabbix_var_run_t;
-		type zabbix_initrc_exec_t, zabbit_agent_initrc_exec_t, zabbix_tmp_t;
-		type zabbit_tmpfs_t;
+		type zabbix_t, zabbix_agent_t, zabbix_log_t, zabbix_var_run_t;
+		type zabbix_initrc_exec_t, zabbix_agent_initrc_exec_t, zabbix_tmp_t;
+		type zabbix_tmpfs_t;
 	')
 
 	allow $1 { zabbix_t zabbix_agent_t }:process { ptrace signal_perms };

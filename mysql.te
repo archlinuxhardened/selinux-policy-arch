@@ -1,4 +1,4 @@
-policy_module(mysql, 1.15.1)
+policy_module(mysql, 1.16.0)
 
 ########################################
 #

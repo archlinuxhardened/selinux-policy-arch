@@ -463,6 +463,4 @@ interface(`hadoop_admin',`
 
 	files_search_var_lib($1)
 	admin_pattern($1, { hadoop_var_lib_file zookeeper_server_var_t })
-
-	hadoop_role($2, $1)
 ')

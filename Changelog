@@ -1,3 +1,111 @@
+* Wed Dec 03 2014 Chris PeBenito <selinux@tresys.com> - 2.20141203
+Chris PeBenito (26):
+      Whitespace fix in ntp.fc.
+      Module version bump for ntp fc entries from Laurent Bigonville.
+      Whitespace fix in shibboleth.te.
+      Module version bump for new shibboleth module from Martin Lang.
+      Module version bump for apt fix from Nicolas Iooss.
+      Module version bump for dnsmasq MTU fix from Sven Vermeulen.
+      Module version bump for apache content interfaces from Sven Vermeulen.
+      Module version bump for gitweb fc entry on Debian and ArchLinux from
+         Nicolas Iooss.
+      Module version bump for fc regex fixes from Nicolas Iooss.
+      Module version bump for various fixes from Laurent Bigonville.
+      Module version bump for ModemManager fc entry from Laurent Bigonville.
+      Add missing cron_admin_role() dependency.
+      Move sock_file filetrans to fcron_crond conditional.
+      Module version bump for cron and snort updates from Sven Vermeulen.
+      Module version bump for java icedtea fc entries from Sven Vermeulen.
+      Module version bump for apache/mlogc patch from Elia Pinto.
+      Remove name from ntp-kod ntp_drift_t filetrans.
+      Module version bump for ntp-kod file support from Jason Zaman.
+      Module version bump for init_daemon_pid_file use from Sven Vermeulen.
+      Module version bump for alsa and hiawatha fixes from Sven Vermeulen.
+      Module version bump for ftp and tftp fixes from Nicolas Iooss.
+      Move irc exec lines.
+      Module version bump for irc re-exec itself patch from Luis Ressel.
+      Module version bump for NetworkManager fc fix for ArchLinux from Nicolas
+         Iooss.
+      Module version bump for _admin fixes from Jason Zaman.
+      Bump module versions for release.
+
+Dominick Grift (3):
+      Module version bump for changes to the loadkeys module by Nicolas Iooss
+      cron: that boolean identifier does not exist         also require it
+      Module version bump for changes to the networkmanager modules by Lubomir
+         Rintel
+
+Elia Pinto (1):
+      apache.te: Add labelling support for /var/log/mlogc
+
+Jason Zaman (20):
+      Add filetrans for ntp-kod file
+      ccs: syntax errors in ccs_admin interface
+      condor: syntax error in condor_admin
+      distcc: syntax error in distcc_admin
+      ftp: syntax error in ftp_admin
+      kerberos: syntax error in kerberos_admin
+      kismet: syntax error in kismet_admin
+      nut: syntax error in nut_admin
+      prelude: syntax error in prelude_admin
+      psad: syntax error in psad_admin
+      quota: syntax error in quota_admin
+      rpcbind: syntax error in rpcbind_admin
+      rpm: syntax error in rpm_admin
+      systemtap: syntax error in stapserver_admin
+      svnserve: syntax error in svnserve_admin
+      uptime: syntax error in uptime_admin
+      zabbix: syntax error in zabbix_admin
+      remove pyzor_role() from pyzor_admin()
+      remove spamassassin_role() from spamassassin_admin()
+      rsync: syntax error in rsync_admin
+
+Laurent Bigonville (7):
+      Add several fcontext for debian specific paths for ntp
+      Fix dbus_all_session_domain(), session_bus_type is an attribute
+      Allow gconfd to be started by the session bus
+      Fix the usage of dbus_spec_session_domain() interface
+      Properly label exim4 initscript under Debian
+      Add new gnome_spec_domtrans_all_gkeyringd() interface
+      Label /usr/sbin/ModemManager as modemmanager_exec_t
+
+Lubomir Rintel (1):
+      Allow NetworkManager to create Bluetooth SDP sockets
+
+Luis Ressel (1):
+      irc.te: Allow irssi to re-execute itself
+
+Martin Lang (1):
+      Add a policy module for shibboleth authentication
+
+Nicolas Iooss (7):
+      apt: remove non-existing permission set write_dir_perms
+      Label /usr/share/gitweb/static as httpd_git_content_t
+      Fix strange file patterns
+      ftp: fix labels in /var/lock/subsys/
+      Label /usr/bin/tftpd as tftpd_exec_t
+      Label /usr/lib/networkmanager/ like /usr/lib/NetworkManager/
+      Allow loadkeys to read usr_t files
+
+Sven Vermeulen (17):
+      dnsmasq reads MTU sysctl
+      Support read/append/manage functions for various httpd content
+      Snort policy updates
+      fcron socket support
+      Fix typo in dnsmasq.if
+      Mark icedtea binaries as java_exec_t
+      Use init_daemon_pid_file for contrib modules
+      Enable asound.state.lock support
+      Add support for Hiawatha web server
+      Use logging_search_logs, not logging_search_log
+      Use logging_search_logs, not logging_search_log
+      Use files_search_etc, not logging_search_etc
+      Use files_search_etc, not logging_search_etc
+      Use files_search_etc, not files_search_config
+      Use corecmd_search_bin, not corecmd_searh_bin
+      Use fs_search_tmpfs, not files_search_tmpfs
+      Use domain_auto_trans, not auto_trans
+
 * Tue Mar 11 2014 Chris PeBenito <selinux@tresys.com> - 2.20140311
 Chris PeBenito (17):
       Minor rearrangement of minidlna lines.

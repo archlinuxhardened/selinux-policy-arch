@@ -148,8 +148,7 @@ corecmd_exec_shell(courier_pop_t)
 
 miscfiles_read_localization(courier_pop_t)
 
-userdom_manage_user_home_content_files(courier_pop_t)
-userdom_manage_user_home_content_dirs(courier_pop_t)
+mta_manage_mail_home_rw_content(courier_pop_t)
 
 ########################################
 #

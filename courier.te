@@ -114,6 +114,8 @@ libs_read_lib_files(courier_authdaemon_t)
 
 miscfiles_read_localization(courier_authdaemon_t)
 
+selinux_getattr_fs(courier_authdaemon_t)
+
 userdom_dontaudit_search_user_home_dirs(courier_authdaemon_t)
 
 ########################################

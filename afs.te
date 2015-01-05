@@ -1,4 +1,4 @@
-policy_module(afs, 1.9.1)
+policy_module(afs, 1.9.2)
 
 ########################################
 #
@@ -74,7 +74,7 @@ role system_r types afs_vlserver_t;
 
 allow afs_t self:capability { dac_override sys_admin sys_nice sys_tty_config };
 allow afs_t self:process { setsched signal };
-allow afs_t self:fifo_file rw_file_perms;
+allow afs_t self:fifo_file rw_fifo_file_perms;
 allow afs_t self:unix_stream_socket { accept listen };
 
 manage_files_pattern(afs_t, afs_cache_t, afs_cache_t)
@@ -153,13 +153,9 @@ allow afs_fsserver_t self:process { setsched signal_perms };
 allow afs_fsserver_t self:fifo_file rw_fifo_file_perms;
 allow afs_fsserver_t self:tcp_socket create_stream_socket_perms;
 
-read_files_pattern(afs_fsserver_t, afs_config_t, afs_config_t)
-allow afs_fsserver_t afs_config_t:dir list_dir_perms;
-
 manage_dirs_pattern(afs_fsserver_t, afs_config_t, afs_config_t)
 manage_files_pattern(afs_fsserver_t, afs_config_t, afs_config_t)
 
-allow afs_fsserver_t afs_files_t:filesystem getattr;
 manage_dirs_pattern(afs_fsserver_t, afs_files_t, afs_files_t)
 manage_files_pattern(afs_fsserver_t, afs_files_t, afs_files_t)
 manage_lnk_files_pattern(afs_fsserver_t, afs_files_t, afs_files_t)

@@ -47,4 +47,3 @@
 /var/cache/(open)?afs(/.*)?	gen_context(system_u:object_r:afs_cache_t,s0)
 
 /vicep[a-z][a-z]?(/.*)? gen_context(system_u:object_r:afs_files_t,s0)
-

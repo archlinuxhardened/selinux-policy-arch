@@ -140,6 +140,8 @@ files_read_usr_files(afs_bosserver_t)
 
 seutil_read_config(afs_bosserver_t)
 
+dev_read_urand(afs_bosserver_t)
+
 ########################################
 #
 # fileserver local policy
@@ -205,6 +207,8 @@ logging_send_syslog_msg(afs_fsserver_t)
 seutil_read_config(afs_fsserver_t)
 
 userdom_dontaudit_use_user_terminals(afs_fsserver_t)
+
+dev_read_urand(afs_fsserver_t)
 
 ########################################
 #
@@ -276,6 +280,8 @@ corenet_sendrecv_afs_pt_server_packets(afs_ptserver_t)
 
 userdom_dontaudit_use_user_terminals(afs_ptserver_t)
 
+dev_read_urand(afs_ptserver_t)
+
 ########################################
 #
 # vlserver local policy
@@ -306,6 +312,8 @@ corenet_udp_bind_afs_vl_port(afs_vlserver_t)
 corenet_sendrecv_afs_vl_server_packets(afs_vlserver_t)
 
 userdom_dontaudit_use_user_terminals(afs_vlserver_t)
+
+dev_read_urand(afs_vlserver_t)
 
 ########################################
 #

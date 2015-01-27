@@ -1,4 +1,4 @@
-policy_module(samhain, 1.2.0)
+policy_module(samhain, 1.2.1)
 
 ########################################
 #
@@ -50,8 +50,9 @@ ifdef(`enable_mls',`
 
 allow samhain_domain self:capability { dac_override dac_read_search fowner ipc_lock };
 dontaudit samhain_domain self:capability { sys_resource sys_ptrace };
-allow samhain_domain self:fd use;
 allow samhain_domain self:process { setsched setrlimit signull };
+allow samhain_domain self:fd use;
+allow samhain_domain self:fifo_file rw_fifo_file_perms;
 
 allow samhain_domain samhain_etc_t:file read_file_perms;
 
@@ -96,6 +97,7 @@ logging_send_syslog_msg(samhain_domain)
 #
 
 manage_files_pattern(samhain_t, samhain_db_t, samhain_db_t)
+manage_dirs_pattern(samhain_t, samhain_db_t, samhain_db_t)
 files_var_lib_filetrans(samhain_t, samhain_db_t, { file dir })
 
 domain_use_interactive_fds(samhain_t)
@@ -115,4 +117,10 @@ can_exec(samhaind_t, samhain_exec_t)
 
 read_files_pattern(samhaind_t, samhain_db_t, samhain_db_t)
 
+corenet_tcp_connect_smtp_port(samhaind_t)
+
+dev_read_rand(samhaind_t)
+
 init_use_script_ptys(samhaind_t)
+
+sysnet_dns_name_resolve(samhaind_t)

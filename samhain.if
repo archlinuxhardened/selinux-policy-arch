@@ -16,7 +16,7 @@ template(`samhain_service_template',`
 		type samhain_exec_t;
 	')
 
-	type $1_t;
+	type $1_t, samhain_domain;
 	domain_type($1_t)
 	domain_entry_file($1_t, samhain_exec_t)
 
@@ -213,14 +213,14 @@ interface(`samhain_manage_pid_files',`
 interface(`samhain_admin',`
 	gen_require(`
 		attribute samhain_domain;
-		type samhain_t, samhaind_t, samhain_db_t, samhain_etc_t;
+		type samhain_db_t, samhain_etc_t;
 		type samhain_initrc_exec_t, samhain_log_t, samhain_var_run_t;
 	')
 
 	allow $1 samhain_domain:process { ptrace signal_perms };
 	ps_process_pattern($1, samhain_domain)
 
-	# pending
+	# duplicate role transition: remove samhain_admin(sysadm_t, sysadm_r) first
 	# init_labeled_script_domtrans($1, samhain_initrc_exec_t)
 	# domain_system_change_exemption($1)
 	# role_transition $2 samhain_initrc_exec_t system_r;
@@ -237,6 +237,4 @@ interface(`samhain_admin',`
 
 	files_list_pids($1)
 	admin_pattern($1, samhain_var_run_t)
-
-	# samhain_run($1, $2)
 ')

@@ -86,7 +86,6 @@ apache_content_template(git)
 
 type git_system_t, git_daemon;
 type gitd_exec_t;
-inetd_service_domain(git_system_t, gitd_exec_t)
 init_daemon_domain(git_system_t, gitd_exec_t)
 
 type git_session_t, git_daemon;
@@ -121,6 +120,10 @@ corenet_tcp_sendrecv_git_port(git_session_t)
 auth_use_nsswitch(git_session_t)
 
 userdom_use_user_terminals(git_session_t)
+
+optional_policy(`
+	inetd_service_domain(git_system_t, gitd_exec_t)
+')
 
 tunable_policy(`git_session_bind_all_unreserved_ports',`
 	corenet_sendrecv_all_server_packets(git_session_t)

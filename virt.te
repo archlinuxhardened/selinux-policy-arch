@@ -127,6 +127,9 @@ mls_trusted_object(virt_log_t)
 type virt_tmp_t;
 files_tmp_file(virt_tmp_t)
 
+type virt_tmpfs_t;
+files_tmpfs_file(virt_tmpfs_t)
+
 type virt_var_run_t;
 files_pid_file(virt_var_run_t)
 
@@ -479,6 +482,10 @@ allow virtd_t virt_ptynode:chr_file rw_term_perms;
 manage_dirs_pattern(virtd_t, virt_tmp_t, virt_tmp_t)
 manage_files_pattern(virtd_t, virt_tmp_t, virt_tmp_t)
 files_tmp_filetrans(virtd_t, virt_tmp_t, { file dir })
+
+manage_dirs_pattern(virtd_t, virt_tmpfs_t, virt_tmpfs_t)
+manage_files_pattern(virtd_t, virt_tmpfs_t, virt_tmpfs_t)
+fs_tmpfs_filetrans(virtd_t, virt_tmpfs_t, { file dir })
 
 # This needs a file context specification
 manage_dirs_pattern(virtd_t, virt_lock_t, virt_lock_t)

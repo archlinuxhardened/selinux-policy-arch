@@ -18,6 +18,7 @@ HOME_DIR/VirtualMachines/isos(/.*)?	gen_context(system_u:object_r:virt_content_t
 
 /usr/libexec/libvirt_lxc	--	gen_context(system_u:object_r:virtd_lxc_exec_t,s0)
 /usr/libexec/qemu-bridge-helper	gen_context(system_u:object_r:virt_bridgehelper_exec_t,s0)
+/usr/libexec/libvirt_leaseshelper	--	gen_context(system_u:object_r:virt_leaseshelper_exec_t,s0)
 
 /usr/bin/virsh	--	gen_context(system_u:object_r:virsh_exec_t,s0)
 /usr/bin/virt-sandbox-service.*	--	gen_context(system_u:object_r:virsh_exec_t,s0)

@@ -166,6 +166,12 @@ domain_type(virt_bridgehelper_t)
 domain_entry_file(virt_bridgehelper_t, virt_bridgehelper_exec_t)
 role virt_bridgehelper_roles types virt_bridgehelper_t;
 
+type virt_leaseshelper_t;
+type virt_leaseshelper_exec_t;
+domain_type(virt_leaseshelper_t)
+domain_entry_file(virt_leaseshelper_t, virt_leaseshelper_exec_t)
+role system_r types virt_leaseshelper_t;
+
 type virtd_lxc_t;
 type virtd_lxc_exec_t;
 init_system_domain(virtd_lxc_t, virtd_lxc_exec_t)
@@ -1216,3 +1222,20 @@ corenet_rw_tun_tap_dev(virt_bridgehelper_t)
 
 userdom_search_user_home_dirs(virt_bridgehelper_t)
 userdom_use_user_ptys(virt_bridgehelper_t)
+
+########################################
+#
+# Leaseshelper local policy
+#
+
+allow virt_leaseshelper_t virtd_t:fd use;
+allow virt_leaseshelper_t virtd_t:fifo_file write_fifo_file_perms;
+
+manage_dirs_pattern(virt_leaseshelper_t, virt_var_lib_t, virt_var_lib_t)
+manage_files_pattern(virt_leaseshelper_t, virt_var_lib_t, virt_var_lib_t)
+files_var_lib_filetrans(virt_leaseshelper_t, virt_var_lib_t, { file dir })
+
+manage_files_pattern(virt_leaseshelper_t, virt_var_run_t, virt_var_run_t)
+files_pid_filetrans(virt_leaseshelper_t, virt_var_run_t, file)
+
+kernel_dontaudit_read_system_state(virt_leaseshelper_t)

@@ -15,6 +15,14 @@ gen_tunable(allow_gssd_read_tmp, false)
 
 ## <desc>
 ##	<p>
+##	Determine whether gssd can write
+##	generic user temporary content.
+##	</p>
+## </desc>
+gen_tunable(allow_gssd_write_tmp, false)
+
+## <desc>
+##	<p>
 ##	Determine whether nfs can modify
 ##	public files used for public file
 ##	transfer services. Directories/Files must
@@ -307,6 +315,11 @@ tunable_policy(`allow_gssd_read_tmp',`
 	userdom_list_user_tmp(gssd_t)
 	userdom_read_user_tmp_files(gssd_t)
 	userdom_read_user_tmp_symlinks(gssd_t)
+')
+
+tunable_policy(`allow_gssd_write_tmp',`
+	userdom_list_user_tmp(gssd_t)
+	userdom_rw_user_tmp_files(gssd_t)
 ')
 
 optional_policy(`

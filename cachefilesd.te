@@ -1,4 +1,4 @@
-policy_module(cachefilesd, 1.1.0)
+policy_module(cachefilesd, 1.1.1)
 
 ########################################
 #
@@ -18,22 +18,28 @@ files_type(cachefilesd_cache_t)
 type cachefilesd_var_run_t;
 files_pid_file(cachefilesd_var_run_t)
 
+type cachefiles_kernel_t;
+domain_type(cachefiles_kernel_t)
+role system_r types cachefiles_kernel_t;
+
 ########################################
 #
-# Local policy
+# Cachefilesd local policy
 #
 
 allow cachefilesd_t self:capability { setuid setgid sys_admin dac_override };
 
+allow cachefilesd_t cachefiles_kernel_t:kernel_service use_as_override;
+
 manage_files_pattern(cachefilesd_t, cachefilesd_var_run_t, cachefilesd_var_run_t)
 files_pid_filetrans(cachefilesd_t, cachefilesd_var_run_t, file)
 
+allow cachefilesd_t cachefiles_cache_t:kernel_service create_files_as;
 manage_dirs_pattern(cachefilesd_t, cachefilesd_cache_t, cachefilesd_cache_t)
 manage_files_pattern(cachefilesd_t, cachefilesd_cache_t, cachefilesd_cache_t)
 
 dev_rw_cachefiles(cachefilesd_t)
 
-files_create_all_files_as(cachefilesd_t)
 files_read_etc_files(cachefilesd_t)
 
 fs_getattr_xattr_fs(cachefilesd_t)
@@ -50,3 +56,21 @@ init_dontaudit_use_script_ptys(cachefilesd_t)
 optional_policy(`
 	rpm_use_script_fds(cachefilesd_t)
 ')
+
+########################################
+#
+# Cachefiles_kernel local policy
+#
+
+allow cachefiles_kernel_t self:capability { dac_override dac_read_search };
+
+manage_dirs_pattern(cachefiles_kernel_t, cachefiles_cache_t, cachefiles_cache_t)
+manage_files_pattern(cachefiles_kernel_t, cachefiles_cache_t, cachefiles_cache_t)
+
+dev_search_sysfs(cachefiles_kernel_t)
+
+domain_obj_id_change_exemption(cachefiles_kernel_t)
+
+fs_getattr_xattr_fs(cachefiles_kernel_t)
+
+init_sigchld_script(cachefiles_kernel_t)

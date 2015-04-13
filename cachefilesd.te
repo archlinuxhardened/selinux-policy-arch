@@ -1,4 +1,4 @@
-policy_module(cachefilesd, 1.1.1)
+policy_module(cachefilesd, 1.1.2)
 
 ########################################
 #
@@ -34,7 +34,7 @@ allow cachefilesd_t cachefiles_kernel_t:kernel_service use_as_override;
 manage_files_pattern(cachefilesd_t, cachefilesd_var_run_t, cachefilesd_var_run_t)
 files_pid_filetrans(cachefilesd_t, cachefilesd_var_run_t, file)
 
-allow cachefilesd_t cachefiles_cache_t:kernel_service create_files_as;
+allow cachefilesd_t cachefilesd_cache_t:kernel_service create_files_as;
 manage_dirs_pattern(cachefilesd_t, cachefilesd_cache_t, cachefilesd_cache_t)
 manage_files_pattern(cachefilesd_t, cachefilesd_cache_t, cachefilesd_cache_t)
 
@@ -64,8 +64,8 @@ optional_policy(`
 
 allow cachefiles_kernel_t self:capability { dac_override dac_read_search };
 
-manage_dirs_pattern(cachefiles_kernel_t, cachefiles_cache_t, cachefiles_cache_t)
-manage_files_pattern(cachefiles_kernel_t, cachefiles_cache_t, cachefiles_cache_t)
+manage_dirs_pattern(cachefiles_kernel_t, cachefilesd_cache_t, cachefilesd_cache_t)
+manage_files_pattern(cachefiles_kernel_t, cachefilesd_cache_t, cachefilesd_cache_t)
 
 dev_search_sysfs(cachefiles_kernel_t)
 

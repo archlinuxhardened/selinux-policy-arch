@@ -1,4 +1,4 @@
-policy_module(clamav, 1.11.0)
+policy_module(clamav, 1.11.1)
 
 ## <desc>
 ##	<p>

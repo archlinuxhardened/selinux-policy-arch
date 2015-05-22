@@ -91,10 +91,7 @@ interface(`raid_admin_mdadm',`
 	allow $1 mdadm_t:process { ptrace signal_perms };
 	ps_process_pattern($1, mdadm_t)
 
-	init_labeled_script_domtrans($1, mdadm_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 mdadm_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, mdadm_t, mdadm_initrc_exec_t)
 
 	files_search_pids($1)
 	admin_pattern($1, mdadm_var_run_t)

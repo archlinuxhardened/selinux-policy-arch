@@ -177,10 +177,7 @@ interface(`qpidd_admin',`
 	allow $1 qpidd_t:process { ptrace signal_perms };
 	ps_process_pattern($1, qpidd_t)
 
-	qpidd_initrc_domtrans($1)
-	domain_system_change_exemption($1)
-	role_transition $2 qpidd_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, qpidd_t, qpidd_initrc_exec_t)
 
 	files_search_var_lib($1)
 	admin_pattern($1, qpidd_var_lib_t)

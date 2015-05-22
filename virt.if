@@ -1171,10 +1171,7 @@ interface(`virt_admin',`
 	ps_process_pattern($1, { virt_domain svirt_lxc_domain virtd_t })
 	ps_process_pattern($1, { virtd_lxc_t virsh_t virt_bridgehelper_t virt_qmf_t })
 
-	init_labeled_script_domtrans($1, virtd_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 virtd_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, virtd_t, virtd_initrc_exec_t)
 
 	fs_search_tmpfs($1)
 	admin_pattern($1, virt_tmpfs_type)

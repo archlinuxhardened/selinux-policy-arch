@@ -146,10 +146,8 @@ interface(`zabbix_admin',`
 	allow $1 { zabbix_t zabbix_agent_t }:process { ptrace signal_perms };
 	ps_process_pattern($1, { zabbix_t zabbix_agent_t })
 
-	init_labeled_script_domtrans($1, { zabbix_agent_initrc_exec_t zabbix_initrc_exec_t })
-	domain_system_change_exemption($1)
-	role_transition $2 { zabbix_agent_initrc_exec_t zabbix_initrc_exec_t } system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, zabbix_t, zabbix_initrc_exec_t)
+	init_startstop_service($1, $2, zabbix_agent_t, zabbix_agent_initrc_exec_t)
 
 	logging_list_logs($1)
 	admin_pattern($1, zabbix_log_t)

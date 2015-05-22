@@ -182,10 +182,7 @@ interface(`snmp_admin',`
 	allow $1 snmpd_t:process { ptrace signal_perms };
 	ps_process_pattern($1, snmpd_t)
 
-	init_labeled_script_domtrans($1, snmpd_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 snmpd_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, snmpd_t, snmpd_initrc_exec_t)
 
 	logging_list_logs($1)
 	admin_pattern($1, snmpd_log_t)

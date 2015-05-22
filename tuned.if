@@ -122,10 +122,7 @@ interface(`tuned_admin',`
 	allow $1 tuned_t:process { ptrace signal_perms };
 	ps_process_pattern($1, tuned_t)
 
-	tuned_initrc_domtrans($1)
-	domain_system_change_exemption($1)
-	role_transition $2 tuned_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, tuned_t, tuned_initrc_exec_t)
 
 	files_search_etc($1)
 	admin_pattern($1, { tuned_etc_t tuned_rw_etc_t })

@@ -105,10 +105,7 @@ interface(`rgmanager_admin',`
 	allow $1 rgmanager_t:process { ptrace signal_perms };
 	ps_process_pattern($1, rgmanager_t)
 
-	init_labeled_script_domtrans($1, rgmanager_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 rgmanager_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, rgmanager_t, rgmanager_initrc_exec_t)
 
 	files_list_tmp($1)
 	admin_pattern($1, rgmanager_tmp_t)

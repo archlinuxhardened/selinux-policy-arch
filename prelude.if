@@ -126,10 +126,7 @@ interface(`prelude_admin',`
 	allow $1 { prelude_t prelude_audisp_t prelude_lml_t prelude_correlator_t }:process { ptrace signal_perms };
 	ps_process_pattern($1, { prelude_t prelude_audisp_t prelude_lml_t prelude_correlator_t })
 
-	init_labeled_script_domtrans($1, prelude_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 prelude_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, prelude_t, prelude_initrc_exec_t)
 
 	files_search_spool($1)
 	admin_pattern($1, prelude_spool_t)

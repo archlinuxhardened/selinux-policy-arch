@@ -221,10 +221,7 @@ interface(`samhain_admin',`
 	ps_process_pattern($1, samhain_domain)
 
 	# duplicate role transition: remove samhain_admin(sysadm_t, sysadm_r) first
-	# init_labeled_script_domtrans($1, samhain_initrc_exec_t)
-	# domain_system_change_exemption($1)
-	# role_transition $2 samhain_initrc_exec_t system_r;
-	# allow $2 system_r;
+	# init_startstop_service($1, $2, samhain_domain, samhain_initrc_exec_t)
 
 	files_list_var_lib($1)
 	admin_pattern($1, samhain_db_t)

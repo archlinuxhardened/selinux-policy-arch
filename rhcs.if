@@ -467,15 +467,14 @@ interface(`rhcs_admin',`
 		attribute cluster_log;
 		type dlm_controld_initrc_exec_t, foghorn_initrc_exec_t, fenced_lock_t;
 		type fenced_tmp_t, qdiskd_var_lib_t;
+		type dlm_controld_t, foghorn_t;
 	')
 
 	allow $1 cluster_domain:process { ptrace signal_perms };
 	ps_process_pattern($1, cluster_domain)
 
-	init_labeled_script_domtrans($1, { dlm_controld_initrc_exec_t foghorn_initrc_exec_t })
-	domain_system_change_exemption($1)
-	role_transition $2 { dlm_controld_initrc_exec_t foghorn_initrc_exec_t } system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, dlm_controld_t, dlm_controld_initrc_exec_t)
+	init_startstop_service($1, $2, foghorn_t, foghorn_initrc_exec_t)
 
 	files_search_pids($1)
 	admin_pattern($1, cluster_pid)

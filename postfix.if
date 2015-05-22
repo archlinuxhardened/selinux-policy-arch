@@ -720,10 +720,7 @@ interface(`postfix_admin',`
 	allow $1 postfix_domain:process { ptrace signal_perms };
 	ps_process_pattern($1, postfix_domain)
 
-	init_labeled_script_domtrans($1, postfix_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 postfix_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, postfix_t, postfix_initrc_exec_t)
 
 	files_search_etc($1)
 	admin_pattern($1, { postfix_prng_t postfix_etc_t postfix_exec_t postfix_keytab_t })

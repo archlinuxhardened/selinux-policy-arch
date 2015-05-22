@@ -104,10 +104,7 @@ interface(`uucp_admin',`
 		type uucpd_var_run_t, uucpd_initrc_exec_t;
 	')
 
-	init_labeled_script_domtrans($1, uucpd_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 uucpd_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, uucpd_t, uucpd_initrc_exec_t)
 
 	allow $1 uucpd_t:process { ptrace signal_perms };
 	ps_process_pattern($1, uucpd_t)

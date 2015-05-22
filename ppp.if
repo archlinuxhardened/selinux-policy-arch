@@ -487,10 +487,7 @@ interface(`ppp_admin',`
 	allow $1 { pptp_t pppd_t }:process { ptrace signal_perms };
 	ps_process_pattern($1, { pptp_t pppd_t })
 
-	ppp_initrc_domtrans($1)
-	domain_system_change_exemption($1)
-	role_transition $2 pppd_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, pppd_t, pppd_initrc_exec_t)
 
 	files_list_tmp($1)
 	admin_pattern($1, pppd_tmp_t)

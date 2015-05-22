@@ -391,15 +391,14 @@ interface(`rpc_admin',`
 		type nfsd_initrc_exec_t, rpcd_initrc_exec_t, exports_t;
 		type var_lib_nfs_t, rpcd_var_run_t, gssd_tmp_t;
 		type nfsd_ro_t, nfsd_rw_t, gssd_keytab_t;
+		type nfsd_t, rpcd_t;
 	')
 
 	allow $1 rpc_domain:process { ptrace signal_perms };
 	ps_process_pattern($1, rpc_domain)
 
-	init_labeled_script_domtrans($1, { nfsd_initrc_exec_t rpcd_initrc_exec_t })
- 	domain_system_change_exemption($1)
- 	role_transition $2 { nfsd_initrc_exec_t rpcd_initrc_exec_t } system_r;
- 	allow $2 system_r;
+	init_startstop_service($1, $2, nfsd_t, nfsd_initrc_exec_t)
+	init_startstop_service($1, $2, rpcd_t, rpcd_initrc_exec_t)
 
 	files_list_etc($1)
 	admin_pattern($1, { gssd_keytab_t exports_t })

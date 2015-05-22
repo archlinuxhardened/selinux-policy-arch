@@ -381,11 +381,8 @@ interface(`nis_admin',`
 	allow $1 { ypbind_t yppasswdd_t ypserv_t ypxfr_t }:process { ptrace signal_perms };
 	ps_process_pattern($1, { ypbind_t yppasswdd_t ypserv_t ypxfr_t })
 
-	nis_initrc_domtrans($1)
-	nis_initrc_domtrans_ypbind($1)
-	domain_system_change_exemption($1)
-	role_transition $2 { nis_initrc_exec_t ypbind_initrc_exec_t } system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, ypbind_t, ypbind_initrc_exec_t)
+	init_startstop_service($1, $2, ypserv_t, nis_initrc_exec_t)
 
 	files_list_tmp($1)
 	admin_pattern($1, { ypserv_tmp_t ypbind_tmp_t })

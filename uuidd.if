@@ -181,10 +181,7 @@ interface(`uuidd_admin',`
 	allow $1 uuidd_t:process signal_perms;
 	ps_process_pattern($1, uuidd_t)
 
-	uuidd_initrc_domtrans($1)
-	domain_system_change_exemption($1)
-	role_transition $2 uuidd_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, uuidd_t, uuidd_initrc_exec_t)
 
 	files_search_var_lib($1)
 	admin_pattern($1, uuidd_var_lib_t)

@@ -245,10 +245,8 @@ interface(`glance_admin',`
 	allow $1 { glance_api_t glance_registry_t }:process signal_perms;
 	ps_process_pattern($1, { glance_api_t glance_registry_t })
 
-	init_labeled_script_domtrans($1, { glance_api_initrc_exec_t glance_registry_initrc_exec_t })
-	domain_system_change_exemption($1)
-	role_transition $2 { glance_api_initrc_exec_t glance_registry_initrc_exec_t } system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, glance_api_t, glance_api_initrc_exec_t)
+	init_startstop_service($1, $2, glance_registry_t, glance_registry_initrc_exec_t)
 
 	logging_search_logs($1)
 	admin_pattern($1, glance_log_t)

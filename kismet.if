@@ -286,10 +286,7 @@ interface(`kismet_admin',`
 		type kismet_log_t, kismet_tmp_t, kismet_initrc_exec_t;
 	')
 
-	init_labeled_script_domtrans($1, kismet_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 kismet_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, kismet_t, kismet_initrc_exec_t)
 
 	ps_process_pattern($1, kismet_t)
 	allow $1 kismet_t:process { ptrace signal_perms };

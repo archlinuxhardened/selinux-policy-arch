@@ -1318,10 +1318,7 @@ interface(`apache_admin',`
 	ps_process_pattern($1, { httpd_script_domains httpd_t httpd_helper_t })
 	ps_process_pattern($1, { httpd_rotatelogs_t httpd_suexec_t httpd_passwd_t })
 
-	init_labeled_script_domtrans($1, httpd_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 httpd_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, httpd_t, httpd_initrc_exec_t)
 
 	apache_manage_all_content($1)
 	miscfiles_manage_public_files($1)

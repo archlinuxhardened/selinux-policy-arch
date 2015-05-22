@@ -162,10 +162,7 @@ interface(`certmonger_admin',`
 	ps_process_pattern($1, certmonger_t)
 	allow $1 certmonger_t:process { ptrace signal_perms };
 
-	certmonger_initrc_domtrans($1)
-	domain_system_change_exemption($1)
-	role_transition $2 certmonger_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, certmonger_t, certmonger_initrc_exec_t)
 
 	files_search_var_lib($1)
 	admin_pattern($1, certmonger_var_lib_t)

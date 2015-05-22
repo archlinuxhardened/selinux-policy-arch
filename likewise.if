@@ -110,10 +110,7 @@ interface(`likewise_admin',`
 	allow $1 likewise_domains:process { ptrace signal_perms };
 	ps_process_pattern($1, likewise_domains)
 
-	init_labeled_script_domtrans($1, likewise_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 likewise_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, likewise_domains, likewise_initrc_exec_t)
 
 	files_list_etc($1)
 	admin_pattern($1, { likewise_etc_t likewise_pstore_lock_t likewise_krb5_ad_t })

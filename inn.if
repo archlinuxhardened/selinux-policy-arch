@@ -230,10 +230,7 @@ interface(`inn_admin',`
 		type innd_var_run_t, innd_initrc_exec_t;
 	')
 
-	init_labeled_script_domtrans($1, innd_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 innd_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, innd_t, innd_initrc_exec_t)
 
 	allow $1 innd_t:process { ptrace signal_perms };
 	ps_process_pattern($1, innd_t)

@@ -357,10 +357,7 @@ interface(`cups_admin',`
 	ps_process_pattern($1, { cupsd_t cupsd_config_t cupsd_lpd_t })
 	ps_process_pattern($1, { cups_pdf_t hplip_t ptal_t })
 
-	init_labeled_script_domtrans($1, cupsd_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 cupsd_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, cupsd_t, cupsd_initrc_exec_t)
 
 	files_list_etc($1)
 	admin_pattern($1, { cupsd_etc_t cupsd_rw_etc_t ptal_etc_t })

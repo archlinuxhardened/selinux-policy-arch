@@ -205,10 +205,7 @@ interface(`clamav_admin',`
 	allow $1 { clamd_t clamscan_t freshclam_t }:process { ptrace signal_perms };
 	ps_process_pattern($1, { clamd_t clamscan_t freshclam_t })
 
-	init_labeled_script_domtrans($1, clamd_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 clamd_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, clamd_t, clamd_initrc_exec_t)
 
 	files_list_etc($1)
 	admin_pattern($1, clamd_etc_t)

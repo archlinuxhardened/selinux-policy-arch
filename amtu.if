@@ -70,8 +70,5 @@ interface(`amtu_admin',`
 	allow $1 amtu_t:process { ptrace signal_perms };
 	ps_process_pattern($1, amtu_t)
 
-	init_labeled_script_domtrans($1, amtu_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 amtu_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, amtu_t, amtu_initrc_exec_t)
 ')

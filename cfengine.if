@@ -97,10 +97,7 @@ interface(`cfengine_admin',`
 	allow $1 cfengine_domain:process { ptrace signal_perms };
 	ps_process_pattern($1, cfengine_domain)
 
-	init_labeled_script_domtrans($1, cfengine_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 cfengine_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, cfengine_domain, cfengine_initrc_exec_t)
 
 	files_search_var_lib($1)
 	admin_pattern($1, { cfengine_log_t cfengine_var_lib_t })

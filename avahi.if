@@ -264,10 +264,7 @@ interface(`avahi_admin',`
 	allow $1 avahi_t:process { ptrace signal_perms };
 	ps_process_pattern($1, avahi_t)
 
-	avahi_initrc_domtrans($1)
-	domain_system_change_exemption($1)
-	role_transition $2 avahi_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, avahi_t, avahi_initrc_exec_t)
 
 	files_search_pids($1)
 	admin_pattern($1, avahi_var_run_t)

@@ -441,10 +441,7 @@ interface(`hadoop_admin',`
 	allow $1 { hadoop_domain hadoop_initrc_domain hadoop_t zookeeper_t zookeeper_server_t }:process { ptrace signal_perms };
 	ps_process_pattern($1, { hadoop_domain hadoop_initrc_domain hadoop_t zookeeper_t zookeeper_server_t })
 
-	init_labeled_script_domtrans($1, hadoop_init_script_file)
-	domain_system_change_exemption($1)
-	role_transition $2 hadoop_init_script_file system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, hadoop_domain, hadoop_init_script_file)
 
 	files_search_etc($1)
 	admin_pattern($1, { hadoop_etc_t zookeeper_etc_t })

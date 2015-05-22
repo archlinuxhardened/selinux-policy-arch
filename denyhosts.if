@@ -63,10 +63,7 @@ interface(`denyhosts_admin',`
 	allow $1 denyhosts_t:process { ptrace signal_perms };
 	ps_process_pattern($1, denyhosts_t)
 
-	denyhosts_initrc_domtrans($1)
-	domain_system_change_exemption($1)
-	role_transition $2 denyhosts_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, denyhosts_t, denyhosts_initrc_exec_t)
 
 	files_search_var_lib($1)
 	admin_pattern($1, denyhosts_var_lib_t)

@@ -23,10 +23,7 @@ interface(`fetchmail_admin',`
 		type fetchmail_var_run_t, fetchmail_initrc_exec_t, fetchmail_log_t;
 	')
 
-	init_labeled_script_domtrans($1, fetchmail_initrc_exec_t)
-	domain_system_change_exemption($1)
-	role_transition $2 fetchmail_initrc_exec_t system_r;
-	allow $2 system_r;
+	init_startstop_service($1, $2, fetchmail_t, fetchmail_initrc_exec_t)
 
 	allow $1 fetchmail_t:process { ptrace signal_perms };
 	ps_process_pattern($1, fetchmail_t)

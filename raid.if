@@ -95,6 +95,4 @@ interface(`raid_admin_mdadm',`
 
 	files_search_pids($1)
 	admin_pattern($1, mdadm_var_run_t)
-
-	raid_run_mdadm($2, $1)
 ')

@@ -658,6 +658,4 @@ interface(`rpm_admin',`
 
 	fs_search_tmpfs($1)
 	admin_pattern($1, { rpm_tmpfs_t rpm_script_tmpfs_t })
-
-	rpm_run($1, $2)
 ')

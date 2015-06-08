@@ -188,6 +188,4 @@ interface(`quota_admin',`
 
 	files_list_all($1)
 	admin_pattern($1, { quota_db_t quota_flag_t quota_nld_var_run_t })
-
-	quota_run($1, $2)
 ')

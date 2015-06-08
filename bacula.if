@@ -90,6 +90,4 @@ interface(`bacula_admin',`
 
 	files_search_pids($1)
 	admin_pattern($1, bacula_var_run_t)
-
-	bacula_run_admin($1, $2)
 ')

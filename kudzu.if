@@ -96,6 +96,4 @@ interface(`kudzu_admin',`
 
 	files_search_pids($1)
 	admin_pattern($1, kudzu_var_run_t)
-
-	kudzu_run($1, $2)
 ')

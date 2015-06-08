@@ -121,6 +121,4 @@ interface(`portmap_admin',`
 
 	files_search_tmp($1)
 	admin_pattern($1, portmap_tmp_t)
-
-	portmap_run_helper($1, $2)
 ')

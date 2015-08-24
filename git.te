@@ -103,8 +103,6 @@ userdom_user_home_content(git_user_content_t)
 # Session policy
 #
 
-allow git_session_t self:tcp_socket { accept listen };
-
 userdom_search_user_home_dirs(git_session_t)
 
 corenet_all_recvfrom_netlabel(git_session_t)
@@ -266,6 +264,7 @@ tunable_policy(`git_cgi_use_nfs',`
 #
 
 allow git_daemon self:fifo_file rw_fifo_file_perms;
+allow git_daemon self:tcp_socket { accept listen };
 
 list_dirs_pattern(git_daemon, git_user_content_t, git_user_content_t)
 read_files_pattern(git_daemon, git_user_content_t, git_user_content_t)

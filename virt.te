@@ -70,6 +70,14 @@ gen_tunable(virt_use_usb, false)
 ## </desc>
 gen_tunable(virt_use_xserver, false)
 
+## <desc>
+###      <p>
+###      Determine whether confined virtual guests
+###      can use vfio for pci device pass through (vt-d).
+###      </p>
+### </desc>
+gen_tunable(virt_use_vfio, false)
+
 attribute virt_ptynode;
 attribute virt_domain;
 attribute virt_image_type;
@@ -434,6 +442,10 @@ corenet_tcp_bind_all_ports(svirt_t)
 corenet_sendrecv_all_client_packets(svirt_t)
 corenet_tcp_connect_all_ports(svirt_t)
 
+tunable_policy(`virt_use_vfio',`
+	dev_rw_vfio_dev(svirt_t)
+')
+
 ########################################
 #
 # virtd local policy
@@ -676,6 +688,13 @@ tunable_policy(`virt_use_samba',`
 	fs_manage_cifs_files(virtd_t)
 	fs_manage_cifs_files(virtd_t)
 	fs_read_cifs_symlinks(virtd_t)
+')
+
+tunable_policy(`virt_use_vfio',`
+	allow virtd_t self:capability sys_resource;
+	allow virtd_t self:process setrlimit;
+	allow virtd_t svirt_t:process rlimitinh;
+	dev_relabelfrom_vfio_dev(virtd_t)
 ')
 
 optional_policy(`

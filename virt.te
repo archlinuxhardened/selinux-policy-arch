@@ -190,6 +190,24 @@ type virsh_t;
 type virsh_exec_t;
 init_system_domain(virsh_t, virsh_exec_t)
 
+type virtlockd_t;
+type virtlockd_exec_t;
+init_daemon_domain(virtlockd_t, virtlockd_exec_t)
+
+type virtlockd_run_t;
+files_pid_file(virtlockd_run_t)
+
+type virtlockd_var_lib_t;
+files_type(virtlockd_var_lib_t)
+
+ifdef(`enable_mcs',`
+	init_ranged_daemon_domain(virtlockd_t, virtlockd_exec_t, s0 - mcs_systemhigh)
+')
+
+ifdef(`enable_mls',`
+	init_ranged_daemon_domain(virtlockd_t, virtlockd_exec_t, s0 - mls_systemhigh)
+')
+
 ########################################
 #
 # Common virt domain local policy
@@ -221,6 +239,7 @@ manage_lnk_files_pattern(virt_domain, svirt_var_run_t, svirt_var_run_t)
 files_pid_filetrans(virt_domain, svirt_var_run_t, { dir file })
 
 stream_connect_pattern(virt_domain, svirt_var_run_t, svirt_var_run_t, virtd_t)
+stream_connect_pattern(virt_domain, virt_var_run_t, virtlockd_run_t, virtlockd_t)
 
 dontaudit virt_domain virt_tmpfs_type:file { read write };
 
@@ -522,6 +541,7 @@ filetrans_pattern(virtd_t, virt_var_run_t, virtd_lxc_var_run_t, dir, "lxc")
 
 stream_connect_pattern(virtd_t, virtd_lxc_var_run_t, virtd_lxc_var_run_t, virtd_lxc_t)
 stream_connect_pattern(virtd_t, svirt_var_run_t, svirt_var_run_t, virt_domain)
+stream_connect_pattern(virtd_t, virt_var_run_t, virtlockd_run_t, virtlockd_t)
 
 can_exec(virtd_t, virt_tmp_t)
 
@@ -1239,3 +1259,39 @@ manage_files_pattern(virt_leaseshelper_t, virt_var_run_t, virt_var_run_t)
 files_pid_filetrans(virt_leaseshelper_t, virt_var_run_t, file)
 
 kernel_dontaudit_read_system_state(virt_leaseshelper_t)
+
+########################################
+#
+# Virtlockd local policy
+#
+
+allow virtlockd_t self:capability dac_override;
+allow virtlockd_t self:fifo_file rw_fifo_file_perms;
+
+allow virtlockd_t virt_image_type:dir list_dir_perms;
+allow virtlockd_t virt_image_type:file rw_file_perms;
+
+create_files_pattern(virtlockd_t, virt_log_t, virt_log_t)
+
+list_dirs_pattern(virtlockd_t, virt_var_lib_t, virt_var_lib_t)
+
+manage_dirs_pattern(virtlockd_t, { virt_var_lib_t virtlockd_var_lib_t }, virtlockd_var_lib_t)
+manage_files_pattern(virtlockd_t, virtlockd_var_lib_t, virtlockd_var_lib_t)
+filetrans_pattern(virtlockd_t, virt_var_lib_t, virtlockd_var_lib_t, dir)
+
+manage_files_pattern(virtlockd_t, virt_var_run_t, virtlockd_run_t)
+manage_sock_files_pattern(virtlockd_t, virt_var_run_t, virtlockd_run_t)
+filetrans_pattern(virtlockd_t, virt_var_run_t, virtlockd_run_t, sock_file)
+files_pid_filetrans(virtlockd_t, virtlockd_run_t, file)
+
+can_exec(virtlockd_t, virtlockd_exec_t)
+
+ps_process_pattern(virtlockd_t, virtd_t)
+
+files_read_etc_files(virtlockd_t)
+files_list_var_lib(virtlockd_t)
+
+miscfiles_read_localization(virtlockd_t)
+
+virt_append_log(virtlockd_t)
+virt_read_config(virtlockd_t)

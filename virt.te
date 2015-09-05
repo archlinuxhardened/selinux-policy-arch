@@ -434,7 +434,7 @@ allow virtd_t self:netlink_route_socket nlmsg_write;
 allow virtd_t virt_domain:process { getattr getsched setsched transition signal signull sigkill };
 dontaudit virtd_t virt_domain:process { siginh noatsecure rlimitinh };
 
-allow virtd_t svirt_lxc_domain:unix_stream_socket { create_stream_socket_perms connectto };
+allow virtd_t { virt_domain svirt_lxc_domain }:unix_stream_socket { create_stream_socket_perms connectto };
 allow virtd_t svirt_lxc_domain:process signal_perms;
 
 allow virtd_t virtd_lxc_t:process { signal signull sigkill };

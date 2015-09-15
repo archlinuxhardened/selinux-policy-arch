@@ -71,11 +71,11 @@ gen_tunable(virt_use_usb, false)
 gen_tunable(virt_use_xserver, false)
 
 ## <desc>
-###      <p>
-###      Determine whether confined virtual guests
-###      can use vfio for pci device pass through (vt-d).
-###      </p>
-### </desc>
+##	<p>
+##	Determine whether confined virtual guests
+##	can use vfio for pci device pass through (vt-d).
+##	</p>
+## </desc>
 gen_tunable(virt_use_vfio, false)
 
 attribute virt_ptynode;

@@ -15,6 +15,7 @@ files_pid_file(cupsd_config_var_run_t)
 type cupsd_t;
 type cupsd_exec_t;
 init_daemon_domain(cupsd_t, cupsd_exec_t)
+init_named_socket_activation(cupsd_t, cupsd_var_run_t)
 mls_trusted_object(cupsd_t)
 
 type cupsd_etc_t;

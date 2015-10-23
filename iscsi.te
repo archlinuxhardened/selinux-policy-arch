@@ -8,6 +8,7 @@ policy_module(iscsi, 1.9.1)
 type iscsid_t;
 type iscsid_exec_t;
 init_daemon_domain(iscsid_t, iscsid_exec_t)
+init_abstract_socket_activation(iscsid_t)
 
 type iscsi_initrc_exec_t;
 init_script_file(iscsi_initrc_exec_t)

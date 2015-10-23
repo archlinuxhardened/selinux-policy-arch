@@ -22,6 +22,9 @@ type dbusd_exec_t;
 corecmd_executable_file(dbusd_exec_t)
 typealias dbusd_exec_t alias system_dbusd_exec_t;
 
+type dbusd_unit_t;
+init_unit_file(dbusd_unit_t)
+
 type session_dbusd_home_t;
 userdom_user_home_content(session_dbusd_home_t)
 
@@ -32,6 +35,7 @@ userdom_user_tmp_file(session_dbusd_tmp_t)
 
 type system_dbusd_t;
 init_system_domain(system_dbusd_t, dbusd_exec_t)
+init_named_socket_activation(system_dbusd_t, system_dbusd_var_run_t)
 
 type system_dbusd_tmp_t;
 files_tmp_file(system_dbusd_tmp_t)

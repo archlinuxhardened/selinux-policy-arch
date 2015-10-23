@@ -8,6 +8,7 @@ policy_module(rpcbind, 1.8.2)
 type rpcbind_t;
 type rpcbind_exec_t;
 init_daemon_domain(rpcbind_t, rpcbind_exec_t)
+init_named_socket_activation(rpcbind_t, rpcbind_var_run_t)
 
 type rpcbind_initrc_exec_t;
 init_script_file(rpcbind_initrc_exec_t)

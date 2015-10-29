@@ -562,6 +562,10 @@ interface(`dbus_system_domain',`
 
 	userdom_read_all_users_state($1)
 
+	ifdef(`init_systemd',`
+		init_daemon_domain($1, $2)
+	')
+
 	ifdef(`hide_broken_symptoms', `
 		dontaudit $1 system_dbusd_t:netlink_selinux_socket { read write };
 	')

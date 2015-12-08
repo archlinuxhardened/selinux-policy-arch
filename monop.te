@@ -1,4 +1,4 @@
-policy_module(monop, 1.8.1)
+policy_module(monop, 1.9.0)
 
 ########################################
 #

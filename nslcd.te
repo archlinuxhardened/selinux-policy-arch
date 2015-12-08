@@ -1,4 +1,4 @@
-policy_module(nslcd, 1.5.1)
+policy_module(nslcd, 1.6.0)
 
 ########################################
 #

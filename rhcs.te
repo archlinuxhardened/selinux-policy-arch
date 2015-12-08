@@ -1,4 +1,4 @@
-policy_module(rhcs, 1.4.1)
+policy_module(rhcs, 1.5.0)
 
 ########################################
 #

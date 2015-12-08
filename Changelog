@@ -1,3 +1,96 @@
+* Tue Dec 08 2015 Chris PeBenito <selinux@tresys.com> - 2.20151208
+Alexander Wetzel (1):
+      add vfio support for libvirt
+
+Chas Williams - CONTRACTOR (1):
+      afs: update labels, file contexts and allow access to urandom
+
+Chris PeBenito (14):
+      Module version bump for hadoop_admin() fix from Jazon Zaman.
+      Module version bump for fc typo in radius from Sven Vermeulen.
+      Module version bump for patches from Jason Zaman.
+      Module version bump for init_startstop_service from Jason Zaman.
+      Module version bump for cron_admin interface from Jason Zaman.
+      Comment/whitespace fix in virt.te.
+      Module version bump for vfio support for libvirt from Alexander Wetzel.
+      Add systemd unit types.
+      Add systemd socket activations.
+      Merge branch 'pebenito-master'
+      Module version bump for systemd additions.
+      Merge branch 'bigon-systemd'
+      Module version bump for dbus systemd patch from Laurent Bigonville.
+      Bump module versions for release.
+
+Dominick Grift (16):
+      Module version bump for courier fixes from Sven Vermeulen.
+      Module version bump for afs fixes from Chas Williams.
+      Redundant rules and afs_files_t is not a filesystem type
+      Various samhain fixes
+      Cachefilesd module updates
+      Module version bump for changes to the dnsmasq policy module by Jason
+         Zaman
+      Module version bump for changes to the snmp policy module by Jason Zaman
+      Module version bump for changes to the pulseaudio policy module by Jason
+         Zaman
+      cachefiles: It is cachefilesd_cache_t
+      Module version bump for update to the networkmanager policy module by
+         Stephen Smalley.
+      Module version bumps for "Remove run interface calls from admin
+         interfaces" changes by Jason Zaman.
+      Module version bump for changes to the pulseaudio module by Niklas Haas.
+      Changes to the git, hadoop and rsync modules by Jason Zaman.
+      Module version bump for changes to the virt module by Jason Zaman
+      Module version bump for changes to the mozilla module from Laurent
+         Bigonville.
+      Module version bump for changes to the wine module by Nicolas Iooss
+
+Jason Zaman (19):
+      hadoop: remove _role from _admin interface
+      rpcbind: typo fix
+      git: make inetd interface optional
+      rpc: introduce allow_gssd_write_tmp boolean
+      rpc: allow setgid capability
+      virt: add virt_tmpfs_t type and permissions
+      introduce virt_leaseshelper_t
+      dnsmasq: allow exec shell for scripts
+      snmp: missing fcontext for snmpd
+      pulseaudio: filetrans for autospawn.lock
+      Use init_startstop_service in admin interfaces A-M
+      Use init_startstop_service in admin interfaces N-Z
+      Remove _run() interfaces from _admin()
+      Introduce cron_admin interface
+      rsync: remove rsync_run from admin interface
+      git: allow git_system_t to listen on tcp_sockets
+      hadoop: init_startstop_service() can not take attributes
+      virt: Allow creating qemu guest agent socket
+      virt: Add policy for virtlockd the Virtual machine lock manager
+
+Laurent Bigonville (2):
+      Transition D-Bus system service out of the init_t domain when PID1 is
+         systemd
+      Label iceweasel plugin-container executable as mozilla_plugin_exec_t
+
+Nicolas Iooss (1):
+      wine: remove use of nonexisting interface
+
+Niklas Haas (1):
+      pulse: don't give pulseaudio_client full access to user_home_t
+
+Stephen Smalley (1):
+      contrib: networkmanager: allow netlink_generic_socket access
+
+Sven Vermeulen (6):
+      Locate authdaemon socket and communicate with authdaemon
+      Allow authdaemon to access selinux fs to check SELinux state
+      Grant setuid/setgid to courier_pop_t
+      Execute courier helper script after authentication
+      Courier IMAP needs to manage the users' maildir
+      Fix typo for radiusd /var/lib location
+
+doverride (2):
+      Merge pull request #3 from haasn/pulse-nohome
+      Merge pull request #6 from bigon/mozilla-1
+
 * Wed Dec 03 2014 Chris PeBenito <selinux@tresys.com> - 2.20141203
 Chris PeBenito (26):
       Whitespace fix in ntp.fc.

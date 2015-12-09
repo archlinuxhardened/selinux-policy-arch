@@ -1,5 +1,10 @@
 policy_module(geoclue, 1.0.0)
 
+########################################
+#
+# Declarations
+#
+
 type geoclue_t;
 type geoclue_exec_t;
 dbus_system_domain(geoclue_t, geoclue_exec_t)
@@ -9,6 +14,11 @@ files_config_file(geoclue_etc_t)
 
 type geoclue_var_lib_t;
 files_type(geoclue_var_lib_t)
+
+########################################
+#
+# Local policy
+#
 
 read_files_pattern(geoclue_t, geoclue_etc_t, geoclue_etc_t)
 

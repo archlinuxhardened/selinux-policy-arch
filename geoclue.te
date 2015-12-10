@@ -22,17 +22,14 @@ files_type(geoclue_var_lib_t)
 
 read_files_pattern(geoclue_t, geoclue_etc_t, geoclue_etc_t)
 
+auth_use_nsswitch(geoclue_t)
+
 corenet_tcp_connect_http_port(geoclue_t)
 
 dev_read_urand(geoclue_t)
 
-# Reads /etc/nsswitch.conf
-files_read_etc_files(geoclue_t)
-
 miscfiles_read_generic_certs(geoclue_t)
 miscfiles_read_localization(geoclue_t)
-
-sysnet_dns_name_resolve(geoclue_t)
 
 optional_policy(`
 	avahi_dbus_chat(geoclue_t)

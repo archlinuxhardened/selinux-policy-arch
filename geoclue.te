@@ -1,4 +1,4 @@
-policy_module(geoclue, 1.0.2)
+policy_module(geoclue, 1.0.3)
 
 ########################################
 #
@@ -22,11 +22,11 @@ files_type(geoclue_var_lib_t)
 
 read_files_pattern(geoclue_t, geoclue_etc_t, geoclue_etc_t)
 
+kernel_read_kernel_sysctls(geoclue_t)
+
 corenet_tcp_connect_http_port(geoclue_t)
 
 dev_read_urand(geoclue_t)
-
-kernel_read_kernel_sysctls(geoclue_t)
 
 auth_use_nsswitch(geoclue_t)
 

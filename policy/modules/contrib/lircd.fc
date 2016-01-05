@@ -8,7 +8,7 @@
 # Systemd unit file
 /usr/lib/systemd/system/[^/]*lircd.*	--	gen_context(system_u:object_r:lircd_unit_t,s0)
 
-/usr/sbin/lircd	--	gen_context(system_u:object_r:lircd_exec_t,s0)
+/usr/s?bin/lircd	--	gen_context(system_u:object_r:lircd_exec_t,s0)
 
 /var/run/lirc(/.*)?	gen_context(system_u:object_r:lircd_var_run_t,s0)
 /var/run/lircd(/.*)?	gen_context(system_u:object_r:lircd_var_run_t,s0)

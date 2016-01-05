@@ -1,4 +1,4 @@
-/usr/sbin/console-kit-daemon	--	gen_context(system_u:object_r:consolekit_exec_t,s0)
+/usr/s?bin/console-kit-daemon	--	gen_context(system_u:object_r:consolekit_exec_t,s0)
 
 /var/log/ConsoleKit(/.*)?	gen_context(system_u:object_r:consolekit_log_t,s0)
 

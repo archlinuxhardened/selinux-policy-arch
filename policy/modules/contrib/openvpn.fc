@@ -3,7 +3,7 @@
 
 /etc/rc\.d/init\.d/openvpn	--	gen_context(system_u:object_r:openvpn_initrc_exec_t,s0)
 
-/usr/sbin/openvpn	--	gen_context(system_u:object_r:openvpn_exec_t,s0)
+/usr/s?bin/openvpn	--	gen_context(system_u:object_r:openvpn_exec_t,s0)
 
 /var/log/openvpn-status\.log.*	--	gen_context(system_u:object_r:openvpn_status_t,s0)
 /var/log/openvpn.*	gen_context(system_u:object_r:openvpn_var_log_t,s0)

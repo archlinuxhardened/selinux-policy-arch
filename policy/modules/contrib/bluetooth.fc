@@ -13,11 +13,11 @@
 # Systemd unit file
 /usr/lib/systemd/system/[^/]*bluetooth.* -- gen_context(system_u:object_r:bluetooth_unit_t,s0)
 
-/usr/sbin/bluetoothd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
-/usr/sbin/hciattach	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
-/usr/sbin/hcid	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
-/usr/sbin/hid2hci	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
-/usr/sbin/sdpd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/s?bin/bluetoothd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/s?bin/hciattach	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/s?bin/hcid	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/s?bin/hid2hci	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/s?bin/sdpd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 
 /var/lib/bluetooth(/.*)?	gen_context(system_u:object_r:bluetooth_var_lib_t,s0)
 

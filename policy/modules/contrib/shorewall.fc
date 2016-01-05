@@ -6,8 +6,8 @@
 /sbin/shorewall6?	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
 /sbin/shorewall-lite	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
 
-/usr/sbin/shorewall6?	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
-/usr/sbin/shorewall-lite	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
+/usr/s?bin/shorewall6?	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
+/usr/s?bin/shorewall-lite	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
 
 /var/lib/shorewall(/.*)?	gen_context(system_u:object_r:shorewall_var_lib_t,s0)
 /var/lib/shorewall6(/.*)?	gen_context(system_u:object_r:shorewall_var_lib_t,s0)

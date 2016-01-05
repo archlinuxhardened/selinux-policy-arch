@@ -3,8 +3,8 @@
 
 /etc/rc\.d/init\.d/tog-pegasus	--	gen_context(system_u:object_r:pegasus_initrc_exec_t,s0)
 
-/usr/sbin/cimserver	--	gen_context(system_u:object_r:pegasus_exec_t,s0)
-/usr/sbin/init_repository	--	gen_context(system_u:object_r:pegasus_exec_t,s0)
+/usr/s?bin/cimserver	--	gen_context(system_u:object_r:pegasus_exec_t,s0)
+/usr/s?bin/init_repository	--	gen_context(system_u:object_r:pegasus_exec_t,s0)
 
 /var/cache/Pegasus(/.*)?	gen_context(system_u:object_r:pegasus_cache_t,s0)
 

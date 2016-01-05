@@ -8,6 +8,8 @@
 /etc/samba/smbpasswd	--	gen_context(system_u:object_r:samba_secrets_t,s0)
 /etc/samba(/.*)?	gen_context(system_u:object_r:samba_etc_t,s0)
 
+/usr/lib/systemd/system/smb.service --	gen_context(system_u:object_r:samba_unit_t,s0)
+
 /usr/bin/net	--	gen_context(system_u:object_r:samba_net_exec_t,s0)
 /usr/bin/ntlm_auth	--	gen_context(system_u:object_r:winbind_helper_exec_t,s0)
 /usr/bin/smbcontrol	--	gen_context(system_u:object_r:smbcontrol_exec_t,s0)

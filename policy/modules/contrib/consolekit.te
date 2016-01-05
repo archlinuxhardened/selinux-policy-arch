@@ -19,6 +19,9 @@ type consolekit_var_run_t;
 files_pid_file(consolekit_var_run_t)
 init_daemon_pid_file(consolekit_var_run_t, dir, "ConsoleKit")
 
+type consolekit_unit_t;
+init_unit_file(consolekit_unit_t)
+
 ########################################
 #
 # Local policy

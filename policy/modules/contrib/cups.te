@@ -63,6 +63,9 @@ files_pid_file(cupsd_var_run_t)
 init_daemon_pid_file(cupsd_var_run_t, dir, "cups")
 mls_trusted_object(cupsd_var_run_t)
 
+type cupsd_unit_t;
+init_unit_file(cupsd_unit_t)
+
 type hplip_t;
 type hplip_exec_t;
 init_daemon_domain(hplip_t, hplip_exec_t)

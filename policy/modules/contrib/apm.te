@@ -35,6 +35,9 @@ files_type(apmd_var_lib_t)
 type apmd_var_run_t;
 files_pid_file(apmd_var_run_t)
 
+type apmd_unit_t;
+init_unit_file(apmd_unit_t)
+
 ########################################
 #
 # Client local policy

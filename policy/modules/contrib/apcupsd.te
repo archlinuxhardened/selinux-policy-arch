@@ -24,6 +24,9 @@ files_tmp_file(apcupsd_tmp_t)
 type apcupsd_var_run_t;
 files_pid_file(apcupsd_var_run_t)
 
+type apcupsd_unit_t;
+init_unit_file(apcupsd_unit_t)
+
 ########################################
 #
 # Local policy

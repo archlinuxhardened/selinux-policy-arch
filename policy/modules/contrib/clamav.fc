@@ -2,6 +2,10 @@
 
 /etc/rc\.d/init\.d/clamd.*	--	gen_context(system_u:object_r:clamd_initrc_exec_t,s0)
 
+/usr/lib/systemd/system/clamd@scan\.service -- gen_context(system_u:object_r:clamd_unit_t,s0)
+/usr/lib/systemd/system/clamd@\.service -- gen_context(system_u:object_r:clamd_unit_t,s0)
+/usr/lib/systemd/system/clamd\.clamav\.service -- gen_context(system_u:object_r:clamd_unit_t,s0)
+
 /usr/bin/clamscan	--	gen_context(system_u:object_r:clamscan_exec_t,s0)
 /usr/bin/clamdscan	--	gen_context(system_u:object_r:clamscan_exec_t,s0)
 /usr/bin/freshclam	--	gen_context(system_u:object_r:freshclam_exec_t,s0)

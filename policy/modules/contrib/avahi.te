@@ -19,6 +19,9 @@ files_pid_file(avahi_var_lib_t)
 type avahi_var_run_t;
 files_pid_file(avahi_var_run_t)
 
+type avahi_unit_t;
+init_unit_file(avahi_unit_t)
+
 ########################################
 #
 # Local policy

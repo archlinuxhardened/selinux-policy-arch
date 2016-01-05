@@ -71,6 +71,9 @@ domain_cron_exemption_source(crond_t)
 type crond_initrc_exec_t;
 init_script_file(crond_initrc_exec_t)
 
+type crond_unit_t;
+init_unit_file(crond_unit_t)
+
 type crond_tmp_t;
 files_tmp_file(crond_tmp_t)
 files_poly_parent(crond_tmp_t)

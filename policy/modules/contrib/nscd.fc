@@ -1,5 +1,8 @@
 /etc/rc\.d/init\.d/nscd	--	gen_context(system_u:object_r:nscd_initrc_exec_t,s0)
 
+# Systemd unit files
+/usr/lib/systemd/system/nscd.*	--	gen_context(system_u:object_r:nscd_unit_t,s0)
+
 /usr/s?bin/nscd	--	gen_context(system_u:object_r:nscd_exec_t,s0)
 
 /var/cache/nscd(/.*)?	gen_context(system_u:object_r:nscd_var_run_t,s0)

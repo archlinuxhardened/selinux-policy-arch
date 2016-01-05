@@ -34,6 +34,9 @@ init_script_file(nscd_initrc_exec_t)
 type nscd_log_t;
 logging_log_file(nscd_log_t)
 
+type nscd_unit_t;
+init_unit_file(nscd_unit_t);
+
 ########################################
 #
 # Local policy

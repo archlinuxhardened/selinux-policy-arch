@@ -289,6 +289,9 @@ init_script_file(httpd_initrc_exec_t)
 type httpd_keytab_t;
 files_type(httpd_keytab_t)
 
+type httpd_unit_t;
+init_unit_file(httpd_unit_t)
+
 type httpd_lock_t;
 files_lock_file(httpd_lock_t)
 

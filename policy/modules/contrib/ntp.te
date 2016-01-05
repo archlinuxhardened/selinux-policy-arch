@@ -21,6 +21,9 @@ init_script_file(ntpd_initrc_exec_t)
 type ntp_conf_t;
 files_config_file(ntp_conf_t)
 
+type ntpd_unit_t;
+init_unit_file(ntpd_unit_t)
+
 type ntpd_key_t;
 files_type(ntpd_key_t)
 
@@ -32,9 +35,6 @@ files_tmp_file(ntpd_tmp_t)
 
 type ntpd_tmpfs_t;
 files_tmpfs_file(ntpd_tmpfs_t)
-
-type ntpd_unit_t;
-init_unit_file(ntpd_unit_t)
 
 type ntpd_var_run_t;
 files_pid_file(ntpd_var_run_t)

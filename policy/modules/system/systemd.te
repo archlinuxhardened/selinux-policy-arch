@@ -132,6 +132,18 @@ files_read_etc_files(systemd_backlight_t)
 
 udev_read_pid_files(systemd_backlight_t)
 
+#######################################
+#
+# Binfmt local policy
+#
+
+systemd_parse_log_environment(systemd_binfmt_t)
+
+fs_register_binary_executable_type(systemd_binfmt_t)
+
+# Allow to read /etc/binfmt.d/ files
+files_read_etc_files(systemd_binfmt_t)
+
 ######################################
 #
 # Cgroups local policy

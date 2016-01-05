@@ -53,7 +53,7 @@ can_exec(mount_t, mount_exec_t)
 files_tmp_filetrans(mount_t, mount_tmp_t, { file dir })
 
 create_dirs_pattern(mount_t, mount_var_run_t, mount_var_run_t)
-create_files_pattern(mount_t, mount_var_run_t, mount_var_run_t)
+manage_files_pattern(mount_t, mount_var_run_t, mount_var_run_t)
 rw_files_pattern(mount_t, mount_var_run_t, mount_var_run_t)
 files_pid_filetrans(mount_t, mount_var_run_t, dir, "mount")
 

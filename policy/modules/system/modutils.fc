@@ -1,6 +1,7 @@
 /bin/kmod		--	gen_context(system_u:object_r:insmod_exec_t,s0)
 
 /etc/modules\.conf.*	--	gen_context(system_u:object_r:modules_conf_t,s0)
+/etc/modules-load.d(/.*)?	--	gen_context(system_u:object_r:modules_conf_t,s0)
 /etc/modprobe\.conf.*	--	gen_context(system_u:object_r:modules_conf_t,s0)
 /etc/modprobe\.d(/.*)?		gen_context(system_u:object_r:modules_conf_t,s0)
 
@@ -34,6 +35,7 @@ ifdef(`distro_gentoo',`
 
 /usr/lib/modules/[^/]+/modules\..+ -- gen_context(system_u:object_r:modules_dep_t,s0)
 /usr/lib/modules/modprobe\.conf -- gen_context(system_u:object_r:modules_conf_t,s0)
+/usr/lib/modules-load.d(/.*)?	--	gen_context(system_u:object_r:modules_conf_t,s0)
 
 /usr/sbin/depmod.*		--	gen_context(system_u:object_r:depmod_exec_t,s0)
 /usr/sbin/generate-modprobe\.conf -- gen_context(system_u:object_r:update_modules_exec_t,s0)
@@ -42,3 +44,5 @@ ifdef(`distro_gentoo',`
 /usr/sbin/modules-update	--	gen_context(system_u:object_r:update_modules_exec_t,s0)
 /usr/sbin/rmmod.*		--	gen_context(system_u:object_r:insmod_exec_t,s0)
 /usr/sbin/update-modules	--	gen_context(system_u:object_r:update_modules_exec_t,s0)
+
+/var/run/modules-load.d(/.*)?	--	gen_context(system_u:object_r:modules_conf_t,s0)

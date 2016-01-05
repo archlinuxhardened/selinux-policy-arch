@@ -171,3 +171,45 @@ interface(`systemd_start_power_units',`
 
 	allow $1 power_unit_t:service start;
 ')
+
+########################################
+## <summary>
+##	Allow specified domain to parse environment to set up logging.
+## </summary>
+## <desc>
+##	<p>
+##	Many systemd daemons set-up their logging by calling
+##	functions log_parse_environment and log_open, which
+##	source code is available on
+##	https://github.com/systemd/systemd/blob/v227/src/basic/log.c
+##	</p>
+##	<p>
+##	Function log_parse_environment calls parse_proc_cmdline,
+##	which reads /proc/cmdline and calls detect_container,
+##	which reads /proc/1/environ.
+##	</p>
+##	<p>
+##	Function log_open may call log_open_syslog, which calls
+##	create_log_socket, which calls fd_inc_sndbuf, which does
+##	setsockopt(fd, SOL_SOCKET, SO_SNDBUFFORCE, ...), which
+##	requires CAP_NET_ADMIN.  Nevertheless if CAP_NET_ADMIN
+##	access is denied, fd_inc_sndbuf falls back to using
+##	SO_SNDBUF option, which does not require any capability.
+##	</p>
+## </desc>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`systemd_parse_log_environment',`
+	# Allow to read /proc/1/environ
+	init_read_state($1)
+	# Allow to read /proc/cmdline
+	kernel_read_system_state($1)
+	# Do not audit setsockopt(fd, SOL_SOCKET, SO_SNDBUFFORCE, ...) failure
+	dontaudit $1 self:capability net_admin;
+
+	logging_send_syslog_msg($1)
+')

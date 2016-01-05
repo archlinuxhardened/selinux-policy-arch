@@ -120,7 +120,7 @@ kernel_domtrans_to(systemd_cgroups_t, systemd_cgroups_exec_t)
 
 init_stream_connect(systemd_cgroups_t)
 
-logging_send_syslog_msg(systemd_cgroups_t)
+systemd_parse_log_environment(systemd_cgroups_t)
 
 kernel_dgram_send(systemd_cgroups_t)
 
@@ -147,7 +147,7 @@ optional_policy(`
 
 files_read_etc_files(systemd_hostnamed_t)
 
-logging_send_syslog_msg(systemd_hostnamed_t)
+systemd_parse_log_environment(systemd_hostnamed_t)
 
 seutil_read_file_contexts(systemd_hostnamed_t)
 
@@ -253,6 +253,8 @@ auth_setattr_login_records(systemd_tmpfiles_t)
 logging_send_syslog_msg(systemd_tmpfiles_t)
 
 seutil_read_file_contexts(systemd_tmpfiles_t)
+
+systemd_parse_log_environment(systemd_tmpfiles_t)
 
 tunable_policy(`systemd_tmpfiles_manage_all',`
 	# systemd-tmpfiles can be configured to manage anything.

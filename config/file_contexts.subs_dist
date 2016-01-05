@@ -8,18 +8,22 @@
 # It does not perform substitutions as done by sed(1), for
 # example, but aliasing.
 # 
+/bin /usr/bin
 /etc/init.d /etc/rc.d/init.d
 /etc/systemd/system /usr/lib/systemd/system
 /lib/systemd /usr/lib/systemd
-/lib32 /lib
-/lib64 /lib
+/lib /usr/lib
+/lib32 /usr/lib
+/lib64 /usr/lib
 /run /var/run
 /run/lock /var/lock
+/sbin /usr/bin
 /usr/lib32 /usr/lib
 /usr/lib64 /usr/lib
 /usr/local/lib32 /usr/lib
 /usr/local/lib64 /usr/lib
 /usr/local/lib /usr/lib
+/usr/sbin /usr/bin
 /var/run/lock /var/lock
 /var/run/systemd/system /usr/lib/systemd/system
 /var/run/systemd/generator /usr/lib/systemd/system

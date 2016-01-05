@@ -41,6 +41,7 @@ ifdef(`distro_redhat',`
 /lib/ld-[^/]*\.so(\.[^/]*)*		--	gen_context(system_u:object_r:ld_so_t,s0)
 
 /lib/security/pam_poldi\.so		--	gen_context(system_u:object_r:textrel_shlib_t,s0)
+/usr/lib/security/pam_poldi\.so		--	gen_context(system_u:object_r:textrel_shlib_t,s0)
 
 #
 # /opt
@@ -113,6 +114,8 @@ ifdef(`distro_redhat',`
 ifdef(`distro_debian',`
 /usr/(.*/)?dh-python/dh_pypy		--	gen_context(system_u:object_r:lib_t,s0)
 ')
+
+/usr/bin/ldconfig				--	gen_context(system_u:object_r:ldconfig_exec_t,s0)
 
 /usr/lib/altivec/libavcodec\.so(\.[^/]*)* --	gen_context(system_u:object_r:textrel_shlib_t,s0)
 /usr/lib/cedega/.+\.so(\.[^/]*)*	--	gen_context(system_u:object_r:textrel_shlib_t,s0)

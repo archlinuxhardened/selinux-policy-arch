@@ -21,7 +21,8 @@ interface(`kdump_domtrans',`
 
 #######################################
 ## <summary>
-##	Execute kdump in the kdump domain.
+##	Execute kdump init scripts in
+##	the init script domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>

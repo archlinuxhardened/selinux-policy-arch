@@ -2,7 +2,8 @@
 
 ########################################
 ## <summary>
-##	Execute bind server in the bind domain.
+##	Execute bind init scripts in
+##	the init script domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>

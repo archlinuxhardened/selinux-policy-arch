@@ -82,7 +82,8 @@ interface(`ntp_domtrans_ntpdate',`
 
 ########################################
 ## <summary>
-##	Execute ntp server in the ntpd domain.
+##	Execute ntpd init scripts in
+##	the init script domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>

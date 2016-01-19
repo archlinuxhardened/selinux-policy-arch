@@ -21,7 +21,8 @@ interface(`shorewall_domtrans',`
 
 ######################################
 ## <summary>
-##	Execute a domain transition to run shorewall.
+##	Execute a domain transition to run shorewall
+##	using executables from /var/lib.
 ## </summary>
 ## <param name="domain">
 ## <summary>

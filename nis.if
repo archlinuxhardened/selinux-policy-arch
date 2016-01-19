@@ -318,7 +318,8 @@ interface(`nis_domtrans_ypxfr',`
 
 ########################################
 ## <summary>
-##	Execute nis server in the nis domain.
+##	Execute nis init scripts in
+##	the init script domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -337,7 +338,8 @@ interface(`nis_initrc_domtrans',`
 
 ########################################
 ## <summary>
-##	Execute nis server in the nis domain.
+##	Execute ypbind init scripts in
+##	the init script domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>

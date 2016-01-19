@@ -42,8 +42,8 @@ interface(`cgroup_domtrans_cgconfig',`
 
 ########################################
 ## <summary>
-##	Execute a domain transition to run
-##	CG config parser.
+##	Execute CG config init scripts in
+##	the init script domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>

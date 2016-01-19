@@ -189,7 +189,7 @@ interface(`virt_domtrans_bridgehelper',`
 ########################################
 ## <summary>
 ##	Execute a domain transition to
-##	run virt bridgehelper.
+##	run virt leaseshelper.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -434,8 +434,7 @@ interface(`virt_manage_config',`
 
 ########################################
 ## <summary>
-##	Create, read, write, and delete
-##	virt image files.
+##	Read virt content.
 ## </summary>
 ## <param name="domain">
 ##	<summary>

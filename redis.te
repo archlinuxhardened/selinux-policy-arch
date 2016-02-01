@@ -21,6 +21,9 @@ files_type(redis_var_lib_t)
 type redis_var_run_t;
 files_pid_file(redis_var_run_t)
 
+type redis_conf_t;
+files_config_file(redis_conf_t)
+
 ########################################
 #
 # Local policy
@@ -30,6 +33,8 @@ allow redis_t self:process { setrlimit signal_perms };
 allow redis_t self:fifo_file rw_fifo_file_perms;
 allow redis_t self:unix_stream_socket create_stream_socket_perms;
 allow redis_t self:tcp_socket create_stream_socket_perms;
+
+allow redis_t redis_conf_t:file rw_file_perms;
 
 manage_dirs_pattern(redis_t, redis_log_t, redis_log_t)
 manage_files_pattern(redis_t, redis_log_t, redis_log_t)

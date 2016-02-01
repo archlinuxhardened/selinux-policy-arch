@@ -440,7 +440,8 @@ files_pid_filetrans(system_cronjob_t, cron_var_run_t, file)
 manage_files_pattern(system_cronjob_t, system_cron_spool_t, system_cron_spool_t)
 
 allow system_cronjob_t system_cronjob_lock_t:file manage_file_perms;
-files_lock_filetrans(system_cronjob_t, system_cronjob_lock_t, file)
+allow system_cronjob_t system_cronjob_lock_t:lnk_file manage_lnk_file_perms;
+files_lock_filetrans(system_cronjob_t, system_cronjob_lock_t, { file lnk_file })
 
 manage_files_pattern(system_cronjob_t, crond_tmp_t, system_cronjob_tmp_t)
 manage_lnk_files_pattern(system_cronjob_t, crond_tmp_t, system_cronjob_tmp_t)

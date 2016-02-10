@@ -61,6 +61,25 @@ interface(`firewalld_dontaudit_rw_tmp_files',`
 
 ########################################
 ## <summary>
+##	Read firewalld runtime files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`firewalld_read_var_run_files',`
+	gen_require(`
+		type firewalld_var_run_t;
+	')
+
+	files_search_pids($1)
+	read_files_pattern($1, firewalld_var_run_t, firewalld_var_run_t)
+')
+
+########################################
+## <summary>
 ##	All of the rules required to
 ##	administrate an firewalld environment.
 ## </summary>

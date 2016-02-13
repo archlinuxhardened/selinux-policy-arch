@@ -271,6 +271,7 @@ optional_policy(`
 ')
 
 optional_policy(`
+	netutils_exec(NetworkManager_t)
 	netutils_exec_ping(NetworkManager_t)
 ')
 

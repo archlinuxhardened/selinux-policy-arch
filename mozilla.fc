@@ -25,6 +25,7 @@ HOME_DIR/zimbrauserdata(/.*)?	gen_context(system_u:object_r:mozilla_plugin_home_
 
 /usr/lib/[^/]*firefox[^/]*/firefox	--	gen_context(system_u:object_r:mozilla_exec_t,s0)
 /usr/lib/[^/]*firefox[^/]*/firefox-bin	--	gen_context(system_u:object_r:mozilla_exec_t,s0)
+/usr/lib/firefox[^/]*/firefox-.*	--	gen_context(system_u:object_r:mozilla_exec_t,s0)
 /usr/lib/firefox[^/]*/mozilla-.*	--	gen_context(system_u:object_r:mozilla_exec_t,s0)
 /usr/lib/galeon/galeon	--	gen_context(system_u:object_r:mozilla_exec_t,s0)
 /usr/lib/iceweasel/iceweasel	--	gen_context(system_u:object_r:mozilla_exec_t,s0)

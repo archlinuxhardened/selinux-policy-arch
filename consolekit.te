@@ -24,8 +24,8 @@ init_daemon_pid_file(consolekit_var_run_t, dir, "ConsoleKit")
 # Local policy
 #
 
-allow consolekit_t self:capability { chown setuid setgid sys_tty_config dac_override sys_nice sys_ptrace };
-allow consolekit_t self:process { getsched signal };
+allow consolekit_t self:capability { chown fowner setuid setgid sys_admin sys_tty_config dac_override sys_nice sys_ptrace };
+allow consolekit_t self:process { getsched signal setfscreate };
 allow consolekit_t self:fifo_file rw_fifo_file_perms;
 allow consolekit_t self:unix_stream_socket { accept listen };
 
@@ -61,8 +61,14 @@ files_read_var_lib_files(consolekit_t)
 files_search_all_mountpoints(consolekit_t)
 
 fs_list_inotifyfs(consolekit_t)
+fs_mount_tmpfs(consolekit_t)
+fs_unmount_tmpfs(consolekit_t)
+fs_relabelfrom_tmpfs(consolekit_t)
 
 mcs_ptrace_all(consolekit_t)
+
+seutil_libselinux_linked(consolekit_t)
+seutil_read_file_contexts(consolekit_t)
 
 term_use_all_terms(consolekit_t)
 
@@ -79,6 +85,12 @@ miscfiles_read_localization(consolekit_t)
 
 userdom_dontaudit_read_user_home_content_files(consolekit_t)
 userdom_read_user_tmp_files(consolekit_t)
+userdom_manage_user_runtime_root_dirs(consolekit_t)
+userdom_manage_user_runtime_dirs(consolekit_t)
+userdom_mounton_user_runtime_dirs(consolekit_t)
+userdom_relabelto_user_runtime_dirs(consolekit_t)
+userdom_pid_filetrans_user_runtime_root(consolekit_t, dir, "user")
+userdom_user_runtime_root_filetrans_user_runtime(consolekit_t, dir)
 
 tunable_policy(`use_nfs_home_dirs',`
 	fs_read_nfs_files(consolekit_t)

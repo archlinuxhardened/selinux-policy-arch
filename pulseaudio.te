@@ -56,6 +56,7 @@ manage_dirs_pattern(pulseaudio_t, pulseaudio_tmp_t, pulseaudio_tmp_t)
 manage_files_pattern(pulseaudio_t, pulseaudio_tmp_t, pulseaudio_tmp_t)
 manage_sock_files_pattern(pulseaudio_t, pulseaudio_tmp_t, pulseaudio_tmp_t)
 files_tmp_filetrans(pulseaudio_t, pulseaudio_tmp_t, dir)
+userdom_user_runtime_filetrans(pulseaudio_t, pulseaudio_tmp_t, dir)
 userdom_user_tmp_filetrans(pulseaudio_t, pulseaudio_tmp_t, file, "autospawn.lock")
 userdom_user_tmp_filetrans(pulseaudio_t, pulseaudio_tmp_t, file, "pid")
 userdom_user_tmp_filetrans(pulseaudio_t, pulseaudio_tmp_t, sock_file, "dbus-socket")
@@ -203,8 +204,11 @@ optional_policy(`
 #
 
 allow pulseaudio_client self:unix_dgram_socket sendto;
+allow pulseaudio_client self:process signull;
 
-allow pulseaudio_client pulseaudio_client:process signull;
+allow pulseaudio_client pulseaudio_tmp_t:dir manage_dir_perms;
+allow pulseaudio_client pulseaudio_tmp_t:file manage_file_perms;
+allow pulseaudio_client pulseaudio_tmp_t:sock_file manage_sock_file_perms;
 
 read_files_pattern(pulseaudio_client, { pulseaudio_tmpfsfile pulseaudio_tmpfs_t }, { pulseaudio_tmpfsfile pulseaudio_tmpfs_t })
 delete_files_pattern(pulseaudio_client, pulseaudio_tmpfsfile, pulseaudio_tmpfsfile)
@@ -228,6 +232,7 @@ pulseaudio_home_filetrans_pulseaudio_home(pulseaudio_client, file, ".pulse-cooki
 pulseaudio_signull(pulseaudio_client)
 
 userdom_read_user_tmpfs_files(pulseaudio_client)
+userdom_user_runtime_filetrans(pulseaudio_client, pulseaudio_tmp_t, dir, "pulse")
 # userdom_delete_user_tmpfs_files(pulseaudio_client)
 
 tunable_policy(`use_nfs_home_dirs',`

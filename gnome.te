@@ -89,6 +89,7 @@ userdom_user_tmp_filetrans(gconfd_t, gconf_tmp_t, { dir file })
 
 userdom_manage_user_tmp_dirs(gconfd_t)
 userdom_tmp_filetrans_user_tmp(gconfd_t, dir)
+userdom_user_runtime_filetrans_user_tmp(gconfd_t, dir)
 
 optional_policy(`
 	dbus_all_session_domain(gconfd_t, gconfd_exec_t)

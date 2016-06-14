@@ -1,4 +1,4 @@
-policy_module(puppet, 1.6.0)
+policy_module(puppet, 1.6.1)
 
 ########################################
 #
@@ -192,16 +192,16 @@ optional_policy(`
 ')
 
 optional_policy(`
+	shorewall_domtrans(puppet_t)
+')
+
+optional_policy(`
 	unconfined_domain(puppet_t)
 ')
 
 optional_policy(`
 	usermanage_domtrans_groupadd(puppet_t)
 	usermanage_domtrans_useradd(puppet_t)
-')
-
-optional_policy(`
-        shorewall_domtrans(puppet_t)
 ')
 
 ########################################

@@ -138,3 +138,5 @@ logging_log_filetrans(varnishlog_t, varnishlog_log_t, { file dir })
 read_files_pattern(varnishlog_t, varnishd_var_lib_t, varnishd_var_lib_t)
 
 files_search_var_lib(varnishlog_t)
+
+miscfiles_read_localization(varnishlog_t)

@@ -23,7 +23,7 @@ files_pid_file(certmonger_var_run_t)
 # Local policy
 #
 
-allow certmonger_t self:capability { dac_override dac_read_search setgid setuid kill sys_nice };
+allow certmonger_t self:capability { chown dac_override dac_read_search setgid setuid kill sys_nice };
 dontaudit certmonger_t self:capability sys_tty_config;
 allow certmonger_t self:capability2 block_suspend;
 allow certmonger_t self:process { getsched setsched sigkill signal };

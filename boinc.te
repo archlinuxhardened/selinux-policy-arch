@@ -1,4 +1,4 @@
-policy_module(boinc, 1.3.0)
+policy_module(boinc, 1.3.1)
 
 ########################################
 #
@@ -54,6 +54,8 @@ allow boinc_t self:shm create_shm_perms;
 allow boinc_t self:fifo_file rw_fifo_file_perms;
 allow boinc_t self:sem create_sem_perms;
 
+can_exec(boinc_t, boinc_exec_t)
+
 manage_dirs_pattern(boinc_t, boinc_tmp_t, boinc_tmp_t)
 manage_files_pattern(boinc_t, boinc_tmp_t, boinc_tmp_t)
 files_tmp_filetrans(boinc_t, boinc_tmp_t, { dir file })
@@ -71,12 +73,13 @@ manage_files_pattern(boinc_t, boinc_project_var_lib_t, boinc_project_var_lib_t)
 filetrans_pattern(boinc_t, boinc_var_lib_t, boinc_project_var_lib_t, dir, "slots")
 filetrans_pattern(boinc_t, boinc_var_lib_t, boinc_project_var_lib_t, dir, "projects")
 
-append_files_pattern(boinc_t, boinc_log_t, boinc_log_t)
+manage_files_pattern(boinc_t, boinc_log_t, boinc_log_t)
 create_files_pattern(boinc_t, boinc_log_t, boinc_log_t)
 setattr_files_pattern(boinc_t, boinc_log_t, boinc_log_t)
 logging_log_filetrans(boinc_t, boinc_log_t, file)
 
 can_exec(boinc_t, boinc_var_lib_t)
+libs_exec_lib_files(boinc_t)
 
 domtrans_pattern(boinc_t, boinc_project_var_lib_t, boinc_project_t)
 
@@ -188,7 +191,15 @@ corenet_sendrecv_boinc_client_packets(boinc_project_t)
 corenet_tcp_connect_boinc_port(boinc_project_t)
 corenet_tcp_sendrecv_boinc_port(boinc_project_t)
 
+dev_getattr_input_dev(boinc_t)
+dev_getattr_mouse_dev(boinc_t)
+
 files_dontaudit_search_home(boinc_project_t)
+
+term_getattr_ptmx(boinc_t)
+term_getattr_generic_ptys(boinc_t)
+
+userdom_getattr_user_ttys(boinc_t)
 
 optional_policy(`
 	java_exec(boinc_project_t)

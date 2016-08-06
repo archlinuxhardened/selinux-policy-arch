@@ -1,4 +1,4 @@
-policy_module(ldap, 1.13.0)
+policy_module(ldap, 1.13.1)
 
 ########################################
 #
@@ -38,6 +38,9 @@ files_tmp_file(slapd_tmp_t)
 
 type slapd_tmpfs_t;
 files_tmpfs_file(slapd_tmpfs_t)
+
+type slapd_unit_t;
+init_unit_file(slapd_unit_t)
 
 type slapd_var_run_t;
 files_pid_file(slapd_var_run_t)

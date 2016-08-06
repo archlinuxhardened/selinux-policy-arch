@@ -1,4 +1,4 @@
-policy_module(apache, 2.10.0)
+policy_module(apache, 2.10.1)
 
 ########################################
 #
@@ -326,6 +326,9 @@ files_tmp_file(httpd_tmp_t)
 
 type httpd_tmpfs_t;
 files_tmpfs_file(httpd_tmpfs_t)
+
+type httpd_unit_t;
+init_unit_file(httpd_unit_t)
 
 apache_content_template(user)
 ubac_constrained(httpd_user_script_t)

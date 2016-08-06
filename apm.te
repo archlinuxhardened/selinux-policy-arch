@@ -1,4 +1,4 @@
-policy_module(apm, 1.14.0)
+policy_module(apm, 1.14.1)
 
 ########################################
 #
@@ -28,6 +28,9 @@ logging_log_file(apmd_log_t)
 
 type apmd_tmp_t;
 files_tmp_file(apmd_tmp_t)
+
+type apmd_unit_t;
+init_unit_file(apmd_unit_t)
 
 type apmd_var_lib_t;
 files_type(apmd_var_lib_t)

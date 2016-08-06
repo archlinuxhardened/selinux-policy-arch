@@ -2,6 +2,8 @@
 
 /usr/bin/apm	--	gen_context(system_u:object_r:apm_exec_t,s0)
 
+/usr/lib/systemd/system/apmd.*\.service -- gen_context(system_u:object_r:apmd_unit_t,s0)
+
 /usr/sbin/acpid	--	gen_context(system_u:object_r:apmd_exec_t,s0)
 /usr/sbin/apmd	--	gen_context(system_u:object_r:apmd_exec_t,s0)
 /usr/sbin/powersaved	--	gen_context(system_u:object_r:apmd_exec_t,s0)

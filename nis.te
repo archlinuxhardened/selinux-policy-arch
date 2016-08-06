@@ -1,4 +1,4 @@
-policy_module(nis, 1.13.1)
+policy_module(nis, 1.13.2)
 
 ########################################
 #
@@ -9,6 +9,9 @@ attribute_role ypbind_roles;
 
 type nis_initrc_exec_t;
 init_script_file(nis_initrc_exec_t)
+
+type nis_unit_t;
+init_unit_file(nis_unit_t)
 
 type var_yp_t;
 files_type(var_yp_t)
@@ -23,6 +26,9 @@ init_script_file(ypbind_initrc_exec_t)
 
 type ypbind_tmp_t;
 files_tmp_file(ypbind_tmp_t)
+
+type ypbind_unit_t;
+init_unit_file(ypbind_unit_t)
 
 type ypbind_var_run_t;
 files_pid_file(ypbind_var_run_t)

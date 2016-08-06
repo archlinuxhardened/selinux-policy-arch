@@ -1,4 +1,4 @@
-policy_module(ftp, 1.18.1)
+policy_module(ftp, 1.18.2)
 
 ########################################
 #
@@ -135,6 +135,9 @@ files_tmp_file(ftpd_tmp_t)
 
 type ftpd_tmpfs_t;
 files_tmpfs_file(ftpd_tmpfs_t)
+
+type ftpd_unit_t;
+init_unit_file(ftpd_unit_t)
 
 type ftpd_var_run_t;
 files_pid_file(ftpd_var_run_t)

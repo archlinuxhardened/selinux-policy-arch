@@ -8,6 +8,7 @@
 
 /usr/lib/openldap/slapd	--	gen_context(system_u:object_r:slapd_exec_t,s0)
 /usr/lib/slapd	--	gen_context(system_u:object_r:slapd_exec_t,s0)
+/usr/lib/systemd/system/slapd.*\.service -- gen_context(system_u:object_r:slapd_unit_t,s0)
 
 /var/lib/ldap(/.*)?	gen_context(system_u:object_r:slapd_db_t,s0)
 /var/lib/ldap/replog(/.*)?	gen_context(system_u:object_r:slapd_replog_t,s0)

@@ -1,4 +1,4 @@
-policy_module(samba, 1.18.0)
+policy_module(samba, 1.18.1)
 
 #################################
 #
@@ -129,6 +129,9 @@ files_type(samba_secrets_t)
 
 type samba_share_t; # customizable
 files_type(samba_share_t)
+
+type samba_unit_t;
+init_unit_file(samba_unit_t)
 
 type samba_var_t;
 files_type(samba_var_t)

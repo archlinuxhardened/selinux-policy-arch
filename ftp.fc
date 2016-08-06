@@ -9,6 +9,9 @@
 
 /usr/kerberos/sbin/ftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
 
+/usr/lib/systemd/system/proftpd.*\.service -- gen_context(system_u:object_r:ftpd_unit_t,s0)
+/usr/lib/systemd/system/vsftpd.*\.service -- gen_context(system_u:object_r:ftpd_unit_t,s0)
+
 /usr/sbin/ftpwho	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
 /usr/sbin/in\.ftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
 /usr/sbin/muddleftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)

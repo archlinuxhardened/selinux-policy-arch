@@ -1,4 +1,4 @@
-policy_module(arpwatch, 1.12.0)
+policy_module(arpwatch, 1.12.1)
 
 ########################################
 #
@@ -17,6 +17,9 @@ files_type(arpwatch_data_t)
 
 type arpwatch_tmp_t;
 files_tmp_file(arpwatch_tmp_t)
+
+type arpwatch_unit_t;
+init_unit_file(arpwatch_unit_t)
 
 type arpwatch_var_run_t;
 files_pid_file(arpwatch_var_run_t)

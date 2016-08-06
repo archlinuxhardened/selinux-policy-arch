@@ -1,4 +1,4 @@
-policy_module(apcupsd, 1.10.0)
+policy_module(apcupsd, 1.10.1)
 
 ########################################
 #
@@ -20,6 +20,9 @@ logging_log_file(apcupsd_log_t)
 
 type apcupsd_tmp_t;
 files_tmp_file(apcupsd_tmp_t)
+
+type apcupsd_unit_t;
+init_unit_file(apcupsd_unit_t)
 
 type apcupsd_var_run_t;
 files_pid_file(apcupsd_var_run_t)

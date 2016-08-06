@@ -7,6 +7,9 @@
 /sbin/rpc\..*	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
 /sbin/sm-notify	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
 
+/usr/lib/systemd/system/nfs.*\.service --   gen_context(system_u:object_r:nfsd_unit_t,s0)
+/usr/lib/systemd/system/rpc.*\.service --   gen_context(system_u:object_r:rpcd_unit_t,s0)
+
 /usr/sbin/rpc\..*	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
 /usr/sbin/rpc\.idmapd	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
 /usr/sbin/rpc\.gssd	--	gen_context(system_u:object_r:gssd_exec_t,s0)

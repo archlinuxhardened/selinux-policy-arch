@@ -1,4 +1,4 @@
-policy_module(ppp, 1.15.0)
+policy_module(ppp, 1.15.1)
 
 ########################################
 #
@@ -52,6 +52,9 @@ files_lock_file(pppd_lock_t)
 
 type pppd_tmp_t;
 files_tmp_file(pppd_tmp_t)
+
+type pppd_unit_t;
+init_unit_file(pppd_unit_t)
 
 type pppd_var_run_t;
 files_pid_file(pppd_var_run_t)

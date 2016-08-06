@@ -1,4 +1,4 @@
-policy_module(tor, 1.11.0)
+policy_module(tor, 1.11.1)
 
 ########################################
 #
@@ -22,6 +22,9 @@ files_config_file(tor_etc_t)
 
 type tor_initrc_exec_t;
 init_script_file(tor_initrc_exec_t)
+
+type tor_unit_t;
+init_unit_file(tor_unit_t)
 
 type tor_var_lib_t;
 files_type(tor_var_lib_t)

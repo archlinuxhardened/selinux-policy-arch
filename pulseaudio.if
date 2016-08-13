@@ -25,6 +25,7 @@ interface(`pulseaudio_role',`
 	pulseaudio_run($2, $1)
 
 	allow $2 pulseaudio_t:process { ptrace signal_perms };
+	allow $2 pulseaudio_t:fd use;
 	ps_process_pattern($2, pulseaudio_t)
 
 	allow $2 pulseaudio_home_t:dir { manage_dir_perms relabel_dir_perms };

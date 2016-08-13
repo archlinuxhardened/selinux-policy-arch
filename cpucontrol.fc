@@ -1,4 +1,4 @@
-/etc/firmware/.*	--	gen_context(system_u:object_r:cpucontrol_conf_t,s0)
+/lib/firmware/microcode.*\.dat -- gen_context(system_u:object_r:cpucontrol_conf_t,s0)
 
 /sbin/microcode_ctl	--	gen_context(system_u:object_r:cpucontrol_exec_t,s0)
 

@@ -114,6 +114,8 @@ template(`telepathy_role_template',`
 	allow $3 telepathy_tmp_content:dir { manage_dir_perms relabel_dir_perms };
 	allow $3 telepathy_tmp_content:file { manage_file_perms relabel_file_perms };
 	allow $3 telepathy_tmp_content:sock_file { manage_sock_file_perms relabel_sock_file_perms };
+
+	telepathy_mission_control_dbus_chat($3)
 ')
 
 ########################################
@@ -155,6 +157,27 @@ interface(`telepathy_gabble_dbus_chat',`
 
 	allow $1 telepathy_gabble_t:dbus send_msg;
 	allow telepathy_gabble_t $1:dbus send_msg;
+')
+
+########################################
+## <summary>
+##	Send dbus messages to and from
+##	mission control.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`telepathy_mission_control_dbus_chat',`
+	gen_require(`
+		type telepathy_mission_control_t;
+		class dbus send_msg;
+	')
+
+	allow $1 telepathy_mission_control_t:dbus send_msg;
+	allow telepathy_mission_control_t $1:dbus send_msg;
 ')
 
 ########################################

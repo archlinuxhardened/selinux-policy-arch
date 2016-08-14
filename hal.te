@@ -213,7 +213,7 @@ userdom_dontaudit_search_user_home_dirs(hald_t)
 
 optional_policy(`
 	alsa_domtrans(hald_t)
-	alsa_read_rw_config(hald_t)
+	alsa_read_config(hald_t)
 ')
 
 optional_policy(`

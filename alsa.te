@@ -12,8 +12,8 @@ type alsa_exec_t;
 init_system_domain(alsa_t, alsa_exec_t)
 role alsa_roles types alsa_t;
 
-type alsa_etc_rw_t;
-files_config_file(alsa_etc_rw_t)
+type alsa_etc_t;
+files_config_file(alsa_etc_t)
 
 type alsa_tmp_t;
 files_tmp_file(alsa_tmp_t)
@@ -46,9 +46,9 @@ allow alsa_t self:unix_stream_socket { accept listen };
 
 allow alsa_t alsa_home_t:file read_file_perms;
 
-manage_files_pattern(alsa_t, alsa_etc_rw_t, alsa_etc_rw_t)
-manage_lnk_files_pattern(alsa_t, alsa_etc_rw_t, alsa_etc_rw_t)
-files_etc_filetrans(alsa_t, alsa_etc_rw_t, file)
+list_dirs_pattern(alsa_t, alsa_etc_t, alsa_etc_t)
+read_files_pattern(alsa_t, alsa_etc_t, alsa_etc_t)
+read_lnk_files_pattern(alsa_t, alsa_etc_t, alsa_etc_t)
 
 can_exec(alsa_t, alsa_exec_t)
 

@@ -68,7 +68,7 @@ tunable_policy(`entropyd_use_audio',`
 optional_policy(`
 	tunable_policy(`entropyd_use_audio',`
 		alsa_read_lib(entropyd_t)
-		alsa_read_rw_config(entropyd_t)
+		alsa_read_config(entropyd_t)
 	')
 ')
 

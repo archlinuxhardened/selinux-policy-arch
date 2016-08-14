@@ -251,7 +251,7 @@ tunable_policy(`allow_mplayer_execstack',`
 ')
 
 optional_policy(`
-	alsa_read_rw_config(mplayer_t)
+	alsa_read_config(mplayer_t)
 ')
 
 optional_policy(`

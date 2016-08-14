@@ -518,7 +518,7 @@ tunable_policy(`use_samba_home_dirs',`
 ')
 
 optional_policy(`
-	alsa_read_rw_config(mozilla_plugin_t)
+	alsa_read_config(mozilla_plugin_t)
 	alsa_read_home_files(mozilla_plugin_t)
 ')
 

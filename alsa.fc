@@ -6,10 +6,8 @@ ifdef(`distro_debian',`
 
 /bin/alsaunmute	--	gen_context(system_u:object_r:alsa_exec_t,s0)
 
-/etc/alsa/asound\.state	--	gen_context(system_u:object_r:alsa_etc_rw_t,s0)
-/etc/alsa/pcm(/.*)?	gen_context(system_u:object_r:alsa_etc_rw_t,s0)
-/etc/asound(/.*)?	gen_context(system_u:object_r:alsa_etc_rw_t,s0)
-/etc/asound\.state	--	gen_context(system_u:object_r:alsa_etc_rw_t,s0)
+/etc/alsa(/.*)?		gen_context(system_u:object_r:alsa_etc_t,s0)
+/etc/asound\.conf	gen_context(system_u:object_r:alsa_etc_t,s0)
 
 /sbin/alsactl	--	gen_context(system_u:object_r:alsa_exec_t,s0)
 /sbin/salsa	--	gen_context(system_u:object_r:alsa_exec_t,s0)
@@ -25,8 +23,7 @@ ifdef(`distro_debian',`
 /usr/sbin/alsactl	--	gen_context(system_u:object_r:alsa_exec_t,s0)
 /usr/sbin/salsa	--	gen_context(system_u:object_r:alsa_exec_t,s0)
 
-/usr/share/alsa/alsa\.conf	gen_context(system_u:object_r:alsa_etc_rw_t,s0)
-/usr/share/alsa/pcm(/.*)?	gen_context(system_u:object_r:alsa_etc_rw_t,s0)
+/usr/share/alsa(/.*)?		gen_context(system_u:object_r:alsa_etc_t,s0)
 
 /var/lib/alsa(/.*)?	gen_context(system_u:object_r:alsa_var_lib_t,s0)
 

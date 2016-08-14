@@ -102,7 +102,8 @@ interface(`alsa_rw_shared_mem',`
 
 ########################################
 ## <summary>
-##	Read writable Alsa configuration content.
+##	Read writable Alsa configuration
+##	content.  (Deprecated)
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -111,14 +112,29 @@ interface(`alsa_rw_shared_mem',`
 ## </param>
 #
 interface(`alsa_read_rw_config',`
+	refpolicywarn(`$0($*) has been deprecated, use alsa_read_config() instead.')
+	alsa_read_config($1)
+')
+
+########################################
+## <summary>
+##	Read Alsa configuration content.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`alsa_read_config',`
 	gen_require(`
-		type alsa_etc_rw_t;
+		type alsa_etc_t;
 	')
 
 	files_search_etc($1)
-	allow $1 alsa_etc_rw_t:dir list_dir_perms;
-	read_files_pattern($1, alsa_etc_rw_t, alsa_etc_rw_t)
-	read_lnk_files_pattern($1, alsa_etc_rw_t, alsa_etc_rw_t)
+	allow $1 alsa_etc_t:dir list_dir_perms;
+	read_files_pattern($1, alsa_etc_t, alsa_etc_t)
+	read_lnk_files_pattern($1, alsa_etc_t, alsa_etc_t)
 
 	ifdef(`distro_debian',`
 		files_search_usr($1)
@@ -127,7 +143,8 @@ interface(`alsa_read_rw_config',`
 
 ########################################
 ## <summary>
-##	Manage writable Alsa config files.
+##	Manage writable Alsa config
+##	files.  (Deprecated)
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -136,14 +153,29 @@ interface(`alsa_read_rw_config',`
 ## </param>
 #
 interface(`alsa_manage_rw_config',`
+	refpolicywarn(`$0($*) has been deprecated, use alsa_manage_config() instead.')
+	alsa_manage_config($1)
+')
+
+########################################
+## <summary>
+##	Manage Alsa config files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`alsa_manage_config',`
 	gen_require(`
-		type alsa_etc_rw_t;
+		type alsa_etc_t;
 	')
 
 	files_search_etc($1)
-	allow $1 alsa_etc_rw_t:dir list_dir_perms;
-	manage_files_pattern($1, alsa_etc_rw_t, alsa_etc_rw_t)
-	read_lnk_files_pattern($1, alsa_etc_rw_t, alsa_etc_rw_t)
+	allow $1 alsa_etc_t:dir list_dir_perms;
+	manage_files_pattern($1, alsa_etc_t, alsa_etc_t)
+	read_lnk_files_pattern($1, alsa_etc_t, alsa_etc_t)
 
 	ifdef(`distro_debian',`
 		files_search_usr($1)

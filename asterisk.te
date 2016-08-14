@@ -156,7 +156,7 @@ userdom_dontaudit_use_unpriv_user_fds(asterisk_t)
 userdom_dontaudit_search_user_home_dirs(asterisk_t)
 
 optional_policy(`
-	alsa_read_rw_config(asterisk_t)
+	alsa_read_config(asterisk_t)
 ')
 
 optional_policy(`

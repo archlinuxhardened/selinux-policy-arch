@@ -179,7 +179,7 @@ tunable_policy(`mpd_use_nfs',`
 ')
 
 optional_policy(`
-	alsa_read_rw_config(mpd_t)
+	alsa_read_config(mpd_t)
 ')
 
 optional_policy(`

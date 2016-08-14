@@ -101,6 +101,25 @@ interface(`ntp_initrc_domtrans',`
 
 ########################################
 ## <summary>
+##      Read ntp conf files.
+## </summary>
+## <param name="domain">
+##      <summary>
+##      Domain allowed access.
+##      </summary>
+## </param>
+#
+interface(`ntp_read_conf_files',`
+	gen_require(`
+		type ntp_conf_t;
+	')
+
+	files_search_etc($1)
+	read_files_pattern($1, ntp_conf_t, ntp_conf_t)
+')
+
+########################################
+## <summary>
 ##	Read ntp drift files.
 ## </summary>
 ## <param name="domain">

@@ -16,17 +16,11 @@ role webalizer_roles types webalizer_t;
 type webalizer_etc_t;
 files_config_file(webalizer_etc_t)
 
-type webalizer_usage_t;
-files_type(webalizer_usage_t)
-
 type webalizer_tmp_t;
 files_tmp_file(webalizer_tmp_t)
 
 type webalizer_var_lib_t;
 files_type(webalizer_var_lib_t)
-
-type webalizer_write_t;
-files_type(webalizer_write_t)
 
 ########################################
 #

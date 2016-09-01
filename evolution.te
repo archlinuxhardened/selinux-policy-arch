@@ -164,18 +164,21 @@ corenet_tcp_connect_ldap_port(evolution_t)
 corenet_sendrecv_ipp_client_packets(evolution_t)
 corenet_tcp_connect_ipp_port(evolution_t)
 
+dev_read_rand(evolution_t)
 dev_read_urand(evolution_t)
 
 domain_dontaudit_read_all_domains_state(evolution_t)
 
 files_read_usr_files(evolution_t)
 
+fs_dontaudit_getattr_xattr_fs(evolution_t)
 fs_search_auto_mountpoints(evolution_t)
 
 auth_use_nsswitch(evolution_t)
 
 logging_send_syslog_msg(evolution_t)
 
+miscfiles_read_generic_certs(evolution_t)
 miscfiles_read_localization(evolution_t)
 
 udev_read_state(evolution_t)

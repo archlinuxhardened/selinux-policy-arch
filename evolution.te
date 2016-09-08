@@ -1,9 +1,18 @@
-policy_module(evolution, 2.4.1)
+policy_module(evolution, 2.4.2)
 
 ########################################
 #
 # Declarations
 #
+
+## <desc>
+## <p>
+## Allow evolution to create and write
+## user certificates in addition to
+## being able to read them
+## </p>
+## </desc>
+gen_tunable(evolution_manage_user_certs, false)
 
 attribute_role evolution_roles;
 
@@ -184,6 +193,13 @@ miscfiles_read_localization(evolution_t)
 udev_read_state(evolution_t)
 
 userdom_use_user_terminals(evolution_t)
+
+tunable_policy(`evolution_manage_user_certs',`
+	userdom_manage_user_certs(evolution_t)
+',`
+	userdom_dontaudit_manage_user_certs(evolution_t)
+	userdom_read_user_certs(evolution_t)
+')
 
 userdom_manage_user_tmp_dirs(evolution_t)
 userdom_manage_user_tmp_files(evolution_t)
@@ -436,6 +452,13 @@ miscfiles_read_localization(evolution_server_t)
 miscfiles_read_generic_certs(evolution_server_t)
 
 userdom_dontaudit_read_user_home_content_files(evolution_server_t)
+
+tunable_policy(`evolution_manage_user_certs',`
+	userdom_manage_user_certs(evolution_server_t)
+',`
+	userdom_dontaudit_manage_user_certs(evolution_server_t)
+	userdom_read_user_certs(evolution_server_t)
+')
 
 tunable_policy(`use_nfs_home_dirs',`
 	fs_manage_nfs_dirs(evolution_server_t)

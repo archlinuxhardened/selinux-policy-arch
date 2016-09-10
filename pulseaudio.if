@@ -347,3 +347,80 @@ interface(`pulseaudio_tmpfs_content',`
 
 	typeattribute $1 pulseaudio_tmpfsfile;
 ')
+
+#######################################
+## <summary>
+##	Read pulseaudio tmpfs files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`pulseaudio_read_tmpfs_files',`
+	gen_require(`
+		type pulseaudio_tmpfs_t;
+	')
+
+	fs_search_tmpfs($1)
+	read_files_pattern($1, pulseaudio_tmpfs_t, pulseaudio_tmpfs_t)
+')
+
+#######################################
+## <summary>
+##	Read and write pulseaudio tmpfs
+##	files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`pulseaudio_rw_tmpfs_files',`
+	gen_require(`
+		type pulseaudio_tmpfs_t;
+	')
+
+	fs_search_tmpfs($1)
+	rw_files_pattern($1, pulseaudio_tmpfs_t, pulseaudio_tmpfs_t)
+')
+
+########################################
+## <summary>
+##	Use file descriptors for
+##	pulseaudio.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`pulseaudio_use_fds',`
+	gen_require(`
+		type pulseaudio_t;
+	')
+
+	allow $1 pulseaudio_t:fd use;
+')
+
+########################################
+## <summary>
+##	Do not audit attempts to use the
+##	file descriptors for pulseaudio.
+## </summary>
+## <param name="domain">
+##      <summary>
+##      Domain allowed access.
+##      </summary>
+## </param>
+#
+interface(`pulseaudio_dontaudit_use_fds',`
+	gen_require(`
+		type pulseaudio_t;
+	')
+
+	dontaudit $1 pulseaudio_t:fd use;
+')

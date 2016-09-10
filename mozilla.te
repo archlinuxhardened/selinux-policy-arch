@@ -234,6 +234,11 @@ tunable_policy(`use_samba_home_dirs',`
 ')
 
 optional_policy(`
+	alsa_read_config(mozilla_t)
+	alsa_read_home_files(mozilla_t)
+')
+
+optional_policy(`
 	apache_read_user_scripts(mozilla_t)
 	apache_read_user_content(mozilla_t)
 ')
@@ -292,6 +297,8 @@ optional_policy(`
 
 optional_policy(`
 	pulseaudio_run(mozilla_t, mozilla_roles)
+	pulseaudio_rw_tmpfs_files(mozilla_t)
+	pulseaudio_use_fds(mozilla_t)
 ')
 
 optional_policy(`
@@ -561,6 +568,8 @@ optional_policy(`
 
 optional_policy(`
 	pulseaudio_run(mozilla_plugin_t, mozilla_plugin_roles)
+	pulseaudio_rw_tmpfs_files(mozilla_plugin_t)
+	pulseaudio_use_fds(mozilla_plugin_t)
 ')
 
 optional_policy(`

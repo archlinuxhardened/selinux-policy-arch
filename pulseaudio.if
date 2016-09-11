@@ -146,6 +146,44 @@ interface(`pulseaudio_signull',`
 	allow $1 pulseaudio_t:process signull;
 ')
 
+########################################
+## <summary>
+##	Use file descriptors for
+##	pulseaudio.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`pulseaudio_use_fds',`
+	gen_require(`
+		type pulseaudio_t;
+	')
+
+	allow $1 pulseaudio_t:fd use;
+')
+
+########################################
+## <summary>
+##	Do not audit attempts to use the
+##	file descriptors for pulseaudio.
+## </summary>
+## <param name="domain">
+##      <summary>
+##      Domain allowed access.
+##      </summary>
+## </param>
+#
+interface(`pulseaudio_dontaudit_use_fds',`
+	gen_require(`
+		type pulseaudio_t;
+	')
+
+	dontaudit $1 pulseaudio_t:fd use;
+')
+
 #####################################
 ## <summary>
 ##	Connect to pulseaudio with a unix
@@ -385,42 +423,4 @@ interface(`pulseaudio_rw_tmpfs_files',`
 
 	fs_search_tmpfs($1)
 	rw_files_pattern($1, pulseaudio_tmpfs_t, pulseaudio_tmpfs_t)
-')
-
-########################################
-## <summary>
-##	Use file descriptors for
-##	pulseaudio.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`pulseaudio_use_fds',`
-	gen_require(`
-		type pulseaudio_t;
-	')
-
-	allow $1 pulseaudio_t:fd use;
-')
-
-########################################
-## <summary>
-##	Do not audit attempts to use the
-##	file descriptors for pulseaudio.
-## </summary>
-## <param name="domain">
-##      <summary>
-##      Domain allowed access.
-##      </summary>
-## </param>
-#
-interface(`pulseaudio_dontaudit_use_fds',`
-	gen_require(`
-		type pulseaudio_t;
-	')
-
-	dontaudit $1 pulseaudio_t:fd use;
 ')

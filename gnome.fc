@@ -5,6 +5,8 @@ HOME_DIR/\.gnome2(/.*)?	gen_context(system_u:object_r:gnome_home_t,s0)
 HOME_DIR/\.gnome2/keyrings(/.*)?	gen_context(system_u:object_r:gnome_keyring_home_t,s0)
 HOME_DIR/\.gnome2_private(/.*)?	gen_context(system_u:object_r:gnome_home_t,s0)
 
+HOME_DIR/orcexec\..*	gen_context(system_u:object_r:gstreamer_orcexec_t,s0)
+
 /etc/gconf(/.*)?	gen_context(system_u:object_r:gconf_etc_t,s0)
 
 /tmp/gconfd-USER/.*	--	gen_context(system_u:object_r:gconf_tmp_t,s0)
@@ -14,3 +16,6 @@ HOME_DIR/\.gnome2_private(/.*)?	gen_context(system_u:object_r:gnome_home_t,s0)
 
 /usr/lib/[^/]*/gconf/gconfd-2	--	gen_context(system_u:object_r:gconfd_exec_t,s0)
 /usr/libexec/gconfd-2	--	gen_context(system_u:object_r:gconfd_exec_t,s0)
+
+/var/run/user/[^/]*/orcexec\..*	--	gen_context(system_u:object_r:gstreamer_orcexec_t,s0)
+/var/run/user/%{USERID}/orcexec\..*	--	gen_context(system_u:object_r:gstreamer_orcexec_t,s0)

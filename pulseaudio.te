@@ -193,6 +193,12 @@ optional_policy(`
 
 optional_policy(`
 	gnome_stream_connect_gconf(pulseaudio_t)
+
+	# OIL Runtime Compiler (ORC) optimized code execution
+	gnome_manage_gstreamer_orcexec(pulseaudio_t)
+	gnome_mmap_gstreamer_orcexec(pulseaudio_t)
+	gnome_user_runtime_filetrans_gstreamer_orcexec(pulseaudio_t, file)
+	gnome_user_home_dir_filetrans_gstreamer_orcexec(pulseaudio_t, file)
 ')
 
 optional_policy(`

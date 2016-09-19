@@ -1,4 +1,4 @@
-policy_module(pulseaudio, 1.8.6)
+policy_module(pulseaudio, 1.8.7)
 
 ########################################
 #

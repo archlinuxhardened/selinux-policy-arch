@@ -148,7 +148,7 @@ tunable_policy(`use_samba_home_dirs',`
 
 optional_policy(`
 	evolution_read_orbit_tmp_files(gpg_t)
-	')
+')
 
 optional_policy(`
 	gnome_read_generic_home_content(gpg_t)

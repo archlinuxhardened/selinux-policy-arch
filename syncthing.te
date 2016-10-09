@@ -27,23 +27,23 @@ allow syncthing_t self:tcp_socket { listen accept };
 
 can_exec(syncthing_t, syncthing_exec_t)
 
+manage_dirs_pattern(syncthing_t, syncthing_config_home_t, syncthing_config_home_t)
+manage_files_pattern(syncthing_t, syncthing_config_home_t, syncthing_config_home_t)
+manage_lnk_files_pattern(syncthing_t, syncthing_config_home_t, syncthing_config_home_t)
+
 kernel_read_kernel_sysctls(syncthing_t)
 kernel_read_net_sysctls(syncthing_t)
 kernel_read_system_state(syncthing_t)
 
 corenet_tcp_sendrecv_generic_if(syncthing_t)
 corenet_udp_sendrecv_generic_if(syncthing_t)
-
 corenet_tcp_bind_generic_node(syncthing_t)
 corenet_tcp_sendrecv_generic_node(syncthing_t)
 corenet_tcp_sendrecv_all_ports(syncthing_t)
-
 corenet_udp_bind_generic_node(syncthing_t)
 corenet_udp_sendrecv_generic_node(syncthing_t)
 corenet_udp_sendrecv_all_ports(syncthing_t)
-
 corenet_tcp_connect_all_ports(syncthing_t)
-
 corenet_tcp_bind_syncthing_port(syncthing_t)
 corenet_udp_bind_syncthing_discovery_port(syncthing_t)
 corenet_tcp_bind_syncthing_admin_port(syncthing_t)
@@ -55,10 +55,6 @@ fs_getattr_xattr_fs(syncthing_t)
 
 auth_use_nsswitch(syncthing_t)
 
-manage_dirs_pattern(syncthing_t, syncthing_config_home_t, syncthing_config_home_t)
-manage_files_pattern(syncthing_t, syncthing_config_home_t, syncthing_config_home_t)
-manage_lnk_files_pattern(syncthing_t, syncthing_config_home_t, syncthing_config_home_t)
-
 miscfiles_read_generic_certs(syncthing_t)
 miscfiles_read_localization(syncthing_t)
 
@@ -66,13 +62,11 @@ userdom_manage_user_home_content_files(syncthing_t)
 userdom_manage_user_home_content_dirs(syncthing_t)
 userdom_manage_user_home_content_symlinks(syncthing_t)
 userdom_user_home_dir_filetrans_user_home_content(syncthing_t, dir)
-
+userdom_use_user_terminals(syncthing_t)
 # newly created files in ~/.config/syncthing/ will transition to syncthing_config_home_t
 userdom_user_home_content_filetrans(syncthing_t, syncthing_config_home_t, dir, "syncthing")
 
-userdom_use_user_terminals(syncthing_t)
-
 optional_policy(`
-    # temporary hack for /run/NetworkManager/resolv.conf until we make this part of sysnet_dns_name_resolve()
-    networkmanager_read_pid_files(syncthing_t)
+	# temporary hack for /run/NetworkManager/resolv.conf until we make this part of sysnet_dns_name_resolve()
+	networkmanager_read_pid_files(syncthing_t)
 ')

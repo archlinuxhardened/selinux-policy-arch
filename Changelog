@@ -1,3 +1,163 @@
+* Sun Oct 23 2016 Chris PeBenito <pebenito@ieee.org> - 2.20161023
+Adam Tkac (2):
+      varnishncsa (varnishlog_t) reads localization files
+      Grant certmonger "chown" capability
+
+Chris PeBenito (42):
+      Merge branch 'bigon-geoclue'
+      Add additional comments in geoclue.
+      Merge branch 'bigon-virt-1'
+      Merge branch 'nm-1' of git://github.com/bigon/refpolicy-contrib into
+         bigon-nm-1
+      Merge branch 'bigon-nm-1'
+      Module version bump for virt and networkmanager patches from Laurent
+         Bigonville.
+      Merge branch 'master' of git://github.com/bigon/refpolicy-contrib
+      Module version bump for firewalld updates from Laurent Bigonville.
+      Module version bump for collectd update from Jason Zaman.
+      Module version bumps for user runtime fixes from Jason Zaman.
+      Boinc updates from Russell Coker.
+      rpcbind: Read /sys/devices/system/cpu/online from Russell Coker.
+      watchdog: Move line.
+      Module version bump for watchdog pidfile option from Russell Coker.
+      Systemd units from Russell Coker.
+      Module version bump for pulseaudio fc fix from Jason Zaman.
+      cpucontrol: revise cpucontrol_conf_t labeling, from Guido Trentalancia.
+      Module version bumps for patches from Guido Trentalancia.
+      Update the telepathy module:
+      Update the alsa module so that the alsa_etc_t file context (previously
+         alsa_etc_rw_t) is widened to the whole alsa share directory, instead of
+         just a couple of files.
+      alsa: Add compatibility alias for alsa_etc_rw_t.
+      Update the sysnetwork module to add some permissions needed by the dhcp
+         client (another separate patch makes changes to the ifconfig part).
+      Module version bump for various patches from Guido Trentalancia.
+      pulseaudio: Fix compile errors.
+      Merge branch 'master' of
+         https://github.com/SeanPlacchetti/refpolicy-contrib
+      Module version bump for webalizer dead type removal from Sean Placchetti.
+      Module version bump for Evolution SSL fix from Guido Trentalancia.
+      evolution: Read user certs from Guido Trentalancia.
+      cups: Move can_exec() line.
+      cups: Module version bump for hplip patch from Guido Trentalancia
+      pulseaudio: Move interface definitions.
+      Module version bump for mozilla patch from Guido Trentalancia.
+      Module version bump for gnome patch from Guido Trentalancia.
+      Module version bump for evolution patch from Guido Trentalancia.
+      gpg: Whitespace fix.
+      Merge branch 'feature/fix-networkmanager-varrun-macro' of
+         https://github.com/rfkrocktk/refpolicy-contrib
+      Module version bump for networkmanager fix from Naftuli Tzvi Kay.
+      Merge branch 'rfkrocktk-feature/syncthing'
+      Rearrange lines in syncthing.
+      webalizer: Rearrange a couple lines.
+      Module version bump for webalizer patch from Russell Coker.
+      Bump module versions for release.
+
+Dominick Grift (18):
+      Module version bump for changes to the geoclue module by Laurent
+         Bigonville.
+      Module version bump for changes to various modules from Laurent
+         Bigonville.
+      geoclue: move kernel interface call to the appropriate position
+      Actually associate mailmain_domain attribute with mailman domains
+      Module version bumps for changes to various modules by Nicolas Iooss
+      Module version bump for changes to the cron module by Jason Zaman
+      Module version bump for changes to the redis module by Grant Ridder
+      Module version bump for changes to the raid module by Laurent Bigonville
+      Module version bump for changes to the networkmanager module by Laurent
+         Bigonville.
+      Module version bump for changes to the redis module by Grant Ridder.
+      Module version bump for changes to the mozilla module by Laurent
+         Bigonville.
+      Module version bump for changes to the geoclue module by Nicolas Iooss.
+      Add hwloc-dump-hwdata SELinux policy
+      Module version bump for changes to the varnishd module by Robert Moucha
+      Module version bump for changes to the puppet module by Thomas Mueller
+      Module version bump for changes to the varnishd module by Adam Tkac
+      Module version bump for changes to the certmonger module by Adam Tkac
+      Revert "dbus: allow system, and session bus clients to answer to dbus
+         unconfined domains"
+
+Grant Ridder (2):
+      Add read/write perms for redis-sentinel
+      Allow tcp_connect to redis_port_t for redis_t
+
+Guido Trentalancia (7):
+      Policykit module: add fs_getattr_xattr_fs()
+      Update the policy for module apm
+      Let gpg disable core dumps
+      Update the rtkit module
+      Update the pulseaudio module for usability and ORC support
+      cups: update permissions for HP printers (load firmware)
+      gpg: public key signature verification in evolution
+
+Guido Trentalancia via refpolicy (3):
+      evolution: read SSL certificates
+      mozilla: let mozilla play audio
+      gnome: add support for the OIL Runtime Compiler (ORC) optimized code
+         execution
+
+Jason Zaman (10):
+      cron: Allow locks to be lnk_files
+      collectd: update policy for 5.5
+      consolekit: allow managing user runtime
+      pulseaudio: fcontext and filetrans for runtime
+      ftp: Add filetrans from user_runtime
+      gnome: Add filetrans from user_runtime
+      mplayer: Add filetrans from user_runtime
+      userhelper: Add filetrans from user_runtime
+      wm: Add filetrans from user_runtime
+      pulseaudio: fix user runtime fcontext
+
+Laurent Bigonville (13):
+      Add initial geoclue 2 module
+      Properly escape dot in the path to the geoclue daemon
+      Use auth_use_nsswitch() as we need DNS resolving and access nsswitch.conf
+      virt.fc: Add some debian contexts
+      networkmanager.fc: nm-dispatcher.action has been renamed to nm-dispatcher
+      Allow some domain to read sysctl_vm_overcommit_t
+      Allow mdadm read efivarfs files
+      Allow /var/run/firewalld/ directory to transition to firewalld_var_run_t
+      Add an interface to allow a domain to read firewalld_var_run_t files
+      Allow firewalld to create firewalld_var_run_t directory.
+      dontaudit firewalld attempt to relabel its own config files
+      Allow NM to execute arping
+      Debian now ships firefox-esr, properly label the executable
+
+Luis Ressel (1):
+      New policy for tboot utilities
+
+Naftuli Tzvi Kay (2):
+      Fix NetworkManager Read Pid Files Macro
+      Syncthing Policy
+
+Nicolas Iooss (3):
+      Describe _initrc_domtrans interfaces differently from the _domtrans ones
+      Fix typos in several interfaces
+      Add Arch Linux path for geoclue module
+
+Robert Moucha (1):
+      Fix trivial typo in varnishncsa name
+
+Russell Coker (2):
+      watchdog reads pid files
+      named reads vm sysctls
+
+Russell Coker via refpolicy (1):
+      webalizer patch for inclusion
+
+Sean Placchetti (1):
+      -Remove unused declarations from webalizer type enforcement file
+
+Thomas Mueller (1):
+      Allow puppet_t transtition to shorewall_t
+
+doverride (3):
+      Merge pull request #8 from bigon/geoclue
+      Merge pull request #11 from bigon/overcommit-1
+      Merge pull request #12 from fishilico/typos
+
 * Tue Dec 08 2015 Chris PeBenito <selinux@tresys.com> - 2.20151208
 Alexander Wetzel (1):
       add vfio support for libvirt

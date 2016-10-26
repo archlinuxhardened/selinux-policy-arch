@@ -73,6 +73,10 @@ optional_policy(`
 	optional_policy(`
 		hal_dbus_chat(pcscd_t)
 	')
+
+	optional_policy(`
+		policykit_dbus_chat(pcscd_t)
+	')
 ')
 
 optional_policy(`

@@ -772,6 +772,7 @@ interface(`gnome_stream_connect_gkeyringd',`
 	')
 
 	files_search_tmp($2)
+	userdom_search_user_runtime($2)
 	stream_connect_pattern($2, gnome_keyring_tmp_t, gnome_keyring_tmp_t, $1_gkeyringd_t)
 ')
 
@@ -793,6 +794,7 @@ interface(`gnome_stream_connect_all_gkeyringd',`
 	')
 
 	files_search_tmp($1)
+	userdom_search_user_runtime($1)
 	stream_connect_pattern($1, gnome_keyring_tmp_t, gnome_keyring_tmp_t, gkeyringd_domain)
 ')
 

@@ -229,6 +229,8 @@ manage_sock_files_pattern(gpg_agent_t, gpg_agent_tmp_t, gpg_agent_tmp_t)
 files_tmp_filetrans(gpg_agent_t, gpg_agent_tmp_t, { file sock_file dir })
 
 filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "log-socket")
+filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "S.gpg-agent")
+filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "S.gpg-agent.ssh")
 
 domtrans_pattern(gpg_agent_t, pinentry_exec_t, gpg_pinentry_t)
 
@@ -250,6 +252,8 @@ miscfiles_read_localization(gpg_agent_t)
 
 userdom_use_user_terminals(gpg_agent_t)
 userdom_search_user_home_dirs(gpg_agent_t)
+userdom_search_user_runtime(gpg_agent_t)
+userdom_user_runtime_filetrans(gpg_agent_t, gpg_agent_tmp_t, dir)
 
 ifdef(`hide_broken_symptoms',`
 	userdom_dontaudit_read_user_tmp_files(gpg_agent_t)
@@ -339,6 +343,10 @@ tunable_policy(`use_samba_home_dirs',`
 optional_policy(`
 	dbus_all_session_bus_client(gpg_pinentry_t)
 	dbus_system_bus_client(gpg_pinentry_t)
+
+	optional_policy(`
+		gnome_dbus_chat_all_gkeyringd(gpg_pinentry_t)
+	')
 ')
 
 optional_policy(`

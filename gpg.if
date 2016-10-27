@@ -205,9 +205,13 @@ interface(`gpg_rw_agent_pipes',`
 interface(`gpg_stream_connect_agent',`
 	gen_require(`
 		type gpg_agent_t, gpg_agent_tmp_t;
+		type gpg_secret_t;
 	')
 
 	stream_connect_pattern($1, gpg_agent_tmp_t, gpg_agent_tmp_t, gpg_agent_t)
+	allow $1 gpg_secret_t:dir search_dir_perms;
+	userdom_search_user_runtime($1)
+	userdom_search_user_home_dirs($1)
 ')
 
 ########################################

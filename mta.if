@@ -449,7 +449,7 @@ interface(`mta_sendmail_domtrans',`
 	')
 
 	corecmd_search_bin($1)
-	domain_auto_trans($1, sendmail_exec_t, $2)
+	domain_auto_transition_pattern($1, sendmail_exec_t, $2)
 
 	allow $1 sendmail_exec_t:lnk_file read_lnk_file_perms;
 ')

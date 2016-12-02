@@ -120,7 +120,7 @@ interface(`gpg_spec_domtrans',`
 	')
 
 	corecmd_search_bin($1)
-	domain_auto_trans($1, gpg_exec_t, $2)
+	domain_auto_transition_pattern($1, gpg_exec_t, $2)
 ')
 
 ######################################

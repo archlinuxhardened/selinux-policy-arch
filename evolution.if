@@ -107,6 +107,24 @@ interface(`evolution_home_filetrans',`
 
 ########################################
 ## <summary>
+##	Read evolution home files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`evolution_read_evolution_home_files',`
+	gen_require(`
+		type evolution_t, evolution_home_t;
+	')
+
+	read_files_pattern($1, evolution_home_t, evolution_home_t)
+')
+
+########################################
+## <summary>
 ##	Connect to evolution using a unix
 ##	domain stream socket.
 ## </summary>
@@ -187,4 +205,24 @@ interface(`evolution_alarm_dbus_chat',`
 
 	allow $1 evolution_alarm_t:dbus send_msg;
 	allow evolution_alarm_t $1:dbus send_msg;
+')
+
+########################################
+## <summary>
+##	Make a domain transition to the
+##	evolution target domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`evolution_domtrans',`
+	gen_require(`
+		type evolution_t, evolution_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, evolution_exec_t, evolution_t);
 ')

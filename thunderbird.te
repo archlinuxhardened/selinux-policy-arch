@@ -166,3 +166,8 @@ optional_policy(`
 	mozilla_read_user_home_files(thunderbird_t)
 	mozilla_domtrans(thunderbird_t)
 ')
+
+optional_policy(`
+	ooffice_domtrans(thunderbird_t)
+	ooffice_rw_ooffice_tmp_files(thunderbird_t)
+')

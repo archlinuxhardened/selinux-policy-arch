@@ -296,6 +296,11 @@ optional_policy(`
 ')
 
 optional_policy(`
+	ooffice_domtrans(mozilla_t)
+	ooffice_rw_ooffice_tmp_files(mozilla_t)
+')
+
+optional_policy(`
 	pulseaudio_run(mozilla_t, mozilla_roles)
 	pulseaudio_rw_tmpfs_files(mozilla_t)
 	pulseaudio_use_fds(mozilla_t)

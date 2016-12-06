@@ -270,6 +270,11 @@ optional_policy(`
 ')
 
 optional_policy(`
+	ooffice_domtrans(evolution_t)
+	ooffice_rw_ooffice_tmp_files(evolution_t)
+')
+
+optional_policy(`
 	spamassassin_exec_spamd(evolution_t)
 	spamassassin_domtrans_client(evolution_t)
 	spamassassin_domtrans_local_client(evolution_t)

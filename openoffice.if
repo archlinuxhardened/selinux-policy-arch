@@ -60,7 +60,7 @@ interface(`ooffice_domtrans',`
 ##	</summary>
 ## </param>
 #
-interface(`ooffice_rw_ooffice_tmp_files',`
+interface(`ooffice_rw_tmp_files',`
 	gen_require(`
 		type ooffice_tmp_t;
 	')

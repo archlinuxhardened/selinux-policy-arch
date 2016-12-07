@@ -271,7 +271,7 @@ optional_policy(`
 
 optional_policy(`
 	ooffice_domtrans(evolution_t)
-	ooffice_rw_ooffice_tmp_files(evolution_t)
+	ooffice_rw_tmp_files(evolution_t)
 ')
 
 optional_policy(`

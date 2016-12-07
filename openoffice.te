@@ -92,7 +92,7 @@ optional_policy(`
 
 optional_policy(`
 	evolution_domtrans(ooffice_t)
-	evolution_read_evolution_home_files(ooffice_t)
+	evolution_read_home_files(ooffice_t)
 ')
 
 optional_policy(`

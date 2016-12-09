@@ -40,6 +40,7 @@ interface(`pulseaudio_role',`
 	allow $2 pulseaudio_tmp_t:sock_file { manage_sock_file_perms relabel_sock_file_perms };
 
 	allow pulseaudio_t $2:unix_stream_socket connectto;
+	allow pulseaudio_t $2:process signull;
 ')
 
 ########################################

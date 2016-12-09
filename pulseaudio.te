@@ -72,7 +72,7 @@ userdom_user_tmp_filetrans(pulseaudio_t, pulseaudio_tmp_t, sock_file, "dbus-sock
 userdom_user_tmp_filetrans(pulseaudio_t, pulseaudio_tmp_t, sock_file, "native")
 
 manage_dirs_pattern(pulseaudio_t, pulseaudio_tmpfs_t, pulseaudio_tmpfs_t)
-manage_files_pattern(pulseaudio_t, pulseaudio_tmpfs_t, pulseaudio_tmpfs_t)
+manage_files_pattern(pulseaudio_t, pulseaudio_tmpfs_t, { pulseaudio_tmpfs_t pulseaudio_tmpfsfile })
 fs_tmpfs_filetrans(pulseaudio_t, pulseaudio_tmpfs_t, { dir file })
 
 manage_dirs_pattern(pulseaudio_t, pulseaudio_var_lib_t, pulseaudio_var_lib_t)
@@ -237,7 +237,7 @@ allow pulseaudio_client pulseaudio_tmp_t:dir manage_dir_perms;
 allow pulseaudio_client pulseaudio_tmp_t:file manage_file_perms;
 allow pulseaudio_client pulseaudio_tmp_t:sock_file manage_sock_file_perms;
 
-read_files_pattern(pulseaudio_client, { pulseaudio_tmpfsfile pulseaudio_tmpfs_t }, { pulseaudio_tmpfsfile pulseaudio_tmpfs_t })
+rw_files_pattern(pulseaudio_client, { pulseaudio_tmpfsfile pulseaudio_tmpfs_t }, { pulseaudio_tmpfsfile pulseaudio_tmpfs_t })
 delete_files_pattern(pulseaudio_client, pulseaudio_tmpfsfile, pulseaudio_tmpfsfile)
 
 fs_getattr_tmpfs(pulseaudio_client)
@@ -257,6 +257,7 @@ pulseaudio_home_filetrans_pulseaudio_home(pulseaudio_client, dir, ".pulse")
 pulseaudio_home_filetrans_pulseaudio_home(pulseaudio_client, file, ".esd_auth")
 pulseaudio_home_filetrans_pulseaudio_home(pulseaudio_client, file, ".pulse-cookie")
 pulseaudio_signull(pulseaudio_client)
+pulseaudio_use_fds(pulseaudio_client)
 
 userdom_read_user_tmpfs_files(pulseaudio_client)
 userdom_user_runtime_filetrans(pulseaudio_client, pulseaudio_tmp_t, dir, "pulse")

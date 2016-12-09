@@ -60,7 +60,7 @@ interface(`apm_use_fds',`
 		type apmd_t;
 	')
 
-	allow $1 apmd_t:fd use; 
+	allow $1 apmd_t:fd use;
 ')
 
 ########################################
@@ -78,7 +78,7 @@ interface(`apm_write_pipes',`
 		type apmd_t;
 	')
 
-	allow $1 apmd_t:fifo_file write; 
+	allow $1 apmd_t:fifo_file write;
 ')
 
 ########################################

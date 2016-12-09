@@ -88,7 +88,7 @@ interface(`hal_use_fds',`
 		type hald_t;
 	')
 
-	allow $1 hald_t:fd use; 
+	allow $1 hald_t:fd use;
 ')
 
 ########################################
@@ -107,7 +107,7 @@ interface(`hal_dontaudit_use_fds',`
 		type hald_t;
 	')
 
-	dontaudit $1 hald_t:fd use; 
+	dontaudit $1 hald_t:fd use;
 ')
 
 ########################################
@@ -125,7 +125,7 @@ interface(`hal_rw_pipes',`
 		type hald_t;
 	')
 
-	allow $1 hald_t:fifo_file rw_fifo_file_perms; 
+	allow $1 hald_t:fifo_file rw_fifo_file_perms;
 ')
 
 ########################################
@@ -144,7 +144,7 @@ interface(`hal_dontaudit_rw_pipes',`
 		type hald_t;
 	')
 
-	dontaudit $1 hald_t:fifo_file rw_fifo_file_perms; 
+	dontaudit $1 hald_t:fifo_file rw_fifo_file_perms;
 ')
 
 ########################################

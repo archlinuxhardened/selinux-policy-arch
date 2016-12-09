@@ -98,7 +98,7 @@ interface(`rgmanager_manage_tmpfs_files',`
 #
 interface(`rgmanager_admin',`
 	gen_require(`
-		type rgmanager_t, rgmanager_initrc_exec_t, rgmanager_tmp_t; 
+		type rgmanager_t, rgmanager_initrc_exec_t, rgmanager_tmp_t;
 		type rgmanager_tmpfs_t, rgmanager_var_log_t, rgmanager_var_run_t;
 	')
 

@@ -35,7 +35,7 @@ template(`userhelper_role_template',`
 
 	type $1_consolehelper_t, consolehelper_type;
 	userdom_user_application_domain($1_consolehelper_t, consolehelper_exec_t)
-	
+
 	role consolehelper_roles types $1_consolehelper_t;
 	roleattribute $2 consolehelper_roles;
 
@@ -46,7 +46,7 @@ template(`userhelper_role_template',`
 	domain_obj_id_change_exemption($1_userhelper_t)
 	domain_interactive_fd($1_userhelper_t)
 	domain_subj_id_change_exemption($1_userhelper_t)
-	
+
 	role userhelper_roles types $1_userhelper_t;
 	roleattribute $2 userhelper_roles;
 

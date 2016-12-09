@@ -109,7 +109,7 @@ interface(`firewalld_admin',`
 
 	files_search_pids($1)
 	admin_pattern($1, firewalld_var_run_t)
-	
+
 	logging_search_logs($1)
 	admin_pattern($1, firewalld_var_log_t)
 

@@ -344,7 +344,7 @@ interface(`cron_domtrans',`
 
 ########################################
 ## <summary>
-##	Execute crond in the caller domain. 
+##	Execute crond in the caller domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>

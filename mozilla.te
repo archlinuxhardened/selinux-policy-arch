@@ -304,8 +304,6 @@ optional_policy(`
 
 optional_policy(`
 	pulseaudio_run(mozilla_t, mozilla_roles)
-	pulseaudio_rw_tmpfs_files(mozilla_t)
-	pulseaudio_use_fds(mozilla_t)
 ')
 
 optional_policy(`
@@ -575,8 +573,6 @@ optional_policy(`
 
 optional_policy(`
 	pulseaudio_run(mozilla_plugin_t, mozilla_plugin_roles)
-	pulseaudio_rw_tmpfs_files(mozilla_plugin_t)
-	pulseaudio_use_fds(mozilla_plugin_t)
 ')
 
 optional_policy(`

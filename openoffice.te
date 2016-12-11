@@ -72,6 +72,7 @@ ooffice_dontaudit_exec_tmp_files(ooffice_t)
 sysnet_dns_name_resolve(ooffice_t)
 
 userdom_dontaudit_exec_user_home_content_files(ooffice_t)
+userdom_read_user_tmp_files(ooffice_t)
 userdom_manage_user_home_content_dirs(ooffice_t)
 userdom_manage_user_home_content_files(ooffice_t)
 userdom_manage_user_home_content_symlinks(ooffice_t)

@@ -95,7 +95,7 @@ template(`gnome_role_template',`
 	userdom_user_home_dir_filetrans($3, gnome_home_t, dir, ".gnome")
 	userdom_user_home_dir_filetrans($3, gnome_home_t, dir, ".gnome2")
 	userdom_user_home_dir_filetrans($3, gnome_home_t, dir, ".gnome2_private")
-	
+
 	gnome_home_filetrans($3, gnome_keyring_home_t, dir, "keyrings")
 
 	allow $3 gnome_keyring_tmp_t:sock_file { relabel_sock_file_perms manage_sock_file_perms };

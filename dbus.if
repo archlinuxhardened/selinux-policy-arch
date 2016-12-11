@@ -66,7 +66,7 @@ template(`dbus_role_template',`
 	allow $3 $1_dbusd_t:unix_stream_socket connectto;
 	allow $3 $1_dbusd_t:dbus { send_msg acquire_svc };
 	allow $3 $1_dbusd_t:fd use;
-	
+
 	allow $3 system_dbusd_t:dbus { send_msg acquire_svc };
 
 	allow $3 { session_dbusd_home_t session_dbusd_tmp_t }:dir { manage_dir_perms relabel_dir_perms };
@@ -221,7 +221,7 @@ interface(`dbus_all_session_bus_client',`
 
 	allow $1 { session_bus_type self }:dbus send_msg;
 	allow session_bus_type $1:dbus send_msg;
-	
+
 	allow $1 session_bus_type:unix_stream_socket connectto;
 	allow $1 session_bus_type:fd use;
 ')

@@ -114,7 +114,7 @@ interface(`oddjob_run_mkhomedir',`
 
 #####################################
 ## <summary>
-##	Do not audit attempts to read and write 
+##	Do not audit attempts to read and write
 ##	oddjob fifo files.
 ## </summary>
 ## <param name="domain">

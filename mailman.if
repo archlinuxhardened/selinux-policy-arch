@@ -89,7 +89,7 @@ interface(`mailman_run',`
 
 #######################################
 ## <summary>
-##	Execute mailman CGI scripts in the 
+##	Execute mailman CGI scripts in the
 ##	mailman CGI domain.
 ## </summary>
 ## <param name="domain">

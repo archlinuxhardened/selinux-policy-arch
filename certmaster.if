@@ -128,7 +128,7 @@ interface(`certmaster_admin',`
 
 	files_list_etc($1)
 	miscfiles_manage_generic_cert_dirs($1)
-	miscfiles_manage_generic_cert_files($1)	
+	miscfiles_manage_generic_cert_files($1)
 
 	admin_pattern($1, certmaster_etc_rw_t)
 

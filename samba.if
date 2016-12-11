@@ -521,7 +521,7 @@ interface(`samba_dontaudit_use_fds',`
 		type smbd_t;
 	')
 
-	dontaudit $1 smbd_t:fd use; 
+	dontaudit $1 smbd_t:fd use;
 ')
 
 ########################################

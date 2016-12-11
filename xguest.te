@@ -41,7 +41,9 @@ userdom_restricted_xwindows_user_template(xguest)
 kernel_dontaudit_request_load_module(xguest_t)
 
 ifndef(`enable_mls',`
-	fs_exec_noxattr(xguest_t)
+	tunable_policy(`user_exec_noexattrfile',`
+		fs_exec_noxattr(xguest_t)
+	')
 
 	tunable_policy(`user_rw_noexattrfile',`
 		fs_manage_noxattr_fs_files(xguest_t)

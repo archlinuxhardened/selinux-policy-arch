@@ -88,6 +88,8 @@ domtrans_pattern(policykit_t, policykit_resolve_exec_t, policykit_resolve_t)
 kernel_read_kernel_sysctls(policykit_t)
 kernel_read_system_state(policykit_t)
 
+dev_read_urand(policykit_t)
+
 domain_read_all_domains_state(policykit_t)
 
 files_dontaudit_search_all_mountpoints(policykit_t)
@@ -109,6 +111,10 @@ optional_policy(`
 
 	optional_policy(`
 		rpm_dbus_chat(policykit_t)
+	')
+
+	optional_policy(`
+		xserver_dbus_chat_xdm(policykit_t)
 	')
 ')
 

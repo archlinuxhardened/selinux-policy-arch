@@ -227,6 +227,10 @@ optional_policy(`
 	optional_policy(`
 		policykit_dbus_chat(NetworkManager_t)
 	')
+
+	optional_policy(`
+		xserver_dbus_chat_xdm(NetworkManager_t)
+	')
 ')
 
 optional_policy(`

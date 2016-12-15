@@ -99,8 +99,6 @@ miscfiles_read_localization(fail2ban_t)
 sysnet_manage_config(fail2ban_t)
 sysnet_etc_filetrans_config(fail2ban_t)
 
-mta_send_mail(fail2ban_t)
-
 optional_policy(`
 	apache_read_log(fail2ban_t)
 ')
@@ -115,6 +113,10 @@ optional_policy(`
 
 optional_policy(`
 	libs_exec_ldconfig(fail2ban_t)
+')
+
+optional_policy(`
+	mta_send_mail(fail2ban_t)
 ')
 
 optional_policy(`

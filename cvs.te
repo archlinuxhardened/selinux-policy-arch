@@ -91,8 +91,6 @@ logging_send_audit_msgs(cvs_t)
 
 miscfiles_read_localization(cvs_t)
 
-mta_send_mail(cvs_t)
-
 userdom_dontaudit_search_user_home_dirs(cvs_t)
 
 # cjp: typeattribute doesnt work in conditionals yet
@@ -107,6 +105,10 @@ optional_policy(`
 	kerberos_read_keytab(cvs_t)
 	kerberos_use(cvs_t)
 	kerberos_dontaudit_write_config(cvs_t)
+')
+
+optional_policy(`
+	mta_send_mail(cvs_t)
 ')
 
 ########################################

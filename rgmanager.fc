@@ -7,6 +7,6 @@
 
 /var/log/cluster/rgmanager\.log.*	--	gen_context(system_u:object_r:rgmanager_var_log_t,s0)
 
-/var/run/cluster/rgmanager\.sk	-s	gen_context(system_u:object_r:rgmanager_var_run_t,s0)
+/run/cluster/rgmanager\.sk	-s	gen_context(system_u:object_r:rgmanager_var_run_t,s0)
 
-/var/run/rgmanager\.pid	--	gen_context(system_u:object_r:rgmanager_var_run_t,s0)
+/run/rgmanager\.pid	--	gen_context(system_u:object_r:rgmanager_var_run_t,s0)

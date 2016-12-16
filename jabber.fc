@@ -21,5 +21,5 @@
 /var/lib/jabberd/log(/.*)?	gen_context(system_u:object_r:jabberd_log_t,s0)
 /var/lib/jabberd/pid(/.*)?	gen_context(system_u:object_r:jabberd_var_run_t,s0)
 
-/var/run/ejabber\.pid	--	gen_context(system_u:object_r:jabberd_var_run_t,s0)
-/var/run/jabber\.pid	--	gen_context(system_u:object_r:jabberd_var_run_t,s0)
+/run/ejabber\.pid	--	gen_context(system_u:object_r:jabberd_var_run_t,s0)
+/run/jabber\.pid	--	gen_context(system_u:object_r:jabberd_var_run_t,s0)

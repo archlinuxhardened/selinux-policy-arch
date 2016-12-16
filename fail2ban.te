@@ -1,4 +1,4 @@
-policy_module(fail2ban, 1.6.0)
+policy_module(fail2ban, 1.6.1)
 
 ########################################
 #

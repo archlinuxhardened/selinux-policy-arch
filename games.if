@@ -42,7 +42,6 @@ interface(`games_role',`
 ########################################
 ## <summary>
 ##	Read and write games data files.
-##	games data.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -57,4 +56,44 @@ interface(`games_rw_data',`
 
 	files_search_var_lib($1)
 	rw_files_pattern($1, games_data_t, games_data_t)
+')
+
+########################################
+## <summary>
+##	Run a game in the game domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+#
+interface(`games_domtrans',`
+	gen_require(`
+		type games_t, games_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, games_exec_t, games_t)
+')
+
+########################################
+## <summary>
+##	Send and receive messages from
+##	games over dbus.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`games_dbus_chat',`
+	gen_require(`
+		type games_t;
+		class dbus send_msg;
+	')
+
+	allow $1 games_t:dbus send_msg;
+	allow games_t $1:dbus send_msg;
 ')

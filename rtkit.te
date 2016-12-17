@@ -42,4 +42,12 @@ optional_policy(`
 	optional_policy(`
 		policykit_dbus_chat(rtkit_daemon_t)
 	')
+
+	optional_policy(`
+		xserver_dbus_chat_xdm(rtkit_daemon_t)
+	')
+')
+
+optional_policy(`
+	xserver_setsched_all_xdms(rtkit_daemon_t)
 ')

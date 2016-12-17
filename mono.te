@@ -16,6 +16,10 @@ role mono_roles types mono_t;
 
 application_type(mono_t)
 
+optional_policy(`
+	wm_application_domain(mono_t, mono_exec_t)
+')
+
 ########################################
 #
 # Common local policy

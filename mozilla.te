@@ -24,6 +24,10 @@ typealias mozilla_t alias { auditadm_mozilla_t secadm_mozilla_t };
 userdom_user_application_domain(mozilla_t, mozilla_exec_t)
 role mozilla_roles types mozilla_t;
 
+optional_policy(`
+	wm_application_domain(mozilla_t, mozilla_exec_t)
+')
+
 type mozilla_home_t;
 typealias mozilla_home_t alias { user_mozilla_home_t staff_mozilla_home_t sysadm_mozilla_home_t };
 typealias mozilla_home_t alias { auditadm_mozilla_home_t secadm_mozilla_home_t };

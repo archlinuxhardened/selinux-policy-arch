@@ -159,6 +159,11 @@ optional_policy(`
 	udev_read_db(system_dbusd_t)
 ')
 
+optional_policy(`
+	xserver_read_xdm_lib_files(system_dbusd_t)
+	xserver_use_xdm_fds(system_dbusd_t)
+')
+
 ########################################
 #
 # Common session bus local policy

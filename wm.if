@@ -47,6 +47,8 @@ template(`wm_role_template',`
 	# Policy
 	#
 
+	allow $3 $1_wm_t:fd use;
+
 	allow $1_wm_t $3:unix_stream_socket connectto;
 	allow $3 $1_wm_t:unix_stream_socket connectto;
 
@@ -72,6 +74,7 @@ template(`wm_role_template',`
 	xserver_manage_core_devices($1_wm_t)
 
 	optional_policy(`
+		dbus_connect_spec_session_bus($1, $1_wm_t)
 		dbus_spec_session_bus_client($1, $1_wm_t)
 		dbus_system_bus_client($1_wm_t)
 
@@ -81,7 +84,7 @@ template(`wm_role_template',`
 	')
 
 	optional_policy(`
-		gnome_stream_connect_gkeyringd($1, $1_wm_t)
+		gnome_stream_connect_all_gkeyringd($1_wm_t)
 	')
 
 	optional_policy(`
@@ -133,4 +136,88 @@ interface(`wm_dbus_chat',`
 
 	allow $2 $1_wm_t:dbus send_msg;
 	allow $1_wm_t $2:dbus send_msg;
+')
+
+########################################
+## <summary>
+##	Do not audit attempts to execute
+##	files in temporary directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain to not audit.
+##	</summary>
+## </param>
+#
+interface(`wm_dontaudit_exec_tmp_files',`
+	gen_require(`
+		type wm_tmp_t;
+	')
+
+	dontaudit $1 wm_tmp_t:file exec_file_perms;
+')
+
+########################################
+## <summary>
+##	Do not audit attempts to execute
+##	files in temporary filesystems.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain to not audit.
+##	</summary>
+## </param>
+#
+interface(`wm_dontaudit_exec_tmpfs_files',`
+	gen_require(`
+		type wm_tmpfs_t;
+	')
+
+	dontaudit $1 wm_tmpfs_t:file exec_file_perms;
+')
+
+########################################
+## <summary>
+##	Create a domain for applications
+##	that are launched by the window
+##	manager.
+## </summary>
+## <desc>
+##	<p>
+##	Create a domain for applications that are launched by the
+##	window manager (implying a domain transition).  Typically
+##	these are graphical applications that are run interactively.
+##	</p>
+##	<p>
+##	The types will be made usable as a domain and file, making
+##	calls to domain_type() and files_type() redundant.
+##	</p>
+## </desc>
+## <param name="target_domain">
+##	<summary>
+##	Type to be used in the domain transition as the application
+##	domain.
+##	</summary>
+## </param>
+## <param name="entry_point">
+##	<summary>
+##	Type of the program to be used as an entry point to this domain.
+##	</summary>
+## </param>
+## <param name="source_domain">
+##	<summary>
+##	Type to be used as the source window manager domain.
+##	</summary>
+## </param>
+## <infoflow type="none"/>
+#
+interface(`wm_application_domain',`
+	gen_require(`
+		attribute wm_domain;
+	')
+
+	application_type($1)
+	ubac_constrained($1)
+	application_executable_file($2)
+	domtrans_pattern(wm_domain, $2, $1)
 ')

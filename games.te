@@ -14,6 +14,10 @@ typealias games_t alias { auditadm_games_t secadm_games_t };
 userdom_user_application_domain(games_t, games_exec_t)
 role games_roles types games_t;
 
+optional_policy(`
+	wm_application_domain(games_t, games_exec_t)
+')
+
 type games_data_t;
 typealias games_data_t alias { user_games_data_t staff_games_data_t sysadm_games_data_t };
 typealias games_data_t alias { auditadm_games_data_t secadm_games_data_t };

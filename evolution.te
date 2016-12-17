@@ -23,6 +23,10 @@ typealias evolution_t alias { auditadm_evolution_t secadm_evolution_t };
 userdom_user_application_domain(evolution_t, evolution_exec_t)
 role evolution_roles types evolution_t;
 
+optional_policy(`
+	wm_application_domain(evolution_t, evolution_exec_t)
+')
+
 type evolution_alarm_t;
 type evolution_alarm_exec_t;
 typealias evolution_alarm_t alias { user_evolution_alarm_t staff_evolution_alarm_t sysadm_evolution_alarm_t };

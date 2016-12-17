@@ -107,10 +107,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	games_dbus_chat(wm_domain)
-')
-
-optional_policy(`
 	mozilla_dbus_chat(wm_domain)
 ')
 

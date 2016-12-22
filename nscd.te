@@ -1,4 +1,4 @@
-policy_module(nscd, 1.14.0)
+policy_module(nscd, 1.14.1)
 
 gen_require(`
 	class nscd all_nscd_perms;

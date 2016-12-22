@@ -1,4 +1,4 @@
-policy_module(minidlna, 0.1)
+policy_module(minidlna, 1.0.1)
 
 #############################################
 #

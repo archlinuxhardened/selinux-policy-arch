@@ -216,8 +216,6 @@ interface(`wm_application_domain',`
 		attribute wm_domain;
 	')
 
-	application_type($1)
-	ubac_constrained($1)
-	application_executable_file($2)
+	userdom_user_application_domain($1, $2)
 	domtrans_pattern(wm_domain, $2, $1)
 ')

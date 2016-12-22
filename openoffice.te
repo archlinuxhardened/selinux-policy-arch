@@ -15,6 +15,18 @@ policy_module(openoffice, 1.0.2)
 ## </desc>
 gen_tunable(openoffice_allow_update, true)
 
+## <desc>
+##	<p>
+##	Determine whether openoffice writer
+##	can send emails directly (print to
+##	email). This is different from the
+##	functionality of sending emails
+##	through external clients which is
+##	always enabled.
+##	</p>
+## </desc>
+gen_tunable(openoffice_allow_email, false)
+
 attribute_role ooffice_roles;
 
 type ooffice_t;
@@ -80,6 +92,12 @@ userdom_user_home_dir_filetrans_user_home_content(ooffice_t, { dir file lnk_file
 
 tunable_policy(`openoffice_allow_update',`
 	corenet_tcp_connect_http_port(ooffice_t)
+')
+
+tunable_policy(`openoffice_allow_email',`
+	corenet_tcp_connect_smtp_port(ooffice_t)
+	corenet_tcp_sendrecv_smtp_port(ooffice_t)
+	corenet_sendrecv_smtp_client_packets(ooffice_t)
 ')
 
 optional_policy(`

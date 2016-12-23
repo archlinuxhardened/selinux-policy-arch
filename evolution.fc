@@ -1,7 +1,7 @@
 HOME_DIR/\.camel_certs(/.*)?	gen_context(system_u:object_r:evolution_home_t,s0)
 HOME_DIR/\.evolution(/.*)?	gen_context(system_u:object_r:evolution_home_t,s0)
 
-/tmp/\.exchange-USER(/.*)?	gen_context(system_u:object_r:evolution_exchange_tmp_t,s0)
+/tmp/\.exchange-%{USERNAME}(/.*)?	gen_context(system_u:object_r:evolution_exchange_tmp_t,s0)
 
 /usr/bin/evolution.*	--	gen_context(system_u:object_r:evolution_exec_t,s0)
 

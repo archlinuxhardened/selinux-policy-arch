@@ -22,6 +22,10 @@ template(`telepathy_domain_template',`
 	type telepathy_$1_tmp_t, telepathy_tmp_content;
 	userdom_user_tmp_file(telepathy_$1_tmp_t)
 
+	optional_policy(`
+		wm_application_domain(telepathy_$1_t, telepathy_$1_exec_t)
+	')
+
 	auth_use_nsswitch(telepathy_$1_t)
 ')
 

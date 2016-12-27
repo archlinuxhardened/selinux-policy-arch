@@ -29,6 +29,10 @@ typealias wireshark_tmpfs_t alias { user_wireshark_tmpfs_t staff_wireshark_tmpfs
 typealias wireshark_tmpfs_t alias { auditadm_wireshark_tmpfs_t secadm_wireshark_tmpfs_t };
 userdom_user_tmpfs_file(wireshark_tmpfs_t)
 
+optional_policy(`
+	wm_application_domain(wireshark_t, wireshark_exec_t)
+')
+
 ##############################
 #
 # Local Policy

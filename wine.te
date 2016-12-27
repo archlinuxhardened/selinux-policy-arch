@@ -28,6 +28,10 @@ userdom_user_home_content(wine_home_t)
 type wine_tmp_t;
 userdom_user_tmp_file(wine_tmp_t)
 
+optional_policy(`
+	wm_application_domain(wine_t, wine_exec_t)
+')
+
 ########################################
 #
 # Local policy

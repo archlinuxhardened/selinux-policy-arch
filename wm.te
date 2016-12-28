@@ -132,4 +132,5 @@ optional_policy(`
 
 optional_policy(`
 	xserver_dbus_chat_xdm(wm_domain)
+	xserver_rw_xsession_log(wm_domain)
 ')

@@ -58,6 +58,7 @@ miscfiles_read_localization(xscreensaver_t)
 userdom_use_user_terminals(xscreensaver_t)
 userdom_read_user_home_content_files(xscreensaver_t)
 
+xserver_rw_xsession_log(xscreensaver_t)
 xserver_user_x_domain_template(xscreensaver, xscreensaver_t, xscreensaver_tmpfs_t)
 
 ########################################
@@ -86,6 +87,5 @@ fs_dontaudit_getattr_xattr_fs(xscreensaver_helper_t)
 miscfiles_read_fonts(xscreensaver_helper_t)
 miscfiles_read_localization(xscreensaver_helper_t)
 
-optional_policy(`
-	xserver_stream_connect(xscreensaver_helper_t)
-')
+xserver_rw_xsession_log(xscreensaver_helper_t)
+xserver_stream_connect(xscreensaver_helper_t)

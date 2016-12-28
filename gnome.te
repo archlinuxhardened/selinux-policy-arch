@@ -70,6 +70,7 @@ logging_send_syslog_msg(gnomedomain)
 userdom_use_user_terminals(gnomedomain)
 
 optional_policy(`
+	xserver_rw_xsession_log(gnomedomain)
 	xserver_rw_xdm_pipes(gnomedomain)
 	xserver_use_xdm_fds(gnomedomain)
 ')
@@ -144,4 +145,8 @@ optional_policy(`
 
 optional_policy(`
 	telepathy_mission_control_read_state(gkeyringd_domain)
+')
+
+optional_policy(`
+	xserver_rw_xsession_log(gkeyringd_domain)
 ')

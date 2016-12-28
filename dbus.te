@@ -244,6 +244,7 @@ seutil_read_default_contexts(session_bus_type)
 term_use_all_terms(session_bus_type)
 
 optional_policy(`
+	xserver_rw_xsession_log(session_bus_type)
 	xserver_use_xdm_fds(session_bus_type)
 	xserver_rw_xdm_pipes(session_bus_type)
 ')

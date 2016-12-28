@@ -131,6 +131,7 @@ optional_policy(`
 ')
 
 optional_policy(`
+	xserver_rw_xsession_log(ooffice_t)
 	xserver_read_user_iceauth(ooffice_t)
 	xserver_read_user_xauth(ooffice_t)
 	xserver_read_xdm_tmp_files(ooffice_t)

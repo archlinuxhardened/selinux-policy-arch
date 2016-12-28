@@ -1,4 +1,4 @@
-policy_module(vmware, 2.7.1)
+policy_module(vmware, 2.7.3)
 
 ########################################
 #

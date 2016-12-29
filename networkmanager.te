@@ -225,6 +225,10 @@ optional_policy(`
 	')
 
 	optional_policy(`
+		cups_dbus_chat(NetworkManager_t)
+	')
+
+	optional_policy(`
 		policykit_dbus_chat(NetworkManager_t)
 	')
 

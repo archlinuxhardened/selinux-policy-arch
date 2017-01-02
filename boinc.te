@@ -1,4 +1,4 @@
-policy_module(boinc, 1.4.0)
+policy_module(boinc, 1.4.1)
 
 ########################################
 #
@@ -85,6 +85,7 @@ domtrans_pattern(boinc_t, boinc_project_var_lib_t, boinc_project_t)
 
 kernel_read_system_state(boinc_t)
 kernel_search_vm_sysctl(boinc_t)
+kernel_read_crypto_sysctls(boinc_t)
 
 corenet_all_recvfrom_unlabeled(boinc_t)
 corenet_all_recvfrom_netlabel(boinc_t)
@@ -153,6 +154,13 @@ optional_policy(`
 
 optional_policy(`
 	sysnet_dns_name_resolve(boinc_t)
+')
+
+optional_policy(`
+	corenet_tcp_connect_xserver_port(boinc_t)
+
+	xserver_list_xdm_tmp(boinc_t)
+	xserver_non_drawing_client(boinc_t)
 ')
 
 ########################################

@@ -275,6 +275,10 @@ optional_policy(`
 ')
 
 optional_policy(`
+	evolution_domtrans(mozilla_t)
+')
+
+optional_policy(`
 	gnome_stream_connect_gconf(mozilla_t)
 	gnome_manage_generic_gconf_home_content(mozilla_t)
 	gnome_home_filetrans_gconf_home(mozilla_t, dir, ".gconf")

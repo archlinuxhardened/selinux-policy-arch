@@ -26,7 +26,7 @@ template(`screen_role_template',`
 		attribute screen_domain;
 		attribute_role screen_roles;
 		type screen_exec_t, screen_tmp_t;
-		type screen_home_t, screen_var_run_t;
+		type screen_home_t, screen_runtime_t;
 	')
 
 	########################################
@@ -69,10 +69,10 @@ template(`screen_role_template',`
 	userdom_user_home_dir_filetrans($3, screen_home_t, file, ".screenrc")
 	userdom_user_home_dir_filetrans($3, screen_home_t, file, ".tmux.conf")
 
-	manage_dirs_pattern($3, screen_var_run_t, screen_var_run_t)
-	manage_files_pattern($3, screen_var_run_t, screen_var_run_t)
-	manage_lnk_files_pattern($3, screen_var_run_t, screen_var_run_t)
-	manage_fifo_files_pattern($3, screen_var_run_t, screen_var_run_t)
+	manage_dirs_pattern($3, screen_runtime_t, screen_runtime_t)
+	manage_files_pattern($3, screen_runtime_t, screen_runtime_t)
+	manage_lnk_files_pattern($3, screen_runtime_t, screen_runtime_t)
+	manage_fifo_files_pattern($3, screen_runtime_t, screen_runtime_t)
 
 	corecmd_bin_domtrans($1_screen_t, $3)
 	corecmd_shell_domtrans($1_screen_t, $3)

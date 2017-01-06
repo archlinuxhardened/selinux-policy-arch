@@ -135,10 +135,6 @@ interface(`alsa_read_config',`
 	allow $1 alsa_etc_t:dir list_dir_perms;
 	read_files_pattern($1, alsa_etc_t, alsa_etc_t)
 	read_lnk_files_pattern($1, alsa_etc_t, alsa_etc_t)
-
-	ifdef(`distro_debian',`
-		files_search_usr($1)
-	')
 ')
 
 ########################################
@@ -176,10 +172,6 @@ interface(`alsa_manage_config',`
 	allow $1 alsa_etc_t:dir list_dir_perms;
 	manage_files_pattern($1, alsa_etc_t, alsa_etc_t)
 	read_lnk_files_pattern($1, alsa_etc_t, alsa_etc_t)
-
-	ifdef(`distro_debian',`
-		files_search_usr($1)
-	')
 ')
 
 ########################################

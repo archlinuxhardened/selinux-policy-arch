@@ -26,40 +26,29 @@ attribute_role gpg_pinentry_roles;
 
 type gpg_t;
 type gpg_exec_t;
-typealias gpg_t alias { user_gpg_t staff_gpg_t sysadm_gpg_t };
-typealias gpg_t alias { auditadm_gpg_t secadm_gpg_t };
 userdom_user_application_domain(gpg_t, gpg_exec_t)
 role gpg_roles types gpg_t;
 
 type gpg_agent_t;
 type gpg_agent_exec_t;
-typealias gpg_agent_t alias { user_gpg_agent_t staff_gpg_agent_t sysadm_gpg_agent_t };
-typealias gpg_agent_t alias { auditadm_gpg_agent_t secadm_gpg_agent_t };
 userdom_user_application_domain(gpg_agent_t, gpg_agent_exec_t)
 role gpg_agent_roles types gpg_agent_t;
 
 type gpg_agent_tmp_t;
-typealias gpg_agent_tmp_t alias { user_gpg_agent_tmp_t staff_gpg_agent_tmp_t sysadm_gpg_agent_tmp_t };
-typealias gpg_agent_tmp_t alias { auditadm_gpg_agent_tmp_t secadm_gpg_agent_tmp_t };
 userdom_user_tmp_file(gpg_agent_tmp_t)
 
 type gpg_secret_t;
-typealias gpg_secret_t alias { user_gpg_secret_t staff_gpg_secret_t sysadm_gpg_secret_t };
-typealias gpg_secret_t alias { auditadm_gpg_secret_t secadm_gpg_secret_t };
 userdom_user_home_content(gpg_secret_t)
 
 type gpg_helper_t;
 type gpg_helper_exec_t;
-typealias gpg_helper_t alias { user_gpg_helper_t staff_gpg_helper_t sysadm_gpg_helper_t };
-typealias gpg_helper_t alias { auditadm_gpg_helper_t secadm_gpg_helper_t };
 userdom_user_application_domain(gpg_helper_t, gpg_helper_exec_t)
 role gpg_helper_roles types gpg_helper_t;
 
 type gpg_pinentry_t;
-type pinentry_exec_t;
-typealias gpg_pinentry_t alias { user_gpg_pinentry_t staff_gpg_pinentry_t sysadm_gpg_pinentry_t };
-typealias gpg_pinentry_t alias { auditadm_gpg_pinentry_t secadm_gpg_pinentry_t };
-userdom_user_application_domain(gpg_pinentry_t, pinentry_exec_t)
+type gpg_pinentry_exec_t;
+typealias gpg_pinentry_exec_t alias pinentry_exec_t; # 20170105
+userdom_user_application_domain(gpg_pinentry_t, gpg_pinentry_exec_t)
 role gpg_pinentry_roles types gpg_pinentry_t;
 
 type gpg_pinentry_tmp_t;
@@ -99,6 +88,8 @@ domtrans_pattern(gpg_t, gpg_agent_exec_t, gpg_agent_t)
 domtrans_pattern(gpg_t, gpg_helper_exec_t, gpg_helper_t)
 
 kernel_read_sysctl(gpg_t)
+# read /proc/cpuinfo
+kernel_read_system_state(gpg_t)
 
 corecmd_exec_shell(gpg_t)
 corecmd_exec_bin(gpg_t)
@@ -235,7 +226,7 @@ filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "S.gpg-
 filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "S.gpg-agent.ssh")
 filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "S.scdaemon")
 
-domtrans_pattern(gpg_agent_t, pinentry_exec_t, gpg_pinentry_t)
+domtrans_pattern(gpg_agent_t, gpg_pinentry_exec_t, gpg_pinentry_t)
 
 kernel_dontaudit_search_sysctl(gpg_agent_t)
 kernel_read_core_if(gpg_agent_t)
@@ -305,7 +296,7 @@ manage_dirs_pattern(gpg_pinentry_t, gpg_pinentry_tmpfs_t, gpg_pinentry_tmpfs_t)
 manage_files_pattern(gpg_pinentry_t, gpg_pinentry_tmpfs_t, gpg_pinentry_tmpfs_t)
 fs_tmpfs_filetrans(gpg_pinentry_t, gpg_pinentry_tmpfs_t, { file dir })
 
-can_exec(gpg_pinentry_t, pinentry_exec_t)
+can_exec(gpg_pinentry_t, gpg_pinentry_exec_t)
 
 kernel_read_system_state(gpg_pinentry_t)
 

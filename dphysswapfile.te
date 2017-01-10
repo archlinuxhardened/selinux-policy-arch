@@ -1,4 +1,4 @@
-policy_module(dphysswapfile, 0.0.1)
+policy_module(dphysswapfile, 1.0.0)
 
 ########################################
 #

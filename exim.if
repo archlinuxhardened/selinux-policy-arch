@@ -96,10 +96,10 @@ interface(`exim_read_tmp_files',`
 #
 interface(`exim_read_pid_files',`
 	gen_require(`
-		type exim_var_run_t;
+		type exim_pid_t;
 	')
 
-	allow $1 exim_var_run_t:file read_file_perms;
+	allow $1 exim_pid_t:file read_file_perms;
 	files_search_pids($1)
 ')
 
@@ -281,7 +281,7 @@ interface(`exim_manage_var_lib_files',`
 interface(`exim_admin',`
 	gen_require(`
 		type exim_t, exim_spool_t, exim_log_t;
-		type exim_var_run_t, exim_initrc_exec_t, exim_tmp_t;
+		type exim_pid_t, exim_initrc_exec_t, exim_tmp_t;
 		type exim_keytab_t;
 	')
 
@@ -300,7 +300,7 @@ interface(`exim_admin',`
 	admin_pattern($1, exim_log_t)
 
 	files_search_pids($1)
-	admin_pattern($1, exim_var_run_t)
+	admin_pattern($1, exim_pid_t)
 
 	files_search_tmp($1)
 	admin_pattern($1, exim_tmp_t)

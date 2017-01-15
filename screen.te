@@ -1,4 +1,4 @@
-policy_module(screen, 2.7.2)
+policy_module(screen, 2.7.3)
 
 ########################################
 #
@@ -87,7 +87,8 @@ fs_getattr_all_fs(screen_domain)
 
 auth_dontaudit_read_shadow(screen_domain)
 auth_dontaudit_exec_utempter(screen_domain)
-auth_rw_utmp(screen_domain)
+
+init_rw_utmp(screen_domain)
 
 logging_send_syslog_msg(screen_domain)
 

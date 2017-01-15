@@ -13,27 +13,23 @@ type screen_exec_t;
 application_executable_file(screen_exec_t)
 
 type screen_home_t;
-typealias screen_home_t alias { user_screen_home_t staff_screen_home_t sysadm_screen_home_t };
-typealias screen_home_t alias { auditadm_screen_home_t secadm_screen_home_t };
 userdom_user_home_content(screen_home_t)
 
 type screen_tmp_t;
-typealias screen_tmp_t alias { user_screen_tmp_t staff_screen_tmp_t sysadm_screen_tmp_t };
-typealias screen_tmp_t alias { auditadm_screen_tmp_t secadm_screen_tmp_t };
 userdom_user_tmp_file(screen_tmp_t)
 
-type screen_var_run_t;
-typealias screen_var_run_t alias { user_screen_var_run_t staff_screen_var_run_t sysadm_screen_var_run_t };
-typealias screen_var_run_t alias { auditadm_screen_var_run_t secadm_screen_var_run_t screen_dir_t };
-files_pid_file(screen_var_run_t)
-ubac_constrained(screen_var_run_t)
+type screen_runtime_t;
+typealias screen_runtime_t alias screen_var_run_t;
+files_pid_file(screen_runtime_t)
+ubac_constrained(screen_runtime_t)
 
 ########################################
 #
 # Common screen domain local policy
 #
 
-allow screen_domain self:capability { setuid setgid fsetid };
+# dac_override : read /dev/pts/ID
+allow screen_domain self:capability { setuid setgid fsetid dac_override };
 allow screen_domain self:process signal_perms;
 allow screen_domain self:fd use;
 allow screen_domain self:fifo_file rw_fifo_file_perms;
@@ -44,12 +40,12 @@ manage_dirs_pattern(screen_domain, screen_tmp_t, screen_tmp_t)
 manage_files_pattern(screen_domain, screen_tmp_t, screen_tmp_t)
 manage_fifo_files_pattern(screen_domain, screen_tmp_t, screen_tmp_t)
 files_tmp_filetrans(screen_domain, screen_tmp_t, { file dir })
-filetrans_pattern(screen_domain, screen_tmp_t, screen_var_run_t, sock_file)
+filetrans_pattern(screen_domain, screen_tmp_t, screen_runtime_t, sock_file)
 
-manage_fifo_files_pattern(screen_domain, screen_var_run_t, screen_var_run_t)
-manage_dirs_pattern(screen_domain, screen_var_run_t, screen_var_run_t)
-manage_sock_files_pattern(screen_domain, screen_var_run_t, screen_var_run_t)
-files_pid_filetrans(screen_domain, screen_var_run_t, dir)
+manage_fifo_files_pattern(screen_domain, screen_runtime_t, screen_runtime_t)
+manage_dirs_pattern(screen_domain, screen_runtime_t, screen_runtime_t)
+manage_sock_files_pattern(screen_domain, screen_runtime_t, screen_runtime_t)
+files_pid_filetrans(screen_domain, screen_runtime_t, dir)
 
 manage_dirs_pattern(screen_domain, screen_home_t, screen_home_t)
 read_files_pattern(screen_domain, screen_home_t, screen_home_t)
@@ -91,8 +87,7 @@ fs_getattr_all_fs(screen_domain)
 
 auth_dontaudit_read_shadow(screen_domain)
 auth_dontaudit_exec_utempter(screen_domain)
-
-init_rw_utmp(screen_domain)
+auth_rw_utmp(screen_domain)
 
 logging_send_syslog_msg(screen_domain)
 

@@ -375,3 +375,24 @@ interface(`cups_admin',`
 	admin_pattern($1, { cupsd_config_var_run_t cupsd_var_run_t hplip_var_run_t })
 	admin_pattern($1, { ptal_var_run_t cupsd_lpd_var_run_t })
 ')
+
+########################################
+## <summary>
+##	Execute HP Linux Imaging and
+##	Printing applications in their
+##	own domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+#
+interface(`cups_domtrans_hplip',`
+	gen_require(`
+		type hplip_t, hplip_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, hplip_exec_t, hplip_t)
+')

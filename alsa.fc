@@ -4,13 +4,8 @@ ifdef(`distro_debian',`
 /\.config(/.*)?	gen_context(system_u:object_r:alsa_var_lib_t,s0)
 ')
 
-/bin/alsaunmute	--	gen_context(system_u:object_r:alsa_exec_t,s0)
-
 /etc/alsa(/.*)?		gen_context(system_u:object_r:alsa_etc_t,s0)
 /etc/asound\.conf	gen_context(system_u:object_r:alsa_etc_t,s0)
-
-/sbin/alsactl	--	gen_context(system_u:object_r:alsa_exec_t,s0)
-/sbin/salsa	--	gen_context(system_u:object_r:alsa_exec_t,s0)
 
 # Systemd unit files
 /usr/lib/systemd/system/[^/]*alsa-restore.* --	gen_context(system_u:object_r:alsa_unit_t,s0)

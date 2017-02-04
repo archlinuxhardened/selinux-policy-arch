@@ -1,3 +1,117 @@
+* Sat Feb 04 2017 Chris PeBenito <pebenito@ieee.org> - 2.20170204
+Chris PeBenito (41):
+      Module version bump for patches from Jason Zaman.
+      authbind: Remove dead policy.
+      Module version bump for cups patch from Guido Trentalancia.
+      Merge pull request #29 from cgzones/deprecated_macros
+      Module version bump for Debian fprintd fc entry from Laurent Bigonville.
+      Module version bumps for openoffice patches from Guido Trentalancia.
+      Module version bumps for patches from Guido Trentalancia.
+      Merge pull request #30 from cgzones/trailing_whitespaces
+      Module version bumps for mozilla and gpg patches from Luis Ressel.
+      Module version bump for patches from Guido Trentalancia.
+      Module version bump for patches from Guido Trentalancia.
+      rtkit, wm: Remove calls to nonexistant interfaces.
+      Module version bumps for patches from Guido Trentalancia.
+      rtkit: enable dbus chat with xdm
+      Module version bump for patches from Guido Trentalancia.
+      Module version bump for xscreensaver patch from Guido Trentalancia.
+      Merge branch 'run_transition' of
+         git://github.com/cgzones/refpolicy-contrib
+      Module version bumps for /run fc changes from cgzones.
+      Module version bump for openoffice and wm patches from Guido Trentalancia.
+      Module version bump for patches from Guido Trentalancia.
+      Module version bump for wm patch from Guido Trentalancia.
+      Merge branch 'usr-fc' of
+         git://github.com/fishilico/selinux-refpolicy-contrib
+      Module version bump for fc updates from Nicolas Iooss.
+      Module version bump for patches from Guido Trentalancia.
+      Module version bump for capability2 fixes from Guido Trentalancia.
+      Module version bump for plymouth fix from Guido Trentalancia.
+      boinc: Update from Russell Coker.
+      Module version bump for mozilla update from Guido Trentalancia.
+      Merge pull request #47 from cgzones/dphysswap_module
+      Merge pull request #40 from cgzones/fakehwclock_module
+      Merge branch 'gpg_module' of git://github.com/cgzones/refpolicy-contrib
+      Merge branch 'irqbalance_module' of
+         git://github.com/cgzones/refpolicy-contrib
+      Merge branch 'loadkeys_module' of
+         git://github.com/cgzones/refpolicy-contrib
+      Module version bumps for patches from cgzones.
+      Merge branch 'exim_module' of git://github.com/cgzones/refpolicy-contrib
+      Merge branch 'screen_module' of git://github.com/cgzones/refpolicy-contrib
+      Module version bump for screen and exim changes from cgzones.
+      screen: Revert broken interface call.
+      cups: Move hplip_domtrans interface.
+      Module version bump for cups patch from Guido Trentalancia.
+      Bump module versions for release.
+
+Dominick Grift (1):
+      Re-add raid fc spec that must have been removed earlier by mistake
+
+Guido Trentalancia (29):
+      cups: descend "rw" directories when reading configuration files
+      Apache OpenOffice module (contrib policy part)
+      openoffice: rename two interfaces in openoffice and evolution
+      mozilla: extend dbus connection permissions
+      openoffice: permission to read user temporary files
+      xguest: restrict ability to execute files on noxattr filesystems
+      pulseaudio: update server and client permissions
+      mozilla: remove redundant pulseaudio interface calls
+      networkmanager: read user certs not user content (was enable
+         userdom_read_user_certs() throughout the policy)
+      Make several calls to mta interfaces optional
+      wm: update the window manager (wm) module and enable its role template
+         (v7)
+      rtkit: enable dbus chat with xdm
+      networkmanager: enable dbus chat with xdm
+      policykit: enable dbus chat with xdm
+      games: general update and improved pulseaudio integration
+      wm: improved integration with games
+      xscreensaver: update the module so that it can be effectively used
+      wm: properly set domain entrypoint in wm_application_domain()
+      openoffice: add writer support for sending email directly to multiple
+         recipients
+      contrib: use new genhomedircon template for username
+      contrib: extend wm ability to launch confined graphical applications
+      contrib: support the new interface to manage X session logs
+      networkmanager: dbus chat with cups
+      cups: add cups-browsed executable fc
+      devicekit: add new wake_alarm permission (capability2)
+      networkmanager: add new wake_alarm permission (capability2)
+      plymouth: use the correct running domain for the client
+      mozilla: execute evolution to send emails
+      cups: new interface to execute HPLIP applications in their own domain
+
+Jason Zaman (4):
+      pcscd: dbus and domain lookup
+      devicekit: fcontext for udisks2
+      gnome: add gkeyring rules and fcontext
+      gpg: add new socket paths
+
+Laurent Bigonville (1):
+      Add debian path for fprintd daemon
+
+Luis Ressel (3):
+      gpg: Add filetrans for scdaemon socket and gpg-agent extra sockets
+      gpg.fc: Adjust whitespace
+      mozilla: Add miscfiles_dontaudit_setattr_fonts_cache_dirs()
+
+Nicolas Iooss (1):
+      Add file contexts for files in /usr/{lib,sbin}
+
+cgzones (10):
+      use domain_auto_transition_pattern instead of domain_auto_trans
+      remove trailing whitespaces
+      transition file contexts to /run
+      update loadkeys module
+      add fakehwclock module
+      add dphysswapfile module
+      update gpg module
+      update screen module
+      update irqbalance module
+      update exim module
+
 * Sun Oct 23 2016 Chris PeBenito <pebenito@ieee.org> - 2.20161023
 Adam Tkac (2):
       varnishncsa (varnishlog_t) reads localization files

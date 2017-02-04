@@ -1,4 +1,4 @@
-policy_module(thunderbird, 2.4.4)
+policy_module(thunderbird, 2.5.0)
 
 ########################################
 #

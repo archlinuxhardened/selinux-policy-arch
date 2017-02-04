@@ -1,4 +1,4 @@
-policy_module(cyrus, 1.15.1)
+policy_module(cyrus, 1.16.0)
 
 ########################################
 #

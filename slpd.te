@@ -1,4 +1,4 @@
-policy_module(slpd, 1.2.1)
+policy_module(slpd, 1.3.0)
 
 ########################################
 #

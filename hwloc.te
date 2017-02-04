@@ -1,4 +1,4 @@
-policy_module(hwloc, 1.0.1)
+policy_module(hwloc, 1.1.0)
 
 ########################################
 #

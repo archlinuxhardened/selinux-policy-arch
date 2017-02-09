@@ -254,6 +254,7 @@ optional_policy(`
 
 optional_policy(`
 	cups_read_rw_config(mozilla_t)
+	cups_stream_connect(mozilla_t)
 ')
 
 optional_policy(`

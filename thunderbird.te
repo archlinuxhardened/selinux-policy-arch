@@ -150,6 +150,7 @@ optional_policy(`
 
 optional_policy(`
 	cups_read_rw_config(thunderbird_t)
+	cups_stream_connect(thunderbird_t)
 ')
 
 optional_policy(`

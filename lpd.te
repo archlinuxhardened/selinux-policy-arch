@@ -295,7 +295,6 @@ optional_policy(`
 	cups_read_config(lpr_t)
 	cups_stream_connect(lpr_t)
 	cups_read_pid_files(lpr_t)
-	cups_read_sock_files(lpr_t)
 ')
 
 optional_policy(`

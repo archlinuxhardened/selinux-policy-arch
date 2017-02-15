@@ -163,7 +163,7 @@ files_pid_filetrans(evtchnd_t, evtchnd_var_run_t, { file sock_file dir })
 # xend local policy
 #
 
-allow xend_t self:capability { dac_override ipc_lock net_admin setuid sys_admin sys_nice sys_tty_config net_raw sys_resource sys_rawio };
+allow xend_t self:capability { dac_override ipc_lock net_admin net_raw setuid sys_admin sys_nice sys_rawio sys_resource sys_tty_config };
 dontaudit xend_t self:capability { sys_ptrace };
 allow xend_t self:process { setrlimit signal sigkill };
 dontaudit xend_t self:process ptrace;
@@ -470,7 +470,7 @@ xen_append_log(xenstored_t)
 # xm local policy
 #
 
-allow xm_t self:capability { setpcap dac_override ipc_lock sys_nice sys_tty_config };
+allow xm_t self:capability { dac_override ipc_lock setpcap sys_nice sys_tty_config };
 allow xm_t self:process { getcap getsched setsched setcap signal };
 allow xm_t self:fifo_file rw_fifo_file_perms;
 allow xm_t self:unix_stream_socket { accept connectto listen };

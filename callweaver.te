@@ -29,7 +29,7 @@ files_type(callweaver_spool_t)
 # Local policy
 #
 
-allow callweaver_t self:capability { setuid sys_nice setgid };
+allow callweaver_t self:capability { setgid setuid sys_nice };
 allow callweaver_t self:process { setsched signal };
 allow callweaver_t self:fifo_file rw_fifo_file_perms;
 allow callweaver_t self:tcp_socket { accept listen };

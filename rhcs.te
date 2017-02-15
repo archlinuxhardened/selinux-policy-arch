@@ -170,7 +170,7 @@ tunable_policy(`fenced_can_network_connect',`
 
 optional_policy(`
 	tunable_policy(`fenced_can_ssh',`
-		allow fenced_t self:capability { setuid setgid };
+		allow fenced_t self:capability { setgid setuid };
 
 		corenet_sendrecv_ssh_client_packets(fenced_t)
 		corenet_tcp_connect_ssh_port(fenced_t)

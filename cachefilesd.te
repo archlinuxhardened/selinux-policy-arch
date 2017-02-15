@@ -27,7 +27,7 @@ role system_r types cachefiles_kernel_t;
 # Cachefilesd local policy
 #
 
-allow cachefilesd_t self:capability { setuid setgid sys_admin dac_override };
+allow cachefilesd_t self:capability { dac_override setgid setuid sys_admin };
 
 allow cachefilesd_t cachefiles_kernel_t:kernel_service use_as_override;
 

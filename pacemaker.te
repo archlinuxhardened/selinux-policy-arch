@@ -29,7 +29,7 @@ files_pid_file(pacemaker_var_run_t)
 # Local policy
 #
 
-allow pacemaker_t self:capability { fowner fsetid kill chown dac_override setuid };
+allow pacemaker_t self:capability { chown dac_override fowner fsetid kill setuid };
 allow pacemaker_t self:process { setrlimit signal setpgid };
 allow pacemaker_t self:fifo_file rw_fifo_file_perms;
 allow pacemaker_t self:unix_stream_socket { connectto accept listen };

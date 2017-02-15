@@ -26,7 +26,7 @@ files_pid_file(canna_var_run_t)
 # Local policy
 #
 
-allow canna_t self:capability { setgid setuid net_bind_service };
+allow canna_t self:capability { net_bind_service setgid setuid };
 dontaudit canna_t self:capability sys_tty_config;
 allow canna_t self:process signal_perms;
 allow canna_t self:unix_stream_socket { accept connectto listen };

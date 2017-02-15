@@ -152,7 +152,7 @@ optional_policy(`
 # - setfscreate for merging to live fs
 allow portage_t self:process { setfscreate };
 # - kill for mysql merging, at least
-allow portage_t self:capability { sys_nice kill setfcap };
+allow portage_t self:capability { kill setfcap sys_nice };
 dontaudit portage_t self:capability { dac_read_search };
 dontaudit portage_t self:netlink_route_socket rw_netlink_socket_perms;
 
@@ -239,7 +239,7 @@ dontaudit portage_t device_type:blk_file read_blk_file_perms;
 #
 
 allow portage_fetch_t self:process signal;
-allow portage_fetch_t self:capability { dac_override fowner fsetid chown };
+allow portage_fetch_t self:capability { chown dac_override fowner fsetid };
 allow portage_fetch_t self:fifo_file rw_fifo_file_perms;
 allow portage_fetch_t self:tcp_socket { accept listen };
 allow portage_fetch_t self:unix_stream_socket create_socket_perms;

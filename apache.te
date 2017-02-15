@@ -920,7 +920,7 @@ tunable_policy(`httpd_tty_comm',`
 # Suexec local policy
 #
 
-allow httpd_suexec_t self:capability { setuid setgid };
+allow httpd_suexec_t self:capability { setgid setuid };
 allow httpd_suexec_t self:process signal_perms;
 allow httpd_suexec_t self:fifo_file rw_fifo_file_perms;
 allow httpd_suexec_t self:tcp_socket { accept listen };

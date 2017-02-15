@@ -46,7 +46,7 @@ role uux_roles types uux_t;
 # Local policy
 #
 
-allow uucpd_t self:capability { setuid setgid };
+allow uucpd_t self:capability { setgid setuid };
 allow uucpd_t self:process signal_perms;
 allow uucpd_t self:fifo_file rw_fifo_file_perms;
 allow uucpd_t self:tcp_socket { accept listen };
@@ -137,7 +137,7 @@ optional_policy(`
 # UUX Local policy
 #
 
-allow uux_t self:capability { setuid setgid };
+allow uux_t self:capability { setgid setuid };
 allow uux_t self:fifo_file write_fifo_file_perms;
 
 domtrans_pattern(uux_t, uucpd_exec_t, uucpd_t)

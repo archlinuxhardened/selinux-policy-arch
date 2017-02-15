@@ -451,7 +451,7 @@ tunable_policy(`virt_use_vfio',`
 # virtd local policy
 #
 
-allow virtd_t self:capability { chown dac_override fowner ipc_lock kill mknod net_admin net_raw setpcap setuid setgid sys_admin sys_nice };
+allow virtd_t self:capability { chown dac_override fowner ipc_lock kill mknod net_admin net_raw setgid setpcap setuid sys_admin sys_nice };
 allow virtd_t self:process { getcap getsched setcap sigkill signal signull execmem setexec setfscreate setsockcreate setsched };
 allow virtd_t self:fifo_file { manage_fifo_file_perms relabelfrom relabelto };
 allow virtd_t self:unix_stream_socket { accept connectto listen relabelfrom relabelto };
@@ -804,7 +804,7 @@ optional_policy(`
 # Virsh local policy
 #
 
-allow virsh_t self:capability { setpcap dac_override ipc_lock sys_nice sys_tty_config };
+allow virsh_t self:capability { dac_override ipc_lock setpcap sys_nice sys_tty_config };
 allow virsh_t self:process { getcap getsched setsched setcap signal };
 allow virsh_t self:fifo_file rw_fifo_file_perms;
 allow virsh_t self:unix_stream_socket { accept connectto listen };
@@ -952,7 +952,7 @@ optional_policy(`
 # Lxc local policy
 #
 
-allow virtd_lxc_t self:capability { dac_override net_admin net_raw setpcap chown sys_admin sys_boot sys_resource };
+allow virtd_lxc_t self:capability { chown dac_override net_admin net_raw setpcap sys_admin sys_boot sys_resource };
 allow virtd_lxc_t self:process { setexec setrlimit setsched getcap setcap signal_perms };
 allow virtd_lxc_t self:fifo_file rw_fifo_file_perms;
 allow virtd_lxc_t self:netlink_route_socket nlmsg_write;
@@ -1048,7 +1048,7 @@ sysnet_domtrans_ifconfig(virtd_lxc_t)
 # Common virt lxc domain local policy
 #
 
-allow svirt_lxc_domain self:capability { kill setuid setgid dac_override sys_boot };
+allow svirt_lxc_domain self:capability { dac_override kill setgid setuid sys_boot };
 allow svirt_lxc_domain self:process { execstack execmem getattr signal_perms getsched setsched setcap setpgid };
 allow svirt_lxc_domain self:fifo_file manage_file_perms;
 allow svirt_lxc_domain self:sem create_sem_perms;
@@ -1145,7 +1145,7 @@ optional_policy(`
 # Lxc net local policy
 #
 
-allow svirt_lxc_net_t self:capability { chown dac_read_search dac_override fowner fsetid net_raw net_admin sys_admin sys_nice sys_ptrace sys_resource setpcap };
+allow svirt_lxc_net_t self:capability { chown dac_override dac_read_search fowner fsetid net_admin net_raw setpcap sys_admin sys_nice sys_ptrace sys_resource };
 dontaudit svirt_lxc_net_t self:capability2 block_suspend;
 allow svirt_lxc_net_t self:process setrlimit;
 allow svirt_lxc_net_t self:tcp_socket { accept listen };
@@ -1249,7 +1249,7 @@ optional_policy(`
 #
 
 allow virt_bridgehelper_t self:process { setcap getcap };
-allow virt_bridgehelper_t self:capability { setpcap setgid setuid net_admin };
+allow virt_bridgehelper_t self:capability { net_admin setgid setpcap setuid };
 allow virt_bridgehelper_t self:tcp_socket create_stream_socket_perms;
 allow virt_bridgehelper_t self:tun_socket create_socket_perms;
 allow virt_bridgehelper_t self:unix_dgram_socket create_socket_perms;

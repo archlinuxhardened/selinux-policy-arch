@@ -21,7 +21,7 @@ files_type(accountsd_var_lib_t)
 # Local policy
 #
 
-allow accountsd_t self:capability { chown dac_override setuid setgid sys_ptrace };
+allow accountsd_t self:capability { chown dac_override setgid setuid sys_ptrace };
 allow accountsd_t self:process signal;
 allow accountsd_t self:fifo_file rw_fifo_file_perms;
 allow accountsd_t self:passwd { rootok passwd chfn chsh };

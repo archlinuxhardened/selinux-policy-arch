@@ -49,7 +49,7 @@ userdom_use_user_terminals(clockspeed_cli_t)
 # Server local policy
 #
 
-allow clockspeed_srv_t self:capability { sys_time net_bind_service };
+allow clockspeed_srv_t self:capability { net_bind_service sys_time };
 allow clockspeed_srv_t self:udp_socket create_socket_perms;
 allow clockspeed_srv_t self:unix_dgram_socket create_socket_perms;
 allow clockspeed_srv_t self:unix_stream_socket create_socket_perms;

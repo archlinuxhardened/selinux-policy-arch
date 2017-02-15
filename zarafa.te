@@ -158,7 +158,7 @@ corenet_tcp_sendrecv_smtp_port(zarafa_spooler_t)
 # Zarafa domain local policy
 #
 
-allow zarafa_domain self:capability { kill dac_override chown setgid setuid };
+allow zarafa_domain self:capability { chown dac_override kill setgid setuid };
 allow zarafa_domain self:process { setrlimit signal };
 allow zarafa_domain self:fifo_file rw_fifo_file_perms;
 allow zarafa_domain self:tcp_socket { accept listen };

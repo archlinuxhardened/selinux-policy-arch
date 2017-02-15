@@ -30,7 +30,7 @@ files_pid_file(portmap_var_run_t)
 # Local policy
 #
 
-allow portmap_t self:capability { setuid setgid };
+allow portmap_t self:capability { setgid setuid };
 dontaudit portmap_t self:capability sys_tty_config;
 allow portmap_t self:unix_stream_socket { accept listen };
 allow portmap_t self:tcp_socket { accept listen };

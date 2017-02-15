@@ -82,7 +82,7 @@ files_pid_file(dccm_var_run_t)
 # Daemon controller local policy
 #
 
-allow cdcc_t self:capability { setuid setgid };
+allow cdcc_t self:capability { setgid setuid };
 
 manage_dirs_pattern(cdcc_t, cdcc_tmp_t, cdcc_tmp_t)
 manage_files_pattern(cdcc_t, cdcc_tmp_t, cdcc_tmp_t)
@@ -109,7 +109,7 @@ userdom_use_user_terminals(cdcc_t)
 # Procmail interface local policy
 #
 
-allow dcc_client_t self:capability { setuid setgid };
+allow dcc_client_t self:capability { setgid setuid };
 
 allow dcc_client_t dcc_client_map_t:file rw_file_perms;
 

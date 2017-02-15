@@ -20,7 +20,7 @@ files_pid_file(comsat_var_run_t)
 # Local policy
 #
 
-allow comsat_t self:capability { setuid setgid };
+allow comsat_t self:capability { setgid setuid };
 allow comsat_t self:process signal_perms;
 allow comsat_t self:fifo_file rw_fifo_file_perms;
 allow comsat_t self:netlink_tcpdiag_socket r_netlink_socket_perms;

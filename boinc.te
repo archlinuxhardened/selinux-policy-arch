@@ -168,7 +168,7 @@ optional_policy(`
 # Project local policy
 #
 
-allow boinc_project_t self:capability { setuid setgid };
+allow boinc_project_t self:capability { setgid setuid };
 allow boinc_project_t self:process { execmem execstack noatsecure ptrace setcap getcap setpgid setsched signal_perms };
 
 manage_dirs_pattern(boinc_project_t, boinc_project_tmp_t, boinc_project_tmp_t)

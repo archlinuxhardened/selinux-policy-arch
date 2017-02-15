@@ -34,7 +34,7 @@ init_daemon_pid_file(nut_var_run_t, dir, "nut")
 # Common nut domain local policy
 #
 
-allow nut_domain self:capability { setgid setuid dac_override kill };
+allow nut_domain self:capability { dac_override kill setgid setuid };
 allow nut_domain self:process signal_perms;
 allow nut_domain self:fifo_file rw_fifo_file_perms;
 allow nut_domain self:unix_dgram_socket sendto;

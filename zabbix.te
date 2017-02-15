@@ -44,7 +44,7 @@ files_pid_file(zabbix_var_run_t)
 # Local policy
 #
 
-allow zabbix_t self:capability { dac_read_search dac_override setuid setgid };
+allow zabbix_t self:capability { dac_override dac_read_search setgid setuid };
 allow zabbix_t self:process { setsched signal_perms };
 allow zabbix_t self:fifo_file rw_fifo_file_perms;
 allow zabbix_t self:unix_stream_socket create_stream_socket_perms;
@@ -132,7 +132,7 @@ optional_policy(`
 # Agent local policy
 #
 
-allow zabbix_agent_t self:capability { setuid setgid };
+allow zabbix_agent_t self:capability { setgid setuid };
 allow zabbix_agent_t self:process { setsched getsched signal };
 allow zabbix_agent_t self:fifo_file rw_fifo_file_perms;
 allow zabbix_agent_t self:sem create_sem_perms;

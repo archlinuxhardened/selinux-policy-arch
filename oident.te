@@ -25,7 +25,7 @@ files_config_file(oidentd_config_t)
 # Local policy
 #
 
-allow oidentd_t self:capability { setuid setgid };
+allow oidentd_t self:capability { setgid setuid };
 allow oidentd_t self:netlink_tcpdiag_socket r_netlink_socket_perms;
 allow oidentd_t self:tcp_socket { accept listen };
 

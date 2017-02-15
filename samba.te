@@ -194,7 +194,7 @@ files_pid_file(winbind_var_run_t)
 # Net local policy
 #
 
-allow samba_net_t self:capability { sys_chroot sys_nice dac_read_search dac_override };
+allow samba_net_t self:capability { dac_override dac_read_search sys_chroot sys_nice };
 allow samba_net_t self:capability2 block_suspend;
 allow samba_net_t self:process { getsched setsched };
 allow samba_net_t self:unix_stream_socket { accept listen };
@@ -261,7 +261,7 @@ optional_policy(`
 # Smbd Local policy
 #
 
-allow smbd_t self:capability { chown fowner kill fsetid setgid setuid sys_chroot sys_nice sys_admin sys_resource lease dac_override dac_read_search };
+allow smbd_t self:capability { chown dac_override dac_read_search fowner fsetid kill lease setgid setuid sys_admin sys_chroot sys_nice sys_resource };
 dontaudit smbd_t self:capability sys_tty_config;
 allow smbd_t self:process ~{ ptrace setcurrent setexec setfscreate execmem execstack execheap };
 allow smbd_t self:fd use;
@@ -650,7 +650,7 @@ optional_policy(`
 # Smbmount Local policy
 #
 
-allow smbmount_t self:capability { sys_rawio sys_admin dac_override chown };
+allow smbmount_t self:capability { chown dac_override sys_admin sys_rawio };
 allow smbmount_t self:process signal_perms;
 allow smbmount_t self:tcp_socket { accept listen };
 allow smbmount_t self:unix_dgram_socket create_socket_perms;
@@ -724,7 +724,7 @@ optional_policy(`
 # Swat Local policy
 #
 
-allow swat_t self:capability { dac_override setuid setgid sys_resource };
+allow swat_t self:capability { dac_override setgid setuid sys_resource };
 allow swat_t self:process { setrlimit signal_perms };
 allow swat_t self:fifo_file rw_fifo_file_perms;
 allow swat_t self:netlink_tcpdiag_socket r_netlink_socket_perms;

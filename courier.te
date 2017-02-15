@@ -85,7 +85,7 @@ optional_policy(`
 # Authdaemon local policy
 #
 
-allow courier_authdaemon_t self:capability { setuid setgid sys_tty_config };
+allow courier_authdaemon_t self:capability { setgid setuid sys_tty_config };
 allow courier_authdaemon_t self:unix_stream_socket { accept connectto listen };
 
 create_dirs_pattern(courier_authdaemon_t, courier_var_lib_t, courier_var_lib_t)
@@ -123,7 +123,7 @@ userdom_dontaudit_search_user_home_dirs(courier_authdaemon_t)
 # Calendar (PCP) local policy
 #
 
-allow courier_pcp_t self:capability { setuid setgid };
+allow courier_pcp_t self:capability { setgid setuid };
 
 dev_read_rand(courier_pcp_t)
 

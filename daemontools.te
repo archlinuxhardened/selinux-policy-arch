@@ -55,7 +55,7 @@ logging_manage_generic_logs(svc_multilog_t)
 # ie. softlimit, setuidgid, envuidgid, envdir, fghack ..
 #
 
-allow svc_run_t self:capability { setgid setuid chown fsetid sys_resource };
+allow svc_run_t self:capability { chown fsetid setgid setuid sys_resource };
 allow svc_run_t self:process setrlimit;
 allow svc_run_t self:fifo_file rw_fifo_file_perms;
 allow svc_run_t self:unix_stream_socket create_stream_socket_perms;

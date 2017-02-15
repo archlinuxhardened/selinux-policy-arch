@@ -115,7 +115,7 @@ optional_policy(`
 # Mail local policy
 #
 
-allow mailman_mail_t self:capability { kill dac_override setuid setgid sys_tty_config };
+allow mailman_mail_t self:capability { dac_override kill setgid setuid sys_tty_config };
 allow mailman_mail_t self:process { signal signull };
 
 manage_files_pattern(mailman_mail_t, mailman_var_run_t, mailman_var_run_t)

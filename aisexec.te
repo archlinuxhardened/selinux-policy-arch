@@ -32,7 +32,7 @@ files_pid_file(aisexec_var_run_t)
 # Local policy
 #
 
-allow aisexec_t self:capability { sys_nice sys_resource ipc_lock ipc_owner };
+allow aisexec_t self:capability { ipc_lock ipc_owner sys_nice sys_resource };
 allow aisexec_t self:process { setrlimit setsched signal };
 allow aisexec_t self:fifo_file rw_fifo_file_perms;
 allow aisexec_t self:sem create_sem_perms;

@@ -27,7 +27,7 @@ dev_associate(mdadm_var_run_t)
 # Local policy
 #
 
-allow mdadm_t self:capability { dac_override sys_admin ipc_lock };
+allow mdadm_t self:capability { dac_override ipc_lock sys_admin };
 dontaudit mdadm_t self:capability sys_tty_config;
 allow mdadm_t self:process { getsched setsched signal_perms };
 allow mdadm_t self:fifo_file rw_fifo_file_perms;

@@ -32,7 +32,7 @@ files_pid_file(openvswitch_var_run_t)
 # Local policy
 #
 
-allow openvswitch_t self:capability { net_admin sys_nice sys_resource ipc_lock };
+allow openvswitch_t self:capability { ipc_lock net_admin sys_nice sys_resource };
 allow openvswitch_t self:process { setrlimit setsched signal };
 allow openvswitch_t self:fifo_file rw_fifo_file_perms;
 allow openvswitch_t self:rawip_socket create_socket_perms;

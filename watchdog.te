@@ -23,7 +23,7 @@ files_pid_file(watchdog_var_run_t)
 # Local policy
 #
 
-allow watchdog_t self:capability { sys_admin net_admin sys_boot ipc_lock sys_pacct sys_nice sys_resource net_raw };
+allow watchdog_t self:capability { ipc_lock net_admin net_raw sys_admin sys_boot sys_nice sys_pacct sys_resource };
 dontaudit watchdog_t self:capability sys_tty_config;
 allow watchdog_t self:process { setsched signal_perms };
 allow watchdog_t self:fifo_file rw_fifo_file_perms;

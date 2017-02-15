@@ -31,7 +31,7 @@ files_tmp_file(kdumpctl_tmp_t)
 # Local policy
 #
 
-allow kdump_t self:capability { sys_boot dac_override };
+allow kdump_t self:capability { dac_override sys_boot };
 
 allow kdump_t kdump_etc_t:file read_file_perms;
 

@@ -23,7 +23,7 @@ files_pid_file(gdomap_var_run_t)
 # Local policy
 #
 
-allow gdomap_t self:capability { setuid sys_chroot net_bind_service setgid };
+allow gdomap_t self:capability { net_bind_service setgid setuid sys_chroot };
 allow gdomap_t self:tcp_socket { listen accept };
 
 allow gdomap_t gdomap_var_run_t:file manage_file_perms;

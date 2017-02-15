@@ -82,7 +82,7 @@ optional_policy(`
 # regex local policy
 #
 
-allow regex_milter_t self:capability { setuid setgid dac_override };
+allow regex_milter_t self:capability { dac_override setgid setuid };
 
 files_search_spool(regex_milter_t)
 

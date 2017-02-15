@@ -23,7 +23,7 @@ files_pid_file(dante_var_run_t)
 # Local policy
 #
 
-allow dante_t self:capability { setuid setgid };
+allow dante_t self:capability { setgid setuid };
 dontaudit dante_t self:capability sys_tty_config;
 allow dante_t self:process signal_perms;
 allow dante_t self:fifo_file rw_fifo_file_perms;

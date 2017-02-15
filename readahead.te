@@ -22,7 +22,7 @@ init_daemon_pid_file(readahead_var_run_t, dir, "readahead")
 # Local policy
 #
 
-allow readahead_t self:capability { sys_admin fowner dac_override dac_read_search };
+allow readahead_t self:capability { dac_override dac_read_search fowner sys_admin };
 dontaudit readahead_t self:capability { net_admin sys_tty_config };
 allow readahead_t self:process { setsched signal_perms };
 

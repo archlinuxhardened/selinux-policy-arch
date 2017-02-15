@@ -130,7 +130,7 @@ optional_policy(`
 # Master local policy
 #
 
-allow condor_master_t self:capability { setuid setgid dac_override sys_ptrace };
+allow condor_master_t self:capability { dac_override setgid setuid sys_ptrace };
 
 allow condor_master_t condor_domain:process { sigkill signal };
 
@@ -167,7 +167,7 @@ optional_policy(`
 # Collector local policy
 #
 
-allow condor_collector_t self:capability { setuid setgid };
+allow condor_collector_t self:capability { setgid setuid };
 
 allow condor_collector_t condor_master_t:tcp_socket rw_stream_socket_perms;
 allow condor_collector_t condor_master_t:udp_socket rw_socket_perms;
@@ -179,7 +179,7 @@ kernel_read_network_state(condor_collector_t)
 # Negotiator local policy
 #
 
-allow condor_negotiator_t self:capability { setuid setgid };
+allow condor_negotiator_t self:capability { setgid setuid };
 allow condor_negotiator_t condor_master_t:tcp_socket rw_stream_socket_perms;
 allow condor_negotiator_t condor_master_t:udp_socket getattr;
 
@@ -188,7 +188,7 @@ allow condor_negotiator_t condor_master_t:udp_socket getattr;
 # Procd local policy
 #
 
-allow condor_procd_t self:capability { fowner chown kill dac_override sys_ptrace };
+allow condor_procd_t self:capability { chown dac_override fowner kill sys_ptrace };
 
 allow condor_procd_t condor_domain:process sigkill;
 
@@ -199,7 +199,7 @@ domain_read_all_domains_state(condor_procd_t)
 # Schedd local policy
 #
 
-allow condor_schedd_t self:capability { setuid chown setgid dac_override };
+allow condor_schedd_t self:capability { chown dac_override setgid setuid };
 
 allow condor_schedd_t condor_master_t:tcp_socket rw_stream_socket_perms;
 allow condor_schedd_t condor_master_t:udp_socket getattr;
@@ -219,7 +219,7 @@ files_tmp_filetrans(condor_schedd_t, condor_schedd_tmp_t, { file dir })
 # Startd local policy
 #
 
-allow condor_startd_t self:capability { setuid net_admin setgid dac_override };
+allow condor_startd_t self:capability { dac_override net_admin setgid setuid };
 allow condor_startd_t self:process execmem;
 
 manage_dirs_pattern(condor_startd_t, condor_startd_tmp_t, condor_startd_tmp_t)

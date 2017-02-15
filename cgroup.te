@@ -40,7 +40,7 @@ files_config_file(cgconfig_etc_t)
 # cgclear local policy
 #
 
-allow cgclear_t self:capability { dac_read_search dac_override sys_admin };
+allow cgclear_t self:capability { dac_override dac_read_search sys_admin };
 
 allow cgclear_t cgconfig_etc_t:file read_file_perms;
 
@@ -57,7 +57,7 @@ fs_unmount_cgroup(cgclear_t)
 # cgconfig local policy
 #
 
-allow cgconfig_t self:capability { dac_override fowner fsetid chown sys_admin sys_tty_config };
+allow cgconfig_t self:capability { chown dac_override fowner fsetid sys_admin sys_tty_config };
 
 allow cgconfig_t cgconfig_etc_t:file read_file_perms;
 
@@ -77,7 +77,7 @@ fs_unmount_cgroup(cgconfig_t)
 # cgred local policy
 #
 
-allow cgred_t self:capability { chown fsetid net_admin sys_admin sys_ptrace dac_override };
+allow cgred_t self:capability { chown dac_override fsetid net_admin sys_admin sys_ptrace };
 allow cgred_t self:netlink_socket { write bind create read };
 allow cgred_t self:unix_dgram_socket { write create connect };
 

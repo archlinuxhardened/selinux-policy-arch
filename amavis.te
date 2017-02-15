@@ -46,7 +46,7 @@ files_type(amavis_spool_t)
 # Local policy
 #
 
-allow amavis_t self:capability { kill chown dac_override setgid setuid };
+allow amavis_t self:capability { chown dac_override kill setgid setuid };
 dontaudit amavis_t self:capability sys_tty_config;
 allow amavis_t self:process signal_perms;
 allow amavis_t self:fifo_file rw_fifo_file_perms;

@@ -23,7 +23,7 @@ files_pid_file(cmirrord_var_run_t)
 # Local policy
 #
 
-allow cmirrord_t self:capability { net_admin kill };
+allow cmirrord_t self:capability { kill net_admin };
 dontaudit cmirrord_t self:capability sys_tty_config;
 allow cmirrord_t self:process { setfscreate signal };
 allow cmirrord_t self:fifo_file rw_fifo_file_perms;

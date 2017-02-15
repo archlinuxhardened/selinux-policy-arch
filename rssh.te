@@ -86,7 +86,7 @@ optional_policy(`
 # Chroot helper local policy
 #
 
-allow rssh_chroot_helper_t self:capability { sys_chroot setuid };
+allow rssh_chroot_helper_t self:capability { setuid sys_chroot };
 allow rssh_chroot_helper_t self:fifo_file rw_fifo_file_perms;
 allow rssh_chroot_helper_t self:unix_stream_socket { accept listen };
 

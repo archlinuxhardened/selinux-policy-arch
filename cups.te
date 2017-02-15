@@ -109,8 +109,8 @@ ifdef(`enable_mls',`
 # Cups local policy
 #
 
-allow cupsd_t self:capability { ipc_lock sys_admin dac_override dac_read_search kill setgid setuid fsetid fowner chown dac_override sys_rawio sys_resource sys_tty_config };
-dontaudit cupsd_t self:capability { sys_tty_config net_admin };
+allow cupsd_t self:capability { chown dac_override dac_override dac_read_search fowner fsetid ipc_lock kill setgid setuid sys_admin sys_rawio sys_resource sys_tty_config };
+dontaudit cupsd_t self:capability { net_admin sys_tty_config };
 allow cupsd_t self:capability2 block_suspend;
 allow cupsd_t self:process { getpgid setpgid setsched signal_perms };
 allow cupsd_t self:fifo_file rw_fifo_file_perms;
@@ -357,7 +357,7 @@ optional_policy(`
 # Configuration daemon local policy
 #
 
-allow cupsd_config_t self:capability { chown dac_override sys_tty_config setuid setgid };
+allow cupsd_config_t self:capability { chown dac_override setgid setuid sys_tty_config };
 dontaudit cupsd_config_t self:capability sys_tty_config;
 allow cupsd_config_t self:process { getsched signal_perms };
 allow cupsd_config_t self:fifo_file rw_fifo_file_perms;
@@ -500,7 +500,7 @@ optional_policy(`
 # Lpd local policy
 #
 
-allow cupsd_lpd_t self:capability { setuid setgid };
+allow cupsd_lpd_t self:capability { setgid setuid };
 allow cupsd_lpd_t self:process signal_perms;
 allow cupsd_lpd_t self:fifo_file rw_fifo_file_perms;
 allow cupsd_lpd_t self:tcp_socket { accept listen };
@@ -562,7 +562,7 @@ optional_policy(`
 # Pdf local policy
 #
 
-allow cups_pdf_t self:capability { chown fowner fsetid setuid setgid dac_override };
+allow cups_pdf_t self:capability { chown dac_override fowner fsetid setgid setuid };
 allow cups_pdf_t self:fifo_file rw_fifo_file_perms;
 allow cups_pdf_t self:unix_stream_socket create_stream_socket_perms;
 

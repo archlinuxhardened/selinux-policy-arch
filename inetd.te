@@ -37,7 +37,7 @@ ifdef(`enable_mcs',`
 # Local policy
 #
 
-allow inetd_t self:capability { setuid setgid sys_resource };
+allow inetd_t self:capability { setgid setuid sys_resource };
 dontaudit inetd_t self:capability sys_tty_config;
 allow inetd_t self:process { setsched setexec setrlimit };
 allow inetd_t self:fifo_file rw_fifo_file_perms;
@@ -204,7 +204,7 @@ optional_policy(`
 # Child local policy
 #
 
-allow inetd_child_t self:capability { setuid setgid };
+allow inetd_child_t self:capability { setgid setuid };
 allow inetd_child_t self:process signal_perms;
 allow inetd_child_t self:fifo_file rw_fifo_file_perms;
 allow inetd_child_t self:tcp_socket { accept listen };

@@ -74,7 +74,7 @@ optional_policy(`
 # Mkhomedir local policy
 #
 
-allow oddjob_mkhomedir_t self:capability { chown fowner fsetid dac_override };
+allow oddjob_mkhomedir_t self:capability { chown dac_override fowner fsetid };
 allow oddjob_mkhomedir_t self:process setfscreate;
 allow oddjob_mkhomedir_t self:fifo_file rw_fifo_file_perms;
 allow oddjob_mkhomedir_t self:unix_stream_socket { accept listen };

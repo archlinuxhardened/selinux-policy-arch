@@ -23,7 +23,7 @@ files_config_file(nslcd_conf_t)
 # Local policy
 #
 
-allow nslcd_t self:capability { setgid setuid dac_override };
+allow nslcd_t self:capability { dac_override setgid setuid };
 allow nslcd_t self:process signal;
 allow nslcd_t self:unix_stream_socket { accept listen };
 

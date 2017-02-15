@@ -246,7 +246,7 @@ optional_policy(`
 # Common hadoop_initrc_domain local policy
 #
 
-allow hadoop_initrc_domain self:capability { setuid setgid };
+allow hadoop_initrc_domain self:capability { setgid setuid };
 dontaudit hadoop_initrc_domain self:capability sys_tty_config;
 allow hadoop_initrc_domain self:process setsched;
 allow hadoop_initrc_domain self:fifo_file rw_fifo_file_perms;

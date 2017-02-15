@@ -26,7 +26,7 @@ files_pid_file(dictd_var_run_t)
 # Local policy
 #
 
-allow dictd_t self:capability { setuid setgid };
+allow dictd_t self:capability { setgid setuid };
 dontaudit dictd_t self:capability sys_tty_config;
 allow dictd_t self:process { signal_perms setpgid };
 allow dictd_t self:unix_stream_socket { accept listen };

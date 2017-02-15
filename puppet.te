@@ -59,7 +59,7 @@ files_tmp_file(puppetmaster_tmp_t)
 # Local policy
 #
 
-allow puppet_t self:capability { chown fowner fsetid setuid setgid dac_override sys_admin sys_nice sys_tty_config };
+allow puppet_t self:capability { chown dac_override fowner fsetid setgid setuid sys_admin sys_nice sys_tty_config };
 allow puppet_t self:process { signal signull getsched setsched };
 allow puppet_t self:fifo_file rw_fifo_file_perms;
 allow puppet_t self:netlink_route_socket create_netlink_socket_perms;
@@ -255,7 +255,7 @@ optional_policy(`
 # Master local policy
 #
 
-allow puppetmaster_t self:capability { dac_read_search dac_override setuid setgid fowner chown fsetid sys_tty_config };
+allow puppetmaster_t self:capability { chown dac_override dac_read_search fowner fsetid setgid setuid sys_tty_config };
 allow puppetmaster_t self:process { signal_perms getsched setsched };
 allow puppetmaster_t self:fifo_file rw_fifo_file_perms;
 allow puppetmaster_t self:netlink_route_socket nlmsg_write;

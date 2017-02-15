@@ -102,7 +102,7 @@ corenet_tcp_sendrecv_epmap_port(eventlogd_t)
 # lsassd local policy
 #
 
-allow lsassd_t self:capability { fowner chown fsetid dac_override sys_time };
+allow lsassd_t self:capability { chown dac_override fowner fsetid sys_time };
 allow lsassd_t self:unix_stream_socket { create_stream_socket_perms connectto };
 allow lsassd_t self:netlink_route_socket rw_netlink_socket_perms;
 
@@ -165,7 +165,7 @@ optional_policy(`
 # lwiod local policy
 #
 
-allow lwiod_t self:capability { fowner chown fsetid dac_override sys_resource };
+allow lwiod_t self:capability { chown dac_override fowner fsetid sys_resource };
 allow lwiod_t self:process setrlimit;
 allow lwiod_t self:netlink_route_socket rw_netlink_socket_perms;
 

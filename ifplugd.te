@@ -23,7 +23,7 @@ files_pid_file(ifplugd_var_run_t)
 # Local policy
 #
 
-allow ifplugd_t self:capability { net_admin sys_nice net_bind_service };
+allow ifplugd_t self:capability { net_admin net_bind_service sys_nice };
 dontaudit ifplugd_t self:capability sys_tty_config;
 allow ifplugd_t self:process { signal signull };
 allow ifplugd_t self:fifo_file rw_fifo_file_perms;

@@ -23,7 +23,7 @@ files_type(colord_var_lib_t)
 # Local policy
 #
 
-allow colord_t self:capability { dac_read_search dac_override };
+allow colord_t self:capability { dac_override dac_read_search };
 dontaudit colord_t self:capability sys_admin;
 allow colord_t self:process signal;
 allow colord_t self:fifo_file rw_fifo_file_perms;

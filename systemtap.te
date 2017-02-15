@@ -29,7 +29,7 @@ files_pid_file(stapserver_var_run_t)
 # Local policy
 #
 
-allow stapserver_t self:capability { dac_override kill setuid setgid };
+allow stapserver_t self:capability { dac_override kill setgid setuid };
 allow stapserver_t self:process { setrlimit setsched signal };
 allow stapserver_t self:fifo_file rw_fifo_file_perms;
 allow stapserver_t self:key write;

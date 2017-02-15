@@ -51,7 +51,7 @@ files_pid_file(squid_var_run_t)
 # Local policy
 #
 
-allow squid_t self:capability { setgid kill setuid dac_override sys_resource };
+allow squid_t self:capability { dac_override kill setgid setuid sys_resource };
 dontaudit squid_t self:capability sys_tty_config;
 allow squid_t self:process ~{ ptrace setcurrent setexec setfscreate execmem execstack execheap };
 allow squid_t self:fifo_file rw_fifo_file_perms;

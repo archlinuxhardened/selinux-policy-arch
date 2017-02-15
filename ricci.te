@@ -78,7 +78,7 @@ files_lock_file(ricci_modstorage_lock_t)
 # Local policy
 #
 
-allow ricci_t self:capability { setuid sys_nice sys_boot };
+allow ricci_t self:capability { setuid sys_boot sys_nice };
 allow ricci_t self:process setsched;
 allow ricci_t self:fifo_file rw_fifo_file_perms;
 allow ricci_t self:unix_stream_socket { accept connectto listen };

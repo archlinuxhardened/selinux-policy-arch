@@ -23,7 +23,7 @@ files_pid_file(wdmd_var_run_t)
 # Local policy
 #
 
-allow wdmd_t self:capability { chown sys_nice ipc_lock };
+allow wdmd_t self:capability { chown ipc_lock sys_nice };
 allow wdmd_t self:process { setsched signal };
 allow wdmd_t self:fifo_file rw_fifo_file_perms;
 allow wdmd_t self:unix_stream_socket { accept listen };

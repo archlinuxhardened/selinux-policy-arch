@@ -17,7 +17,7 @@ init_script_file(ciped_initrc_exec_t)
 # Local policy
 #
 
-allow ciped_t self:capability { net_admin ipc_lock sys_tty_config };
+allow ciped_t self:capability { ipc_lock net_admin sys_tty_config };
 dontaudit ciped_t self:capability sys_tty_config;
 allow ciped_t self:process signal_perms;
 allow ciped_t self:fifo_file rw_fifo_file_perms;

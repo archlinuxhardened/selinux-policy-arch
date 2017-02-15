@@ -29,7 +29,7 @@ ubac_constrained(screen_runtime_t)
 #
 
 # dac_override : read /dev/pts/ID
-allow screen_domain self:capability { setuid setgid fsetid dac_override };
+allow screen_domain self:capability { dac_override fsetid setgid setuid };
 allow screen_domain self:process signal_perms;
 allow screen_domain self:fd use;
 allow screen_domain self:fifo_file rw_fifo_file_perms;

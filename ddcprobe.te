@@ -18,7 +18,7 @@ role ddcprobe_roles types ddcprobe_t;
 # Local policy
 #
 
-allow ddcprobe_t self:capability { sys_rawio sys_admin };
+allow ddcprobe_t self:capability { sys_admin sys_rawio };
 allow ddcprobe_t self:process execmem;
 
 kernel_read_system_state(ddcprobe_t)

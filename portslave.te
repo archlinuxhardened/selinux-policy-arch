@@ -21,7 +21,7 @@ files_lock_file(portslave_lock_t)
 # Local policy
 #
 
-allow portslave_t self:capability { setuid setgid net_admin fsetid net_bind_service sys_tty_config };
+allow portslave_t self:capability { fsetid net_admin net_bind_service setgid setuid sys_tty_config };
 dontaudit portslave_t self:capability sys_admin;
 allow portslave_t self:process signal_perms;
 allow portslave_t self:process ~{ ptrace setcurrent setexec setfscreate setrlimit execmem execstack execheap };

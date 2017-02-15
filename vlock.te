@@ -17,7 +17,7 @@ role vlock_roles types vlock_t;
 # Local policy
 #
 
-dontaudit vlock_t self:capability { setuid setgid };
+dontaudit vlock_t self:capability { setgid setuid };
 allow vlock_t self:fd use;
 allow vlock_t self:fifo_file rw_fifo_file_perms;
 

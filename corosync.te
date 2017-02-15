@@ -33,9 +33,9 @@ files_pid_file(corosync_var_run_t)
 # Local policy
 #
 
-allow corosync_t self:capability { dac_override fowner setuid setgid sys_nice sys_admin sys_resource ipc_lock };
+allow corosync_t self:capability { dac_override fowner ipc_lock setgid setuid sys_admin sys_nice sys_resource };
 # for hearbeat
-allow corosync_t self:capability { net_raw chown };
+allow corosync_t self:capability { chown net_raw };
 allow corosync_t self:process { setpgid setrlimit setsched signal signull };
 allow corosync_t self:fifo_file rw_fifo_file_perms;
 allow corosync_t self:sem create_sem_perms;

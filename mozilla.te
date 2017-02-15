@@ -76,7 +76,7 @@ optional_policy(`
 # Local policy
 #
 
-allow mozilla_t self:capability { sys_nice setgid setuid };
+allow mozilla_t self:capability { setgid setuid sys_nice };
 allow mozilla_t self:process { sigkill signal setsched getsched setrlimit };
 allow mozilla_t self:fifo_file rw_fifo_file_perms;
 allow mozilla_t self:shm create_shm_perms;
@@ -601,7 +601,7 @@ optional_policy(`
 # Plugin config local policy
 #
 
-allow mozilla_plugin_config_t self:capability { dac_override dac_read_search sys_nice setuid setgid };
+allow mozilla_plugin_config_t self:capability { dac_override dac_read_search setgid setuid sys_nice };
 allow mozilla_plugin_config_t self:process { setsched signal_perms getsched };
 allow mozilla_plugin_config_t self:fifo_file rw_fifo_file_perms;
 allow mozilla_plugin_config_t self:unix_stream_socket create_stream_socket_perms;

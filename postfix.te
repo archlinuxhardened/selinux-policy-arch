@@ -108,7 +108,7 @@ mta_mailserver_delivery(postfix_virtual_t)
 # Common postfix domain local policy
 #
 
-allow postfix_domain self:capability { sys_nice sys_chroot };
+allow postfix_domain self:capability { sys_chroot sys_nice };
 dontaudit postfix_domain self:capability sys_tty_config;
 allow postfix_domain self:process { signal_perms setpgid setsched };
 allow postfix_domain self:fifo_file rw_fifo_file_perms;
@@ -171,7 +171,7 @@ optional_policy(`
 # Common postfix server domain local policy
 #
 
-allow postfix_server_domain self:capability { setuid setgid dac_override };
+allow postfix_server_domain self:capability { dac_override setgid setuid };
 
 allow postfix_server_domain postfix_master_t:unix_stream_socket { connectto rw_stream_socket_perms };
 
@@ -198,7 +198,7 @@ domain_use_interactive_fds(postfix_user_domains)
 # Master local policy
 #
 
-allow postfix_master_t self:capability { chown dac_override kill fowner setgid setuid sys_tty_config };
+allow postfix_master_t self:capability { chown dac_override fowner kill setgid setuid sys_tty_config };
 allow postfix_master_t self:capability2 block_suspend;
 allow postfix_master_t self:process setrlimit;
 allow postfix_master_t self:tcp_socket create_stream_socket_perms;
@@ -683,7 +683,7 @@ corecmd_exec_bin(postfix_qmgr_t)
 # Showq local policy
 #
 
-allow postfix_showq_t self:capability { setuid setgid };
+allow postfix_showq_t self:capability { setgid setuid };
 
 allow postfix_showq_t postfix_master_t:unix_stream_socket { accept rw_socket_perms };
 

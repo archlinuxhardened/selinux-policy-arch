@@ -23,7 +23,7 @@ files_pid_file(postfix_policyd_var_run_t)
 # Local policy
 #
 
-allow postfix_policyd_t self:capability { sys_resource sys_chroot setgid setuid };
+allow postfix_policyd_t self:capability { setgid setuid sys_chroot sys_resource };
 allow postfix_policyd_t self:process setrlimit;
 allow postfix_policyd_t self:tcp_socket { accept listen };
 

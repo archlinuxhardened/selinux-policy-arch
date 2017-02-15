@@ -32,7 +32,7 @@ files_pid_file(mrtg_var_run_t)
 # Local policy
 #
 
-allow mrtg_t self:capability { setgid setuid chown };
+allow mrtg_t self:capability { chown setgid setuid };
 dontaudit mrtg_t self:capability sys_tty_config;
 allow mrtg_t self:process signal_perms;
 allow mrtg_t self:fifo_file rw_fifo_file_perms;

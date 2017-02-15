@@ -145,7 +145,7 @@ optional_policy(`
 # Lspawn local policy
 #
 
-allow qmail_lspawn_t self:capability { setuid setgid };
+allow qmail_lspawn_t self:capability { setgid setuid };
 allow qmail_lspawn_t self:process signal_perms;
 allow qmail_lspawn_t self:fifo_file rw_fifo_file_perms;
 allow qmail_lspawn_t self:unix_stream_socket create_socket_perms;

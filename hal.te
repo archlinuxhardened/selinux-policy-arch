@@ -197,7 +197,7 @@ logging_send_syslog_msg(hald_t)
 
 miscfiles_read_hwdata(hald_t)
 
-modutils_domtrans_insmod(hald_t)
+modutils_domtrans(hald_t)
 modutils_read_module_deps(hald_t)
 
 seutil_read_config(hald_t)

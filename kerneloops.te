@@ -1,4 +1,4 @@
-policy_module(kerneloops, 1.6.0)
+policy_module(kerneloops, 1.6.1)
 
 ########################################
 #
@@ -28,6 +28,7 @@ manage_files_pattern(kerneloops_t, kerneloops_tmp_t, kerneloops_tmp_t)
 files_tmp_filetrans(kerneloops_t, kerneloops_tmp_t, file)
 
 kernel_read_ring_buffer(kerneloops_t)
+kernel_read_system_state(kerneloops_t)
 
 domain_use_interactive_fds(kerneloops_t)
 

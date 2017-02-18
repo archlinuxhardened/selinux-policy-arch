@@ -1,4 +1,4 @@
-policy_module(mon, 1.0.0)
+policy_module(mon, 1.0.1)
 
 ########################################
 #
@@ -136,7 +136,7 @@ fs_getattr_xattr_fs(mon_net_test_t)
 
 auth_use_nsswitch(mon_net_test_t)
 
-miscfiles_read_certs(mon_net_test_t)
+miscfiles_read_generic_certs(mon_net_test_t)
 miscfiles_read_localization(mon_net_test_t)
 
 netutils_domtrans_ping(mon_net_test_t)

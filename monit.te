@@ -1,4 +1,4 @@
-policy_module(monit, 1.0.0)
+policy_module(monit, 1.0.1)
 
 ########################################
 #
@@ -105,7 +105,7 @@ ifdef(`init_systemd',`
 	tunable_policy(`monit_startstop_services',`
 		init_get_all_units_status(monit_t)
 		init_get_system_status(monit_t)
-		init_restart_script_service(monit_t)
+		init_startstop_all_script_services(monit_t)
 		init_start_all_units(monit_t)
 		init_stop_all_units(monit_t)
 		init_stream_connect(monit_t)

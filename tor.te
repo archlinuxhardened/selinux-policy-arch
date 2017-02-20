@@ -1,4 +1,4 @@
-policy_module(tor, 1.13.0)
+policy_module(tor, 1.13.1)
 
 ########################################
 #
@@ -41,7 +41,7 @@ init_daemon_pid_file(tor_var_run_t, dir, "tor")
 # Local policy
 #
 
-allow tor_t self:capability { setgid setuid sys_tty_config };
+allow tor_t self:capability { chown dac_override dac_read_search fowner fsetid setgid setuid sys_tty_config };
 allow tor_t self:process signal;
 allow tor_t self:fifo_file rw_fifo_file_perms;
 allow tor_t self:unix_stream_socket { accept listen };
@@ -102,6 +102,8 @@ domain_use_interactive_fds(tor_t)
 
 files_read_etc_runtime_files(tor_t)
 files_read_usr_files(tor_t)
+
+fs_search_tmpfs(tor_t)
 
 auth_use_nsswitch(tor_t)
 

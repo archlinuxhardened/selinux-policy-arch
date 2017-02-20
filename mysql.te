@@ -1,4 +1,4 @@
-policy_module(mysql, 1.19.0)
+policy_module(mysql, 1.19.1)
 
 ########################################
 #
@@ -70,7 +70,7 @@ dontaudit mysqld_t self:capability sys_tty_config;
 allow mysqld_t self:process { setsched getsched setrlimit signal_perms rlimitinh };
 allow mysqld_t self:fifo_file rw_fifo_file_perms;
 allow mysqld_t self:shm create_shm_perms;
-allow mysqld_t self:unix_stream_socket { accept listen };
+allow mysqld_t self:unix_stream_socket { connectto accept listen };
 allow mysqld_t self:tcp_socket { accept listen };
 
 manage_dirs_pattern(mysqld_t, mysqld_db_t, mysqld_db_t)
@@ -101,6 +101,7 @@ files_pid_filetrans(mysqld_t, mysqld_var_run_t, { dir file sock_file })
 kernel_read_kernel_sysctls(mysqld_t)
 kernel_read_network_state(mysqld_t)
 kernel_read_system_state(mysqld_t)
+kernel_read_vm_sysctls(mysqld_t)
 
 corenet_all_recvfrom_unlabeled(mysqld_t)
 corenet_all_recvfrom_netlabel(mysqld_t)
@@ -165,7 +166,7 @@ allow mysqld_safe_t self:capability { chown dac_override fowner kill };
 allow mysqld_safe_t self:process { setsched getsched setrlimit };
 allow mysqld_safe_t self:fifo_file rw_fifo_file_perms;
 
-allow mysqld_safe_t mysqld_t:process signull;
+allow mysqld_safe_t mysqld_t:process { signull sigkill };
 
 read_lnk_files_pattern(mysqld_safe_t, mysqld_db_t, mysqld_db_t)
 manage_files_pattern(mysqld_safe_t, mysqld_db_t, mysqld_db_t)
@@ -190,7 +191,7 @@ kernel_read_kernel_sysctls(mysqld_safe_t)
 corecmd_exec_bin(mysqld_safe_t)
 corecmd_exec_shell(mysqld_safe_t)
 
-dev_list_sysfs(mysqld_safe_t)
+dev_read_sysfs(mysqld_safe_t)
 
 domain_read_all_domains_state(mysqld_safe_t)
 

@@ -1,4 +1,4 @@
-policy_module(fetchmail, 1.16.0)
+policy_module(fetchmail, 1.16.1)
 
 ########################################
 #
@@ -47,6 +47,7 @@ create_files_pattern(fetchmail_t, fetchmail_log_t, fetchmail_log_t)
 setattr_files_pattern(fetchmail_t, fetchmail_log_t, fetchmail_log_t)
 logging_log_filetrans(fetchmail_t, fetchmail_log_t, { dir file })
 
+allow fetchmail_t fetchmail_uidl_cache_t:dir manage_dir_perms;
 allow fetchmail_t fetchmail_uidl_cache_t:file manage_file_perms;
 mta_spool_filetrans(fetchmail_t, fetchmail_uidl_cache_t, file)
 

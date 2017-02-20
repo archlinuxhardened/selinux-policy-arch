@@ -161,17 +161,16 @@ interface(`vnstatd_manage_lib_files',`
 #
 interface(`vnstatd_admin',`
 	gen_require(`
-		type vnstatd_t, vnstatd_var_lib_t, vnstatd_initrc_exec_t;
-		type vnstatd_var_run_t;
+		type vnstatd_t, vnstatd_initrc_exec_t;
+		type vnstatd_pid_t, vnstatd_unit_t, vnstatd_var_lib_t;
 	')
 
-	allow $1 vnstatd_t:process { ptrace signal_perms };
-	ps_process_pattern($1, vnstatd_t)
+	admin_process_pattern($1, vnstatd_t)
 
-	init_startstop_service($1, $2, vnstatd_t, vnstatd_initrc_exec_t)
+	init_startstop_service($1, $2, vnstatd_t, vnstatd_initrc_exec_t, vnstatd_unit_t)
 
 	files_search_pids($1)
-	admin_pattern($1, vnstatd_var_run_t)
+	admin_pattern($1, vnstatd_pid_t)
 
 	files_list_var_lib($1)
 	admin_pattern($1, vnstatd_var_lib_t)

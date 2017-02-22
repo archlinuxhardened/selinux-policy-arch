@@ -7,6 +7,9 @@ policy_module(ntp, 1.16.0)
 
 attribute_role ntpd_roles;
 
+type ntp_conf_t;
+files_config_file(ntp_conf_t)
+
 type ntp_drift_t;
 files_type(ntp_drift_t)
 
@@ -18,14 +21,19 @@ role ntpd_roles types ntpd_t;
 type ntpd_initrc_exec_t;
 init_script_file(ntpd_initrc_exec_t)
 
-type ntp_conf_t;
-files_config_file(ntp_conf_t)
-
 type ntpd_key_t;
 files_type(ntpd_key_t)
 
+type ntpd_lock_t;
+files_lock_file(ntpd_lock_t)
+init_daemon_lock_file(ntpd_lock_t, file, "ntpdate")
+
 type ntpd_log_t;
 logging_log_file(ntpd_log_t)
+
+type ntpd_pid_t;
+typealias ntpd_pid_t alias ntpd_var_run_t;
+files_pid_file(ntpd_pid_t)
 
 type ntpd_tmp_t;
 files_tmp_file(ntpd_tmp_t)
@@ -36,9 +44,6 @@ files_tmpfs_file(ntpd_tmpfs_t)
 type ntpd_unit_t;
 init_unit_file(ntpd_unit_t)
 
-type ntpd_var_run_t;
-files_pid_file(ntpd_var_run_t)
-
 type ntpdate_exec_t;
 init_system_domain(ntpd_t, ntpdate_exec_t)
 
@@ -47,27 +52,33 @@ init_system_domain(ntpd_t, ntpdate_exec_t)
 # Local policy
 #
 
-allow ntpd_t self:capability { chown dac_override ipc_lock ipc_owner kill setgid setuid sys_chroot sys_nice sys_resource sys_time };
-dontaudit ntpd_t self:capability { fsetid net_admin sys_nice sys_tty_config };
+allow ntpd_t self:capability { chown dac_override kill setgid setuid sys_time ipc_lock ipc_owner sys_chroot sys_nice };
+dontaudit ntpd_t self:capability { net_admin sys_tty_config fsetid sys_resource };
 allow ntpd_t self:process { signal_perms getcap setcap setsched setrlimit };
 allow ntpd_t self:fifo_file rw_fifo_file_perms;
 allow ntpd_t self:shm create_shm_perms;
+allow ntpd_t self:socket create;
 allow ntpd_t self:tcp_socket { accept listen };
+
+allow ntpd_t ntp_conf_t:file read_file_perms;
 
 manage_dirs_pattern(ntpd_t, ntp_drift_t, ntp_drift_t)
 manage_files_pattern(ntpd_t, ntp_drift_t, ntp_drift_t)
 files_var_filetrans(ntpd_t, ntp_drift_t, file)
 
-allow ntpd_t ntp_conf_t:file read_file_perms;
-
 read_files_pattern(ntpd_t, ntpd_key_t, ntpd_key_t)
 read_lnk_files_pattern(ntpd_t, ntpd_key_t, ntpd_key_t)
+
+allow ntpd_t ntpd_lock_t:file write_file_perms;
 
 allow ntpd_t ntpd_log_t:dir setattr_dir_perms;
 append_files_pattern(ntpd_t, ntpd_log_t, ntpd_log_t)
 create_files_pattern(ntpd_t, ntpd_log_t, ntpd_log_t)
 setattr_files_pattern(ntpd_t, ntpd_log_t, ntpd_log_t)
 logging_log_filetrans(ntpd_t, ntpd_log_t, { file dir })
+
+manage_files_pattern(ntpd_t, ntpd_pid_t, ntpd_pid_t)
+files_pid_filetrans(ntpd_t, ntpd_pid_t, file)
 
 manage_dirs_pattern(ntpd_t, ntpd_tmp_t, ntpd_tmp_t)
 manage_files_pattern(ntpd_t, ntpd_tmp_t, ntpd_tmp_t)
@@ -76,9 +87,6 @@ files_tmp_filetrans(ntpd_t, ntpd_tmp_t, { file dir })
 manage_dirs_pattern(ntpd_t, ntpd_tmpfs_t, ntpd_tmpfs_t)
 manage_files_pattern(ntpd_t, ntpd_tmpfs_t, ntpd_tmpfs_t)
 fs_tmpfs_filetrans(ntpd_t, ntpd_tmpfs_t, { dir file })
-
-manage_files_pattern(ntpd_t, ntpd_var_run_t, ntpd_var_run_t)
-files_pid_filetrans(ntpd_t, ntpd_var_run_t, file)
 
 can_exec(ntpd_t, ntpd_exec_t)
 

@@ -381,11 +381,7 @@ auth_domtrans_chk_passwd(smbd_t)
 auth_domtrans_upd_passwd(smbd_t)
 auth_manage_cache(smbd_t)
 auth_write_login_records(smbd_t)
-
 auth_can_read_shadow_passwords(smbd_t)
-tunable_policy(`samba_read_shadow',`
-	auth_tunable_read_shadow(smbd_t)
-')
 
 init_rw_utmp(smbd_t)
 
@@ -444,6 +440,10 @@ tunable_policy(`samba_portmapper',`
 	corenet_tcp_bind_epmap_port(smbd_t)
 	corenet_tcp_bind_all_unreserved_ports(smbd_t)
 	corenet_tcp_sendrecv_all_ports(smbd_t)
+')
+
+tunable_policy(`samba_read_shadow',`
+	auth_tunable_read_shadow(smbd_t)
 ')
 
 tunable_policy(`samba_share_nfs',`
@@ -560,6 +560,8 @@ kernel_read_network_state(nmbd_t)
 kernel_read_software_raid_state(nmbd_t)
 kernel_read_system_state(nmbd_t)
 
+corecmd_search_bin(nmbd_t)
+
 corenet_all_recvfrom_unlabeled(nmbd_t)
 corenet_all_recvfrom_netlabel(nmbd_t)
 corenet_tcp_sendrecv_generic_if(nmbd_t)
@@ -576,7 +578,6 @@ corenet_sendrecv_smbd_client_packets(nmbd_t)
 corenet_tcp_connect_smbd_port(nmbd_t)
 corenet_tcp_sendrecv_smbd_port(nmbd_t)
 
-corecmd_search_bin(nmbd_t)
 dev_read_urand(nmbd_t)
 dev_read_sysfs(nmbd_t)
 dev_getattr_mtrr_dev(nmbd_t)

@@ -5,6 +5,7 @@
 /usr/lib/xen-[^/]*/bin/xenstored	--	gen_context(system_u:object_r:xenstored_exec_t,s0)
 /usr/lib/xen-[^/]*/bin/xl	--	gen_context(system_u:object_r:xm_exec_t,s0)
 /usr/lib/xen-[^/]*/bin/xm	--	gen_context(system_u:object_r:xm_exec_t,s0)
+/usr/lib/xen-[^/]*/xl --	gen_context(system_u:object_r:xm_exec_t,s0)
 
 /usr/sbin/blktapctrl	--	gen_context(system_u:object_r:blktap_exec_t,s0)
 /usr/sbin/evtchnd	--	gen_context(system_u:object_r:evtchnd_exec_t,s0)
@@ -20,6 +21,8 @@
 /var/lib/xend(/.*)?	gen_context(system_u:object_r:xend_var_lib_t,s0)
 /var/lib/xenstored(/.*)?	gen_context(system_u:object_r:xenstored_var_lib_t,s0)
 
+/var/lock/xl	--	gen_context(system_u:object_r:xen_lock_t,s0)
+
 /var/log/evtchnd\.log.*	--	gen_context(system_u:object_r:evtchnd_var_log_t,s0)
 /var/log/xen(/.*)?	gen_context(system_u:object_r:xend_var_log_t,s0)
 /var/log/xen-hotplug\.log.*	--	gen_context(system_u:object_r:xend_var_log_t,s0)
@@ -30,6 +33,7 @@
 /run/evtchnd\.pid	--	gen_context(system_u:object_r:evtchnd_var_run_t,s0)
 /run/xenconsoled\.pid	--	gen_context(system_u:object_r:xenconsoled_var_run_t,s0)
 /run/xend(/.*)?	gen_context(system_u:object_r:xend_var_run_t,s0)
+/run/xen		-d	gen_context(system_u:object_r:xend_var_run_t,s0)
 /run/xend\.pid	--	gen_context(system_u:object_r:xend_var_run_t,s0)
 /run/xenner(/.*)?	gen_context(system_u:object_r:xend_var_run_t,s0)
 /run/xenstore\.pid	--	gen_context(system_u:object_r:xenstored_var_run_t,s0)

@@ -259,6 +259,34 @@ interface(`xen_stream_connect',`
 
 ########################################
 ## <summary>
+##	Create in a xend_var_run_t directory
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <param name="private type">
+##      <summary>
+##      The type of the object to be created.
+##      </summary>
+## </param>
+## <param name="object">
+##      <summary>
+##      The object class of the object being created.
+##      </summary>
+## </param>
+#
+interface(`xen_pid_filetrans',`
+	gen_require(`
+		type xend_var_run_t;
+	')
+
+	filetrans_pattern($1, xend_var_run_t, $2, $3)
+')
+
+########################################
+## <summary>
 ##	Execute a domain transition to run xm.
 ## </summary>
 ## <param name="domain">

@@ -264,6 +264,44 @@ interface(`qemu_kill',`
 
 ########################################
 ## <summary>
+##	Connect to qemu with a unix
+##	domain stream socket.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`qemu_stream_connect',`
+	gen_require(`
+		type qemu_t, qemu_var_run_t;
+	')
+
+	files_search_pids($1)
+	stream_connect_pattern($1, qemu_var_run_t, qemu_var_run_t, qemu_t)
+')
+
+########################################
+## <summary>
+##	Unlink qemu socket
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`qemu_delete_pid_sock_file',`
+	gen_require(`
+		type qemu_var_run_t;
+	')
+
+	allow $1 qemu_var_run_t:sock_file unlink;
+')
+
+########################################
+## <summary>
 ##	Execute a domain transition to
 ##	run qemu unconfined.
 ## </summary>

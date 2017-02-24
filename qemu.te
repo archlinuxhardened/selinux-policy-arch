@@ -1,4 +1,4 @@
-policy_module(qemu, 1.9.0)
+policy_module(qemu, 1.9.1)
 
 ########################################
 #
@@ -25,10 +25,20 @@ role qemu_roles types qemu_t;
 type qemu_unit_t;
 init_unit_file(qemu_unit_t)
 
+type qemu_var_run_t;
+files_pid_file(qemu_var_run_t);
+
 ########################################
 #
 # Local policy
 #
+
+kernel_read_crypto_sysctls(qemu_t)
+
+dev_read_sysfs(qemu_t)
+
+allow qemu_t qemu_var_run_t:sock_file create_sock_file_perms;
+files_pid_filetrans(qemu_t, qemu_var_run_t, sock_file)
 
 tunable_policy(`qemu_full_network',`
 	corenet_udp_sendrecv_generic_if(qemu_t)
@@ -38,6 +48,16 @@ tunable_policy(`qemu_full_network',`
 	corenet_udp_bind_all_ports(qemu_t)
 	corenet_tcp_bind_all_ports(qemu_t)
 	corenet_tcp_connect_all_ports(qemu_t)
+')
+
+optional_policy(`
+	fs_manage_xenfs_files(qemu_t)
+
+	dev_rw_xen(qemu_t)
+
+	xen_stream_connect_xenstore(qemu_t)
+	xen_append_log(qemu_t)
+	xen_pid_filetrans(qemu_t, qemu_var_run_t, sock_file)
 ')
 
 optional_policy(`

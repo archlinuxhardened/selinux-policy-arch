@@ -2,6 +2,24 @@
 
 ########################################
 ## <summary>
+##	Allow a domain to talk to dkim via Unix domain socket
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`dkim_stream_connect',`
+	gen_require(`
+		type dkim_milter_data_t, dkim_milter_t;
+	')
+
+	stream_connect_pattern($1, dkim_milter_data_t, dkim_milter_data_t, dkim_milter_t)
+')
+
+########################################
+## <summary>
 ##	All of the rules required to
 ##	administrate an dkim environment.
 ## </summary>

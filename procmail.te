@@ -1,4 +1,4 @@
-policy_module(procmail, 1.14.0)
+policy_module(procmail, 1.14.1)
 
 ########################################
 #
@@ -93,6 +93,11 @@ tunable_policy(`use_samba_home_dirs',`
 optional_policy(`
 	clamav_domtrans_clamscan(procmail_t)
 	clamav_search_lib(procmail_t)
+')
+
+optional_policy(`
+	courier_read_config(procmail_t)
+	courier_stream_connect_authdaemon(procmail_t)
 ')
 
 optional_policy(`

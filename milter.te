@@ -1,4 +1,4 @@
-policy_module(milter, 1.6.0)
+policy_module(milter, 1.6.1)
 
 ########################################
 #
@@ -94,14 +94,22 @@ mta_read_config(regex_milter_t)
 #
 
 allow spamass_milter_t spamass_milter_state_t:dir search_dir_perms;
+allow spamass_milter_t self:process sigkill;
 
 kernel_read_system_state(spamass_milter_t)
+kernel_read_vm_overcommit_sysctl(spamass_milter_t)
 
 corecmd_exec_shell(spamass_milter_t)
+
+dev_read_sysfs(spamass_milter_t)
 
 files_search_var_lib(spamass_milter_t)
 
 mta_send_mail(spamass_milter_t)
+
+optional_policy(`
+	postfix_search_spool(spamass_milter_t)
+')
 
 optional_policy(`
 	spamassassin_domtrans_client(spamass_milter_t)

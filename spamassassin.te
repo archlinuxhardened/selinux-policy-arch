@@ -1,4 +1,4 @@
-policy_module(spamassassin, 2.10.0)
+policy_module(spamassassin, 2.10.1)
 
 ########################################
 #
@@ -46,6 +46,7 @@ type spamc_exec_t;
 typealias spamc_t alias { user_spamc_t staff_spamc_t sysadm_spamc_t };
 typealias spamc_t alias { auditadm_spamc_t secadm_spamc_t };
 userdom_user_application_domain(spamc_t, spamc_exec_t)
+role system_r types spamc_t;
 
 type spamc_tmp_t;
 typealias spamc_tmp_t alias { user_spamc_tmp_t staff_spamc_tmp_t sysadm_spamc_tmp_t };

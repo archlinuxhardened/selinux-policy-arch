@@ -1,4 +1,4 @@
-policy_module(postgrey, 1.11.0)
+policy_module(postgrey, 1.11.1)
 
 ########################################
 #
@@ -34,6 +34,8 @@ dontaudit postgrey_t self:capability sys_tty_config;
 allow postgrey_t self:process signal_perms;
 allow postgrey_t self:fifo_file create_fifo_file_perms;
 allow postgrey_t self:tcp_socket create_stream_socket_perms;
+allow postgrey_t self:netlink_route_socket r_netlink_socket_perms;
+allow postgrey_t self:udp_socket { connect connected_socket_perms };
 
 allow postgrey_t postgrey_etc_t:dir list_dir_perms;
 allow postgrey_t postgrey_etc_t:file read_file_perms;
@@ -55,7 +57,8 @@ files_pid_filetrans(postgrey_t, postgrey_var_run_t, { dir file sock_file })
 kernel_read_system_state(postgrey_t)
 kernel_read_kernel_sysctls(postgrey_t)
 
-corecmd_search_bin(postgrey_t)
+corecmd_read_bin_files(postgrey_t)
+corecmd_exec_bin(postgrey_t)
 
 corenet_all_recvfrom_unlabeled(postgrey_t)
 corenet_all_recvfrom_netlabel(postgrey_t)

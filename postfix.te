@@ -1,4 +1,4 @@
-policy_module(postfix, 1.17.0)
+policy_module(postfix, 1.17.1)
 
 ########################################
 #
@@ -172,6 +172,7 @@ optional_policy(`
 #
 
 allow postfix_server_domain self:capability { dac_override setgid setuid };
+allow postfix_master_t self:process getsched;
 
 allow postfix_server_domain postfix_master_t:unix_stream_socket { connectto rw_stream_socket_perms };
 
@@ -272,6 +273,7 @@ corenet_udp_sendrecv_generic_node(postfix_master_t)
 corenet_tcp_sendrecv_all_ports(postfix_master_t)
 corenet_udp_sendrecv_all_ports(postfix_master_t)
 corenet_tcp_bind_generic_node(postfix_master_t)
+corenet_udp_bind_generic_node(postfix_master_t)
 
 corenet_sendrecv_amavisd_send_server_packets(postfix_master_t)
 corenet_tcp_bind_amavisd_send_port(postfix_master_t)
@@ -302,6 +304,8 @@ mcs_file_read_all(postfix_master_t)
 
 term_dontaudit_search_ptys(postfix_master_t)
 
+hostname_exec(postfix_master_t)
+
 miscfiles_read_man_pages(postfix_master_t)
 
 seutil_sigchld_newrole(postfix_master_t)
@@ -326,6 +330,11 @@ optional_policy(`
 
 optional_policy(`
 	mailman_manage_data_files(postfix_master_t)
+	mailman_search_data(postfix_pipe_t)
+')
+
+optional_policy(`
+	milter_getattr_data_dir(postfix_master_t)
 ')
 
 optional_policy(`
@@ -371,6 +380,7 @@ allow postfix_cleanup_t self:process setrlimit;
 
 allow postfix_cleanup_t postfix_smtpd_t:tcp_socket rw_stream_socket_perms;
 allow postfix_cleanup_t postfix_smtpd_t:unix_stream_socket rw_socket_perms;
+allow postfix_cleanup_t postfix_smtpd_t:fd use;
 
 allow postfix_cleanup_t postfix_spool_maildrop_t:dir list_dir_perms;
 allow postfix_cleanup_t postfix_spool_maildrop_t:file read_file_perms;
@@ -395,6 +405,10 @@ corenet_tcp_connect_kismet_port(postfix_cleanup_t)
 corenet_tcp_sendrecv_kismet_port(postfix_cleanup_t)
 
 mta_read_aliases(postfix_cleanup_t)
+
+optional_policy(`
+	dkim_stream_connect(postfix_cleanup_t)
+')
 
 optional_policy(`
 	mailman_read_data_files(postfix_cleanup_t)
@@ -432,6 +446,7 @@ tunable_policy(`postfix_local_write_mail_spool',`
 optional_policy(`
 	clamav_search_lib(postfix_local_t)
 	clamav_exec_clamscan(postfix_local_t)
+	clamav_stream_connect(postfix_smtpd_t)
 ')
 
 optional_policy(`
@@ -549,6 +564,7 @@ allow postfix_pipe_t self:process setrlimit;
 
 write_sock_files_pattern(postfix_pipe_t, postfix_private_t, postfix_private_t)
 
+write_sock_files_pattern(postfix_pipe_t, postfix_public_t, postfix_public_t)
 write_fifo_files_pattern(postfix_pipe_t, postfix_public_t, postfix_public_t)
 
 rw_files_pattern(postfix_pipe_t, postfix_spool_t, postfix_spool_t)
@@ -567,6 +583,7 @@ optional_policy(`
 
 optional_policy(`
 	mailman_domtrans_queue(postfix_pipe_t)
+	mailman_domtrans(postfix_pipe_t)
 ')
 
 optional_policy(`
@@ -595,6 +612,9 @@ rw_fifo_files_pattern(postfix_postdrop_t, postfix_public_t, postfix_public_t)
 manage_files_pattern(postfix_postdrop_t, postfix_spool_maildrop_t, postfix_spool_maildrop_t)
 
 allow postfix_postdrop_t postfix_local_t:unix_stream_socket { read write };
+
+# for /var/spool/postfix/public/pickup
+stream_connect_pattern(postfix_postdrop_t, postfix_public_t, postfix_public_t, postfix_master_t)
 
 mcs_file_read_all(postfix_postdrop_t)
 mcs_file_write_all(postfix_postdrop_t)
@@ -652,6 +672,10 @@ optional_policy(`
 optional_policy(`
 	ppp_use_fds(postfix_postqueue_t)
 	ppp_sigchld(postfix_postqueue_t)
+')
+
+optional_policy(`
+	userdom_sigchld_all_users(postfix_postqueue_t)
 ')
 
 ########################################

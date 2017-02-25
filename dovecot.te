@@ -1,4 +1,4 @@
-policy_module(dovecot, 1.19.0)
+policy_module(dovecot, 1.19.1)
 
 ########################################
 #
@@ -92,7 +92,7 @@ miscfiles_read_localization(dovecot_domain)
 # Local policy
 #
 
-allow dovecot_t self:capability { chown dac_override dac_read_search fsetid kill setgid setuid sys_chroot };
+allow dovecot_t self:capability { chown dac_override dac_read_search fsetid kill setgid setuid sys_chroot sys_resource };
 dontaudit dovecot_t self:capability sys_tty_config;
 allow dovecot_t self:process { setrlimit signal_perms getcap setcap setsched };
 allow dovecot_t self:tcp_socket { accept listen };
@@ -159,6 +159,8 @@ files_search_spool(dovecot_t)
 files_dontaudit_list_default(dovecot_t)
 files_dontaudit_search_all_dirs(dovecot_t)
 files_search_all_mountpoints(dovecot_t)
+files_list_usr(dovecot_t)
+files_read_usr_files(dovecot_t)
 
 fs_getattr_all_fs(dovecot_t)
 fs_getattr_all_dirs(dovecot_t)
@@ -241,6 +243,8 @@ manage_files_pattern(dovecot_auth_t, dovecot_auth_tmp_t, dovecot_auth_tmp_t)
 files_tmp_filetrans(dovecot_auth_t, dovecot_auth_tmp_t, { file dir })
 
 allow dovecot_auth_t dovecot_var_run_t:dir list_dir_perms;
+allow dovecot_auth_t dovecot_var_run_t:file manage_file_perms;
+allow dovecot_auth_t dovecot_var_run_t:fifo_file write_fifo_file_perms;
 manage_sock_files_pattern(dovecot_auth_t, dovecot_var_run_t, dovecot_var_run_t)
 
 allow dovecot_auth_t dovecot_t:unix_stream_socket { connectto rw_stream_socket_perms };
@@ -249,6 +253,9 @@ files_search_pids(dovecot_auth_t)
 files_read_usr_files(dovecot_auth_t)
 files_read_var_lib_files(dovecot_auth_t)
 
+selinux_get_enforce_mode(dovecot_auth_t)
+selinux_get_fs_mount(dovecot_auth_t)
+
 auth_domtrans_chk_passwd(dovecot_auth_t)
 auth_use_nsswitch(dovecot_auth_t)
 
@@ -256,7 +263,7 @@ init_rw_utmp(dovecot_auth_t)
 
 logging_send_audit_msgs(dovecot_auth_t)
 
-seutil_dontaudit_search_config(dovecot_auth_t)
+seutil_search_default_contexts(dovecot_auth_t)
 
 sysnet_use_ldap(dovecot_auth_t)
 

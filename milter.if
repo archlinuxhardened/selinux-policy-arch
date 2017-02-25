@@ -97,3 +97,21 @@ interface(`milter_manage_spamass_state',`
 	manage_dirs_pattern($1, spamass_milter_state_t, spamass_milter_state_t)
 	manage_lnk_files_pattern($1, spamass_milter_state_t, spamass_milter_state_t)
 ')
+
+########################################
+## <summary>
+##	Get the attributes of the spamassissin milter data dir.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`milter_getattr_data_dir',`
+	gen_require(`
+		type spamass_milter_data_t;
+	')
+
+	allow $1 spamass_milter_data_t:dir getattr;
+')

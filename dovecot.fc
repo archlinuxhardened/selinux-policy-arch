@@ -15,10 +15,13 @@
 
 /etc/ssl/dovecot(/.*)?	gen_context(system_u:object_r:dovecot_cert_t,s0)
 
+/usr/lib/dovecot/anvil	--	gen_context(system_u:object_r:dovecot_exec_t,s0)
 /usr/lib/dovecot/auth	--	gen_context(system_u:object_r:dovecot_auth_exec_t,s0)
 /usr/lib/dovecot/deliver	--	gen_context(system_u:object_r:dovecot_deliver_exec_t,s0)
 /usr/lib/dovecot/dovecot-auth	--	gen_context(system_u:object_r:dovecot_auth_exec_t,s0)
 /usr/lib/dovecot/dovecot-lda	--	gen_context(system_u:object_r:dovecot_deliver_exec_t,s0)
+/usr/lib/dovecot/log	--	gen_context(system_u:object_r:dovecot_exec_t,s0)
+/usr/lib/dovecot/ssl-params	--	gen_context(system_u:object_r:dovecot_exec_t,s0)
 
 /usr/libexec/dovecot/auth	--	gen_context(system_u:object_r:dovecot_auth_exec_t,s0)
 /usr/libexec/dovecot/deliver	--	gen_context(system_u:object_r:dovecot_deliver_exec_t,s0)

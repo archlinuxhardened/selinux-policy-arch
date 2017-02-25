@@ -1,4 +1,4 @@
-policy_module(rpc, 1.19.1)
+policy_module(rpc, 1.19.2)
 
 ########################################
 #
@@ -161,6 +161,8 @@ kernel_read_sysctl(rpcd_t)
 kernel_rw_fs_sysctls(rpcd_t)
 kernel_dontaudit_getattr_core_if(rpcd_t)
 kernel_signal(rpcd_t)
+# for /proc/fs/lockd/nlm_end_grace
+kernel_write_proc_files(rpcd_t)
 
 corecmd_exec_bin(rpcd_t)
 

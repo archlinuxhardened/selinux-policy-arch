@@ -1,4 +1,4 @@
-policy_module(bind, 1.18.0)
+policy_module(bind, 1.18.1)
 
 ########################################
 #
@@ -112,6 +112,8 @@ allow named_t named_zone_t:dir list_dir_perms;
 read_files_pattern(named_t, named_zone_t, named_zone_t)
 read_lnk_files_pattern(named_t, named_zone_t, named_zone_t)
 
+kernel_read_net_sysctls(named_t)
+kernel_read_vm_sysctls(named_t)
 kernel_read_kernel_sysctls(named_t)
 kernel_read_vm_overcommit_sysctl(named_t)
 kernel_read_system_state(named_t)
@@ -152,6 +154,7 @@ dev_read_urand(named_t)
 domain_use_interactive_fds(named_t)
 
 files_read_etc_runtime_files(named_t)
+files_read_usr_files(named_t)
 
 fs_getattr_all_fs(named_t)
 fs_search_auto_mountpoints(named_t)
@@ -219,6 +222,7 @@ optional_policy(`
 #
 
 allow ndc_t self:capability { dac_override net_admin };
+allow ndc_t self:capability2 block_suspend;
 allow ndc_t self:process signal_perms;
 allow ndc_t self:fifo_file rw_fifo_file_perms;
 allow ndc_t self:unix_stream_socket { accept listen };

@@ -17,6 +17,7 @@ HOME_DIR/((www)|(web)|(public_html))(/.*)?/logs(/.*)?	gen_context(system_u:objec
 /etc/httpd/modules	gen_context(system_u:object_r:httpd_modules_t,s0)
 /etc/lighttpd(/.*)?	gen_context(system_u:object_r:httpd_config_t,s0)
 /etc/mock/koji(/.*)?	gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
+/etc/postfixadmin(/.*)?	gen_context(system_u:object_r:httpd_config_t,s0)
 /etc/z-push(/.*)?	gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
 
 /etc/rc\.d/init\.d/cherokee	--	gen_context(system_u:object_r:httpd_initrc_exec_t,s0)
@@ -56,6 +57,7 @@ HOME_DIR/((www)|(web)|(public_html))(/.*)?/logs(/.*)?	gen_context(system_u:objec
 /usr/libexec/httpd-ssl-pass-dialog	--	gen_context(system_u:object_r:httpd_passwd_exec_t,s0)
 
 /usr/sbin/apache(2)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+/usr/sbin/apache(2)?ctl	--	gen_context(system_u:object_r:httpd_exec_t,s0)
 /usr/sbin/apache-ssl(2)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
 /usr/sbin/cgi-wrapper	--	gen_context(system_u:object_r:httpd_exec_t,s0)
 /usr/sbin/cherokee	--	gen_context(system_u:object_r:httpd_exec_t,s0)
@@ -111,6 +113,7 @@ ifdef(`distro_suse',`
 /var/lib/cherokee(/.*)?	gen_context(system_u:object_r:httpd_var_lib_t,s0)
 /var/lib/dav(/.*)?	gen_context(system_u:object_r:httpd_var_lib_t,s0)
 /var/lib/php(/.*)?	gen_context(system_u:object_r:httpd_var_lib_t,s0)
+/var/lib/php5(/.*)?	gen_context(system_u:object_r:httpd_var_lib_t,s0)
 /var/lib/dokuwiki(/.*)?	gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
 /var/lib/drupal.*	gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
 /var/lib/glpi(/.*)?	gen_context(system_u:object_r:httpd_var_lib_t,s0)
@@ -125,6 +128,7 @@ ifdef(`distro_suse',`
 /var/lib/stickshift/.httpd.d(/.*)?	gen_context(system_u:object_r:httpd_config_t,s0)
 /var/lib/svn(/.*)?	gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
 /var/lib/trac(/.*)?	gen_context(system_u:object_r:httpd_sys_content_t,s0)
+/var/lib/wordpress(/.*)?	gen_context(system_u:object_r:httpd_var_lib_t,s0)
 /var/lib/z-push(/.*)?	gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
 
 /var/log/apache(2)?(/.*)?	gen_context(system_u:object_r:httpd_log_t,s0)

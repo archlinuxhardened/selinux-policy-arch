@@ -1,4 +1,4 @@
-policy_module(networkmanager, 1.20.1)
+policy_module(networkmanager, 1.20.2)
 
 ########################################
 #
@@ -235,6 +235,10 @@ optional_policy(`
 
 	optional_policy(`
 		xserver_dbus_chat_xdm(NetworkManager_t)
+	')
+
+	optional_policy(`
+		unconfined_dbus_send(NetworkManager_t)
 	')
 ')
 

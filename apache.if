@@ -1254,6 +1254,25 @@ interface(`apache_dontaudit_write_tmp_files',`
 
 ########################################
 ## <summary>
+##	Delete httpd_var_lib_t files
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain that can delete the files
+##	</summary>
+## </param>
+#
+interface(`apache_delete_lib_files',`
+	gen_require(`
+		type httpd_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	delete_files_pattern($1, httpd_var_lib_t, httpd_var_lib_t)
+')
+
+########################################
+## <summary>
 ##	Execute CGI in the specified domain.
 ## </summary>
 ##	<desc>

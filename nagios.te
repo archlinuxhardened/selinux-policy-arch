@@ -1,4 +1,4 @@
-policy_module(nagios, 1.15.0)
+policy_module(nagios, 1.15.1)
 
 ########################################
 #
@@ -216,11 +216,14 @@ optional_policy(`
 # Nrpe local policy
 #
 
-allow nrpe_t self:capability { setgid setuid };
+allow nrpe_t self:capability { dac_override setgid setuid };
 dontaudit nrpe_t self:capability { sys_resource sys_tty_config };
 allow nrpe_t self:process { setpgid signal_perms setsched setrlimit };
 allow nrpe_t self:fifo_file rw_fifo_file_perms;
 allow nrpe_t self:tcp_socket { accept listen };
+
+allow nrpe_t nagios_etc_t:dir list_dir_perms;
+allow nrpe_t nagios_etc_t:file read_file_perms;
 
 allow nrpe_t nagios_plugin_domain:process { signal sigkill };
 

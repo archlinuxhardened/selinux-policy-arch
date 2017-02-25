@@ -191,6 +191,25 @@ interface(`squid_use',`
 
 ########################################
 ## <summary>
+##	dontaudit statting tmpfs files
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain to not be audited
+##	</summary>
+## </param>
+## <rolecap/>
+#
+interface(`squid_dontaudit_read_tmpfs_files',`
+	gen_require(`
+		type squid_tmpfs_t;
+	')
+
+	dontaudit $1 squid_tmpfs_t:file getattr;
+')
+
+########################################
+## <summary>
 ##	All of the rules required to
 ##	administrate an squid environment.
 ## </summary>

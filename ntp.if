@@ -18,6 +18,24 @@ interface(`ntp_stub',`
 
 ########################################
 ## <summary>
+##	Read ntp.conf
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`ntp_read_config',`
+	gen_require(`
+		type ntp_conf_t;
+	')
+
+	allow $1 ntp_conf_t:file read_file_perms;
+')
+
+########################################
+## <summary>
 ##	Execute ntp server in the ntpd domain.
 ## </summary>
 ## <param name="domain">

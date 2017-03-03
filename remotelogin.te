@@ -48,7 +48,6 @@ auth_rw_login_records(remote_login_t)
 auth_rw_faillog(remote_login_t)
 
 corecmd_list_bin(remote_login_t)
-corecmd_read_bin_symlinks(remote_login_t)
 
 domain_read_all_entry_files(remote_login_t)
 

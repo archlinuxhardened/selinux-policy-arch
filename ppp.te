@@ -257,7 +257,6 @@ kernel_read_system_state(pptp_t)
 kernel_signal(pptp_t)
 
 corecmd_exec_shell(pptp_t)
-corecmd_read_bin_symlinks(pptp_t)
 
 corenet_all_recvfrom_unlabeled(pptp_t)
 corenet_all_recvfrom_netlabel(pptp_t)

@@ -27,6 +27,8 @@ allow rshd_t rshd_keytab_t:file read_file_perms;
 
 kernel_read_kernel_sysctls(rshd_t)
 
+corecmd_search_bin(rshd_t)
+
 corenet_all_recvfrom_unlabeled(rshd_t)
 corenet_all_recvfrom_netlabel(rshd_t)
 corenet_tcp_sendrecv_generic_if(rshd_t)
@@ -39,8 +41,6 @@ corenet_tcp_bind_rsh_port(rshd_t)
 corenet_tcp_bind_all_rpc_ports(rshd_t)
 corenet_tcp_connect_all_ports(rshd_t)
 corenet_tcp_connect_all_rpc_ports(rshd_t)
-
-corecmd_read_bin_symlinks(rshd_t)
 
 files_list_home(rshd_t)
 

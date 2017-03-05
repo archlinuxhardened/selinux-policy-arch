@@ -193,7 +193,7 @@ optional_policy(`
 
 optional_policy(`
 	tunable_policy(`pppd_can_insmod',`
-		modutils_domtrans_insmod(pppd_t)
+		modutils_domtrans(pppd_t)
 	')
 ')
 

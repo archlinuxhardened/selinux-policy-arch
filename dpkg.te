@@ -179,13 +179,13 @@ optional_policy(`
 ')
 
 optional_policy(`
-	modutils_run_depmod(dpkg_t, dpkg_roles)
-	modutils_run_insmod(dpkg_t, dpkg_roles)
+	modutils_run(dpkg_t, dpkg_roles)
 ')
 
 optional_policy(`
 	mta_send_mail(dpkg_t)
 ')
+
 optional_policy(`
 	usermanage_run_groupadd(dpkg_t, dpkg_roles)
 	usermanage_run_useradd(dpkg_t, dpkg_roles)
@@ -314,8 +314,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	modutils_run_depmod(dpkg_script_t, dpkg_roles)
-	modutils_run_insmod(dpkg_script_t, dpkg_roles)
+	modutils_run(dpkg_script_t, dpkg_roles)
 ')
 
 optional_policy(`

@@ -144,7 +144,7 @@ logging_send_syslog_msg(apmd_t)
 miscfiles_read_localization(apmd_t)
 miscfiles_read_hwdata(apmd_t)
 
-modutils_domtrans_insmod(apmd_t)
+modutils_domtrans(apmd_t)
 modutils_read_module_config(apmd_t)
 
 seutil_dontaudit_read_config(apmd_t)

@@ -280,7 +280,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	modutils_domtrans_insmod(NetworkManager_t)
+	modutils_domtrans(NetworkManager_t)
 ')
 
 optional_policy(`

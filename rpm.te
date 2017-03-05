@@ -350,8 +350,7 @@ logging_send_syslog_msg(rpm_script_t)
 
 miscfiles_read_localization(rpm_script_t)
 
-modutils_run_depmod(rpm_script_t, rpm_roles)
-modutils_run_insmod(rpm_script_t, rpm_roles)
+modutils_run(rpm_script_t, rpm_roles)
 
 seutil_run_loadpolicy(rpm_script_t, rpm_roles)
 seutil_run_setfiles(rpm_script_t, rpm_roles)

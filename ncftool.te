@@ -77,7 +77,7 @@ optional_policy(`
 
 optional_policy(`
 	modutils_read_module_config(ncftool_t)
-	modutils_run_insmod(ncftool_t, ncftool_roles)
+	modutils_run(ncftool_t, ncftool_roles)
 ')
 
 optional_policy(`

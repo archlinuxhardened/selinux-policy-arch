@@ -65,7 +65,6 @@ files_pid_filetrans(samhain_domain, samhain_var_run_t, file)
 kernel_getattr_core_if(samhain_domain)
 
 corecmd_list_bin(samhain_domain)
-corecmd_read_bin_symlinks(samhain_domain)
 
 dev_read_urand(samhain_domain)
 dev_dontaudit_read_rand(samhain_domain)

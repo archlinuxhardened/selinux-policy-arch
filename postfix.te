@@ -510,7 +510,6 @@ corenet_tcp_connect_all_ports(postfix_map_t)
 corenet_tcp_sendrecv_all_ports(postfix_map_t)
 
 corecmd_list_bin(postfix_map_t)
-corecmd_read_bin_symlinks(postfix_map_t)
 corecmd_read_bin_files(postfix_map_t)
 corecmd_read_bin_pipes(postfix_map_t)
 corecmd_read_bin_sockets(postfix_map_t)

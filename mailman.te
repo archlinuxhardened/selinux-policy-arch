@@ -241,7 +241,6 @@ kernel_read_system_state(mailman_queue_t)
 auth_domtrans_chk_passwd(mailman_queue_t)
 
 corecmd_read_bin_files(mailman_queue_t)
-corecmd_read_bin_symlinks(mailman_queue_t)
 corenet_sendrecv_innd_client_packets(mailman_queue_t)
 corenet_tcp_connect_innd_port(mailman_queue_t)
 corenet_tcp_sendrecv_innd_port(mailman_queue_t)

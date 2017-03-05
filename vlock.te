@@ -24,7 +24,6 @@ allow vlock_t self:fifo_file rw_fifo_file_perms;
 kernel_read_system_state(vlock_t)
 
 corecmd_list_bin(vlock_t)
-corecmd_read_bin_symlinks(vlock_t)
 
 domain_use_interactive_fds(vlock_t)
 

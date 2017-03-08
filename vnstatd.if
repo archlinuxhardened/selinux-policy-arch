@@ -56,6 +56,8 @@ interface(`vnstatd_run_vnstat',`
 ## </param>
 #
 interface(`vnstatd_domtrans',`
+	refpolicywarn(`$0($*) has been deprecated')
+
 	gen_require(`
 		type vnstatd_t, vnstatd_exec_t;
 	')
@@ -75,6 +77,8 @@ interface(`vnstatd_domtrans',`
 ## </param>
 #
 interface(`vnstatd_search_lib',`
+	refpolicywarn(`$0($*) has been deprecated')
+
 	gen_require(`
 		type vnstatd_var_lib_t;
 	')
@@ -95,6 +99,8 @@ interface(`vnstatd_search_lib',`
 ## </param>
 #
 interface(`vnstatd_manage_lib_dirs',`
+	refpolicywarn(`$0($*) has been deprecated')
+
 	gen_require(`
 		type vnstatd_var_lib_t;
 	')
@@ -114,6 +120,8 @@ interface(`vnstatd_manage_lib_dirs',`
 ## </param>
 #
 interface(`vnstatd_read_lib_files',`
+	refpolicywarn(`$0($*) has been deprecated')
+
 	gen_require(`
 		type vnstatd_var_lib_t;
 	')
@@ -134,6 +142,8 @@ interface(`vnstatd_read_lib_files',`
 ## </param>
 #
 interface(`vnstatd_manage_lib_files',`
+	refpolicywarn(`$0($*) has been deprecated')
+
 	gen_require(`
 		type vnstatd_var_lib_t;
 	')

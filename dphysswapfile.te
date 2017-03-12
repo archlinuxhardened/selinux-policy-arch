@@ -12,6 +12,9 @@ init_system_domain(dphysswapfile_t, dphysswapfile_exec_t)
 type dphysswapfile_conf_t;
 files_config_file(dphysswapfile_conf_t)
 
+type dphysswapfile_initrc_exec_t;
+init_script_file(dphysswapfile_initrc_exec_t)
+
 type dphysswapfile_swap_t;
 files_type(dphysswapfile_swap_t)
 
@@ -20,7 +23,7 @@ files_type(dphysswapfile_swap_t)
 # Policy
 #
 
-# sys_admin : for swapon
+# sys_admin : swapon
 allow dphysswapfile_t self:capability sys_admin;
 allow dphysswapfile_t self:fifo_file rw_fifo_file_perms;
 allow dphysswapfile_t self:unix_stream_socket { create connect };
@@ -36,6 +39,7 @@ kernel_read_system_state(dphysswapfile_t)
 corecmd_exec_bin(dphysswapfile_t)
 corecmd_exec_shell(dphysswapfile_t)
 
+# ignore ls -l /var/swap noise
 files_dontaudit_getattr_pid_dirs(dphysswapfile_t)
 files_read_etc_files(dphysswapfile_t)
 files_search_var(dphysswapfile_t)

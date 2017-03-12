@@ -21,7 +21,11 @@ init_unit_file(mandb_unit_t)
 # Local policy
 #
 
-allow mandb_t self:capability { setgid setuid };
+# dac_override : write /var/cache/man/*
+# fowner       : chmod /var/cache/man/*
+# chown        : lchown32 /var/cache/man/*
+# fsetid       : chmod /var/cache/man/*
+allow mandb_t self:capability { chown dac_override fowner fsetid setgid setuid };
 allow mandb_t self:process { setsched signal };
 allow mandb_t self:fifo_file rw_fifo_file_perms;
 allow mandb_t self:unix_stream_socket create_stream_socket_perms;
@@ -32,28 +36,20 @@ kernel_read_system_state(mandb_t)
 corecmd_exec_bin(mandb_t)
 corecmd_exec_shell(mandb_t)
 
-dev_search_sysfs(mandb_t)
-
 domain_use_interactive_fds(mandb_t)
 
+files_dontaudit_search_home(mandb_t)
 files_read_etc_files(mandb_t)
+# search /var/run/nscd/socket
+files_search_pids(mandb_t)
+
+fs_getattr_xattr_fs(mandb_t)
 
 miscfiles_manage_man_cache(mandb_t)
 miscfiles_read_man_pages(mandb_t)
 miscfiles_read_localization(mandb_t)
 
-ifdef(`distro_debian',`
-	optional_policy(`
-		apt_exec(mandb_t)
-		apt_read_db(mandb_t)
-	')
-
-	optional_policy(`
-		dpkg_exec(mandb_t)
-		dpkg_read_db(mandb_t)
-		userdom_dontaudit_search_user_home_dirs(mandb_t)
-	')
-')
+userdom_use_inherited_user_terminals(mandb_t)
 
 optional_policy(`
 	cron_system_entry(mandb_t, mandb_exec_t)

@@ -88,6 +88,7 @@ dontaudit monit_t self:capability net_admin;
 allow monit_t self:fifo_file rw_fifo_file_perms;
 allow monit_t self:rawip_socket connected_socket_perms;
 allow monit_t self:tcp_socket server_stream_socket_perms;
+allow monit_t self:unix_dgram_socket { connect create };
 
 allow monit_t monit_log_t:file { create read_file_perms append_file_perms };
 logging_log_filetrans(monit_t, monit_log_t, file)
@@ -110,6 +111,8 @@ domain_getpgid_all_domains(monit_t)
 domain_read_all_domains_state(monit_t)
 
 files_read_all_pids(monit_t)
+
+logging_send_syslog_msg(monit_t)
 
 ifdef(`hide_broken_symptoms',`
 	# kernel bug: https://github.com/SELinuxProject/selinux-kernel/issues/6

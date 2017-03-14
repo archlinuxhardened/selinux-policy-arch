@@ -58,10 +58,10 @@ interface(`monit_run_cli',`
 interface(`monit_reload',`
 	gen_require(`
 		class service { reload status };
-		type monit_initrc_exec_t;
+		type monit_initrc_exec_t, monit_unit_t;
 	')
 
-	allow $1 monit_initrc_exec_t:service { reload status };
+	allow $1 { monit_initrc_exec_t monit_unit_t }:service { reload status };
 ')
 
 ########################################
@@ -77,10 +77,10 @@ interface(`monit_reload',`
 interface(`monit_startstop_service',`
 	gen_require(`
 		class service { start status stop };
-		type monit_initrc_exec_t;
+		type monit_initrc_exec_t, monit_unit_t;
 	')
 
-	allow $1 monit_initrc_exec_t:service { start status stop };
+	allow $1 { monit_initrc_exec_t monit_unit_t }:service { start status stop };
 ')
 
 ########################################

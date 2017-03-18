@@ -91,7 +91,7 @@ miscfiles_read_localization(vnstat_t)
 
 userdom_dontaudit_search_user_home_dirs(vnstat_t)
 
-userdom_use_user_terminals(vnstat_t)
+userdom_use_inherited_user_terminals(vnstat_t)
 
 optional_policy(`
 	cron_system_entry(vnstat_t, vnstat_exec_t)

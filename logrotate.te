@@ -195,6 +195,11 @@ optional_policy(`
 ')
 
 optional_policy(`
+	# reload after log rotation
+	monit_reload(logrotate_t)
+')
+
+optional_policy(`
 	munin_read_config(logrotate_t)
 	munin_stream_connect(logrotate_t)
 	munin_search_lib(logrotate_t)

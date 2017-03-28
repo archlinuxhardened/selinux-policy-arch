@@ -60,6 +60,25 @@ interface(`xfs_exec',`
 
 ########################################
 ## <summary>
+##	Create xfs temporary dirs
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`xfs_create_tmp_dirs',`
+	gen_require(`
+		type xfs_tmp_t;
+	')
+
+	files_search_tmp($1)
+	allow $1 xfs_tmp_t:dir create;
+')
+
+########################################
+## <summary>
 ##	All of the rules required to
 ##	administrate an xfs environment.
 ## </summary>

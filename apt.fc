@@ -14,6 +14,7 @@ ifndef(`distro_redhat',`
 
 /var/lib/apt(/.*)?	gen_context(system_u:object_r:apt_var_lib_t,s0)
 /var/lib/aptitude(/.*)?	gen_context(system_u:object_r:apt_var_lib_t,s0)
+/var/lib/apt-xapian-inde(x)(/.*)?	gen_context(system_u:object_r:apt_var_lib_t,s0)
 
 /var/lock/aptitude	gen_context(system_u:object_r:apt_lock_t,s0)
 

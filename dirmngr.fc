@@ -7,6 +7,7 @@
 /var/log/dirmngr(/.*)?	gen_context(system_u:object_r:dirmngr_log_t,s0)
 
 /var/lib/dirmngr(/.*)?	gen_context(system_u:object_r:dirmngr_var_lib_t,s0)
+/var/cache/dirmngr(/.*)?	gen_context(system_u:object_r:dirmngr_var_lib_t,s0)
 
 /run/dirmngr\.pid	--	gen_context(system_u:object_r:dirmngr_var_run_t,s0)
 

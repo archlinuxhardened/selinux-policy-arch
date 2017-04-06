@@ -1,4 +1,4 @@
-policy_module(apache, 2.12.3)
+policy_module(apache, 2.12.4)
 
 ########################################
 #
@@ -542,6 +542,10 @@ ifdef(`TODO',`
 
 ifdef(`hide_broken_symptoms',`
 	libs_exec_lib_files(httpd_t)
+')
+
+ifdef(`init_systemd', `
+	systemd_use_passwd_agent(httpd_t)
 ')
 
 tunable_policy(`allow_httpd_anon_write',`

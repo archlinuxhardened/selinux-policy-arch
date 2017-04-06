@@ -1,4 +1,4 @@
-policy_module(dpkg, 1.11.3)
+policy_module(dpkg, 1.11.4)
 
 ########################################
 #
@@ -229,7 +229,6 @@ kernel_read_system_state(dpkg_script_t)
 
 corecmd_exec_all_executables(dpkg_script_t)
 
-dev_manage_null_service(dpkg_script_t)
 dev_list_sysfs(dpkg_script_t)
 # Use named file transition to fix this
 # dev_manage_generic_blk_files(dpkg_script_t)
@@ -276,16 +275,10 @@ files_manage_non_auth_files(dpkg_script_t)
 auth_manage_shadow(dpkg_script_t)
 
 init_all_labeled_script_domtrans(dpkg_script_t)
-init_get_generic_units_status(dpkg_script_t)
 init_use_script_fds(dpkg_script_t)
-init_get_system_status(dpkg_script_t)
-init_start_generic_units(dpkg_script_t)
-init_stop_generic_units(dpkg_script_t)
-init_reload(dpkg_script_t)
-init_stop_system(dpkg_script_t)
-init_telinit(dpkg_script_t)
 init_manage_script_service(dpkg_script_t)
 init_startstop_all_script_services(dpkg_script_t)
+init_admin(dpkg_script_t)
 
 libs_exec_ld_so(dpkg_script_t)
 libs_exec_lib_files(dpkg_script_t)

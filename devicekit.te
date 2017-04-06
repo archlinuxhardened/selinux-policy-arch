@@ -1,4 +1,4 @@
-policy_module(devicekit, 1.6.2)
+policy_module(devicekit, 1.6.3)
 
 ########################################
 #
@@ -261,6 +261,7 @@ auth_use_nsswitch(devicekit_power_t)
 
 init_all_labeled_script_domtrans(devicekit_power_t)
 init_read_utmp(devicekit_power_t)
+init_search_run(devicekit_power_t)
 
 miscfiles_read_localization(devicekit_power_t)
 

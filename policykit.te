@@ -1,4 +1,4 @@
-policy_module(policykit, 1.6.0)
+policy_module(policykit, 1.6.1)
 
 ########################################
 #
@@ -129,6 +129,17 @@ optional_policy(`
 optional_policy(`
 	kerberos_manage_host_rcache(policykit_t)
 	kerberos_tmp_filetrans_host_rcache(policykit_t, file, "host_0")
+')
+
+optional_policy(`
+	# for /run/systemd/machines
+	systemd_read_machines(policykit_t)
+
+	# for /run/systemd/seats/seat*
+	systemd_read_logind_sessions_files(policykit_t)
+
+	# for /run/systemd/users/*
+	systemd_read_logind_pids(policykit_t)
 ')
 
 ########################################

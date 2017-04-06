@@ -88,6 +88,10 @@ template(`dbus_role_template',`
 	ifdef(`hide_broken_symptoms',`
 		dontaudit $3 $1_dbusd_t:netlink_selinux_socket { read write };
 	')
+
+	optional_policy(`
+		systemd_read_logind_pids($1_dbusd_t)
+	')
 ')
 
 #######################################

@@ -15,6 +15,8 @@
 
 /usr/lib/systemd/ntp-units\.d/.*  	--	gen_context(system_u:object_r:ntpd_unit_t,s0)
 /usr/lib/systemd/system/ntpd.*\.service	--	gen_context(system_u:object_r:ntpd_unit_t,s0)
+/usr/lib/systemd/systemd-timedated	--	gen_context(system_u:object_r:ntpd_exec_t,s0)
+/usr/lib/systemd/systemd-timesyncd	--	gen_context(system_u:object_r:ntpd_exec_t,s0)
 
 /usr/sbin/ntpd				--	gen_context(system_u:object_r:ntpd_exec_t,s0)
 /usr/sbin/ntpdate			--	gen_context(system_u:object_r:ntpdate_exec_t,s0)
@@ -23,6 +25,7 @@
 /var/db/ntp-kod				--	gen_context(system_u:object_r:ntp_drift_t,s0)
 /var/lib/ntp(/.*)?				gen_context(system_u:object_r:ntp_drift_t,s0)
 /var/lib/sntp-kod(/.*)?				gen_context(system_u:object_r:ntp_drift_t,s0)
+/var/lib/systemd/clock			--	gen_context(system_u:object_r:ntp_drift_t,s0)
 
 /var/lock/ntpdate                       --      gen_context(system_u:object_r:ntpd_lock_t,s0)
 

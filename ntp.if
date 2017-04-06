@@ -223,4 +223,13 @@ interface(`ntp_admin',`
 	admin_pattern($1, ntpd_pid_t)
 
 	ntp_run($1, $2)
+
+	ifdef(`init_systemd',`
+		gen_require(`
+			class dbus send_msg;
+		')
+
+		allow $1 ntpd_t:dbus send_msg;
+		allow ntpd_t $1:dbus send_msg;
+	')
 ')

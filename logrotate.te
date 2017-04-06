@@ -1,4 +1,4 @@
-policy_module(logrotate, 1.18.1)
+policy_module(logrotate, 1.18.2)
 
 ########################################
 #
@@ -37,7 +37,7 @@ role system_r types logrotate_mail_t;
 #
 
 allow logrotate_t self:capability { chown dac_override dac_read_search fowner fsetid kill setgid setuid sys_nice sys_resource };
-allow logrotate_t self:process ~{ ptrace setcurrent setexec setrlimit execmem execstack execheap };
+allow logrotate_t self:process ~{ ptrace setcurrent setexec execmem execstack execheap };
 allow logrotate_t self:fd use;
 allow logrotate_t self:key manage_key_perms;
 allow logrotate_t self:fifo_file rw_fifo_file_perms;
@@ -102,6 +102,11 @@ auth_manage_login_records(logrotate_t)
 auth_use_nsswitch(logrotate_t)
 
 init_all_labeled_script_domtrans(logrotate_t)
+init_get_generic_units_status(logrotate_t)
+init_get_all_units_status(logrotate_t)
+init_dbus_chat(logrotate_t)
+init_stream_connect(logrotate_t)
+init_manage_all_units(logrotate_t)
 
 logging_manage_all_logs(logrotate_t)
 logging_send_syslog_msg(logrotate_t)
@@ -170,6 +175,11 @@ optional_policy(`
 
 optional_policy(`
 	cups_domtrans(logrotate_t)
+')
+
+optional_policy(`
+	dbus_system_bus_client(logrotate_t)
+	init_write_pid_socket(logrotate_t)
 ')
 
 optional_policy(`

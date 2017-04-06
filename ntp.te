@@ -1,4 +1,4 @@
-policy_module(ntp, 1.16.2)
+policy_module(ntp, 1.16.3)
 
 ########################################
 #
@@ -141,6 +141,29 @@ miscfiles_read_localization(ntpd_t)
 
 userdom_dontaudit_use_unpriv_user_fds(ntpd_t)
 userdom_list_user_home_dirs(ntpd_t)
+
+ifdef(`init_systemd',`
+	dbus_system_bus_client(ntpd_t)
+	dbus_connect_system_bus(ntpd_t)
+	init_dbus_chat(ntpd_t)
+	init_get_system_status(ntpd_t)
+	allow ntpd_t self:capability { fowner setpcap };
+	init_reload(ntpd_t)
+
+	# for /var/lib/systemd/clock
+	init_list_var_lib_dirs(ntpd_t)
+
+	# for /run/systemd/netif/links
+	init_list_pids(ntpd_t)
+
+	optional_policy(`
+		unconfined_dbus_send(ntpd_t)
+	')
+')
+
+optional_policy(`
+	clock_read_adjtime(ntpd_t)
+')
 
 optional_policy(`
 	cron_system_entry(ntpd_t, ntpdate_exec_t)

@@ -158,6 +158,7 @@ corenet_tcp_connect_speech_port(mozilla_t)
 corenet_tcp_sendrecv_speech_port(mozilla_t)
 
 dev_getattr_sysfs_dirs(mozilla_t)
+dev_read_sysfs(mozilla_t)
 dev_read_sound(mozilla_t)
 dev_read_rand(mozilla_t)
 dev_read_urand(mozilla_t)

@@ -111,7 +111,7 @@ userdom_user_tmpfs_file(evolution_webcal_tmpfs_t)
 #
 
 allow evolution_t self:capability { setgid setuid sys_nice };
-allow evolution_t self:process { signal getsched setsched };
+allow evolution_t self:process { execmem getsched setsched signal };
 allow evolution_t self:fifo_file rw_file_perms;
 
 allow evolution_t evolution_home_t:dir manage_dir_perms;
@@ -185,7 +185,9 @@ domain_dontaudit_read_all_domains_state(evolution_t)
 files_read_usr_files(evolution_t)
 
 fs_dontaudit_getattr_xattr_fs(evolution_t)
+fs_getattr_tmpfs(evolution_t)
 fs_search_auto_mountpoints(evolution_t)
+fs_search_cgroup_dirs(evolution_t)
 
 auth_use_nsswitch(evolution_t)
 

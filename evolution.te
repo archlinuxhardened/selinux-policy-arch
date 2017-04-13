@@ -312,6 +312,8 @@ stream_connect_pattern(evolution_alarm_t, evolution_orbit_tmp_t, evolution_orbit
 stream_connect_pattern(evolution_alarm_t, evolution_exchange_orbit_tmp_t, evolution_exchange_orbit_tmp_t, evolution_exchange_t)
 stream_connect_pattern(evolution_alarm_t, evolution_server_orbit_tmp_t, evolution_server_orbit_tmp_t, evolution_server_t)
 
+kernel_dontaudit_read_system_state(evolution_alarm_t)
+
 dev_read_urand(evolution_alarm_t)
 
 files_read_usr_files(evolution_alarm_t)

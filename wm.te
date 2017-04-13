@@ -68,6 +68,8 @@ miscfiles_read_fonts(wm_domain)
 miscfiles_read_generic_certs(wm_domain)
 miscfiles_read_localization(wm_domain)
 
+networkmanager_read_etc_files(wm_domain)
+
 udev_read_pid_files(wm_domain)
 
 # this is needed by gnome-shell

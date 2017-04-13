@@ -172,6 +172,26 @@ interface(`networkmanager_signal',`
 ')
 
 ########################################
+### <summary>
+###	Read networkmanager etc files.
+### </summary>
+### <param name="domain">
+###	<summary>
+###	Domain allowed access.
+###	</summary>
+### </param>
+##
+interface(`networkmanager_read_etc_files',`
+	gen_require(`
+		type NetworkManager_etc_t;
+	')
+
+	files_search_etc($1)
+	list_dirs_pattern($1, NetworkManager_etc_t, NetworkManager_etc_t)
+	read_files_pattern($1, NetworkManager_etc_t, NetworkManager_etc_t)
+')
+
+########################################
 ## <summary>
 ##	Create, read, and write
 ##	networkmanager library files.

@@ -6,9 +6,14 @@
 /etc/rc\.d/init\.d/pand	--	gen_context(system_u:object_r:bluetooth_initrc_exec_t,s0)
 
 /usr/bin/blue.*pin	--	gen_context(system_u:object_r:bluetooth_helper_exec_t,s0)
+/usr/bin/bluetoothd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 /usr/bin/dund	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/bin/hciattach	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/bin/hcid	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/bin/hid2hci	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 /usr/bin/hidd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 /usr/bin/rfcomm	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/bin/sdpd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 
 # Systemd unit file
 /usr/lib/systemd/system/[^/]*bluetooth.* -- gen_context(system_u:object_r:bluetooth_unit_t,s0)

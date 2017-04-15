@@ -37,9 +37,21 @@ HOME_DIR/((www)|(web)|(public_html))(/.*)?/logs(/.*)?	gen_context(system_u:objec
 
 /usr/.*\.cgi	--	gen_context(system_u:object_r:httpd_sys_script_exec_t,s0)
 
+/usr/bin/apache(2)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+/usr/bin/apache(2)?ctl	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+/usr/bin/apache-ssl(2)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+/usr/bin/cgi-wrapper	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+/usr/bin/cherokee	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+/usr/bin/hiawatha	--	gen_context(system_u:object_r:httpd_exec_t,s0)
 /usr/bin/htsslpass	--	gen_context(system_u:object_r:httpd_helper_exec_t,s0)
+/usr/bin/httpd\.event	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+/usr/bin/httpd(\.worker)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+/usr/bin/lighttpd	--	gen_context(system_u:object_r:httpd_exec_t,s0)
 /usr/bin/mongrel_rails	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+/usr/bin/rotatelogs	--	gen_context(system_u:object_r:httpd_rotatelogs_exec_t,s0)
 /usr/bin/ssi-cgi	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+/usr/bin/suexec	--	gen_context(system_u:object_r:httpd_suexec_exec_t,s0)
+/usr/bin/wigwam	--	gen_context(system_u:object_r:httpd_exec_t,s0)
 
 /usr/lib/apache-ssl/.+	--	gen_context(system_u:object_r:httpd_exec_t,s0)
 /usr/lib/apache(/.*)?	gen_context(system_u:object_r:httpd_modules_t,s0)

@@ -9,10 +9,14 @@
 /etc/samba(/.*)?	gen_context(system_u:object_r:samba_etc_t,s0)
 
 /usr/bin/net	--	gen_context(system_u:object_r:samba_net_exec_t,s0)
+/usr/bin/nmbd	--	gen_context(system_u:object_r:nmbd_exec_t,s0)
 /usr/bin/ntlm_auth	--	gen_context(system_u:object_r:winbind_helper_exec_t,s0)
 /usr/bin/smbcontrol	--	gen_context(system_u:object_r:smbcontrol_exec_t,s0)
+/usr/bin/smbd	--	gen_context(system_u:object_r:smbd_exec_t,s0)
 /usr/bin/smbmount	--	gen_context(system_u:object_r:smbmount_exec_t,s0)
 /usr/bin/smbmnt	--	gen_context(system_u:object_r:smbmount_exec_t,s0)
+/usr/bin/swat	--	gen_context(system_u:object_r:swat_exec_t,s0)
+/usr/bin/winbindd	--	gen_context(system_u:object_r:winbind_exec_t,s0)
 
 /usr/lib/systemd/system/smb.*\.service -- gen_context(system_u:object_r:samba_unit_t,s0)
 

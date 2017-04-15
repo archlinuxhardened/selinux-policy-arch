@@ -27,6 +27,9 @@
 
 /usr/afs/logs(/.*)?	gen_context(system_u:object_r:afs_logfile_t,s0)
 
+/usr/bin/afsd		--	gen_context(system_u:object_r:afs_exec_t,s0)
+/usr/bin/bosserver	--	gen_context(system_u:object_r:afs_bosserver_exec_t,s0)
+
 /usr/libexec/openafs/dafileserver --	gen_context(system_u:object_r:afs_fsserver_exec_t,s0)
 /usr/libexec/openafs/dasalvager	--	gen_context(system_u:object_r:afs_fsserver_exec_t,s0)
 /usr/libexec/openafs/davolserver --	gen_context(system_u:object_r:afs_fsserver_exec_t,s0)

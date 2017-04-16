@@ -223,22 +223,21 @@ interface(`wm_application_domain',`
 ')
 
 ########################################
-### <summary>
-###	Write wm unnamed pipes.
-### </summary>
+## <summary>
+##	Write wm unnamed pipes.
+## </summary>
 ## <param name="role_prefix">
-###	<summary>
-###	The prefix of the user domain (e.g., user
-###	is the prefix for user_t).
-###	</summary>
-### </param>
-### <param name="domain">
-###	<summary>
-###	Domain allowed access.
-###	</summary>
-### </param>
-### </param>
-##
+##	<summary>
+##	The prefix of the user domain (e.g., user
+##	is the prefix for user_t).
+##	</summary>
+## </param>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
 interface(`wm_write_pipes',`
 	gen_require(`
 		type $1_t;

@@ -172,15 +172,15 @@ interface(`networkmanager_signal',`
 ')
 
 ########################################
-### <summary>
-###	Read networkmanager etc files.
-### </summary>
-### <param name="domain">
-###	<summary>
-###	Domain allowed access.
-###	</summary>
-### </param>
-##
+## <summary>
+##	Read networkmanager etc files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
 interface(`networkmanager_read_etc_files',`
 	gen_require(`
 		type NetworkManager_etc_t;

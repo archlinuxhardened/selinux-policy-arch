@@ -1,4 +1,4 @@
-policy_module(brctl, 1.7.0)
+policy_module(brctl, 1.7.1)
 
 ########################################
 #
@@ -29,6 +29,7 @@ kernel_read_sysctl(brctl_t)
 
 corenet_rw_tun_tap_dev(brctl_t)
 
+dev_create_sysfs_files(brctl_t)
 dev_rw_sysfs(brctl_t)
 dev_write_sysfs_dirs(brctl_t)
 

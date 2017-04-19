@@ -62,6 +62,25 @@ interface(`dpkg_domtrans_script',`
 
 ########################################
 ## <summary>
+##	access dpkg_script fifos
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access
+##	</summary>
+## </param>
+#
+interface(`dpkg_script_rw_pipes',`
+	gen_require(`
+		type dpkg_script_t;
+	')
+
+	allow $1 dpkg_script_t:fd use;
+	allow $1 dpkg_script_t:fifo_file rw_file_perms;
+')
+
+########################################
+## <summary>
 ##	Execute dpkg programs in the dpkg domain.
 ## </summary>
 ## <param name="domain">
@@ -241,4 +260,24 @@ interface(`dpkg_lock_db',`
 	files_search_var_lib($1)
 	allow $1 dpkg_var_lib_t:dir list_dir_perms;
 	allow $1 dpkg_lock_t:file manage_file_perms;
+')
+
+########################################
+## <summary>
+##	manage dpkg_script_tmp_t files and dirs
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`dpkg_manage_script_tmp_files',`
+	gen_require(`
+		type dpkg_script_tmp_t;
+	')
+
+	files_search_tmp($1)
+	allow $1 dpkg_script_tmp_t:dir manage_dir_perms;
+	allow $1 dpkg_script_tmp_t:file manage_file_perms;
 ')

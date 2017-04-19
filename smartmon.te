@@ -1,4 +1,4 @@
-policy_module(smartmon, 1.14.0)
+policy_module(smartmon, 1.14.1)
 
 ########################################
 #
@@ -69,6 +69,7 @@ files_exec_etc_files(fsdaemon_t)
 files_read_etc_files(fsdaemon_t)
 files_read_etc_runtime_files(fsdaemon_t)
 files_read_usr_files(fsdaemon_t)
+files_search_var_lib(fsdaemon_t)
 
 fs_getattr_all_fs(fsdaemon_t)
 fs_search_auto_mountpoints(fsdaemon_t)

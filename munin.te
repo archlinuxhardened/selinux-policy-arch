@@ -1,4 +1,4 @@
-policy_module(munin, 1.12.0)
+policy_module(munin, 1.12.1)
 
 ########################################
 #
@@ -385,6 +385,7 @@ optional_policy(`
 # System local policy
 #
 
+allow system_munin_plugin_t self:capability net_admin;
 allow system_munin_plugin_t self:udp_socket create_socket_perms;
 
 rw_files_pattern(system_munin_plugin_t, munin_var_lib_t, munin_var_lib_t)
@@ -398,6 +399,8 @@ dev_read_sysfs(system_munin_plugin_t)
 dev_read_urand(system_munin_plugin_t)
 
 domain_read_all_domains_state(system_munin_plugin_t)
+
+files_read_usr_files(system_munin_plugin_t)
 
 init_read_utmp(system_munin_plugin_t)
 

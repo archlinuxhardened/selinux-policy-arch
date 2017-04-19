@@ -1,4 +1,4 @@
-policy_module(rtkit, 1.5.0)
+policy_module(rtkit, 1.5.1)
 
 ########################################
 #
@@ -30,11 +30,15 @@ domain_read_all_domains_state(rtkit_daemon_t)
 
 fs_rw_anon_inodefs_files(rtkit_daemon_t)
 
+selinux_getattr_fs(rtkit_daemon_t)
+
 auth_use_nsswitch(rtkit_daemon_t)
 
 logging_send_syslog_msg(rtkit_daemon_t)
 
 miscfiles_read_localization(rtkit_daemon_t)
+
+seutil_search_default_contexts(rtkit_daemon_t)
 
 optional_policy(`
 	dbus_system_domain(rtkit_daemon_t, rtkit_daemon_exec_t)

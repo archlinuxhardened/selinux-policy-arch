@@ -1,4 +1,4 @@
-policy_module(dpkg, 1.11.4)
+policy_module(dpkg, 1.11.5)
 
 ########################################
 #
@@ -34,6 +34,7 @@ domain_type(dpkg_script_t)
 domain_entry_file(dpkg_t, dpkg_var_lib_t)
 domain_entry_file(dpkg_script_t, dpkg_var_lib_t)
 corecmd_shell_entry_type(dpkg_script_t)
+corecmd_bin_entry_type(dpkg_script_t)
 domain_obj_id_change_exemption(dpkg_script_t)
 domain_system_change_exemption(dpkg_script_t)
 domain_interactive_fd(dpkg_script_t)
@@ -86,6 +87,8 @@ files_var_lib_filetrans(dpkg_t, dpkg_var_lib_t, dir)
 
 kernel_read_system_state(dpkg_t)
 kernel_read_kernel_sysctls(dpkg_t)
+
+corecmd_bin_domtrans(dpkg_t, dpkg_script_t)
 
 corenet_all_recvfrom_unlabeled(dpkg_t)
 corenet_all_recvfrom_netlabel(dpkg_t)
@@ -304,6 +307,10 @@ optional_policy(`
 
 optional_policy(`
 	bootloader_run(dpkg_script_t, dpkg_roles)
+')
+
+optional_policy(`
+	devicekit_dbus_chat_power(dpkg_script_t)
 ')
 
 optional_policy(`

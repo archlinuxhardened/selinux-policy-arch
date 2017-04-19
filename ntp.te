@@ -1,4 +1,4 @@
-policy_module(ntp, 1.16.3)
+policy_module(ntp, 1.16.4)
 
 ########################################
 #
@@ -70,7 +70,7 @@ files_var_filetrans(ntpd_t, ntp_drift_t, file)
 read_files_pattern(ntpd_t, ntpd_key_t, ntpd_key_t)
 read_lnk_files_pattern(ntpd_t, ntpd_key_t, ntpd_key_t)
 
-allow ntpd_t ntpd_lock_t:file write_file_perms;
+allow ntpd_t ntpd_lock_t:file rw_file_perms;
 
 allow ntpd_t ntpd_log_t:dir setattr_dir_perms;
 append_files_pattern(ntpd_t, ntpd_log_t, ntpd_log_t)

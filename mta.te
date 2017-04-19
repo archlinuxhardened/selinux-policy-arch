@@ -1,4 +1,4 @@
-policy_module(mta, 2.8.4)
+policy_module(mta, 2.8.5)
 
 ########################################
 #
@@ -324,6 +324,10 @@ optional_policy(`
 	')
 ')
 
+optional_policy(`
+	mon_dontaudit_use_fds(mta_user_agent)
+')
+
 ########################################
 #
 # Mailserver delivery local policy
@@ -376,6 +380,10 @@ optional_policy(`
 
 	mailman_domtrans(mailserver_delivery)
 	mailman_read_data_symlinks(mailserver_delivery)
+')
+
+optional_policy(`
+	mon_dontaudit_search_var_lib(mailserver_delivery)
 ')
 
 optional_policy(`

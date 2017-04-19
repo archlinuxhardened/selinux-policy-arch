@@ -1,4 +1,4 @@
-policy_module(loadkeys, 1.11.1)
+policy_module(loadkeys, 1.11.2)
 
 ########################################
 #
@@ -36,6 +36,8 @@ files_search_tmp(loadkeys_t)
 
 term_dontaudit_use_console(loadkeys_t)
 term_use_unallocated_ttys(loadkeys_t)
+
+init_read_script_tmp_files(loadkeys_t)
 
 locallogin_use_fds(loadkeys_t)
 

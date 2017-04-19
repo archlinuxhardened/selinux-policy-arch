@@ -1,4 +1,4 @@
-policy_module(devicekit, 1.6.3)
+policy_module(devicekit, 1.6.4)
 
 ########################################
 #
@@ -59,12 +59,17 @@ optional_policy(`
 	udev_read_db(devicekit_t)
 ')
 
+optional_policy(`
+	xserver_dbus_chat_xdm(devicekit_power_t)
+')
+
 ########################################
 #
 # Disk local policy
 #
 
 allow devicekit_disk_t self:capability { chown dac_override fowner fsetid net_admin setgid setuid sys_admin sys_nice sys_ptrace sys_rawio };
+allow devicekit_disk_t self:capability2 wake_alarm;
 allow devicekit_disk_t self:process { getsched signal_perms };
 allow devicekit_disk_t self:fifo_file rw_fifo_file_perms;
 allow devicekit_disk_t self:netlink_kobject_uevent_socket create_socket_perms;
@@ -262,6 +267,8 @@ auth_use_nsswitch(devicekit_power_t)
 init_all_labeled_script_domtrans(devicekit_power_t)
 init_read_utmp(devicekit_power_t)
 init_search_run(devicekit_power_t)
+
+logging_send_syslog_msg(devicekit_power_t)
 
 miscfiles_read_localization(devicekit_power_t)
 

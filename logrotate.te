@@ -1,4 +1,4 @@
-policy_module(logrotate, 1.18.2)
+policy_module(logrotate, 1.18.3)
 
 ########################################
 #
@@ -89,6 +89,7 @@ files_dontaudit_list_mnt(logrotate_t)
 fs_search_auto_mountpoints(logrotate_t)
 fs_getattr_xattr_fs(logrotate_t)
 fs_list_inotifyfs(logrotate_t)
+fs_getattr_tmpfs(logrotate_t)
 
 mls_file_read_all_levels(logrotate_t)
 mls_file_write_all_levels(logrotate_t)
@@ -102,8 +103,10 @@ auth_manage_login_records(logrotate_t)
 auth_use_nsswitch(logrotate_t)
 
 init_all_labeled_script_domtrans(logrotate_t)
+init_startstop_all_script_services(logrotate_t)
 init_get_generic_units_status(logrotate_t)
 init_get_all_units_status(logrotate_t)
+init_get_system_status(logrotate_t)
 init_dbus_chat(logrotate_t)
 init_stream_connect(logrotate_t)
 init_manage_all_units(logrotate_t)
@@ -218,6 +221,7 @@ optional_policy(`
 optional_policy(`
 	mysql_read_config(logrotate_t)
 	mysql_stream_connect(logrotate_t)
+	mysql_signal(logrotate_t)
 ')
 
 optional_policy(`

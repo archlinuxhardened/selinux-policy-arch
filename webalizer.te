@@ -1,4 +1,4 @@
-policy_module(webalizer, 1.14.0)
+policy_module(webalizer, 1.14.1)
 
 ########################################
 #
@@ -15,6 +15,9 @@ role webalizer_roles types webalizer_t;
 
 type webalizer_etc_t;
 files_config_file(webalizer_etc_t)
+
+type webalizer_log_t;
+logging_log_file(webalizer_log_t)
 
 type webalizer_tmp_t;
 files_tmp_file(webalizer_tmp_t)
@@ -36,6 +39,9 @@ allow webalizer_t self:unix_stream_socket { accept connectto listen };
 allow webalizer_t self:tcp_socket { accept listen };
 
 allow webalizer_t webalizer_etc_t:file read_file_perms;
+
+manage_dirs_pattern(webalizer_t, webalizer_log_t, webalizer_log_t)
+manage_files_pattern(webalizer_t, webalizer_log_t, webalizer_log_t)
 
 manage_dirs_pattern(webalizer_t, webalizer_tmp_t, webalizer_tmp_t)
 manage_files_pattern(webalizer_t, webalizer_tmp_t, webalizer_tmp_t)

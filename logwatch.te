@@ -1,4 +1,4 @@
-policy_module(logwatch, 1.14.0)
+policy_module(logwatch, 1.14.1)
 
 #################################
 #
@@ -160,6 +160,10 @@ optional_policy(`
 ')
 
 optional_policy(`
+	raid_domtrans_mdadm(logwatch_t)
+')
+
+optional_policy(`
 	rpc_search_nfs_state_data(logwatch_t)
 ')
 
@@ -189,4 +193,5 @@ logging_read_all_logs(logwatch_mail_t)
 
 optional_policy(`
 	cron_use_system_job_fds(logwatch_mail_t)
+	cron_rw_system_job_pipes(logwatch_mail_t)
 ')

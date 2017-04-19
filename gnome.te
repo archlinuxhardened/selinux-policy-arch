@@ -1,4 +1,4 @@
-policy_module(gnome, 2.7.0)
+policy_module(gnome, 2.7.1)
 
 ##############################
 #
@@ -90,6 +90,12 @@ userdom_user_home_dir_filetrans(gconfd_t, gconf_home_t, dir)
 manage_dirs_pattern(gconfd_t, gconf_tmp_t, gconf_tmp_t)
 manage_files_pattern(gconfd_t, gconf_tmp_t, gconf_tmp_t)
 userdom_user_tmp_filetrans(gconfd_t, gconf_tmp_t, { dir file })
+
+# for /proc/filesystems
+kernel_read_system_state(gconfd_t)
+
+# for /var/lib/gconf/defaults
+files_read_var_lib_files(gconfd_t)
 
 userdom_manage_user_tmp_dirs(gconfd_t)
 userdom_tmp_filetrans_user_tmp(gconfd_t, dir)

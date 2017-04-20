@@ -34,6 +34,10 @@ type ooffice_exec_t;
 userdom_user_application_domain(ooffice_t, ooffice_exec_t)
 role ooffice_roles types ooffice_t;
 
+optional_policy(`
+	wm_application_domain(ooffice_t, ooffice_exec_t)
+')
+
 type ooffice_home_t;
 userdom_user_home_content(ooffice_home_t)
 

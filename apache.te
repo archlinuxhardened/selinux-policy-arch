@@ -745,10 +745,12 @@ tunable_policy(`httpd_use_fusefs && httpd_builtin_scripting',`
 	fs_exec_fusefs_files(httpd_t)
 ')
 
-tunable_policy(`httpd_use_nfs',`
-	fs_list_auto_mountpoints(httpd_t)
-	rpc_manage_nfs_rw_content(httpd_t)
-	rpc_read_nfs_content(httpd_t)
+optional_policy(`
+	tunable_policy(`httpd_use_nfs',`
+		fs_list_auto_mountpoints(httpd_t)
+		rpc_manage_nfs_rw_content(httpd_t)
+		rpc_read_nfs_content(httpd_t)
+	')
 ')
 
 tunable_policy(`httpd_use_nfs && httpd_builtin_scripting',`
@@ -1070,10 +1072,12 @@ tunable_policy(`httpd_use_fusefs && httpd_builtin_scripting',`
 	fs_exec_fusefs_files(httpd_suexec_t)
 ')
 
-tunable_policy(`httpd_use_nfs',`
-	fs_list_auto_mountpoints(httpd_suexec_t)
-	rpc_manage_nfs_rw_content(httpd_t)
-	rpc_read_nfs_content(httpd_t)
+optional_policy(`
+	tunable_policy(`httpd_use_nfs',`
+		fs_list_auto_mountpoints(httpd_suexec_t)
+		rpc_manage_nfs_rw_content(httpd_t)
+		rpc_read_nfs_content(httpd_t)
+	')
 ')
 
 tunable_policy(`httpd_use_nfs && httpd_builtin_scripting',`
@@ -1307,10 +1311,12 @@ tunable_policy(`httpd_use_fusefs && httpd_builtin_scripting',`
 	fs_exec_fusefs_files(httpd_sys_script_t)
 ')
 
-tunable_policy(`httpd_use_nfs',`
-	fs_list_auto_mountpoints(httpd_sys_script_t)
-	rpc_manage_nfs_rw_content(httpd_t)
-	rpc_read_nfs_content(httpd_t)
+optional_policy(`
+	tunable_policy(`httpd_use_nfs',`
+		fs_list_auto_mountpoints(httpd_sys_script_t)
+		rpc_manage_nfs_rw_content(httpd_t)
+		rpc_read_nfs_content(httpd_t)
+	')
 ')
 
 tunable_policy(`httpd_use_nfs && httpd_builtin_scripting',`

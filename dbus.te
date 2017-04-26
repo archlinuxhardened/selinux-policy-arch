@@ -1,4 +1,4 @@
-policy_module(dbus, 1.22.5)
+policy_module(dbus, 1.22.6)
 
 gen_require(`
 	class dbus all_dbus_perms;

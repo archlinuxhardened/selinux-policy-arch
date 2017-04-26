@@ -89,6 +89,7 @@ kernel_read_kernel_sysctls(policykit_t)
 kernel_read_system_state(policykit_t)
 
 dev_read_urand(policykit_t)
+dev_read_urand(policykit_t)
 
 domain_read_all_domains_state(policykit_t)
 
@@ -96,6 +97,8 @@ files_dontaudit_search_all_mountpoints(policykit_t)
 
 fs_getattr_xattr_fs(policykit_t)
 fs_list_inotifyfs(policykit_t)
+fs_getattr_tmpfs(policykit_t)
+fs_getattr_cgroup(policykit_t)
 
 auth_use_nsswitch(policykit_t)
 
@@ -104,6 +107,8 @@ userdom_read_all_users_state(policykit_t)
 
 optional_policy(`
 	dbus_system_domain(policykit_t, policykit_exec_t)
+
+	userdom_dbus_send_all_users(policykit_t)
 
 	optional_policy(`
 		consolekit_dbus_chat(policykit_t)

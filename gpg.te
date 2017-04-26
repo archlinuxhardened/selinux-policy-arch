@@ -87,6 +87,7 @@ gpg_stream_connect_agent(gpg_t)
 domtrans_pattern(gpg_t, gpg_agent_exec_t, gpg_agent_t)
 domtrans_pattern(gpg_t, gpg_helper_exec_t, gpg_helper_t)
 
+kernel_read_crypto_sysctls(gpg_t)
 kernel_read_sysctl(gpg_t)
 # read /proc/cpuinfo
 kernel_read_system_state(gpg_t)
@@ -232,6 +233,8 @@ kernel_dontaudit_search_sysctl(gpg_agent_t)
 kernel_read_core_if(gpg_agent_t)
 kernel_read_system_state(gpg_agent_t)
 
+auth_use_nsswitch(gpg_agent_t)
+
 corecmd_exec_bin(gpg_agent_t)
 corecmd_exec_shell(gpg_agent_t)
 
@@ -272,11 +275,20 @@ tunable_policy(`use_samba_home_dirs',`
 ')
 
 optional_policy(`
+	dbus_system_bus_client(gpg_agent_t)
+')
+
+optional_policy(`
 	mozilla_dontaudit_rw_user_home_files(gpg_agent_t)
 ')
 
 optional_policy(`
 	pcscd_stream_connect(gpg_agent_t)
+')
+
+optional_policy(`
+	xserver_sigchld_xdm(gpg_agent_t)
+	xserver_read_user_xauth(gpg_agent_t)
 ')
 
 ##############################

@@ -10,13 +10,13 @@
 ##	</summary>
 ## </param>
 #
-interface(`apm_domtrans_client',`
+interface(`acpi_domtrans_client',`
 	gen_require(`
-		type apm_t, apm_exec_t;
+		type acpi_t, acpi_exec_t;
 	')
 
 	corecmd_search_bin($1)
-	domtrans_pattern($1, apm_exec_t, apm_t)
+	domtrans_pattern($1, acpi_exec_t, acpi_t)
 ')
 
 ########################################
@@ -36,13 +36,13 @@ interface(`apm_domtrans_client',`
 ##	</summary>
 ## </param>
 #
-interface(`apm_run_client',`
+interface(`acpi_run_client',`
 	gen_require(`
-		attribute_role apm_roles;
+		attribute_role acpi_roles;
 	')
 
-	apm_domtrans_client($1)
-	roleattribute $2 apm_roles;
+	acpi_domtrans_client($1)
+	roleattribute $2 acpi_roles;
 ')
 
 ########################################
@@ -55,12 +55,12 @@ interface(`apm_run_client',`
 ##	</summary>
 ## </param>
 #
-interface(`apm_use_fds',`
+interface(`acpi_use_fds',`
 	gen_require(`
-		type apmd_t;
+		type acpid_t;
 	')
 
-	allow $1 apmd_t:fd use;
+	allow $1 acpid_t:fd use;
 ')
 
 ########################################
@@ -73,12 +73,12 @@ interface(`apm_use_fds',`
 ##	</summary>
 ## </param>
 #
-interface(`apm_write_pipes',`
+interface(`acpi_write_pipes',`
 	gen_require(`
-		type apmd_t;
+		type acpid_t;
 	')
 
-	allow $1 apmd_t:fifo_file write;
+	allow $1 acpid_t:fifo_file write;
 ')
 
 ########################################
@@ -92,12 +92,12 @@ interface(`apm_write_pipes',`
 ##	</summary>
 ## </param>
 #
-interface(`apm_rw_stream_sockets',`
+interface(`acpi_rw_stream_sockets',`
 	gen_require(`
-		type apmd_t;
+		type acpid_t;
 	')
 
-	allow $1 apmd_t:unix_stream_socket { read write };
+	allow $1 acpid_t:unix_stream_socket { read write };
 ')
 
 ########################################
@@ -110,13 +110,13 @@ interface(`apm_rw_stream_sockets',`
 ##	</summary>
 ## </param>
 #
-interface(`apm_append_log',`
+interface(`acpi_append_log',`
 	gen_require(`
-		type apmd_log_t;
+		type acpid_log_t;
 	')
 
 	logging_search_logs($1)
-	allow $1 apmd_log_t:file append_file_perms;
+	allow $1 acpid_log_t:file append_file_perms;
 ')
 
 ########################################
@@ -130,13 +130,13 @@ interface(`apm_append_log',`
 ##	</summary>
 ## </param>
 #
-interface(`apm_stream_connect',`
+interface(`acpi_stream_connect',`
 	gen_require(`
-		type apmd_t, apmd_var_run_t;
+		type acpid_t, acpid_var_run_t;
 	')
 
 	files_search_pids($1)
-	stream_connect_pattern($1, apmd_var_run_t, apmd_var_run_t, apmd_t)
+	stream_connect_pattern($1, acpid_var_run_t, acpid_var_run_t, acpid_t)
 ')
 
 ########################################
@@ -156,32 +156,32 @@ interface(`apm_stream_connect',`
 ## </param>
 ## <rolecap/>
 #
-interface(`apm_admin',`
+interface(`acpi_admin',`
 	gen_require(`
-		type apmd_t, apmd_initrc_exec_t, apmd_log_t;
-		type apmd_lock_t, apmd_var_run_t, apmd_var_lib_t;
-		type apmd_tmp_t;
+		type acpid_t, acpid_initrc_exec_t, acpid_log_t;
+		type acpid_lock_t, acpid_var_run_t, acpid_var_lib_t;
+		type acpid_tmp_t;
 	')
 
-	allow $1 apmd_t:process { ptrace signal_perms };
-	ps_process_pattern($1, apmd_t)
+	allow $1 acpid_t:process { ptrace signal_perms };
+	ps_process_pattern($1, acpid_t)
 
-	init_startstop_service($1, $2, apmd_t, apmd_initrc_exec_t)
+	init_startstop_service($1, $2, acpid_t, acpid_initrc_exec_t)
 
 	logging_search_logs($1)
-	admin_pattern($1, apmd_log_t)
+	admin_pattern($1, acpid_log_t)
 
 	files_search_locks($1)
-	admin_pattern($1, apmd_lock_t)
+	admin_pattern($1, acpid_lock_t)
 
 	files_search_pids($1)
-	admin_pattern($1, apmd_var_run_t)
+	admin_pattern($1, acpid_var_run_t)
 
 	files_search_var_lib($1)
-	admin_pattern($1, apmd_var_lib_t)
+	admin_pattern($1, acpid_var_lib_t)
 
 	files_search_tmp($1)
-	admin_pattern($1, apmd_tmp_t)
+	admin_pattern($1, acpid_tmp_t)
 
-	apm_run_client($1, $2)
+	acpi_run_client($1, $2)
 ')

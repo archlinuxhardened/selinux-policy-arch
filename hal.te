@@ -221,7 +221,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	apm_stream_connect(hald_t)
+	acpi_stream_connect(hald_t)
 ')
 
 optional_policy(`

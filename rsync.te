@@ -1,4 +1,4 @@
-policy_module(rsync, 1.15.0)
+policy_module(rsync, 1.15.1)
 
 ########################################
 #
@@ -123,6 +123,8 @@ dev_read_urand(rsync_t)
 fs_getattr_all_fs(rsync_t)
 fs_search_auto_mountpoints(rsync_t)
 
+files_getattr_all_pipes(rsync_t)
+files_getattr_all_sockets(rsync_t)
 files_search_home(rsync_t)
 
 auth_can_read_shadow_passwords(rsync_t)

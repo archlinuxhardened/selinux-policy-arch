@@ -1,4 +1,4 @@
-policy_module(dpkg, 1.11.6)
+policy_module(dpkg, 1.11.7)
 
 ########################################
 #
@@ -42,6 +42,8 @@ role dpkg_roles types dpkg_script_t;
 
 type dpkg_script_tmp_t;
 files_tmp_file(dpkg_script_tmp_t)
+# out of order to work around compiler issue
+domain_entry_file(dpkg_script_t, dpkg_script_tmp_t)
 
 type dpkg_script_tmpfs_t;
 files_tmpfs_file(dpkg_script_tmpfs_t)
@@ -69,6 +71,7 @@ allow dpkg_t self:msg { send receive };
 allow dpkg_t dpkg_lock_t:file manage_file_perms;
 
 spec_domtrans_pattern(dpkg_t, dpkg_var_lib_t, dpkg_script_t)
+spec_domtrans_pattern(dpkg_t, dpkg_script_tmp_t, dpkg_script_t)
 
 manage_dirs_pattern(dpkg_t, dpkg_tmp_t, dpkg_tmp_t)
 manage_files_pattern(dpkg_t, dpkg_tmp_t, dpkg_tmp_t)

@@ -179,6 +179,26 @@ interface(`dpkg_use_script_fds',`
 
 ########################################
 ## <summary>
+##	Inherit and use file descriptors
+##	from dpkg scripts.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`dpkg_script_rw_inherited_pipes',`
+	gen_require(`
+		type dpkg_script_t;
+	')
+
+	allow $1 dpkg_script_t:fd use;
+	allow $1 dpkg_script_t:fifo_file rw_inherited_file_perms;
+')
+
+########################################
+## <summary>
 ##	Read dpkg package database content.
 ## </summary>
 ## <param name="domain">

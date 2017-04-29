@@ -23,6 +23,8 @@ allow loadkeys_t self:unix_stream_socket { connect create };
 
 kernel_read_system_state(loadkeys_t)
 
+init_use_fds(loadkeys_t)
+
 corecmd_exec_bin(loadkeys_t)
 corecmd_exec_shell(loadkeys_t)
 

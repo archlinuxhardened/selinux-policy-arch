@@ -228,6 +228,7 @@ interface(`plymouthd_read_pid_files',`
 	')
 
 	files_search_pids($1)
+	allow $1 plymouthd_var_run_t:dir search_dir_perms; 
 	allow $1 plymouthd_var_run_t:file read_file_perms;
 ')
 

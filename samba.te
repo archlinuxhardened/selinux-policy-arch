@@ -1,4 +1,4 @@
-policy_module(samba, 1.20.1)
+policy_module(samba, 1.20.2)
 
 #################################
 #

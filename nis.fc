@@ -5,6 +5,11 @@
 
 /etc/ypserv\.conf	--	gen_context(system_u:object_r:ypserv_conf_t,s0)
 
+/usr/bin/rpc\.yppasswdd	--	gen_context(system_u:object_r:yppasswdd_exec_t,s0)
+/usr/bin/rpc\.ypxfrd	--	gen_context(system_u:object_r:ypxfr_exec_t,s0)
+/usr/bin/ypbind	--	gen_context(system_u:object_r:ypbind_exec_t,s0)
+/usr/bin/ypserv	--	gen_context(system_u:object_r:ypserv_exec_t,s0)
+
 /usr/lib/yp/ypxfr	--	gen_context(system_u:object_r:ypxfr_exec_t,s0)
 
 /usr/lib/systemd/system/ypbind.*\.service    --      gen_context(system_u:object_r:ypbind_unit_t,s0)

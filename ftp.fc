@@ -6,6 +6,11 @@
 /etc/rc\.d/init\.d/proftpd	--	gen_context(system_u:object_r:ftpd_initrc_exec_t,s0)
 
 /usr/bin/ftpdctl	--	gen_context(system_u:object_r:ftpdctl_exec_t,s0)
+/usr/bin/ftpwho		--	gen_context(system_u:object_r:ftpd_exec_t,s0)
+/usr/bin/in\.ftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
+/usr/bin/muddleftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
+/usr/bin/proftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
+/usr/bin/vsftpd		--	gen_context(system_u:object_r:ftpd_exec_t,s0)
 
 /usr/kerberos/sbin/ftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
 

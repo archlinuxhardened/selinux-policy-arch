@@ -2,6 +2,8 @@
 /etc/hal/device\.d/printer_remove\.hal	-- 	gen_context(system_u:object_r:hald_exec_t,s0)
 
 /usr/bin/hal-setup-keymap	--	gen_context(system_u:object_r:hald_keymap_exec_t,s0)
+/usr/bin/hald	--	gen_context(system_u:object_r:hald_exec_t,s0)
+/usr/bin/radeontool	--	gen_context(system_u:object_r:hald_mac_exec_t,s0)
 
 /usr/libexec/hal-acl-tool	--	gen_context(system_u:object_r:hald_acl_exec_t,s0)
 /usr/libexec/hal-dccm	--	gen_context(system_u:object_r:hald_dccm_exec_t,s0)

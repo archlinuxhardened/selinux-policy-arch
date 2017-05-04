@@ -3,6 +3,8 @@
 
 /etc/rc\.d/init\.d/dnsmasq	--	gen_context(system_u:object_r:dnsmasq_initrc_exec_t,s0)
 
+/usr/bin/dnsmasq	--	gen_context(system_u:object_r:dnsmasq_exec_t,s0)
+
 # Systemd unit file
 /usr/lib/systemd/system/[^/]*dnsmasq.*	--	gen_context(system_u:object_r:dnsmasq_unit_t,s0)
 

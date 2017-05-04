@@ -4,6 +4,17 @@
 
 /etc/rc\.d/init\.d/postfix	--	gen_context(system_u:object_r:postfix_initrc_exec_t,s0)
 
+/usr/bin/postalias	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+/usr/bin/postcat	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+/usr/bin/postdrop	--	gen_context(system_u:object_r:postfix_postdrop_exec_t,s0)
+/usr/bin/postfix	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+/usr/bin/postkick	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+/usr/bin/postlock	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+/usr/bin/postlog	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+/usr/bin/postmap	--	gen_context(system_u:object_r:postfix_map_exec_t,s0)
+/usr/bin/postqueue	--	gen_context(system_u:object_r:postfix_postqueue_exec_t,s0)
+/usr/bin/postsuper	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+
 /usr/lib/postfix/(sbin/)?.*	--	gen_context(system_u:object_r:postfix_exec_t,s0)
 /usr/lib/postfix/(sbin/)?cleanup	--	gen_context(system_u:object_r:postfix_cleanup_exec_t,s0)
 /usr/lib/postfix/(sbin/)?local	--	gen_context(system_u:object_r:postfix_local_exec_t,s0)

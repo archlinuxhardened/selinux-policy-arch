@@ -28,7 +28,7 @@ type chronyd_var_log_t;
 logging_log_file(chronyd_var_log_t)
 
 type chronyd_var_run_t;
-files_pid_file(chronyd_var_run_t)
+init_daemon_pid_file(chronyd_var_run_t, dir, "chrony")
 
 ########################################
 #

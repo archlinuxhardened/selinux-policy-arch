@@ -128,6 +128,7 @@ optional_policy(`
 
 optional_policy(`
 	mozilla_domtrans(ooffice_t)
+	mozilla_read_tmp_files(ooffice_t)
 ')
 
 optional_policy(`

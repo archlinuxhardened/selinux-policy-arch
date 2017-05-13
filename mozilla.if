@@ -288,6 +288,24 @@ interface(`mozilla_execmod_user_plugin_home_files',`
 	allow $1 mozilla_plugin_home_t:file execmod;
 ')
 
+#######################################
+## <summary>
+##	Read temporary mozilla files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`mozilla_read_tmp_files',`
+	gen_require(`
+		type mozilla_tmp_t;
+	')
+
+	read_files_pattern($1, mozilla_tmp_t, mozilla_tmp_t)
+')
+
 ########################################
 ## <summary>
 ##	Run mozilla in the mozilla domain.

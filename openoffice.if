@@ -51,25 +51,6 @@ interface(`ooffice_domtrans',`
 
 ########################################
 ## <summary>
-##	Read and write temporary
-##	openoffice files.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`ooffice_rw_tmp_files',`
-	gen_require(`
-		type ooffice_tmp_t;
-	')
-
-	rw_files_pattern($1, ooffice_tmp_t, ooffice_tmp_t)
-')
-
-########################################
-## <summary>
 ##	Do not audit attempts to execute
 ##	files in temporary directories.
 ## </summary>
@@ -85,4 +66,23 @@ interface(`ooffice_dontaudit_exec_tmp_files',`
 	')
 
 	dontaudit $1 ooffice_tmp_t:file exec_file_perms;
+')
+
+########################################
+## <summary>
+##	Read and write temporary
+##	openoffice files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`ooffice_rw_tmp_files',`
+	gen_require(`
+		type ooffice_tmp_t;
+	')
+
+	rw_files_pattern($1, ooffice_tmp_t, ooffice_tmp_t)
 ')

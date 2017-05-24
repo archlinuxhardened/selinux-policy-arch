@@ -98,7 +98,8 @@ kernel_read_system_state(gconfd_t)
 files_read_var_lib_files(gconfd_t)
 
 userdom_manage_user_tmp_dirs(gconfd_t)
-userdom_tmp_filetrans_user_tmp(gconfd_t, dir)
+userdom_manage_user_tmp_sockets(gconfd_t)
+userdom_tmp_filetrans_user_tmp(gconfd_t, { dir sock_file })
 userdom_user_runtime_filetrans_user_tmp(gconfd_t, dir)
 
 optional_policy(`
@@ -109,6 +110,10 @@ optional_policy(`
 
 optional_policy(`
 	nscd_dontaudit_search_pid(gconfd_t)
+')
+
+optional_policy(`
+	ooffice_stream_connect(gconfd_t)
 ')
 
 ##############################

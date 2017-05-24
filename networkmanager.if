@@ -209,6 +209,7 @@ interface(`networkmanager_manage_lib_files',`
 
 	files_search_var_lib($1)
 	manage_files_pattern($1, NetworkManager_var_lib_t, NetworkManager_var_lib_t)
+	allow $1 NetworkManager_var_lib_t:file map;
 ')
 
 ########################################
@@ -229,6 +230,7 @@ interface(`networkmanager_read_lib_files',`
 	files_search_var_lib($1)
 	list_dirs_pattern($1, NetworkManager_var_lib_t, NetworkManager_var_lib_t)
 	read_files_pattern($1, NetworkManager_var_lib_t, NetworkManager_var_lib_t)
+	allow $1 NetworkManager_var_lib_t:file map;
 ')
 
 ########################################
@@ -328,6 +330,7 @@ interface(`networkmanager_admin',`
 
 	files_search_var_lib($1)
 	admin_pattern($1, NetworkManager_var_lib_t)
+	allow $1 NetworkManager_var_lib_t:file map;
 
 	files_search_pids($1)
 	admin_pattern($1, NetworkManager_var_run_t)

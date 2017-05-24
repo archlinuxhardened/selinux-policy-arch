@@ -332,7 +332,7 @@ interface(`gnome_read_generic_home_content',`
 
 	userdom_search_user_home_dirs($1)
 	allow $1 gnome_home_t:dir list_dir_perms;
-	allow $1 gnome_home_t:file read_file_perms;
+	allow $1 gnome_home_t:file { read_file_perms map };
 	allow $1 gnome_home_t:fifo_file read_fifo_file_perms;
 	allow $1 gnome_home_t:lnk_file read_lnk_file_perms;
 	allow $1 gnome_home_t:sock_file read_sock_file_perms;

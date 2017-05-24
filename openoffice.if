@@ -29,6 +29,10 @@ interface(`ooffice_role',`
 
 	allow $2 ooffice_t:process { ptrace signal_perms };
 	ps_process_pattern($2, ooffice_t)
+
+	optional_policy(`
+		ooffice_dbus_chat($2)
+	')
 ')
 
 ########################################
@@ -85,4 +89,26 @@ interface(`ooffice_rw_tmp_files',`
 	')
 
 	rw_files_pattern($1, ooffice_tmp_t, ooffice_tmp_t)
+')
+
+#######################################
+## <summary>
+##	Send and receive dbus messages
+##	from and to the openoffice
+##	domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`ooffice_dbus_chat',`
+	gen_require(`
+		type ooffice_t;
+		class dbus send_msg;
+	')
+
+	allow $1 ooffice_t:dbus send_msg;
+	allow ooffice_t $1:dbus send_msg;
 ')

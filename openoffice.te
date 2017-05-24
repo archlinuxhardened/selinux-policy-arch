@@ -66,11 +66,15 @@ files_tmp_filetrans(ooffice_t, ooffice_tmp_t, { dir file sock_file })
 
 can_exec(ooffice_t, ooffice_exec_t)
 
+kernel_dontaudit_read_system_state(ooffice_t)
+
 corecmd_exec_bin(ooffice_t)
 corecmd_exec_shell(ooffice_t)
 
 dev_read_sysfs(ooffice_t)
 dev_read_urand(ooffice_t)
+
+domain_use_interactive_fds(ooffice_t)
 
 files_getattr_all_dirs(ooffice_t)
 files_getattr_all_files(ooffice_t)
@@ -88,11 +92,17 @@ ooffice_dontaudit_exec_tmp_files(ooffice_t)
 sysnet_dns_name_resolve(ooffice_t)
 
 userdom_dontaudit_exec_user_home_content_files(ooffice_t)
+userdom_dontaudit_manage_user_tmp_dirs(ooffice_t)
+
 userdom_read_user_tmp_files(ooffice_t)
 userdom_manage_user_home_content_dirs(ooffice_t)
 userdom_manage_user_home_content_files(ooffice_t)
 userdom_manage_user_home_content_symlinks(ooffice_t)
 userdom_user_home_dir_filetrans_user_home_content(ooffice_t, { dir file lnk_file fifo_file sock_file })
+
+userdom_manage_user_tmp_sockets(ooffice_t)
+
+userdom_use_inherited_user_terminals(ooffice_t)
 
 tunable_policy(`openoffice_allow_update',`
 	corenet_tcp_connect_http_port(ooffice_t)
@@ -116,6 +126,11 @@ optional_policy(`
 optional_policy(`
 	evolution_domtrans(ooffice_t)
 	evolution_read_home_files(ooffice_t)
+')
+
+optional_policy(`
+	gnome_dbus_chat_gconfd(ooffice_t)
+	gnome_stream_connect_gconf(ooffice_t)
 ')
 
 optional_policy(`

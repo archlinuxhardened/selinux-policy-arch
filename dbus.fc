@@ -4,6 +4,8 @@ HOME_DIR/\.dbus(/.*)?				gen_context(system_u:object_r:session_dbusd_home_t,s0)
 
 /run/dbus(/.*)?					gen_context(system_u:object_r:system_dbusd_var_run_t,s0)
 /run/messagebus\.pid			--	gen_context(system_u:object_r:system_dbusd_var_run_t,s0)
+/run/user/%{USERID}/bus			-s	gen_context(system_u:object_r:session_dbusd_runtime_t,s0)
+/run/user/%{USERID}/dbus-1(/.*)?		gen_context(system_u:object_r:session_dbusd_runtime_t,s0)
 
 /usr/bin/dbus-daemon(-1)?		--	gen_context(system_u:object_r:dbusd_exec_t,s0)
 

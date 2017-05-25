@@ -65,6 +65,7 @@ allow ntpd_t ntp_conf_t:file read_file_perms;
 
 manage_dirs_pattern(ntpd_t, ntp_drift_t, ntp_drift_t)
 manage_files_pattern(ntpd_t, ntp_drift_t, ntp_drift_t)
+files_etc_filetrans(ntpd_t, ntp_drift_t, file)
 files_var_filetrans(ntpd_t, ntp_drift_t, file)
 
 read_files_pattern(ntpd_t, ntpd_key_t, ntpd_key_t)

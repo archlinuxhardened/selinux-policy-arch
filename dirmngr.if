@@ -1,5 +1,74 @@
 ## <summary>Server for managing and downloading certificate revocation lists.</summary>
 
+############################################################
+## <summary>
+##	Role access for dirmngr.
+## </summary>
+## <param name="role">
+##	<summary>
+##	Role allowed access.
+##	</summary>
+## </param>
+## <param name="domain">
+##	<summary>
+##	User domain for the role.
+##	</summary>
+## </param>
+#
+interface(`dirmngr_role',`
+	gen_require(`
+		type dirmngr_t, dirmngr_exec_t;
+	')
+
+	role $1 types dirmngr_t;
+
+	domtrans_pattern($2, dirmngr_exec_t, dirmngr_t)
+
+	allow $2 dirmngr_t:process { ptrace signal_perms };
+	ps_process_pattern($2, dirmngr_t)
+
+	allow dirmngr_t $2:fd use;
+	allow dirmngr_t $2:fifo_file { read write };
+')
+
+########################################
+## <summary>
+##	Execute dirmngr in the dirmngr domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+#
+interface(`dirmngr_domtrans',`
+	gen_require(`
+		type dirmngr_t, dirmngr_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, dirmngr_exec_t, dirmngr_t)
+')
+
+########################################
+## <summary>
+##	Execute the dirmngr in the caller domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`dirmngr_exec',`
+	gen_require(`
+		type dirmngr_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	can_exec($1, dirmngr_exec_t)
+')
+
 ########################################
 ## <summary>
 ##	All of the rules required to

@@ -139,6 +139,10 @@ tunable_policy(`use_samba_home_dirs',`
 ')
 
 optional_policy(`
+	dirmngr_domtrans(gpg_t)
+')
+
+optional_policy(`
 	evolution_read_orbit_tmp_files(gpg_t)
 ')
 

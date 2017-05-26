@@ -18,6 +18,9 @@ init_script_file(dirmngr_initrc_exec_t)
 type dirmngr_log_t;
 logging_log_file(dirmngr_log_t)
 
+type dirmngr_tmp_t;
+userdom_user_tmp_file(dirmngr_tmp_t)
+
 type dirmngr_var_lib_t;
 files_type(dirmngr_var_lib_t)
 
@@ -46,6 +49,8 @@ manage_files_pattern(dirmngr_t, dirmngr_var_lib_t, dirmngr_var_lib_t)
 manage_lnk_files_pattern(dirmngr_t, dirmngr_var_lib_t, dirmngr_var_lib_t)
 files_var_lib_filetrans(dirmngr_t, dirmngr_var_lib_t, dir)
 
+manage_sock_files_pattern(dirmngr_t, dirmngr_tmp_t, dirmngr_tmp_t)
+
 manage_dirs_pattern(dirmngr_t, dirmngr_var_run_t, dirmngr_var_run_t)
 manage_files_pattern(dirmngr_t, dirmngr_var_run_t, dirmngr_var_run_t)
 manage_sock_files_pattern(dirmngr_t, dirmngr_var_run_t, dirmngr_var_run_t)
@@ -56,3 +61,11 @@ kernel_read_crypto_sysctls(dirmngr_t)
 files_read_etc_files(dirmngr_t)
 
 miscfiles_read_localization(dirmngr_t)
+
+userdom_search_user_home_dirs(dirmngr_t)
+userdom_search_user_runtime(dirmngr_t)
+userdom_user_runtime_filetrans(dirmngr_t, dirmngr_tmp_t, dir)
+
+optional_policy(`
+	gpg_agent_tmp_filetrans(dirmngr_t, dirmngr_tmp_t, sock_file)
+')

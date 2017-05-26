@@ -140,6 +140,7 @@ tunable_policy(`use_samba_home_dirs',`
 
 optional_policy(`
 	dirmngr_domtrans(gpg_t)
+	dirmngr_stream_connect(gpg_t)
 ')
 
 optional_policy(`

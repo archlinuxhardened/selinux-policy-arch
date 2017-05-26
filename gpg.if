@@ -216,6 +216,44 @@ interface(`gpg_stream_connect_agent',`
 
 ########################################
 ## <summary>
+##	Search gpg agent dirs.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`gpg_search_agent_tmp_dirs',`
+	gen_require(`
+		type gpg_agent_tmp_t;
+	')
+
+	allow $1 gpg_agent_tmp_t:dir search_dir_perms;
+')
+
+########################################
+## <summary>
+##	filetrans in gpg_agent_tmp_t dirs
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`gpg_agent_tmp_filetrans',`
+	gen_require(`
+		type gpg_agent_t, gpg_agent_tmp_t;
+		type gpg_secret_t;
+	')
+
+	filetrans_pattern($1, gpg_agent_tmp_t, $2, $3, $4)
+	userdom_search_user_runtime($1)
+')
+
+########################################
+## <summary>
 ##	Send messages to and from gpg
 ##	pinentry over DBUS.
 ## </summary>

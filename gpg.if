@@ -244,8 +244,7 @@ interface(`gpg_search_agent_tmp_dirs',`
 #
 interface(`gpg_agent_tmp_filetrans',`
 	gen_require(`
-		type gpg_agent_t, gpg_agent_tmp_t;
-		type gpg_secret_t;
+		type gpg_agent_tmp_t;
 	')
 
 	filetrans_pattern($1, gpg_agent_tmp_t, $2, $3, $4)

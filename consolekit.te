@@ -63,6 +63,7 @@ domain_dontaudit_ptrace_all_domains(consolekit_t)
 files_read_usr_files(consolekit_t)
 files_read_var_lib_files(consolekit_t)
 files_search_all_mountpoints(consolekit_t)
+files_purge_tmp(consolekit_t)
 
 fs_list_inotifyfs(consolekit_t)
 fs_mount_tmpfs(consolekit_t)

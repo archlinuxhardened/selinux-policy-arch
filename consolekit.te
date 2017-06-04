@@ -40,6 +40,7 @@ logging_log_filetrans(consolekit_t, consolekit_log_t, file)
 
 manage_dirs_pattern(consolekit_t, consolekit_var_run_t, consolekit_var_run_t)
 manage_files_pattern(consolekit_t, consolekit_var_run_t, consolekit_var_run_t)
+manage_fifo_files_pattern(consolekit_t, consolekit_var_run_t, consolekit_var_run_t)
 files_pid_filetrans(consolekit_t, consolekit_var_run_t, { dir file })
 
 kernel_read_system_state(consolekit_t)

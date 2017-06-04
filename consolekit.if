@@ -42,6 +42,29 @@ interface(`consolekit_dbus_chat',`
 
 ########################################
 ## <summary>
+##	Use consolekit inhibit locks.
+##
+##	The program gets passed an FD to a fifo_file to hold.
+##	When the application is done with the lock, it closes the FD.
+##	Implements this API: https://www.freedesktop.org/wiki/Software/systemd/inhibit/
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`consolekit_use_inhibit_lock',`
+	gen_require(`
+		type consolekit_t, consolekit_var_run_t;
+	')
+
+	allow $1 consolekit_t:fd use;
+	allow $1 consolekit_var_run_t:fifo_file rw_inherited_fifo_file_perms;
+')
+
+########################################
+## <summary>
 ##	Read consolekit log files.
 ## </summary>
 ## <param name="domain">

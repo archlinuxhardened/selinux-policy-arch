@@ -29,6 +29,9 @@ type gpg_exec_t;
 userdom_user_application_domain(gpg_t, gpg_exec_t)
 role gpg_roles types gpg_t;
 
+type gpg_runtime_t;
+files_pid_file(gpg_runtime_t)
+
 type gpg_agent_t;
 type gpg_agent_exec_t;
 userdom_user_application_domain(gpg_agent_t, gpg_agent_exec_t)
@@ -72,8 +75,12 @@ dontaudit gpg_t self:netlink_audit_socket r_netlink_socket_perms;
 allow gpg_t self:fifo_file rw_fifo_file_perms;
 allow gpg_t self:tcp_socket { accept listen };
 
+manage_dirs_pattern(gpg_t, gpg_runtime_t, gpg_runtime_t)
+userdom_user_runtime_filetrans(gpg_t, gpg_runtime_t, dir, "gnupg")
+
 manage_dirs_pattern(gpg_t, gpg_agent_tmp_t, gpg_agent_tmp_t)
 manage_files_pattern(gpg_t, gpg_agent_tmp_t, gpg_agent_tmp_t)
+manage_sock_files_pattern(gpg_t, gpg_agent_tmp_t, gpg_agent_tmp_t)
 files_tmp_filetrans(gpg_t, gpg_agent_tmp_t, { dir file })
 
 manage_dirs_pattern(gpg_t, gpg_secret_t, gpg_secret_t)
@@ -124,6 +131,7 @@ miscfiles_read_localization(gpg_t)
 
 userdom_use_user_terminals(gpg_t)
 
+userdom_manage_user_tmp_dirs(gpg_t)
 userdom_manage_user_tmp_files(gpg_t)
 userdom_manage_user_home_content_files(gpg_t)
 userdom_user_home_dir_filetrans_user_home_content(gpg_t, file)
@@ -220,17 +228,16 @@ manage_sock_files_pattern(gpg_agent_t, gpg_secret_t, gpg_secret_t)
 manage_files_pattern(gpg_agent_t, gpg_secret_t, gpg_secret_t)
 manage_lnk_files_pattern(gpg_agent_t, gpg_secret_t, gpg_secret_t)
 
+manage_dirs_pattern(gpg_agent_t, gpg_runtime_t, gpg_runtime_t)
+userdom_user_runtime_filetrans(gpg_agent_t, gpg_runtime_t, dir, "gnupg")
+
 manage_dirs_pattern(gpg_agent_t, gpg_agent_tmp_t, gpg_agent_tmp_t)
 manage_files_pattern(gpg_agent_t, gpg_agent_tmp_t, gpg_agent_tmp_t)
 manage_sock_files_pattern(gpg_agent_t, gpg_agent_tmp_t, gpg_agent_tmp_t)
 files_tmp_filetrans(gpg_agent_t, gpg_agent_tmp_t, { file sock_file dir })
 
-filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "log-socket")
-filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "S.gpg-agent")
-filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "S.gpg-agent.browser")
-filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "S.gpg-agent.extra")
-filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "S.gpg-agent.ssh")
-filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file, "S.scdaemon")
+filetrans_pattern(gpg_agent_t, gpg_secret_t, gpg_agent_tmp_t, sock_file)
+filetrans_pattern(gpg_agent_t, gpg_runtime_t, gpg_agent_tmp_t, sock_file)
 
 domtrans_pattern(gpg_agent_t, gpg_pinentry_exec_t, gpg_pinentry_t)
 
@@ -255,7 +262,7 @@ miscfiles_read_localization(gpg_agent_t)
 userdom_use_user_terminals(gpg_agent_t)
 userdom_search_user_home_dirs(gpg_agent_t)
 userdom_search_user_runtime(gpg_agent_t)
-userdom_user_runtime_filetrans(gpg_agent_t, gpg_agent_tmp_t, dir)
+userdom_user_runtime_filetrans(gpg_agent_t, gpg_agent_tmp_t, { dir file sock_file })
 
 ifdef(`hide_broken_symptoms',`
 	userdom_dontaudit_read_user_tmp_files(gpg_agent_t)
@@ -315,6 +322,7 @@ fs_tmpfs_filetrans(gpg_pinentry_t, gpg_pinentry_tmpfs_t, { file dir })
 
 can_exec(gpg_pinentry_t, gpg_pinentry_exec_t)
 
+kernel_dontaudit_search_sysctl(gpg_pinentry_t)
 kernel_read_system_state(gpg_pinentry_t)
 
 corecmd_exec_shell(gpg_pinentry_t)
@@ -332,6 +340,7 @@ domain_use_interactive_fds(gpg_pinentry_t)
 
 files_read_usr_files(gpg_pinentry_t)
 
+fs_dontaudit_getattr_xattr_fs(gpg_pinentry_t)
 fs_dontaudit_list_inotifyfs(gpg_pinentry_t)
 
 auth_use_nsswitch(gpg_pinentry_t)

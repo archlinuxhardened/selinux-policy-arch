@@ -3,6 +3,7 @@ HOME_DIR/\.mozilla(/.*)?	gen_context(system_u:object_r:mozilla_home_t,s0)
 HOME_DIR/\.mozilla/plugins(/.*)?	gen_context(system_u:object_r:mozilla_plugin_home_t,s0)
 HOME_DIR/\.netscape(/.*)?	gen_context(system_u:object_r:mozilla_home_t,s0)
 HOME_DIR/\.phoenix(/.*)?	gen_context(system_u:object_r:mozilla_home_t,s0)
+HOME_DIR/\.vimperator.*		gen_context(system_u:object_r:mozilla_home_t,s0)
 
 HOME_DIR/\.adobe(/.*)?	gen_context(system_u:object_r:mozilla_plugin_home_t,s0)
 HOME_DIR/\.macromedia(/.*)?	gen_context(system_u:object_r:mozilla_plugin_home_t,s0)

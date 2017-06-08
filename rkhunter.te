@@ -1,4 +1,4 @@
-policy_module(rkhunter, 0.0.1)
+policy_module(rkhunter, 1.0.0)
 
 ########################################
 #
@@ -21,14 +21,14 @@ type rkhunter_exec_t;
 application_domain(rkhunter_t, rkhunter_exec_t)
 role rkhunter_roles types rkhunter_t;
 
-type rkhunter_var_lib_t;
-files_type(rkhunter_var_lib_t)
-
 type rkhunter_log_t;
 logging_log_file(rkhunter_log_t)
 
 type rkhunter_tmpfs_t;
 files_tmpfs_file(rkhunter_tmpfs_t)
+
+type rkhunter_var_lib_t;
+files_type(rkhunter_var_lib_t)
 
 ########################################
 #
@@ -77,8 +77,6 @@ domain_use_interactive_fds(rkhunter_t)
 domain_getattr_all_sockets(rkhunter_t)
 domain_getattr_all_pipes(rkhunter_t)
 
-hostname_exec(rkhunter_t)
-
 files_read_non_auth_files(rkhunter_t)
 files_read_all_symlinks(rkhunter_t)
 files_read_all_chr_files(rkhunter_t)
@@ -88,9 +86,11 @@ files_getattr_all_sockets(rkhunter_t)
 fs_getattr_tracefs(rkhunter_t)
 fs_getattr_tracefs_dirs(rkhunter_t)
 
-modutils_exec(rkhunter_t)
+hostname_exec(rkhunter_t)
 
 logging_send_syslog_msg(rkhunter_t)
+
+modutils_exec(rkhunter_t)
 
 sysnet_exec_ifconfig(rkhunter_t)
 

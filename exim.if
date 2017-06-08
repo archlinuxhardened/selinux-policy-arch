@@ -2,6 +2,25 @@
 
 ########################################
 ## <summary>
+##	Execute exim in the caller domain.
+## </summary>
+## <param name="domain">
+## <summary>
+##	Domain allowed access.
+## </summary>
+## </param>
+#
+interface(`exim_exec',`
+	gen_require(`
+		type exim_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	can_exec($1, exim_exec_t)
+')
+
+########################################
+## <summary>
 ##	Execute a domain transition to run exim.
 ## </summary>
 ## <param name="domain">

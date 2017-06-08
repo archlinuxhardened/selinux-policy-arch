@@ -148,6 +148,11 @@ optional_policy(`
 ')
 
 optional_policy(`
+	# rkhunter trigger
+	rkhunter_domtrans(apt_t)
+')
+
+optional_policy(`
 	rpm_read_db(apt_t)
 	rpm_domtrans(apt_t)
 ')

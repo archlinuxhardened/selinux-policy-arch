@@ -859,6 +859,24 @@ interface(`cron_dontaudit_append_system_job_tmp_files',`
 
 ########################################
 ## <summary>
+##	Read and write to inherited system cron job temporary files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`cron_rw_inherited_system_job_tmp_files',`
+	gen_require(`
+		type system_cronjob_tmp_t;
+	')
+
+	allow $1 system_cronjob_tmp_t:file rw_inherited_file_perms;
+')
+
+########################################
+## <summary>
 ##	Do not audit attempts to write temporary
 ##	system cron job files.
 ## </summary>

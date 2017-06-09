@@ -137,20 +137,19 @@ interface(`arpwatch_dontaudit_rw_packet_sockets',`
 interface(`arpwatch_admin',`
 	gen_require(`
 		type arpwatch_t, arpwatch_tmp_t, arpwatch_initrc_exec_t;
-		type arpwatch_data_t, arpwatch_var_run_t;
+		type arpwatch_data_t, arpwatch_pid_t, arpwatch_unit_t;
 	')
 
-	allow $1 arpwatch_t:process { ptrace signal_perms };
-	ps_process_pattern($1, arpwatch_t)
+	admin_process_pattern($1, arpwatch_t)
 
-	init_startstop_service($1, $2, arpwatch_t, arpwatch_initrc_exec_t)
+	init_startstop_service($1, $2, arpwatch_t, arpwatch_initrc_exec_t, arpwatch_unit_t)
 
-	files_list_tmp($1)
+	files_search_tmp($1)
 	admin_pattern($1, arpwatch_tmp_t)
 
-	files_list_var($1)
+	files_search_var_lib($1)
 	admin_pattern($1, arpwatch_data_t)
 
-	files_list_pids($1)
-	admin_pattern($1, arpwatch_var_run_t)
+	files_search_pids($1)
+	admin_pattern($1, arpwatch_pid_t)
 ')

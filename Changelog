@@ -1,3 +1,174 @@
+* Sat Aug 05 2017 Chris PeBenito <pebenito@ieee.org> - 2.20170805
+Chris PeBenito (82):
+      Create / to /usr equivalence for bin, sbin, and lib, from Russell Coker.
+      Module version bump for usrmerge FC fixes from Jason Zaman.
+      mon policy from Russell Coker.
+      Module version bump for cups patches from Guido Trentalancia.
+      Module version bump for tbird and mozilla printing from Guido
+         Trentalancia.
+      Revert "cups/lpd: read permission for cupsd_var_run_t socket files"
+      Module version bump for cups revert.
+      Sort capabilities permissions from Russell Coker.
+      Little misc patch from Russell Coker.
+      mon: Fix deprecated interface usage.
+      dpkg: Updates from Russell Coker.
+      Monit policy from Russell Coker and cgzones.
+      monit: Fix build error.
+      fetchmail, mysql, tor: Misc fixes from Russell Coker.
+      Merge branch 'alsa_module' of git://github.com/cgzones/refpolicy-contrib
+      Merge branch 'vnstat_module' of git://github.com/cgzones/refpolicy-contrib
+      Module version bump for alsa and vnstatd fixes from cgzones.
+      Merge branch 'ntp_module' of git://github.com/cgzones/refpolicy-contrib
+      Module version bump for ntp fixes from cgzones.
+      samba: A few line moves.
+      Module version bump for samba patch from Russell Coker.
+      Systemd fixes from Russell Coker.
+      Xen fixes from Russell Coker.
+      mailman: Fixes from Russell Coker.
+      MTA fixes from Russell Coker.
+      Network daemon patches from Russell Coker.
+      apache: Fix CI error.
+      Merge branch 'modutils_adapt_interfaces' of
+         git://github.com/cgzones/refpolicy-contrib
+      Merge branch 'corecmd_read_bin_symlinks' of
+         git://github.com/cgzones/refpolicy-contrib
+      Module version bumps for fixes from cgzones.
+      Merge branch 'mandb' of git://github.com/cgzones/refpolicy-contrib
+      Merge branch 'dphysswapfile' of git://github.com/cgzones/refpolicy-contrib
+      Module version bump for dphysswapfile and mandb fixes from cgzones.
+      Merge branch 'var_run_filecontext' of
+         git://github.com/cgzones/refpolicy-contrib
+      Merge branch 'vnstatd' of git://github.com/cgzones/refpolicy-contrib
+      Module version bump for fixes from cgzones.
+      dontaudit net_admin for SO_SNDBUFFORCE
+      /var/run -> /run again
+      Merge branch 'monit' of git://github.com/cgzones/refpolicy-contrib
+      Module version bump for monit patch from cgzones.
+      systemd-resolvd, sessions, and tmpfiles take2
+      Misc fc changes from Russell Coker.
+      Systemd-related changes from Russell Coker.
+      networkmanager: adjust interface docs format.
+      wm: interface docs adjustment.
+      Module version bump for misc fixes from Guido Trentalancia.
+      systemd init from Russell Coker
+      misc daemons from Russell Coker.
+      logging patches from Russell Coker
+      kmod, lvm, brctl patches from Russell Coker
+      devicekit, mount, xserver, and selinuxutil from Russell Coker
+      some userdomain patches from Russell Coker
+      Module version bump for gnome fix from Guido Trentalancia.
+      apache: Move blocks.  No rule changes.
+      Module version bump for changes from Sven Vermeulen and Guido
+         Trentalancia.
+      login take 4 from Russell Coker.
+      Rename apm to acpi from Russell Coker.
+      Module version bump for patches from Russell Coker.
+      some little misc things from Russell Coker.
+      apt/dpkg strict patches from Russell Coker.
+      Module version bump for minor fixes from Guido Trentalancia.
+      Merge branch 'usr_bin_fc' of
+         git://github.com/fishilico/selinux-refpolicy-contrib
+      Module version bump for /usr/bin fc fixes from Nicolas Iooss.
+      Module version bump for chronyd changes from Luis Ressel.
+      openoffice: Move ooffice_rw_tmp_files() implementation.
+      Module version bump for openoffice fix from Guido Trentalancia.
+      libmtp: move lines
+      Module version bump for fixes from Guido Trentalancia.
+      Module version bump for mmap fixes from Stephen Smalley.
+      Module version bump for misc patches from Guido Trentalancia.
+      gpg: Fix overspecified dependencies in gpg_agent_tmp_filetrans.
+      dirmngr: Whitespace fixes.
+      Module version bumps for patches from Jason Zaman.
+      cgmanager: Move lines
+      Module version bumps for patches from Jason Zaman.
+      gpg: Module version bump for patch from Guido Trentalancia.
+      mozilla: Module version bump for patch from Luis Ressel.
+      rkhunter: Fix module version and move lines.
+      Module version bump for patches from cgzones.
+      chkrootkit: Fix module version.
+      Module version bump for patches from cgzones.
+      Bump module versions for release.
+
+Guido Trentalancia (28):
+      cups: read permission for cupsd_var_run_t socket files in
+         cups_stream_connect()
+      cups/lpd: read permission for cupsd_var_run_t socket files
+      thunderbird: allow stream connections to cups so that it can print
+      mozilla: allow stream connections to cups so that it can print
+      java: enable interactive use
+      evolution: add dbus acquire service permission
+      evolution: do not audit kernel read state
+      evolution: add some critical permissions
+      mozilla: read hardware state information
+      mozilla: add a permission
+      wm: load the NetworkManager applet
+      wm: interactive start
+      Gnome and Evolution dbus chat permissions
+      openoffice: support starting it from the window manager
+      evolution: minor fixes and updates
+      java: error messages terminal printout
+      loadkeys: use init fds (system bootup)
+      plymouth: pid interface usability
+      shutdown: send msg to syslog
+      openoffice: open files retrieved using mozilla
+      contrib: new libmtp module
+      openoffice: minor update
+      gnome: improved integration with openoffice
+      cups: let hplip read udev pid files
+      dbus: let session bus daemon manage user runtime dirs
+      zabbix: Grant zabbix_agent_t to call setrlimit on self
+      ntp: fix the drift file context and transition
+      gpg: manage user runtime socket files and directories
+
+Jason Zaman (12):
+      usrmerge: Add missed /usr fcontexts
+      java: update fcontexts for new versions of icedtea
+      dirmngr: add to roles and allow gpg to domtrans
+      gpg dirmngr: create and connect to socket
+      dirmngr: fcontext for ~/.gnupg/crls.d/
+      dirmngr: Network rules to connect to keyserver
+      cgmanager: add policy from gentoo
+      consolekit: Add support for consolekit2
+      consolekit: allow purging tmp
+      consolekit: introduce consolekit_use_inhibit_lock interface
+      dbus: use consolekit inhibit locks
+      networkmanager: use consolekit inhibit locks
+
+Luis Ressel (3):
+      chronyd: Re-align fc file
+      chronyd: Allow init scripts to create /run/chrony
+      mozilla: Add fc for the files used by the firefox addon "vimperator"
+
+Nicolas Iooss (1):
+      Support systems with a single /usr/bin directory
+
+Russell Coker (1):
+      patch for samba
+
+Stephen Smalley (1):
+      contrib: allow map permission where needed
+
+Sven Vermeulen (1):
+      rpc_* interfaces should be wrapped by optional_policy()
+
+cgzones (16):
+      update ntp module
+      update alsa module
+      vnstatd: update module
+      corecmd_read_bin_symlinks(): remove deprecated and redundant calls
+      modutils: adopt calls to new interfaces
+      vnstatd: update
+      dphysswapfile: update
+      monit: update
+      mandb: update
+      logrotate: reload monit after log rotation
+      remove /var/run file context lefovers, add dbus exception
+      monit: add syslog access and support for monit systemd service
+      rkhunter: add policy module
+      arpwatch: align file contexts
+      chkrootkit: add policy module
+      arpwatch: update
+
 * Sat Feb 04 2017 Chris PeBenito <pebenito@ieee.org> - 2.20170204
 Chris PeBenito (41):
       Module version bump for patches from Jason Zaman.

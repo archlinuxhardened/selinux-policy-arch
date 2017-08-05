@@ -1,4 +1,4 @@
-policy_module(asterisk, 1.17.1)
+policy_module(asterisk, 1.18.0)
 
 ########################################
 #

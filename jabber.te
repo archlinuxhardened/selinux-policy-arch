@@ -1,4 +1,4 @@
-policy_module(jabber, 1.12.2)
+policy_module(jabber, 1.13.0)
 
 ########################################
 #

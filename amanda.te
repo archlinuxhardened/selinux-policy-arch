@@ -1,4 +1,4 @@
-policy_module(amanda, 1.16.1)
+policy_module(amanda, 1.17.0)
 
 #######################################
 #

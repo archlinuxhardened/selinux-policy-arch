@@ -1,4 +1,4 @@
-policy_module(vnstatd, 1.3.3)
+policy_module(vnstatd, 1.4.0)
 
 ########################################
 #

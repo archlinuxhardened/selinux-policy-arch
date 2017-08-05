@@ -1,4 +1,4 @@
-policy_module(apache, 2.12.6)
+policy_module(apache, 2.13.0)
 
 ########################################
 #

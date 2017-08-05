@@ -1,4 +1,4 @@
-policy_module(logrotate, 1.18.4)
+policy_module(logrotate, 1.19.0)
 
 ########################################
 #

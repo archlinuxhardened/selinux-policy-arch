@@ -1064,22 +1064,6 @@ interface(`virt_rw_all_image_chr_files',`
 ########################################
 ## <summary>
 ##	Create, read, write, and delete
-##	svirt cache files.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`virt_manage_svirt_cache',`
-	refpolicywarn(`$0($*) has been deprecated, use virt_manage_virt_cache() instead.')
-	virt_manage_virt_cache($1)
-')
-
-########################################
-## <summary>
-##	Create, read, write, and delete
 ##	virt cache content.
 ## </summary>
 ## <param name="domain">

@@ -40,21 +40,6 @@ interface(`automount_signal',`
 
 ########################################
 ## <summary>
-##	Execute automount in the caller domain.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`automount_exec_config',`
-	refpolicywarn(`$0(): has been deprecated, please use files_exec_etc_files() instead.')
-	files_exec_etc_files($1)
-')
-
-########################################
-## <summary>
 ##	Read automount process state.
 ## </summary>
 ## <param name="domain">

@@ -48,63 +48,6 @@ interface(`mandb_run',`
 
 ########################################
 ## <summary>
-##	Search mandb cache directories.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`mandb_search_cache',`
-	refpolicywarn(`$0($*) has been deprecated')
-')
-
-########################################
-## <summary>
-##	Delete mandb cache content.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`mandb_delete_cache_content',`
-	refpolicywarn(`$0($*) has been deprecated')
-')
-
-########################################
-## <summary>
-##	Read mandb cache content.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`mandb_read_cache_content',`
-	refpolicywarn(`$0($*) has been deprecated')
-')
-
-########################################
-## <summary>
-##	Create, read, write, and delete
-##	mandb cache files.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`mandb_manage_cache_content',`
-	refpolicywarn(`$0($*) has been deprecated')
-')
-
-########################################
-## <summary>
 ##	All of the rules required to
 ##	administrate an mandb environment.
 ## </summary>

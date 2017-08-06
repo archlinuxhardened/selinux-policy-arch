@@ -130,46 +130,6 @@ interface(`bluetooth_dbus_chat',`
 
 ########################################
 ## <summary>
-##	Execute bluetooth_helper in the bluetooth_helper domain.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed to transition.
-##	</summary>
-## </param>
-#
-interface(`bluetooth_domtrans_helper',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
-##	Execute bluetooth_helper in the bluetooth_helper domain, and
-##	allow the specified role the bluetooth_helper domain.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed to transition.
-##	</summary>
-## </param>
-## <param name="role">
-##	<summary>
-##	Role allowed access.
-##	</summary>
-## </param>
-## <param name="terminal">
-##	<summary>
-##	The type of the terminal allow the bluetooth_helper domain to use.
-##	</summary>
-## </param>
-## <rolecap/>
-#
-interface(`bluetooth_run_helper',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	Do not audit attempts to read
 ##	bluetooth process state files.
 ## </summary>

@@ -428,22 +428,6 @@ interface(`postfix_stream_connect_master',`
 
 ########################################
 ## <summary>
-##	Read and write postfix master
-##	unnamed pipes.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`postfix_rw_master_pipes',`
-	refpolicywarn(`$0($*) has been deprecated, use postfix_rw_inherited_master_pipes() instead.')
-	postfix_rw_inherited_master_pipes($1)
-')
-
-########################################
-## <summary>
 ##	Execute the master postdrop in the
 ##	postfix postdrop domain.
 ## </summary>
@@ -480,22 +464,6 @@ interface(`postfix_domtrans_postqueue',`
 
 	corecmd_search_bin($1)
 	domtrans_pattern($1, postfix_postqueue_exec_t, postfix_postqueue_t)
-')
-
-#######################################
-## <summary>
-##	Execute the master postqueue in
-##	the caller domain.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`posftix_exec_postqueue',`
-	refpolicywarn(`$0($*) has been deprecated.')
-	postfix_exec_postqueue($1)
 ')
 
 #######################################

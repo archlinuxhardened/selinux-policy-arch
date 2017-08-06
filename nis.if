@@ -215,34 +215,6 @@ interface(`nis_list_var_yp',`
 
 ########################################
 ## <summary>
-##	Send UDP network traffic to NIS clients.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`nis_udp_send_ypbind',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
-##	Connect to ypbind over TCP.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`nis_tcp_connect_ypbind',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	Read ypbind pid files.
 ## </summary>
 ## <param name="domain">

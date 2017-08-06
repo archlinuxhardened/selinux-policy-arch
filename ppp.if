@@ -2,25 +2,6 @@
 
 ########################################
 ## <summary>
-##	Role access for ppp.
-## </summary>
-## <param name="role">
-##	<summary>
-##	Role allowed access.
-##	</summary>
-## </param>
-## <param name="domain">
-##	<summary>
-##	User domain for the role.
-##	</summary>
-## </param>
-#
-interface(`ppp_role',`
-	refpolicywarn(`$0($*) has been deprecated')
-')
-
-########################################
-## <summary>
 ##	Create, read, write, and delete
 ##	ppp home files.
 ## </summary>

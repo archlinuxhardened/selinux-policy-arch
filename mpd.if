@@ -2,25 +2,6 @@
 
 ########################################
 ## <summary>
-##	Role access for mpd.
-## </summary>
-## <param name="role">
-##	<summary>
-##	Role allowed access.
-##	</summary>
-## </param>
-## <param name="domain">
-##	<summary>
-##	User domain for the role.
-##	</summary>
-## </param>
-#
-template(`mpd_role',`
-	refpolicywarn(`$0($*) has been deprecated')
-')
-
-########################################
-## <summary>
 ##	Execute a domain transition to run mpd.
 ## </summary>
 ## <param name="domain">

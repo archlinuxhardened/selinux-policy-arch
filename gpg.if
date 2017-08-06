@@ -125,20 +125,6 @@ interface(`gpg_spec_domtrans',`
 
 ######################################
 ## <summary>
-##	Execute gpg in the gpg web domain.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed to transition.
-##	</summary>
-## </param>
-#
-interface(`gpg_domtrans_web',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-######################################
-## <summary>
 ##	Make gpg executable files an
 ##	entrypoint for the specified domain.
 ## </summary>

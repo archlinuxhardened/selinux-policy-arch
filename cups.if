@@ -75,20 +75,6 @@ interface(`cups_stream_connect',`
 
 ########################################
 ## <summary>
-##	Connect to cups over TCP.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`cups_tcp_connect',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	Send and receive messages from
 ##	cups over dbus.
 ## </summary>

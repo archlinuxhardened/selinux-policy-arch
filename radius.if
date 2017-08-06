@@ -2,20 +2,6 @@
 
 ########################################
 ## <summary>
-##	Use radius over a UDP connection.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`radius_use',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	All of the rules required to
 ##	administrate an radius environment.
 ## </summary>

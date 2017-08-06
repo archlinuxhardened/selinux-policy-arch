@@ -43,20 +43,6 @@ interface(`snmp_tcp_connect',`
 
 ########################################
 ## <summary>
-##	Send and receive UDP traffic to SNMP  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`snmp_udp_chat',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	Create, read, write, and delete
 ##	snmp lib directories.
 ## </summary>

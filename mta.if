@@ -717,20 +717,6 @@ interface(`mta_dontaudit_rw_delivery_tcp_sockets',`
 
 #######################################
 ## <summary>
-##	Connect to all mail servers over TCP.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`mta_tcp_connect_all_mailservers',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-#######################################
-## <summary>
 ##	Do not audit attempts to read
 ##	mail spool symlinks.
 ## </summary>

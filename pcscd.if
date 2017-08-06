@@ -29,21 +29,6 @@ interface(`pcscd_domtrans',`
 ##	</summary>
 ## </param>
 #
-interface(`pcscd_read_pub_files',`
-	refpolicywarn(`$0($*) has been deprecated, use pcscd_read_pid_files() instead.')
-	pcscd_read_pid_files($1)
-')
-
-########################################
-## <summary>
-##	Read pcscd pid files.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
 interface(`pcscd_read_pid_files',`
 	gen_require(`
 		type pcscd_var_run_t;
@@ -51,36 +36,6 @@ interface(`pcscd_read_pid_files',`
 
 	files_search_pids($1)
 	read_files_pattern($1, pcscd_var_run_t, pcscd_var_run_t)
-')
-
-########################################
-## <summary>
-##	Create, read, write, and delete
-##	pcscd pid files.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`pcscd_manage_pub_files',`
-	refpolicywarn(`$0($*) has been deprecated')
-')
-
-########################################
-## <summary>
-##	Create, read, write, and delete
-##	pcscd pid fifo files.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`pcscd_manage_pub_pipes',`
-	refpolicywarn(`$0($*) has been deprecated')
 ')
 
 ########################################

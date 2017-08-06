@@ -2,25 +2,6 @@
 
 ########################################
 ## <summary>
-##	Role access for kerberos.
-## </summary>
-## <param name="role">
-##	<summary>
-##	Role allowed access.
-##	</summary>
-## </param>
-## <param name="domain">
-##	<summary>
-##	User domain for the role.
-##	</summary>
-## </param>
-#
-template(`kerberos_role',`
-	refpolicywarn(`$0($*) has been deprecated')
-')
-
-########################################
-## <summary>
 ##	Execute kadmind in the caller domain.
 ## </summary>
 ## <param name="domain">
@@ -335,28 +316,6 @@ interface(`kerberos_etc_filetrans_keytab',`
 	')
 
 	files_etc_filetrans($1, krb5_keytab_t, $2, $3)
-')
-
-########################################
-## <summary>
-##	Create a derived type for kerberos
-##	keytab files.
-## </summary>
-## <param name="prefix">
-##	<summary>
-##	The prefix to be used for deriving type names.
-##	</summary>
-## </param>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-template(`kerberos_keytab_template',`
-	refpolicywarn(`$0($*) has been deprecated.')
-	kerberos_read_keytab($2)
-	kerberos_use($2)
 ')
 
 ########################################

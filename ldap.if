@@ -41,20 +41,6 @@ interface(`ldap_read_config',`
 
 ########################################
 ## <summary>
-##	Use LDAP over TCP connection.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`ldap_use',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	Connect to slapd over an unix
 ##	stream socket.
 ## </summary>

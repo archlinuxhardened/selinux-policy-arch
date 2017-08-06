@@ -151,28 +151,6 @@ interface(`cobbler_manage_lib_files',`
 ## </param>
 ## <rolecap/>
 #
-interface(`cobblerd_admin',`
-	refpolicywarn(`$0($*) has been deprecated, use cobbler_admin() instead.')
-	cobbler_admin($1, $2)
-')
-
-########################################
-## <summary>
-##	All of the rules required to
-##	administrate an cobbler environment.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-## <param name="role">
-##	<summary>
-##	Role allowed access.
-##	</summary>
-## </param>
-## <rolecap/>
-#
 interface(`cobbler_admin',`
 	gen_require(`
 		type cobblerd_t, cobbler_var_lib_t, cobbler_var_log_t;

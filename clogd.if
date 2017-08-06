@@ -21,21 +21,6 @@ interface(`clogd_domtrans',`
 
 #####################################
 ## <summary>
-##	Connect to clogd over a unix domain
-##	stream socket.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`clogd_stream_connect',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-#####################################
-## <summary>
 ##	Read and write clogd semaphores.
 ## </summary>
 ## <param name="domain">

@@ -20,20 +20,6 @@ interface(`ftp_dyntrans_anon_sftpd',`
 
 ########################################
 ## <summary>
-##	Connect to over ftpd over TCP.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`ftp_tcp_connect',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	Read ftpd configuration files.
 ## </summary>
 ## <param name="domain">

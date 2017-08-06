@@ -254,21 +254,6 @@ interface(`pulseaudio_setattr_home_dir',`
 ##	</summary>
 ## </param>
 #
-interface(`pulseaudio_read_home_files',`
-	refpolicywarn(`$0($*) has been deprecated, use pulseaudio_read_home() instead.')
-	pulseaudio_read_home($1)
-')
-
-########################################
-## <summary>
-##	Read pulseaudio home content.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
 interface(`pulseaudio_read_home',`
 	gen_require(`
 		type pulseaudio_home_t;
@@ -298,22 +283,6 @@ interface(`pulseaudio_rw_home_files',`
 	userdom_search_user_home_dirs($1)
 	rw_files_pattern($1, pulseaudio_home_t, pulseaudio_home_t)
 	read_lnk_files_pattern($1, pulseaudio_home_t, pulseaudio_home_t)
-')
-
-########################################
-## <summary>
-##	Create, read, write, and delete
-##	pulseaudio home content.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`pulseaudio_manage_home_files',`
-	refpolicywarn(`$0($*) has been deprecated, use pulseaudio_manage_home() instead.')
-	pulseaudio_manage_home($1)
 ')
 
 ########################################

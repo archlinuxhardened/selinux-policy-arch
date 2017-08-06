@@ -564,22 +564,6 @@ interface(`rpm_manage_pid_files',`
 	files_search_pids($1)
 ')
 
-######################################
-## <summary>
-##	Create files in pid directories
-##	with the rpm pid file type.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`rpm_pid_filetrans',`
-	refpolicywarn(`$0($*) has been deprecated, rpm_pid_filetrans_rpm_pid() instead.')
-	rpm_pid_filetrans_rpm_pid($1, file)
-')
-
 ########################################
 ## <summary>
 ##	Create specified objects in pid directories

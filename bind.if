@@ -331,20 +331,6 @@ interface(`bind_manage_zone',`
 
 ########################################
 ## <summary>
-##	Send and receive datagrams to and from named.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`bind_udp_chat_named',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	All of the rules required to
 ##	administrate an bind environment.
 ## </summary>

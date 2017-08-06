@@ -1,24 +1,5 @@
 ## <summary>GNU network object model environment.</summary>
 
-########################################
-## <summary>
-##	Role access for gnome.  (Deprecated)
-## </summary>
-## <param name="role">
-##	<summary>
-##	Role allowed access.
-##	</summary>
-## </param>
-## <param name="domain">
-##	<summary>
-##	User domain for the role.
-##	</summary>
-## </param>
-#
-interface(`gnome_role',`
-	refpolicywarn(`$0($*) has been deprecated')
-')
-
 #######################################
 ## <summary>
 ##	The role template for gnome.
@@ -267,22 +248,6 @@ interface(`gnome_create_generic_home_dirs',`
 ########################################
 ## <summary>
 ##	Set attributes of generic gnome
-##	user home directories.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`gnome_setattr_config_dirs',`
-	refpolicywarn(`$0($*) has been deprecated, use gnome_setattr_generic_home_dirs() instead.')
-	gnome_setattr_generic_home_dirs($1)
-')
-
-########################################
-## <summary>
-##	Set attributes of generic gnome
 ##	user home directories.
 ## </summary>
 ## <param name="domain">
@@ -298,21 +263,6 @@ interface(`gnome_setattr_generic_home_dirs',`
 
 	userdom_search_user_home_dirs($1)
 	setattr_dirs_pattern($1, gnome_home_t, gnome_home_t)
-')
-
-########################################
-## <summary>
-##	Read generic gnome user home content.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`gnome_read_config',`
-	refpolicywarn(`$0($*) has been deprecated, use gnome_read_generic_home_content() instead.')
-	gnome_read_generic_home_content($1)
 ')
 
 ########################################
@@ -336,22 +286,6 @@ interface(`gnome_read_generic_home_content',`
 	allow $1 gnome_home_t:fifo_file read_fifo_file_perms;
 	allow $1 gnome_home_t:lnk_file read_lnk_file_perms;
 	allow $1 gnome_home_t:sock_file read_sock_file_perms;
-')
-
-########################################
-## <summary>
-##	Create, read, write, and delete
-##	generic gnome user home content.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`gnome_manage_config',`
-	refpolicywarn(`$0($*) has been deprecated, use gnome_manage_generic_home_content() instead.')
-	gnome_manage_generic_home_content($1)
 ')
 
 ########################################

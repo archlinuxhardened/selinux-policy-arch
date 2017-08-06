@@ -2,20 +2,6 @@
 
 ########################################
 ## <summary>
-##	Create the locate log with append mode.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`slocate_create_append_log',`
-	refpolicywarn(`$0($*) has been deprecated')
-')
-
-########################################
-## <summary>
 ##	Read locate lib files.
 ## </summary>
 ## <param name="domain">

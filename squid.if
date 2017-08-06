@@ -177,20 +177,6 @@ interface(`squid_manage_logs',`
 
 ########################################
 ## <summary>
-##	Use squid services by connecting over TCP.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`squid_use',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	dontaudit statting tmpfs files
 ## </summary>
 ## <param name="domain">

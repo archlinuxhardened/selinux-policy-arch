@@ -133,28 +133,6 @@ interface(`corosync_rw_tmpfs',`
 ## </param>
 ## <rolecap/>
 #
-interface(`corosyncd_admin',`
-	refpolicywarn(`$0($*) has been deprecated, use corosync_admin() instead.')
-	corosync_admin($1, $2)
-')
-
-######################################
-## <summary>
-##	All of the rules required to
-##	administrate an corosync environment.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-## <param name="role">
-##	<summary>
-##	Role allowed access.
-##	</summary>
-## </param>
-## <rolecap/>
-#
 interface(`corosync_admin',`
 	gen_require(`
 		type corosync_t, corosync_var_lib_t, corosync_var_log_t;

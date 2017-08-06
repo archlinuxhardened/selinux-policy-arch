@@ -52,20 +52,6 @@ template(`rpc_domain_template',`
 
 ########################################
 ## <summary>
-##	Send UDP network traffic to rpc and recieve UDP traffic from rpc.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`rpc_udp_send',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	Do not audit attempts to get
 ##	attributes of export files.
 ## </summary>
@@ -294,20 +280,6 @@ interface(`rpc_udp_rw_nfs_sockets',`
 	')
 
 	allow $1 nfsd_t:udp_socket rw_socket_perms;
-')
-
-########################################
-## <summary>
-##	Send UDP traffic to NFSd.  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`rpc_udp_send_nfs',`
-	refpolicywarn(`$0($*) has been deprecated.')
 ')
 
 ########################################

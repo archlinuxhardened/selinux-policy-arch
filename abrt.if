@@ -164,22 +164,6 @@ interface(`abrt_run_helper',`
 ########################################
 ## <summary>
 ##	Create, read, write, and delete
-##	abrt cache files.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`abrt_cache_manage',`
-	refpolicywarn(`$0($*) has been deprecated, use abrt_manage_cache() instead.')
-	abrt_manage_cache($1)
-')
-
-########################################
-## <summary>
-##	Create, read, write, and delete
 ##	abrt cache content.
 ## </summary>
 ## <param name="domain">

@@ -17,28 +17,6 @@
 ## </param>
 ## <rolecap/>
 #
-interface(`glusterd_admin',`
-	refpolicywarn(`$0($*) has been deprecated, use glusterfs_admin() instead.')
-	glusterfs_admin($1, $2)
-')
-
-########################################
-## <summary>
-##	All of the rules required to
-##	administrate an glusterfs environment.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-## <param name="role">
-##	<summary>
-##	Role allowed access.
-##	</summary>
-## </param>
-## <rolecap/>
-#
 interface(`glusterfs_admin',`
 	gen_require(`
 		type glusterd_t, glusterd_initrc_exec_t, glusterd_log_t;

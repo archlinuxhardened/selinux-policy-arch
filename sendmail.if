@@ -228,22 +228,6 @@ interface(`sendmail_manage_log',`
 ##	Domain allowed access.
 ##	</summary>
 ## </param>
-#
-interface(`sendmail_create_log',`
-	refpolicywarn(`$0($*) has been deprecated, use sendmail_log_filetrans_sendmail_log() instead.')
-	sendmail_log_filetrans_sendmail_log($1, $2, $3)
-')
-
-########################################
-## <summary>
-##	Create specified objects in generic
-##	log directories sendmail log file type.
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
 ## <param name="object_class">
 ##	<summary>
 ##	Class of the object being created.

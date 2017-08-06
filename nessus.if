@@ -2,20 +2,6 @@
 
 ########################################
 ## <summary>
-##	Connect to nessus over a TCP socket  (Deprecated)
-## </summary>
-## <param name="domain">
-##	<summary>
-##	Domain allowed access.
-##	</summary>
-## </param>
-#
-interface(`nessus_tcp_connect',`
-	refpolicywarn(`$0($*) has been deprecated.')
-')
-
-########################################
-## <summary>
 ##	All of the rules required to
 ##	administrate an nessus environment.
 ## </summary>

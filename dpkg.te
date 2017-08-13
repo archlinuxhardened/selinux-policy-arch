@@ -203,7 +203,7 @@ optional_policy(`
 #
 
 allow dpkg_script_t self:capability { audit_write chown dac_override dac_read_search fowner fsetid ipc_lock kill mknod net_admin setfcap setgid setuid sys_chroot sys_nice sys_ptrace };
-allow dpkg_script_t self:process ~{ ptrace setcurrent setexec setrlimit execmem execstack execheap };
+allow dpkg_script_t self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr setfscreate noatsecure siginh rlimitinh dyntransition setkeycreate setsockcreate getrlimit };
 allow dpkg_script_t self:fd use;
 allow dpkg_script_t self:fifo_file rw_fifo_file_perms;
 allow dpkg_script_t self:unix_dgram_socket create_socket_perms;

@@ -71,8 +71,7 @@ interface(`portage_compile_domain',`
 
 	allow $1 self:capability { chown dac_override fowner fsetid mknod net_raw setgid setuid };
 	dontaudit $1 self:capability sys_chroot;
-	allow $1 self:process { setpgid setsched setrlimit signal_perms execmem setfscreate };
-	allow $1 self:process ~{ ptrace setcurrent setexec setrlimit execmem execstack execheap };
+	allow $1 self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr setfscreate noatsecure siginh setrlimit rlimitinh dyntransition execmem setkeycreate setsockcreate getrlimit };
 	allow $1 self:fd use;
 	allow $1 self:fifo_file rw_fifo_file_perms;
 	allow $1 self:shm create_shm_perms;

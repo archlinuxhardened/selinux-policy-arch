@@ -74,8 +74,7 @@ files_tmpfs_file(rpm_script_tmpfs_t)
 #
 
 allow rpm_t self:capability { chown dac_override fowner fsetid ipc_lock mknod setfcap setgid setuid sys_chroot sys_nice sys_tty_config };
-allow rpm_t self:process ~{ ptrace setcurrent setexec setfscreate setrlimit execstack execheap };
-allow rpm_t self:process { getattr setexec setfscreate setrlimit };
+allow rpm_t self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr setexec setfscreate noatsecure siginh setrlimit rlimitinh dyntransition execmem setkeycreate setsockcreate getrlimit };
 allow rpm_t self:fd use;
 allow rpm_t self:fifo_file rw_fifo_file_perms;
 allow rpm_t self:unix_dgram_socket sendto;
@@ -242,7 +241,7 @@ optional_policy(`
 #
 
 allow rpm_script_t self:capability { chown dac_override dac_read_search fowner fsetid ipc_lock kill mknod net_admin setgid setuid sys_admin sys_chroot sys_nice sys_rawio };
-allow rpm_script_t self:process ~{ ptrace setcurrent setexec setfscreate setrlimit execheap };
+allow rpm_script_t self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr noatsecure siginh rlimitinh dyntransition execmem execstack setkeycreate setsockcreate getrlimit };
 allow rpm_script_t self:fd use;
 allow rpm_script_t self:fifo_file rw_fifo_file_perms;
 allow rpm_script_t self:unix_dgram_socket sendto;

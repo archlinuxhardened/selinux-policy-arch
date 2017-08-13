@@ -37,7 +37,7 @@ role system_r types logrotate_mail_t;
 #
 
 allow logrotate_t self:capability { chown dac_override dac_read_search fowner fsetid kill setgid setuid sys_nice sys_resource };
-allow logrotate_t self:process ~{ ptrace setcurrent setexec execmem execstack execheap };
+allow logrotate_t self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr setfscreate noatsecure siginh setrlimit rlimitinh dyntransition setkeycreate setsockcreate getrlimit };
 allow logrotate_t self:fd use;
 allow logrotate_t self:key manage_key_perms;
 allow logrotate_t self:fifo_file rw_fifo_file_perms;

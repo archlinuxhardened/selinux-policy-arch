@@ -226,7 +226,7 @@ interface(`nscd_unconfined',`
 		class nscd all_nscd_perms;
 	')
 
-	allow $1 nscd_t:nscd *;
+	allow $1 nscd_t:nscd { getpwd getgrp gethost getstat admin shmempwd shmemgrp shmemhost getserv shmemserv };
 ')
 
 ########################################

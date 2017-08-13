@@ -269,7 +269,7 @@ optional_policy(`
 
 allow smbd_t self:capability { chown dac_override dac_read_search fowner fsetid kill lease setgid setuid sys_admin sys_chroot sys_nice sys_resource };
 dontaudit smbd_t self:capability sys_tty_config;
-allow smbd_t self:process ~{ ptrace setcurrent setexec setfscreate execmem execstack execheap };
+allow smbd_t self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr noatsecure siginh setrlimit rlimitinh dyntransition setkeycreate setsockcreate getrlimit };
 allow smbd_t self:fd use;
 allow smbd_t self:fifo_file rw_fifo_file_perms;
 allow smbd_t self:msg { send receive };
@@ -518,7 +518,7 @@ optional_policy(`
 #
 
 dontaudit nmbd_t self:capability sys_tty_config;
-allow nmbd_t self:process ~{ ptrace setcurrent setexec setfscreate setrlimit execmem execstack execheap };
+allow nmbd_t self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr noatsecure siginh rlimitinh dyntransition setkeycreate setsockcreate getrlimit };
 allow nmbd_t self:fd use;
 allow nmbd_t self:fifo_file rw_fifo_file_perms;
 allow nmbd_t self:msg { send receive };

@@ -188,8 +188,7 @@ optional_policy(`
 
 allow vmware_t self:capability { chown dac_override setgid setuid sys_admin sys_nice sys_rawio sys_resource };
 dontaudit vmware_t self:capability sys_tty_config;
-allow vmware_t self:process ~{ ptrace setcurrent setexec setfscreate setrlimit execmem execstack execheap };
-allow vmware_t self:process { execmem execstack };
+allow vmware_t self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr noatsecure siginh rlimitinh dyntransition execmem execstack setkeycreate setsockcreate getrlimit };
 allow vmware_t self:fd use;
 allow vmware_t self:fifo_file rw_fifo_file_perms;
 allow vmware_t self:unix_dgram_socket { create_socket_perms sendto };

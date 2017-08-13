@@ -89,7 +89,7 @@ files_pid_file(spamd_var_run_t)
 # Standalone local policy
 #
 
-allow spamassassin_t self:process ~{ ptrace setcurrent setexec setfscreate setrlimit execmem execstack execheap };
+allow spamassassin_t self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr noatsecure siginh rlimitinh dyntransition setkeycreate setsockcreate getrlimit };
 allow spamassassin_t self:fd use;
 allow spamassassin_t self:fifo_file rw_fifo_file_perms;
 allow spamassassin_t self:unix_dgram_socket sendto;
@@ -169,7 +169,7 @@ optional_policy(`
 #
 
 allow spamc_t self:capability dac_override;
-allow spamc_t self:process ~{ ptrace setcurrent setexec setfscreate setrlimit execmem execstack execheap };
+allow spamc_t self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr noatsecure siginh rlimitinh dyntransition setkeycreate setsockcreate getrlimit };
 allow spamc_t self:fd use;
 allow spamc_t self:fifo_file rw_fifo_file_perms;
 allow spamc_t self:unix_dgram_socket sendto;
@@ -273,7 +273,7 @@ optional_policy(`
 
 allow spamd_t self:capability { dac_override kill setgid setuid sys_tty_config };
 dontaudit spamd_t self:capability sys_tty_config;
-allow spamd_t self:process ~{ ptrace setcurrent setexec setfscreate setrlimit execmem execstack execheap };
+allow spamd_t self:process { transition signal_perms getsched setsched getsession getpgid setpgid getcap setcap share getattr noatsecure siginh rlimitinh dyntransition setkeycreate setsockcreate getrlimit };
 allow spamd_t self:fd use;
 allow spamd_t self:fifo_file rw_fifo_file_perms;
 allow spamd_t self:unix_dgram_socket sendto;

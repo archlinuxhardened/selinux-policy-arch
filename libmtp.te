@@ -7,8 +7,8 @@ policy_module(libmtp, 1.0.0)
 
 ## <desc>
 ##	<p>
-##	Determine whether libmtp can
-##	manage the user home directories
+##	Determine whether libmtp can read
+##	and manage the user home directories
 ##	and files.
 ##	</p>
 ## </desc>
@@ -55,5 +55,6 @@ optional_policy(`
 
 tunable_policy(`libmtp_enable_home_dirs',`
 	userdom_manage_user_home_content_files(libmtp_t)
+	userdom_read_user_home_content_symlinks(libmtp_t)
 	userdom_user_home_dir_filetrans_user_home_content(libmtp_t, file )
 ')

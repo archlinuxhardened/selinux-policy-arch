@@ -206,6 +206,9 @@ corenet_tcp_connect_all_ports(spamc_t)
 
 corecmd_exec_bin(spamc_t)
 
+dev_read_rand(spamc_t)
+dev_read_urand(spamc_t)
+
 domain_use_interactive_fds(spamc_t)
 
 fs_getattr_all_fs(spamc_t)
@@ -222,6 +225,8 @@ auth_use_nsswitch(spamc_t)
 logging_send_syslog_msg(spamc_t)
 
 miscfiles_read_localization(spamc_t)
+
+userdom_use_inherited_user_terminals(spamc_t)
 
 tunable_policy(`use_nfs_home_dirs',`
 	fs_manage_nfs_dirs(spamc_t)

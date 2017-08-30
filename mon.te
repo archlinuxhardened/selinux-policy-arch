@@ -207,8 +207,6 @@ logging_send_syslog_msg(mon_local_test_t)
 
 miscfiles_read_localization(mon_local_test_t)
 
-rpc_read_nfs_content(mon_local_test_t)
-
 sysnet_read_config(mon_local_test_t)
 
 optional_policy(`
@@ -217,6 +215,10 @@ optional_policy(`
 
 optional_policy(`
 	postfix_search_spool(mon_local_test_t)
+')
+
+optional_policy(`
+	rpc_read_nfs_content(mon_local_test_t)
 ')
 
 optional_policy(`

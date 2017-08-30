@@ -43,7 +43,6 @@ application_executable_file(anacron_exec_t)
 
 type cron_spool_t;
 files_type(cron_spool_t)
-mta_system_content(cron_spool_t)
 
 type cron_var_lib_t;
 files_type(cron_var_lib_t)
@@ -74,14 +73,12 @@ init_script_file(crond_initrc_exec_t)
 type crond_tmp_t;
 files_tmp_file(crond_tmp_t)
 files_poly_parent(crond_tmp_t)
-mta_system_content(crond_tmp_t)
 
 type crond_unit_t;
 init_unit_file(crond_unit_t)
 
 type crond_var_run_t;
 files_pid_file(crond_var_run_t)
-mta_system_content(crond_var_run_t)
 
 type crontab_exec_t;
 application_executable_file(crontab_exec_t)
@@ -98,7 +95,6 @@ typealias crontab_tmp_t alias { auditadm_crontab_tmp_t secadm_crontab_tmp_t };
 
 type system_cron_spool_t, cron_spool_type;
 files_type(system_cron_spool_t)
-mta_system_content(system_cron_spool_t)
 
 type system_cronjob_t alias system_crond_t;
 init_daemon_domain(system_cronjob_t, anacron_exec_t)
@@ -122,15 +118,22 @@ typealias user_cron_spool_t alias { staff_cron_spool_t sysadm_cron_spool_t uncon
 typealias user_cron_spool_t alias { auditadm_cron_spool_t secadm_cron_spool_t };
 files_type(user_cron_spool_t)
 ubac_constrained(user_cron_spool_t)
-mta_system_content(user_cron_spool_t)
 
 type user_cron_spool_log_t;
 logging_log_file(user_cron_spool_log_t)
 ubac_constrained(user_cron_spool_log_t)
-mta_system_content(user_cron_spool_log_t)
 
 ifdef(`enable_mcs',`
 	init_ranged_daemon_domain(crond_t, crond_exec_t, s0 - mcs_systemhigh)
+')
+
+optional_policy(`
+	mta_system_content(cron_spool_t)
+	mta_system_content(crond_tmp_t)
+	mta_system_content(crond_var_run_t)
+	mta_system_content(system_cron_spool_t)
+	mta_system_content(user_cron_spool_t)
+	mta_system_content(user_cron_spool_log_t)
 ')
 
 ##############################

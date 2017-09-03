@@ -14,6 +14,7 @@ domain_type(logrotate_t)
 domain_obj_id_change_exemption(logrotate_t)
 domain_system_change_exemption(logrotate_t)
 domain_entry_file(logrotate_t, logrotate_exec_t)
+init_system_domain(logrotate_t, logrotate_exec_t)
 role logrotate_roles types logrotate_t;
 
 type logrotate_lock_t;

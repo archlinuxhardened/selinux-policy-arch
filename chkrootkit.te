@@ -20,7 +20,7 @@ logging_log_file(chkrootkit_log_t)
 # Application local policy
 #
 
-allow chkrootkit_t self:capability { dac_override dac_read_search setuid sys_ptrace };
+allow chkrootkit_t self:capability { dac_read_search setuid sys_ptrace };
 allow chkrootkit_t self:fifo_file rw_fifo_file_perms;
 allow chkrootkit_t self:udp_socket { create ioctl };
 
@@ -32,6 +32,7 @@ kernel_getattr_message_if(chkrootkit_t)
 corecmd_exec_bin(chkrootkit_t)
 corecmd_exec_shell(chkrootkit_t)
 
+dev_getattr_fs(chkrootkit_t)
 dev_read_rand(chkrootkit_t)
 dev_read_urand(chkrootkit_t)
 dev_getattr_all_chr_files(chkrootkit_t)
@@ -45,6 +46,8 @@ files_read_non_auth_files(chkrootkit_t)
 files_read_all_symlinks(chkrootkit_t)
 files_read_all_chr_files(chkrootkit_t)
 files_getattr_all_pipes(chkrootkit_t)
+
+fs_getattr_xattr_fs(chkrootkit_t)
 
 init_signal(chkrootkit_t)
 

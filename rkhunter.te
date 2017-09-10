@@ -35,7 +35,7 @@ files_type(rkhunter_var_lib_t)
 # Application local policy
 #
 
-allow rkhunter_t self:capability { dac_override dac_read_search net_admin setgid setuid sys_nice sys_ptrace };
+allow rkhunter_t self:capability { dac_read_search kill net_admin setgid setuid sys_nice sys_ptrace };
 allow rkhunter_t self:process { getsched setsched signal };
 allow rkhunter_t self:netlink_route_socket r_netlink_socket_perms;
 allow rkhunter_t self:tcp_socket { bind connect create listen read write };
@@ -68,6 +68,7 @@ corenet_udp_bind_all_ports(rkhunter_t)
 corenet_tcp_bind_generic_node(rkhunter_t)
 corenet_udp_bind_generic_node(rkhunter_t)
 
+dev_getattr_fs(rkhunter_t)
 dev_read_urand(rkhunter_t)
 dev_getattr_all_chr_files(rkhunter_t)
 dev_getattr_all_blk_files(rkhunter_t)
@@ -76,15 +77,22 @@ domain_read_all_domains_state(rkhunter_t)
 domain_use_interactive_fds(rkhunter_t)
 domain_getattr_all_sockets(rkhunter_t)
 domain_getattr_all_pipes(rkhunter_t)
+domain_getpgid_all_domains(rkhunter_t)
+domain_getsched_all_domains(rkhunter_t)
+domain_getsession_all_domains(rkhunter_t)
+domain_signull_all_domains(rkhunter_t)
 
 files_read_non_auth_files(rkhunter_t)
 files_read_all_symlinks(rkhunter_t)
 files_read_all_chr_files(rkhunter_t)
 files_getattr_all_pipes(rkhunter_t)
 files_getattr_all_sockets(rkhunter_t)
+files_check_write_lock_dirs(rkhunter_t)
+files_check_write_pid_dirs(rkhunter_t)
 
 fs_getattr_tracefs(rkhunter_t)
 fs_getattr_tracefs_dirs(rkhunter_t)
+fs_getattr_xattr_fs(rkhunter_t)
 
 hostname_exec(rkhunter_t)
 

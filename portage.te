@@ -195,6 +195,8 @@ auth_manage_shadow(portage_t)
 # merging baselayout will need this:
 init_exec(portage_t)
 
+miscfiles_read_localization(portage_t)
+
 # run setfiles -r
 seutil_run_setfiles(portage_t, portage_roles)
 # run semodule

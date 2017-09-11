@@ -171,7 +171,7 @@ optional_policy(`
 # Common postfix server domain local policy
 #
 
-allow postfix_server_domain self:capability { dac_override setgid setuid };
+allow postfix_server_domain self:capability { dac_read_search dac_override setgid setuid };
 allow postfix_master_t self:process getsched;
 
 allow postfix_server_domain postfix_master_t:unix_stream_socket { connectto rw_stream_socket_perms };
@@ -190,7 +190,7 @@ corenet_tcp_sendrecv_all_ports(postfix_server_domain)
 # Common postfix user domain local policy
 #
 
-allow postfix_user_domains self:capability dac_override;
+allow postfix_user_domains self:capability { dac_read_search dac_override };
 
 domain_use_interactive_fds(postfix_user_domains)
 
@@ -199,7 +199,7 @@ domain_use_interactive_fds(postfix_user_domains)
 # Master local policy
 #
 
-allow postfix_master_t self:capability { chown dac_override fowner kill setgid setuid sys_tty_config };
+allow postfix_master_t self:capability { chown dac_read_search dac_override fowner kill setgid setuid sys_tty_config };
 allow postfix_master_t self:capability2 block_suspend;
 allow postfix_master_t self:process setrlimit;
 allow postfix_master_t self:tcp_socket create_stream_socket_perms;
@@ -487,7 +487,7 @@ optional_policy(`
 # Map local policy
 #
 
-allow postfix_map_t self:capability { dac_override setgid setuid };
+allow postfix_map_t self:capability { dac_read_search dac_override setgid setuid };
 allow postfix_map_t self:tcp_socket { accept listen };
 
 allow postfix_map_t postfix_etc_t:dir manage_dir_perms;

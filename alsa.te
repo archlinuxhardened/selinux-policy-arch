@@ -53,6 +53,7 @@ allow alsa_t alsa_home_t:file read_file_perms;
 list_dirs_pattern(alsa_t, alsa_etc_t, alsa_etc_t)
 read_files_pattern(alsa_t, alsa_etc_t, alsa_etc_t)
 read_lnk_files_pattern(alsa_t, alsa_etc_t, alsa_etc_t)
+allow alsa_t alsa_etc_t:file map;
 
 can_exec(alsa_t, alsa_exec_t)
 

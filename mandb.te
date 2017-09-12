@@ -46,6 +46,7 @@ files_search_pids(mandb_t)
 fs_getattr_xattr_fs(mandb_t)
 
 miscfiles_manage_man_cache(mandb_t)
+miscfiles_map_man_cache(mandb_t)
 miscfiles_read_man_pages(mandb_t)
 miscfiles_read_localization(mandb_t)
 

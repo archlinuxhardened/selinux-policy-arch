@@ -88,7 +88,7 @@ allow mozilla_t mozilla_plugin_t:unix_stream_socket rw_socket_perms;
 allow mozilla_t mozilla_plugin_t:fd use;
 
 allow mozilla_t { mozilla_home_t mozilla_plugin_home_t }:dir manage_dir_perms;
-allow mozilla_t { mozilla_home_t mozilla_plugin_home_t }:file manage_file_perms;
+allow mozilla_t { mozilla_home_t mozilla_plugin_home_t }:file { manage_file_perms map };
 allow mozilla_t mozilla_home_t:lnk_file manage_lnk_file_perms;
 userdom_user_home_dir_filetrans(mozilla_t, mozilla_home_t, dir, ".galeon")
 userdom_user_home_dir_filetrans(mozilla_t, mozilla_home_t, dir, ".mozilla")
@@ -100,6 +100,7 @@ filetrans_pattern(mozilla_t, mozilla_home_t, mozilla_plugin_home_t, dir, "plugin
 manage_files_pattern(mozilla_t, mozilla_tmp_t, mozilla_tmp_t)
 manage_lnk_files_pattern(mozilla_t, mozilla_tmp_t, mozilla_tmp_t)
 manage_dirs_pattern(mozilla_t, mozilla_tmp_t, mozilla_tmp_t)
+allow mozilla_t mozilla_tmp_t:file map;
 files_tmp_filetrans(mozilla_t, mozilla_tmp_t, { file dir })
 
 manage_files_pattern(mozilla_t, mozilla_tmpfs_t, mozilla_tmpfs_t)

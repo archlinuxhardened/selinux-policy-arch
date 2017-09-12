@@ -115,7 +115,7 @@ allow postfix_domain self:fifo_file rw_fifo_file_perms;
 allow postfix_domain self:unix_stream_socket { accept connectto listen };
 
 allow postfix_domain postfix_etc_t:dir list_dir_perms;
-allow postfix_domain postfix_etc_t:file read_file_perms;
+allow postfix_domain postfix_etc_t:file { read_file_perms map };
 allow postfix_domain postfix_etc_t:lnk_file read_lnk_file_perms;
 
 allow postfix_domain postfix_master_t:file read_file_perms;
@@ -405,6 +405,7 @@ corenet_tcp_connect_kismet_port(postfix_cleanup_t)
 corenet_tcp_sendrecv_kismet_port(postfix_cleanup_t)
 
 mta_read_aliases(postfix_cleanup_t)
+mta_map_aliases(postfix_cleanup_t)
 
 optional_policy(`
 	dkim_stream_connect(postfix_cleanup_t)
@@ -436,6 +437,7 @@ logging_dontaudit_search_logs(postfix_local_t)
 
 mta_delete_spool(postfix_local_t)
 mta_read_aliases(postfix_local_t)
+mta_map_aliases(postfix_local_t)
 mta_read_config(postfix_local_t)
 mta_send_mail(postfix_local_t)
 
@@ -489,7 +491,7 @@ allow postfix_map_t self:capability { dac_override setgid setuid };
 allow postfix_map_t self:tcp_socket { accept listen };
 
 allow postfix_map_t postfix_etc_t:dir manage_dir_perms;
-allow postfix_map_t postfix_etc_t:file manage_file_perms;
+allow postfix_map_t postfix_etc_t:file { manage_file_perms map };
 allow postfix_map_t postfix_etc_t:lnk_file manage_lnk_file_perms;
 
 manage_dirs_pattern(postfix_map_t, postfix_map_tmp_t, postfix_map_tmp_t)
@@ -776,6 +778,7 @@ fs_getattr_all_dirs(postfix_smtpd_t)
 fs_getattr_all_fs(postfix_smtpd_t)
 
 mta_read_aliases(postfix_smtpd_t)
+mta_map_aliases(postfix_smtpd_t)
 
 optional_policy(`
 	dovecot_stream_connect_auth(postfix_smtpd_t)
@@ -817,6 +820,7 @@ stream_connect_pattern(postfix_virtual_t, { postfix_private_t postfix_public_t }
 corecmd_exec_bin(postfix_virtual_t)
 
 mta_read_aliases(postfix_virtual_t)
+mta_map_aliases(postfix_virtual_t)
 mta_delete_spool(postfix_virtual_t)
 mta_read_config(postfix_virtual_t)
 mta_manage_spool(postfix_virtual_t)

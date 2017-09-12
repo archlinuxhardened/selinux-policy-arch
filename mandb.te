@@ -10,7 +10,7 @@ roleattribute system_r mandb_roles;
 
 type mandb_t;
 type mandb_exec_t;
-application_domain(mandb_t, mandb_exec_t)
+init_system_domain(mandb_t, mandb_exec_t)
 role mandb_roles types mandb_t;
 
 type mandb_unit_t;
@@ -40,6 +40,8 @@ domain_use_interactive_fds(mandb_t)
 
 files_dontaudit_search_home(mandb_t)
 files_read_etc_files(mandb_t)
+# /usr/local/man
+files_read_usr_symlinks(mandb_t)
 # search /var/run/nscd/socket
 files_search_pids(mandb_t)
 

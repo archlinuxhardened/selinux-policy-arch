@@ -1,4 +1,4 @@
-policy_module(spamassassin, 2.11.2)
+policy_module(spamassassin, 2.11.3)
 
 ########################################
 #
@@ -553,9 +553,6 @@ optional_policy(`
 	allow spamd_gpg_t spamd_var_lib_t:file rw_file_perms;
 	allow spamd_gpg_t spamd_update_tmp_t:file read_file_perms;
 
-	# fips
-	kernel_search_crypto_sysctls(spamd_gpg_t)
-
 	domain_use_interactive_fds(spamd_gpg_t)
 
 	files_read_etc_files(spamd_gpg_t)
@@ -565,7 +562,6 @@ optional_policy(`
 	files_search_tmp(spamd_gpg_t)
 
 	init_use_fds(spamd_gpg_t)
-	init_rw_inherited_stream_socket(spamd_gpg_t)
 
 	miscfiles_read_localization(spamd_gpg_t)
 

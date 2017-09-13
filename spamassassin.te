@@ -503,21 +503,19 @@ manage_lnk_files_pattern(spamd_update_t, spamd_var_lib_t, spamd_var_lib_t)
 
 kernel_read_system_state(spamd_update_t)
 
+corecmd_exec_bin(spamd_update_t)
+corecmd_exec_shell(spamd_update_t)
+
 corenet_all_recvfrom_unlabeled(spamd_update_t)
 corenet_all_recvfrom_netlabel(spamd_update_t)
 corenet_tcp_sendrecv_generic_if(spamd_update_t)
 corenet_tcp_sendrecv_generic_node(spamd_update_t)
 corenet_tcp_sendrecv_all_ports(spamd_update_t)
-
 corenet_sendrecv_http_client_packets(spamd_update_t)
 corenet_tcp_connect_http_port(spamd_update_t)
 corenet_tcp_sendrecv_http_port(spamd_update_t)
-
 corenet_tcp_bind_generic_node(spamd_update_t)
 corenet_udp_bind_generic_node(spamd_update_t)
-
-corecmd_exec_bin(spamd_update_t)
-corecmd_exec_shell(spamd_update_t)
 
 dev_read_urand(spamd_update_t)
 

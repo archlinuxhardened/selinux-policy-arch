@@ -405,7 +405,7 @@ interface(`spamassassin_admin',`
 		type spamd_t, spamd_tmp_t, spamd_log_t;
 		type spamd_spool_t, spamd_var_lib_t, spamd_var_run_t;
 		type spamd_initrc_exec_t, spamassassin_unit_t;
-		type spamd_gpg_t, spamd_update_t;
+		type spamd_gpg_t, spamd_update_t, spamd_update_tmp_t;
 	')
 
 	admin_process_pattern($1, { spamd_t spamd_gpg_t spamd_update_t })

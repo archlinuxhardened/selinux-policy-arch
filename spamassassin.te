@@ -1,4 +1,4 @@
-policy_module(spamassassin, 2.11.3)
+policy_module(spamassassin, 2.11.4)
 
 ########################################
 #

@@ -18,6 +18,9 @@ init_script_file(dphysswapfile_initrc_exec_t)
 type dphysswapfile_swap_t;
 files_type(dphysswapfile_swap_t)
 
+type dphysswapfile_unit_t;
+init_unit_file(dphysswapfile_unit_t)
+
 ########################################
 #
 # Policy
@@ -32,20 +35,29 @@ allow dphysswapfile_t dphysswapfile_conf_t:file read_file_perms;
 
 allow dphysswapfile_t dphysswapfile_exec_t:file execute_no_trans;
 
-allow dphysswapfile_t dphysswapfile_swap_t:file manage_file_perms;
+allow dphysswapfile_t dphysswapfile_swap_t:file { manage_file_perms relabelfrom };
 
 kernel_read_system_state(dphysswapfile_t)
 
 corecmd_exec_bin(dphysswapfile_t)
 corecmd_exec_shell(dphysswapfile_t)
 
+dev_read_rand(dphysswapfile_t)
+dev_read_urand(dphysswapfile_t)
+
 # ignore ls -l /var/swap noise
 files_dontaudit_getattr_pid_dirs(dphysswapfile_t)
 files_read_etc_files(dphysswapfile_t)
 files_search_var(dphysswapfile_t)
+files_var_filetrans(dphysswapfile_t, dphysswapfile_swap_t, file)
 
 fstools_exec(dphysswapfile_t)
+# swapfile_t is hardcoded in mkswap
+fstools_manage_swap_files(dphysswapfile_t)
+fstools_relabelto_swap_files(dphysswapfile_t)
 
 miscfiles_read_localization(dphysswapfile_t)
+
+storage_getattr_removable_dev(dphysswapfile_t)
 
 userdom_dontaudit_search_user_home_dirs(dphysswapfile_t)

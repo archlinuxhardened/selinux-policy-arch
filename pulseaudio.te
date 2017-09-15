@@ -54,7 +54,7 @@ allow pulseaudio_t self:tcp_socket { accept listen };
 allow pulseaudio_t self:netlink_kobject_uevent_socket create_socket_perms;
 
 allow pulseaudio_t pulseaudio_home_t:dir manage_dir_perms;
-allow pulseaudio_t pulseaudio_home_t:file manage_file_perms;
+allow pulseaudio_t pulseaudio_home_t:file { manage_file_perms map };
 allow pulseaudio_t pulseaudio_home_t:lnk_file manage_lnk_file_perms;
 
 userdom_user_home_dir_filetrans(pulseaudio_t, pulseaudio_home_t, dir, ".pulse")
@@ -73,6 +73,7 @@ userdom_user_tmp_filetrans(pulseaudio_t, pulseaudio_tmp_t, sock_file, "native")
 
 manage_dirs_pattern(pulseaudio_t, pulseaudio_tmpfs_t, pulseaudio_tmpfs_t)
 manage_files_pattern(pulseaudio_t, pulseaudio_tmpfs_t, { pulseaudio_tmpfs_t pulseaudio_tmpfsfile })
+allow pulseaudio_t { pulseaudio_tmpfs_t pulseaudio_tmpfsfile }:file map;
 fs_tmpfs_filetrans(pulseaudio_t, pulseaudio_tmpfs_t, { dir file })
 
 manage_dirs_pattern(pulseaudio_t, pulseaudio_var_lib_t, pulseaudio_var_lib_t)
@@ -138,6 +139,7 @@ logging_send_syslog_msg(pulseaudio_t)
 miscfiles_read_localization(pulseaudio_t)
 
 userdom_read_user_tmpfs_files(pulseaudio_t)
+userdom_map_user_tmpfs_files(pulseaudio_t)
 userdom_delete_user_tmpfs_files(pulseaudio_t)
 userdom_search_user_home_dirs(pulseaudio_t)
 userdom_search_user_home_content(pulseaudio_t)
@@ -238,6 +240,7 @@ allow pulseaudio_client pulseaudio_tmp_t:file manage_file_perms;
 allow pulseaudio_client pulseaudio_tmp_t:sock_file manage_sock_file_perms;
 
 rw_files_pattern(pulseaudio_client, { pulseaudio_tmpfsfile pulseaudio_tmpfs_t }, { pulseaudio_tmpfsfile pulseaudio_tmpfs_t })
+allow pulseaudio_client pulseaudio_tmpfs_t:file map;
 delete_files_pattern(pulseaudio_client, pulseaudio_tmpfsfile, pulseaudio_tmpfsfile)
 
 fs_getattr_tmpfs(pulseaudio_client)

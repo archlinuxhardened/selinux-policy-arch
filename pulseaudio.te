@@ -138,12 +138,15 @@ logging_send_syslog_msg(pulseaudio_t)
 
 miscfiles_read_localization(pulseaudio_t)
 
+seutil_read_config(pulseaudio_t)
+
 userdom_read_user_tmpfs_files(pulseaudio_t)
 userdom_map_user_tmpfs_files(pulseaudio_t)
 userdom_delete_user_tmpfs_files(pulseaudio_t)
 userdom_search_user_home_dirs(pulseaudio_t)
 userdom_search_user_home_content(pulseaudio_t)
 
+userdom_manage_user_tmp_dirs(pulseaudio_t)
 userdom_manage_user_tmp_sockets(pulseaudio_t)
 
 tunable_policy(`pulseaudio_execmem',`

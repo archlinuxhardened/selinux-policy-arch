@@ -106,6 +106,10 @@ optional_policy(`
 	dbus_all_session_domain(gconfd_t, gconfd_exec_t)
 
 	dbus_system_bus_client(gconfd_t)
+
+	optional_policy(`
+		pulseaudio_dbus_chat(gconfd_t)
+	')
 ')
 
 optional_policy(`
@@ -114,6 +118,10 @@ optional_policy(`
 
 optional_policy(`
 	ooffice_stream_connect(gconfd_t)
+')
+
+optional_policy(`
+	pulseaudio_stream_connect(gconfd_t)
 ')
 
 ##############################

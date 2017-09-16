@@ -257,6 +257,26 @@ interface(`java_manage_generic_home_content',`
 	allow $1 java_home_t:file manage_file_perms;
 ')
 
+######################################
+## <summary>
+##      Create, read, write, and delete
+##      temporary java content.
+## </summary>
+## <param name="domain">
+##      <summary>
+##      Domain allowed access.
+##      </summary>
+## </param>
+#
+interface(`java_manage_java_tmp',`
+	gen_require(`
+		type java_tmp_t;
+	')
+
+	allow $1 java_tmp_t:dir manage_dir_perms;
+	allow $1 java_tmp_t:file manage_file_perms;
+')
+
 ########################################
 ## <summary>
 ##	Create specified objects in user home

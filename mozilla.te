@@ -296,6 +296,7 @@ optional_policy(`
 optional_policy(`
 	java_exec(mozilla_t)
 	java_manage_generic_home_content(mozilla_t)
+	java_manage_java_tmp(mozilla_t)
 	java_home_filetrans_java_home(mozilla_t, dir, ".java")
 ')
 
@@ -566,6 +567,7 @@ optional_policy(`
 optional_policy(`
 	java_exec(mozilla_plugin_t)
 	java_manage_generic_home_content(mozilla_plugin_t)
+	java_manage_java_tmp(mozilla_plugin_t)
 	java_home_filetrans_java_home(mozilla_plugin_t, dir, ".java")
 ')
 

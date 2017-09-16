@@ -70,6 +70,10 @@ miscfiles_read_fonts(wm_domain)
 miscfiles_read_generic_certs(wm_domain)
 miscfiles_read_localization(wm_domain)
 
+selinux_get_enforce_mode(wm_domain)
+
+seutil_read_config(wm_domain)
+
 udev_read_pid_files(wm_domain)
 
 # the following is needed by gnome-shell

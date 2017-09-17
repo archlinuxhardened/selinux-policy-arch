@@ -209,6 +209,8 @@ miscfiles_read_localization(mon_local_test_t)
 
 sysnet_read_config(mon_local_test_t)
 
+userdom_dontaudit_read_user_tmpfs_files(mon_local_test_t)
+
 optional_policy(`
 	gpm_getattr_gpmctl(mon_local_test_t)
 ')

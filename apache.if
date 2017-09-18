@@ -392,6 +392,25 @@ interface(`apache_dontaudit_rw_tcp_sockets',`
 
 ########################################
 ## <summary>
+##	Reload the httpd service (systemd).
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`apache_reload',`
+	gen_require(`
+		type httpd_unit_t;
+		class service { reload status };
+	')
+
+	allow $1 httpd_unit_t:service { reload status };
+')
+
+########################################
+## <summary>
 ##	Read all appendable content
 ## </summary>
 ## <param name="domain">

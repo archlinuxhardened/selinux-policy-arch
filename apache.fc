@@ -63,6 +63,7 @@ HOME_DIR/((www)|(web)|(public_html))(/.*)?/logs(/.*)?		gen_context(system_u:obje
 /usr/lib/dirsrv/cgi-bin(/.*)?					gen_context(system_u:object_r:httpd_sys_script_exec_t,s0)
 /usr/lib/httpd(/.*)?						gen_context(system_u:object_r:httpd_modules_t,s0)
 /usr/lib/lighttpd(/.*)?						gen_context(system_u:object_r:httpd_modules_t,s0)
+/usr/lib/systemd/system/apache[^/]*\.service		--	gen_context(system_u:object_r:httpd_unit_t,s0)
 /usr/lib/systemd/system/httpd.*\.service		--	gen_context(system_u:object_r:httpd_unit_t,s0)
 /usr/lib/systemd/system/jetty.*\.service		--	gen_context(system_u:object_r:httpd_unit_t,s0)
 
@@ -144,6 +145,8 @@ ifdef(`distro_suse',`
 /var/lib/wordpress(/.*)?					gen_context(system_u:object_r:httpd_var_lib_t,s0)
 /var/lib/z-push(/.*)?						gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
 
+/var/lock/apache2(/.*)?						gen_context(system_u:object_r:httpd_lock_t,s0)
+
 /var/log/apache(2)?(/.*)?					gen_context(system_u:object_r:httpd_log_t,s0)
 /var/log/apache-ssl(2)?(/.*)?					gen_context(system_u:object_r:httpd_log_t,s0)
 /var/log/cacti(/.*)?						gen_context(system_u:object_r:httpd_log_t,s0)
@@ -177,6 +180,8 @@ ifdef(`distro_suse',`
 
 /var/www(/.*)?							gen_context(system_u:object_r:httpd_sys_content_t,s0)
 /var/www(/.*)?/logs(/.*)?					gen_context(system_u:object_r:httpd_sys_ra_content_t,s0)
+/var/www(/.*)?/roundcubemail/logs(/.*)?				gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
+/var/www(/.*)?/roundcubemail/temp(/.*)?				gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
 /var/www/[^/]*/cgi-bin(/.*)?					gen_context(system_u:object_r:httpd_sys_script_exec_t,s0)
 /var/www/cgi-bin(/.*)?						gen_context(system_u:object_r:httpd_sys_script_exec_t,s0)
 /var/www/gallery/albums(/.*)?					gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
@@ -188,7 +193,13 @@ ifdef(`distro_suse',`
 /var/www/icons(/.*)?						gen_context(system_u:object_r:httpd_sys_content_t,s0)
 /var/www/miq/vmdb/log(/.*)?					gen_context(system_u:object_r:httpd_sys_ra_content_t,s0)
 /var/www/moodledata(/.*)?					gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
+/var/www(/.*)?/nextcloud/config(/.*)?				gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
+/var/www(/.*)?/nextcloud/data(.*)?				gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
+/var/www(/.*)?/nextcloud/apps(/.*)?				gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
+/var/www(/.*)?/nextcloud/\.htaccess			--	gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
 /var/www/perl(/.*)?						gen_context(system_u:object_r:httpd_sys_script_exec_t,s0)
+/var/www/sessions(/.*)?						gen_context(system_u:object_r:httpd_cache_t,s0)
 /var/www/svn(/.*)?						gen_context(system_u:object_r:httpd_sys_rw_content_t,s0)
 /var/www/svn/conf(/.*)?						gen_context(system_u:object_r:httpd_sys_content_t,s0)
 /var/www/svn/hooks(/.*)?					gen_context(system_u:object_r:httpd_sys_script_exec_t,s0)
+/var/www/uploads(/.*)?						gen_context(system_u:object_r:httpd_cache_t,s0)

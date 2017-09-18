@@ -407,7 +407,10 @@ allow httpd_t httpd_lock_t:file manage_file_perms;
 files_lock_filetrans(httpd_t, httpd_lock_t, { file dir })
 
 manage_dirs_pattern(httpd_t, httpd_log_t, httpd_log_t)
-manage_files_pattern(httpd_t, httpd_log_t, httpd_log_t)
+append_files_pattern(httpd_t, httpd_log_t, httpd_log_t)
+create_files_pattern(httpd_t, httpd_log_t, httpd_log_t)
+read_files_pattern(httpd_t, httpd_log_t, httpd_log_t)
+setattr_files_pattern(httpd_t, httpd_log_t, httpd_log_t)
 read_lnk_files_pattern(httpd_t, httpd_log_t, httpd_log_t)
 logging_log_filetrans(httpd_t, httpd_log_t, file)
 
@@ -529,8 +532,6 @@ miscfiles_read_generic_certs(httpd_t)
 miscfiles_read_tetex_data(httpd_t)
 
 seutil_dontaudit_search_config(httpd_t)
-
-userdom_use_unpriv_users_fds(httpd_t)
 
 ifdef(`TODO',`
 	tunable_policy(`allow_httpd_mod_auth_pam',`
@@ -656,6 +657,8 @@ tunable_policy(`httpd_enable_homedirs && use_samba_home_dirs && httpd_builtin_sc
 
 tunable_policy(`httpd_execmem',`
 	allow httpd_t self:process { execmem execstack };
+',`
+	dontaudit httpd_t self:process { execmem execstack };
 ')
 
 tunable_policy(`httpd_can_sendmail',`
@@ -707,6 +710,9 @@ tunable_policy(`httpd_read_user_content',`
 tunable_policy(`httpd_setrlimit',`
 	allow httpd_t self:process setrlimit;
 	allow httpd_t self:capability sys_resource;
+',`
+	dontaudit httpd_t self:process setrlimit;
+	dontaudit httpd_t self:capability sys_resource;
 ')
 
 tunable_policy(`httpd_ssi_exec',`
@@ -718,7 +724,7 @@ tunable_policy(`httpd_tmp_exec && httpd_builtin_scripting',`
 ')
 
 tunable_policy(`httpd_tty_comm',`
-	userdom_use_user_terminals(httpd_t)
+	userdom_use_inherited_user_terminals(httpd_t)
 ',`
 	userdom_dontaudit_use_user_terminals(httpd_t)
 ')
@@ -919,7 +925,7 @@ logging_search_logs(httpd_helper_t)
 logging_send_syslog_msg(httpd_helper_t)
 
 tunable_policy(`httpd_tty_comm',`
-	userdom_use_user_terminals(httpd_helper_t)
+	userdom_use_inherited_user_terminals(httpd_helper_t)
 ',`
 	userdom_dontaudit_use_user_terminals(httpd_helper_t)
 ')
@@ -1051,7 +1057,7 @@ tunable_policy(`httpd_tmp_exec',`
 ')
 
 tunable_policy(`httpd_tty_comm',`
-	userdom_use_user_terminals(httpd_suexec_t)
+	userdom_use_inherited_user_terminals(httpd_suexec_t)
 ',`
 	userdom_dontaudit_use_user_terminals(httpd_suexec_t)
 ')

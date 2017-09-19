@@ -186,6 +186,8 @@ domain_dontaudit_read_all_domains_state(portage_t)
 
 # modify any files in the system
 files_manage_all_files(portage_t)
+# eselect uses file, which mmap()s its db
+files_map_usr(portage_t)
 
 selinux_get_fs_mount(portage_t)
 

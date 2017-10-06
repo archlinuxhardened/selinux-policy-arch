@@ -152,8 +152,8 @@ optional_policy(`
 # Auth local policy
 #
 
-allow policykit_auth_t self:capability { ipc_lock setgid setuid sys_nice };
-dontaudit policykit_auth_t self:capability sys_tty_config;
+allow policykit_auth_t self:capability { dac_override ipc_lock setgid setuid sys_nice };
+dontaudit policykit_auth_t self:capability { dac_read_search sys_tty_config };
 allow policykit_auth_t self:process { getsched setsched signal };
 allow policykit_auth_t self:unix_stream_socket { accept listen };
 
@@ -175,8 +175,11 @@ can_exec(policykit_auth_t, policykit_auth_exec_t)
 
 kernel_read_system_state(policykit_auth_t)
 kernel_dontaudit_search_kernel_sysctl(policykit_auth_t)
+kernel_dontaudit_search_sysctl(policykit_auth_t)
 
 dev_read_video_dev(policykit_auth_t)
+
+domain_use_interactive_fds(policykit_auth_t)
 
 files_read_etc_runtime_files(policykit_auth_t)
 files_search_home(policykit_auth_t)
@@ -184,6 +187,7 @@ files_search_home(policykit_auth_t)
 fs_getattr_all_fs(policykit_auth_t)
 fs_search_tmpfs(policykit_auth_t)
 
+auth_read_shadow(policykit_auth_t)
 auth_rw_var_auth(policykit_auth_t)
 auth_use_nsswitch(policykit_auth_t)
 auth_domtrans_chk_passwd(policykit_auth_t)
@@ -218,6 +222,7 @@ optional_policy(`
 optional_policy(`
 	xserver_stream_connect(policykit_auth_t)
 	xserver_read_xdm_pid(policykit_auth_t)
+	xserver_rw_xsession_log(policykit_auth_t)
 ')
 
 ########################################

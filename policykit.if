@@ -87,6 +87,25 @@ interface(`policykit_run_auth',`
 	roleattribute $2 policykit_auth_roles;
 ')
 
+#######################################
+## <summary>
+##	Send generic signals to
+##	policykit auth.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`policykit_signal_auth',`
+	gen_require(`
+		type policykit_auth_t;
+	')
+
+	allow $1 policykit_auth_t:process signal;
+')
+
 ########################################
 ## <summary>
 ##	Execute a domain transition to run polkit grant.

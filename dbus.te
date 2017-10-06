@@ -147,6 +147,8 @@ seutil_read_default_contexts(system_dbusd_t)
 userdom_dontaudit_use_unpriv_user_fds(system_dbusd_t)
 userdom_dontaudit_search_user_home_dirs(system_dbusd_t)
 
+userdom_read_user_home_content_files(system_dbusd_t)
+
 ifdef(`init_systemd', `
 	# gdm3 causes system_dbusd_t to want this access
 	dev_rw_dri(system_dbusd_t)

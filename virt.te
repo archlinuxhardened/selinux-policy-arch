@@ -463,8 +463,8 @@ tunable_policy(`virt_use_vfio',`
 # virtd local policy
 #
 
-allow virtd_t self:capability { chown dac_override fowner ipc_lock kill mknod net_admin net_raw setgid setpcap setuid sys_admin sys_nice };
-allow virtd_t self:process { getcap getsched setcap sigkill signal signull execmem setexec setfscreate setsockcreate setsched };
+allow virtd_t self:capability { chown dac_override dac_read_search fowner fsetid ipc_lock kill mknod net_admin net_raw setgid setpcap setuid sys_admin sys_chroot sys_nice sys_ptrace };
+allow virtd_t self:process { getcap getsched setcap sigkill signal signull execmem setexec setfscreate setrlimit setsockcreate setsched };
 allow virtd_t self:fifo_file { manage_fifo_file_perms relabelfrom relabelto };
 allow virtd_t self:unix_stream_socket { accept connectto listen relabelfrom relabelto };
 allow virtd_t self:tcp_socket { accept listen };
@@ -474,7 +474,7 @@ allow virtd_t self:packet_socket create_socket_perms;
 allow virtd_t self:netlink_kobject_uevent_socket create_socket_perms;
 allow virtd_t self:netlink_route_socket nlmsg_write;
 
-allow virtd_t virt_domain:process { getattr getsched setsched transition signal signull sigkill };
+allow virtd_t virt_domain:process { getattr getsched setsched transition rlimitinh signal signull sigkill };
 dontaudit virtd_t virt_domain:process { siginh noatsecure rlimitinh };
 
 allow virtd_t { virt_domain svirt_lxc_domain }:unix_stream_socket { create_stream_socket_perms connectto };
@@ -497,6 +497,7 @@ filetrans_pattern(virtd_t, virt_home_t, virt_content_t, dir, "isos")
 allow virtd_t virtd_keytab_t:file read_file_perms;
 
 allow virtd_t svirt_var_run_t:file relabel_file_perms;
+allow virtd_t svirt_var_run_t:dir { mounton relabel_dir_perms };
 manage_dirs_pattern(virtd_t, svirt_var_run_t, svirt_var_run_t)
 manage_files_pattern(virtd_t, svirt_var_run_t, svirt_var_run_t)
 manage_sock_files_pattern(virtd_t, svirt_var_run_t, svirt_var_run_t)
@@ -525,9 +526,10 @@ manage_blk_files_pattern(virtd_t, virt_image_type, virt_image_type)
 manage_lnk_files_pattern(virtd_t, virt_image_type, virt_image_type)
 
 allow virtd_t virt_image_type:file relabel_file_perms;
+allow virtd_t virt_image_type:dir { manage_dir_perms relabel_dir_perms };
 allow virtd_t virt_image_type:blk_file relabel_blk_file_perms;
 allow virtd_t virt_image_type:chr_file relabel_chr_file_perms;
-allow virtd_t virt_image_type:chr_file relabel_chr_file_perms;
+allow virtd_t virt_image_type:sock_file manage_sock_file_perms;
 
 allow virtd_t virt_ptynode:chr_file rw_term_perms;
 
@@ -537,7 +539,14 @@ files_tmp_filetrans(virtd_t, virt_tmp_t, { file dir })
 
 manage_dirs_pattern(virtd_t, virt_tmpfs_t, virt_tmpfs_t)
 manage_files_pattern(virtd_t, virt_tmpfs_t, virt_tmpfs_t)
+manage_lnk_files_pattern(virtd_t, virt_tmpfs_t, virt_tmpfs_t)
+manage_blk_files_pattern(virtd_t, virt_tmpfs_t, virt_tmpfs_t)
+manage_chr_files_pattern(virtd_t, virt_tmpfs_t, virt_tmpfs_t)
+relabel_blk_files_pattern(virtd_t, virt_tmpfs_t, virt_tmpfs_t)
+relabel_chr_files_pattern(virtd_t, virt_tmpfs_t, virt_tmpfs_t)
+relabel_lnk_files_pattern(virtd_t, virt_tmpfs_t, virt_tmpfs_t)
 fs_tmpfs_filetrans(virtd_t, virt_tmpfs_t, { file dir })
+allow virtd_t virt_tmpfs_t:dir mounton;
 
 # This needs a file context specification
 manage_dirs_pattern(virtd_t, virt_lock_t, virt_lock_t)
@@ -567,7 +576,7 @@ manage_files_pattern(virtd_t, virtd_lxc_var_run_t, virtd_lxc_var_run_t)
 filetrans_pattern(virtd_t, virt_var_run_t, virtd_lxc_var_run_t, dir, "lxc")
 
 stream_connect_pattern(virtd_t, virtd_lxc_var_run_t, virtd_lxc_var_run_t, virtd_lxc_t)
-stream_connect_pattern(virtd_t, svirt_var_run_t, svirt_var_run_t, virt_domain)
+stream_connect_pattern(virtd_t, { virt_image_type svirt_var_run_t }, { virt_image_type svirt_var_run_t}, virt_domain)
 stream_connect_pattern(virtd_t, virt_var_run_t, virtlockd_run_t, virtlockd_t)
 stream_connect_pattern(virtd_t, virt_var_run_t, virtlogd_run_t, virtlogd_t)
 
@@ -616,6 +625,9 @@ dev_rw_mtrr(virtd_t)
 dev_rw_vhost(virtd_t)
 dev_setattr_generic_usb_dev(virtd_t)
 dev_relabel_generic_usb_dev(virtd_t)
+dev_relabel_all_dev_nodes(virtd_t)
+dev_relabel_generic_symlinks(virtd_t)
+dev_mounton(virtd_t)
 
 domain_use_interactive_fds(virtd_t)
 domain_read_all_domains_state(virtd_t)
@@ -625,6 +637,7 @@ files_read_etc_runtime_files(virtd_t)
 files_search_all(virtd_t)
 files_read_kernel_modules(virtd_t)
 files_read_usr_src_files(virtd_t)
+files_mounton_root(virtd_t)
 
 # Manages /etc/sysconfig/system-config-firewall
 # files_relabelto_system_conf_files(virtd_t)
@@ -639,6 +652,8 @@ fs_manage_cgroup_dirs(virtd_t)
 fs_rw_cgroup_files(virtd_t)
 fs_manage_hugetlbfs_dirs(virtd_t)
 fs_rw_hugetlbfs_files(virtd_t)
+fs_read_nsfs_files(virtd_t)
+fs_mount_tmpfs(virtd_t)
 
 mls_fd_share_all_levels(virtd_t)
 mls_file_read_to_clearance(virtd_t)
@@ -709,8 +724,6 @@ tunable_policy(`virt_use_samba',`
 
 tunable_policy(`virt_use_vfio',`
 	allow virtd_t self:capability sys_resource;
-	allow virtd_t self:process setrlimit;
-	allow virtd_t svirt_t:process rlimitinh;
 	dev_relabelfrom_vfio_dev(virtd_t)
 ')
 
@@ -1304,6 +1317,10 @@ kernel_dontaudit_read_system_state(virt_leaseshelper_t)
 allow virtlockd_t self:capability dac_override;
 allow virtlockd_t self:fifo_file rw_fifo_file_perms;
 
+allow virtlockd_t virtd_t:dir list_dir_perms;
+allow virtlockd_t virtd_t:file read_file_perms;
+allow virtlockd_t virtd_t:lnk_file read_lnk_file_perms;
+
 allow virtlockd_t virt_image_type:dir list_dir_perms;
 allow virtlockd_t virt_image_type:file rw_file_perms;
 
@@ -1322,7 +1339,7 @@ files_pid_filetrans(virtlockd_t, virtlockd_run_t, file)
 
 can_exec(virtlockd_t, virtlockd_exec_t)
 
-ps_process_pattern(virtlockd_t, virtd_t)
+kernel_read_system_state(virtlockd_t)
 
 files_read_etc_files(virtlockd_t)
 files_list_var_lib(virtlockd_t)

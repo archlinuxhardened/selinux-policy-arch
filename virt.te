@@ -208,12 +208,21 @@ files_pid_file(virtlockd_run_t)
 type virtlockd_var_lib_t;
 files_type(virtlockd_var_lib_t)
 
+type virtlogd_t;
+type virtlogd_exec_t;
+init_daemon_domain(virtlogd_t, virtlogd_exec_t)
+
+type virtlogd_run_t;
+files_pid_file(virtlogd_run_t)
+
 ifdef(`enable_mcs',`
 	init_ranged_daemon_domain(virtlockd_t, virtlockd_exec_t, s0 - mcs_systemhigh)
+	init_ranged_daemon_domain(virtlogd_t, virtlogd_exec_t, s0 - mcs_systemhigh)
 ')
 
 ifdef(`enable_mls',`
 	init_ranged_daemon_domain(virtlockd_t, virtlockd_exec_t, s0 - mls_systemhigh)
+	init_ranged_daemon_domain(virtlogd_t, virtlogd_exec_t, s0 - mls_systemhigh)
 ')
 
 ########################################
@@ -233,6 +242,9 @@ allow virt_domain self:unix_dgram_socket sendto;
 allow virt_domain virtd_t:fd use;
 allow virt_domain virtd_t:fifo_file rw_fifo_file_perms;
 allow virt_domain virtd_t:process sigchld;
+
+allow virt_domain virtlogd_t:fd use;
+allow virt_domain virtlogd_t:fifo_file rw_fifo_file_perms;
 
 dontaudit virt_domain virtd_t:unix_stream_socket { read write };
 
@@ -468,6 +480,9 @@ dontaudit virtd_t virt_domain:process { siginh noatsecure rlimitinh };
 allow virtd_t { virt_domain svirt_lxc_domain }:unix_stream_socket { create_stream_socket_perms connectto };
 allow virtd_t svirt_lxc_domain:process signal_perms;
 
+allow virtd_t virtlogd_t:fd use;
+allow virtd_t virtlogd_t:fifo_file rw_fifo_file_perms;
+
 allow virtd_t virtd_lxc_t:process { signal signull sigkill };
 
 domtrans_pattern(virtd_t, virtd_lxc_exec_t, virtd_lxc_t)
@@ -554,6 +569,7 @@ filetrans_pattern(virtd_t, virt_var_run_t, virtd_lxc_var_run_t, dir, "lxc")
 stream_connect_pattern(virtd_t, virtd_lxc_var_run_t, virtd_lxc_var_run_t, virtd_lxc_t)
 stream_connect_pattern(virtd_t, svirt_var_run_t, svirt_var_run_t, virt_domain)
 stream_connect_pattern(virtd_t, virt_var_run_t, virtlockd_run_t, virtlockd_t)
+stream_connect_pattern(virtd_t, virt_var_run_t, virtlogd_run_t, virtlogd_t)
 
 can_exec(virtd_t, virt_tmp_t)
 
@@ -1315,3 +1331,33 @@ miscfiles_read_localization(virtlockd_t)
 
 virt_append_log(virtlockd_t)
 virt_read_config(virtlockd_t)
+
+########################################
+#
+# Virtlogd local policy
+#
+
+allow virtlogd_t self:fifo_file rw_fifo_file_perms;
+
+allow virtlogd_t virtd_t:dir list_dir_perms;
+allow virtlogd_t virtd_t:file read_file_perms;
+allow virtlogd_t virtd_t:lnk_file read_lnk_file_perms;
+
+manage_files_pattern(virtlogd_t, virt_var_run_t, virtlogd_run_t)
+manage_sock_files_pattern(virtlogd_t, virt_var_run_t, virtlogd_run_t)
+filetrans_pattern(virtlogd_t, virt_var_run_t, virtlogd_run_t, sock_file)
+files_pid_filetrans(virtlogd_t, virtlogd_run_t, file)
+
+can_exec(virtlogd_t, virtlogd_exec_t)
+
+kernel_read_system_state(virtlogd_t)
+
+files_read_etc_files(virtlogd_t)
+files_list_var_lib(virtlogd_t)
+
+miscfiles_read_localization(virtlogd_t)
+
+sysnet_dns_name_resolve(virtlogd_t)
+
+virt_manage_log(virtlogd_t)
+virt_read_config(virtlogd_t)

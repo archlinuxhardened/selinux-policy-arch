@@ -1360,12 +1360,12 @@ allow virtlogd_t virtd_t:dir list_dir_perms;
 allow virtlogd_t virtd_t:file read_file_perms;
 allow virtlogd_t virtd_t:lnk_file read_lnk_file_perms;
 
+can_exec(virtlogd_t, virtlogd_exec_t)
+
 manage_files_pattern(virtlogd_t, virt_var_run_t, virtlogd_run_t)
 manage_sock_files_pattern(virtlogd_t, virt_var_run_t, virtlogd_run_t)
 filetrans_pattern(virtlogd_t, virt_var_run_t, virtlogd_run_t, sock_file)
 files_pid_filetrans(virtlogd_t, virtlogd_run_t, file)
-
-can_exec(virtlogd_t, virtlogd_exec_t)
 
 kernel_read_system_state(virtlogd_t)
 

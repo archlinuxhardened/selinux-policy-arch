@@ -159,6 +159,7 @@ logging_send_syslog_msg(postfix_domain)
 
 miscfiles_read_localization(postfix_domain)
 miscfiles_read_generic_certs(postfix_domain)
+miscfiles_read_generic_tls_privkey(postfix_domain)
 
 userdom_dontaudit_use_unpriv_user_fds(postfix_domain)
 

@@ -111,6 +111,7 @@ logging_send_syslog_msg(radiusd_t)
 
 miscfiles_read_localization(radiusd_t)
 miscfiles_read_generic_certs(radiusd_t)
+miscfiles_read_generic_tls_privkey(radiusd_t)
 
 sysnet_use_ldap(radiusd_t)
 

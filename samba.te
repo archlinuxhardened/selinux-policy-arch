@@ -943,6 +943,7 @@ logging_send_syslog_msg(winbind_t)
 
 miscfiles_read_localization(winbind_t)
 miscfiles_read_generic_certs(winbind_t)
+miscfiles_read_generic_tls_privkey(winbind_t)
 
 userdom_dontaudit_use_unpriv_user_fds(winbind_t)
 userdom_manage_user_home_content_dirs(winbind_t)

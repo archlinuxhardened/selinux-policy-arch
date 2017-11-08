@@ -76,6 +76,7 @@ logging_send_syslog_msg(stunnel_t)
 
 miscfiles_read_generic_certs(stunnel_t)
 miscfiles_read_localization(stunnel_t)
+miscfiles_read_generic_tls_privkey(stunnel_t)
 
 userdom_dontaudit_use_unpriv_user_fds(stunnel_t)
 userdom_dontaudit_search_user_home_dirs(stunnel_t)

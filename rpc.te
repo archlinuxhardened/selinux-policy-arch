@@ -182,6 +182,7 @@ storage_getattr_fixed_disk_dev(rpcd_t)
 selinux_dontaudit_read_fs(rpcd_t)
 
 miscfiles_read_generic_certs(rpcd_t)
+miscfiles_read_generic_tls_privkey(rpcd_t)
 
 seutil_dontaudit_search_config(rpcd_t)
 
@@ -316,6 +317,7 @@ files_dontaudit_write_var_dirs(gssd_t)
 auth_manage_cache(gssd_t)
 
 miscfiles_read_generic_certs(gssd_t)
+miscfiles_read_generic_tls_privkey(gssd_t)
 
 userdom_signal_all_users(gssd_t)
 

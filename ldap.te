@@ -127,6 +127,7 @@ logging_send_syslog_msg(slapd_t)
 
 miscfiles_read_generic_certs(slapd_t)
 miscfiles_read_localization(slapd_t)
+miscfiles_read_generic_tls_privkey(slapd_t)
 
 userdom_dontaudit_use_unpriv_user_fds(slapd_t)
 userdom_dontaudit_search_user_home_dirs(slapd_t)

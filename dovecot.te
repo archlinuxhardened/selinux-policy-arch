@@ -172,6 +172,7 @@ init_getattr_utmp(dovecot_t)
 auth_use_nsswitch(dovecot_t)
 
 miscfiles_read_generic_certs(dovecot_t)
+miscfiles_read_generic_tls_privkey(dovecot_t)
 
 userdom_dontaudit_use_unpriv_user_fds(dovecot_t)
 userdom_use_user_terminals(dovecot_t)

@@ -157,6 +157,7 @@ logging_send_syslog_msg(exim_t)
 
 miscfiles_read_localization(exim_t)
 miscfiles_read_generic_certs(exim_t)
+miscfiles_read_generic_tls_privkey(exim_t)
 
 userdom_dontaudit_search_user_home_dirs(exim_t)
 

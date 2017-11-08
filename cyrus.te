@@ -109,6 +109,7 @@ logging_send_syslog_msg(cyrus_t)
 
 miscfiles_read_localization(cyrus_t)
 miscfiles_read_generic_certs(cyrus_t)
+miscfiles_read_generic_tls_privkey(cyrus_t)
 
 userdom_use_unpriv_users_fds(cyrus_t)
 userdom_dontaudit_search_user_home_dirs(cyrus_t)

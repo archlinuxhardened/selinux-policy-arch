@@ -113,6 +113,7 @@ logging_dontaudit_write_generic_logs(sendmail_t)
 
 miscfiles_read_generic_certs(sendmail_t)
 miscfiles_read_localization(sendmail_t)
+miscfiles_read_generic_tls_privkey(sendmail_t)
 
 userdom_dontaudit_use_unpriv_user_fds(sendmail_t)
 

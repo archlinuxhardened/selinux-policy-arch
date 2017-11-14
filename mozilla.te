@@ -170,6 +170,7 @@ dev_write_sound(mozilla_t)
 domain_dontaudit_read_all_domains_state(mozilla_t)
 
 files_read_etc_runtime_files(mozilla_t)
+files_map_usr_files(mozilla_t)
 files_read_usr_files(mozilla_t)
 files_read_var_files(mozilla_t)
 files_read_var_lib_files(mozilla_t)

@@ -80,6 +80,7 @@ files_getattr_all_dirs(ooffice_t)
 files_getattr_all_files(ooffice_t)
 files_getattr_all_symlinks(ooffice_t)
 files_read_etc_files(ooffice_t)
+files_map_usr_files(ooffice_t)
 files_read_usr_files(ooffice_t)
 
 fs_getattr_xattr_fs(ooffice_t)

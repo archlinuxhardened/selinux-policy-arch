@@ -338,6 +338,7 @@ dev_read_rand(gpg_pinentry_t)
 
 domain_use_interactive_fds(gpg_pinentry_t)
 
+files_map_usr_files(gpg_pinentry_t)
 files_read_usr_files(gpg_pinentry_t)
 
 fs_dontaudit_getattr_xattr_fs(gpg_pinentry_t)

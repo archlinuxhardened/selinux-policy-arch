@@ -56,6 +56,7 @@ dev_rw_wireless(wm_domain)
 dev_write_sound(wm_domain)
 
 files_read_etc_runtime_files(wm_domain)
+files_map_usr_files(wm_domain)
 files_read_usr_files(wm_domain)
 
 fs_getattr_all_fs(wm_domain)

@@ -184,6 +184,8 @@ userdom_write_user_tmp_sockets(NetworkManager_t)
 userdom_dontaudit_use_unpriv_user_fds(NetworkManager_t)
 userdom_dontaudit_use_user_ttys(NetworkManager_t)
 
+corenet_ib_access_unlabeled_pkeys(NetworkManager_t)
+
 optional_policy(`
 	avahi_domtrans(NetworkManager_t)
 	avahi_kill(NetworkManager_t)

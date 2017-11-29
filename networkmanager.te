@@ -122,6 +122,8 @@ corenet_tcp_connect_all_ports(NetworkManager_t)
 corenet_rw_tun_tap_dev(NetworkManager_t)
 corenet_getattr_ppp_dev(NetworkManager_t)
 
+corenet_ib_access_unlabeled_pkeys(NetworkManager_t)
+
 corecmd_exec_shell(NetworkManager_t)
 corecmd_exec_bin(NetworkManager_t)
 
@@ -183,8 +185,6 @@ userdom_read_user_certs(NetworkManager_t)
 userdom_write_user_tmp_sockets(NetworkManager_t)
 userdom_dontaudit_use_unpriv_user_fds(NetworkManager_t)
 userdom_dontaudit_use_user_ttys(NetworkManager_t)
-
-corenet_ib_access_unlabeled_pkeys(NetworkManager_t)
 
 optional_policy(`
 	avahi_domtrans(NetworkManager_t)

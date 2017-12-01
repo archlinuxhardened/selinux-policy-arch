@@ -24,8 +24,8 @@ files_tmp_file(pkcs_slotd_tmp_t)
 type pkcs_slotd_tmpfs_t;
 files_tmpfs_file(pkcs_slotd_tmpfs_t)
 
-type pkcs_slotd_unit_file_t;
-init_unit_file(pkcs_slotd_unit_file_t)
+type pkcs_slotd_unit_t;
+init_unit_file(pkcs_slotd_unit_t)
 
 ########################################
 #

@@ -345,6 +345,10 @@ optional_policy(`
 ')
 
 optional_policy(`
+	systemd_write_inherited_logind_inhibit_pipes(devicekit_power_t)
+')
+
+optional_policy(`
 	udev_read_db(devicekit_power_t)
 	udev_manage_pid_files(devicekit_power_t)
 ')

@@ -158,8 +158,8 @@ ifdef(`init_systemd', `
 optional_policy(`
 	# for /run/systemd/users/*
 	systemd_read_logind_pids(system_dbusd_t)
+	systemd_write_inherited_logind_inhibit_pipes(system_dbusd_t)
 	systemd_write_inherited_logind_sessions_pipes(system_dbusd_t)
-	systemd_write_logind_pid_pipes(system_dbusd_t)
 ')
 
 optional_policy(`

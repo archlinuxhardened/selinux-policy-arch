@@ -56,3 +56,7 @@ optional_policy(`
 	udev_read_db(modemmanager_t)
 	udev_manage_pid_files(modemmanager_t)
 ')
+
+optional_policy(`
+	systemd_write_inherited_logind_inhibit_pipes(modemmanager_t)
+')

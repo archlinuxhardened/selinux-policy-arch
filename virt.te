@@ -814,6 +814,10 @@ optional_policy(`
 ')
 
 optional_policy(`
+	systemd_write_inherited_logind_inhibit_pipes(virtd_t)
+')
+
+optional_policy(`
 	kernel_read_xen_state(virtd_t)
 	kernel_write_xen_state(virtd_t)
 

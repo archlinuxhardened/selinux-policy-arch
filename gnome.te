@@ -45,9 +45,11 @@ userdom_user_home_content(gnome_keyring_home_t)
 
 type gnome_keyring_tmp_t;
 userdom_user_tmp_file(gnome_keyring_tmp_t)
+userdom_user_runtime_content(gnome_keyring_tmp_t)
 
 type gstreamer_orcexec_t;
 application_executable_file(gstreamer_orcexec_t)
+userdom_user_runtime_content(gstreamer_orcexec_t)
 
 ##############################
 #

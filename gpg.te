@@ -39,6 +39,7 @@ role gpg_roles types gpg_t;
 
 type gpg_runtime_t;
 files_pid_file(gpg_runtime_t)
+userdom_user_runtime_content(gpg_runtime_t)
 
 type gpg_agent_t;
 type gpg_agent_exec_t;
@@ -47,6 +48,7 @@ role gpg_agent_roles types gpg_agent_t;
 
 type gpg_agent_tmp_t;
 userdom_user_tmp_file(gpg_agent_tmp_t)
+userdom_user_runtime_content(gpg_agent_tmp_t)
 
 type gpg_secret_t;
 userdom_user_home_content(gpg_secret_t)

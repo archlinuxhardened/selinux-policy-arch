@@ -20,6 +20,7 @@ logging_log_file(dirmngr_log_t)
 
 type dirmngr_tmp_t;
 userdom_user_tmp_file(dirmngr_tmp_t)
+userdom_user_runtime_content(dirmngr_tmp_t)
 
 type dirmngr_var_lib_t;
 files_type(dirmngr_var_lib_t)

@@ -29,6 +29,7 @@ userdom_user_home_content(pulseaudio_home_t)
 
 type pulseaudio_tmp_t;
 userdom_user_tmp_file(pulseaudio_tmp_t)
+userdom_user_runtime_content(pulseaudio_tmp_t)
 
 type pulseaudio_tmpfs_t;
 userdom_user_tmpfs_file(pulseaudio_tmpfs_t)

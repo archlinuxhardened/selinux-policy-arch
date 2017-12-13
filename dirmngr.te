@@ -69,6 +69,7 @@ dev_read_rand(dirmngr_t)
 sysnet_dns_name_resolve(dirmngr_t)
 
 corenet_tcp_connect_pgpkeyserver_port(dirmngr_t)
+corenet_udp_bind_generic_node(dirmngr_t)
 
 files_read_etc_files(dirmngr_t)
 
@@ -81,5 +82,7 @@ userdom_user_runtime_filetrans(dirmngr_t, dirmngr_tmp_t, dir)
 
 optional_policy(`
 	gpg_agent_tmp_filetrans(dirmngr_t, dirmngr_tmp_t, sock_file)
+	gpg_runtime_filetrans(dirmngr_t, dirmngr_tmp_t, sock_file)
 	gpg_secret_filetrans(dirmngr_t, dirmngr_home_t, dir)
+	gpg_stream_connect_agent(dirmngr_t)
 ')

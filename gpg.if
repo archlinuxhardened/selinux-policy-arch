@@ -239,6 +239,25 @@ interface(`gpg_agent_tmp_filetrans',`
 
 ########################################
 ## <summary>
+##	filetrans in gpg_runtime_t dirs
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`gpg_runtime_filetrans',`
+	gen_require(`
+		type gpg_runtime_t;
+	')
+
+	filetrans_pattern($1, gpg_runtime_t, $2, $3, $4)
+	userdom_search_user_runtime($1)
+')
+
+########################################
+## <summary>
 ##	filetrans in gpg_secret_t dirs
 ## </summary>
 ## <param name="domain">

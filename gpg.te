@@ -14,6 +14,14 @@ policy_module(gpg, 2.12.3)
 ## </desc>
 gen_tunable(gpg_agent_env_file, false)
 
+## <desc>
+##	<p>
+##	Determine whether GPG agent can use OpenPGP
+##	cards or Yubikeys over USB
+##	</p>
+## </desc>
+gen_tunable(gpg_agent_use_card, false)
+
 attribute_role gpg_roles;
 roleattribute system_r gpg_roles;
 
@@ -272,6 +280,11 @@ tunable_policy(`gpg_agent_env_file',`
 	userdom_manage_user_home_content_dirs(gpg_agent_t)
 	userdom_manage_user_home_content_files(gpg_agent_t)
 	userdom_user_home_dir_filetrans_user_home_content(gpg_agent_t, file)
+')
+
+tunable_policy(`gpg_agent_use_card',`
+	dev_read_sysfs(gpg_agent_t)
+	dev_rw_generic_usb_dev(gpg_agent_t)
 ')
 
 tunable_policy(`use_nfs_home_dirs',`

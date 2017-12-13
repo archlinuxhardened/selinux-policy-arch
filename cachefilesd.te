@@ -13,7 +13,7 @@ type cachefilesd_initrc_exec_t;
 init_script_file(cachefilesd_initrc_exec_t)
 
 type cachefilesd_cache_t;
-files_type(cachefilesd_cache_t)
+files_mountpoint(cachefilesd_cache_t)
 
 type cachefilesd_var_run_t;
 files_pid_file(cachefilesd_var_run_t)

@@ -763,7 +763,7 @@ manage_files_pattern(swat_t, samba_var_t, samba_var_t)
 manage_lnk_files_pattern(swat_t, samba_var_t, samba_var_t)
 files_var_filetrans(swat_t, samba_var_t, dir, "samba")
 
-allow swat_t smbd_exec_t:file mmap_file_perms ;
+allow swat_t smbd_exec_t:file mmap_exec_file_perms ;
 
 allow swat_t { winbind_t smbd_t }:process { signal signull };
 

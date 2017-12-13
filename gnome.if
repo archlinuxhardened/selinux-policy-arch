@@ -805,5 +805,5 @@ interface(`gnome_mmap_gstreamer_orcexec',`
 		type gstreamer_orcexec_t;
 	')
 
-	allow $1 gstreamer_orcexec_t:file mmap_file_perms;
+	allow $1 gstreamer_orcexec_t:file mmap_exec_file_perms;
 ')

@@ -84,7 +84,7 @@ manage_sock_files_pattern(dpkg_t, dpkg_tmpfs_t, dpkg_tmpfs_t)
 manage_fifo_files_pattern(dpkg_t, dpkg_tmpfs_t, dpkg_tmpfs_t)
 fs_tmpfs_filetrans(dpkg_t, dpkg_tmpfs_t, { dir file lnk_file sock_file fifo_file })
 
-allow dpkg_t dpkg_var_lib_t:file mmap_file_perms;
+allow dpkg_t dpkg_var_lib_t:file mmap_exec_file_perms;
 manage_files_pattern(dpkg_t, dpkg_var_lib_t, dpkg_var_lib_t)
 files_var_lib_filetrans(dpkg_t, dpkg_var_lib_t, dir)
 

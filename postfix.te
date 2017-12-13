@@ -120,7 +120,7 @@ allow postfix_domain postfix_etc_t:lnk_file read_lnk_file_perms;
 
 allow postfix_domain postfix_master_t:file read_file_perms;
 
-allow postfix_domain postfix_exec_t:file { mmap_file_perms lock };
+allow postfix_domain postfix_exec_t:file { mmap_exec_file_perms lock };
 
 allow postfix_domain postfix_master_t:process sigchld;
 
@@ -217,7 +217,7 @@ allow postfix_master_t postfix_data_t:file manage_file_perms;
 
 allow postfix_master_t postfix_keytab_t:file read_file_perms;
 
-allow postfix_master_t postfix_map_exec_t:file { mmap_file_perms ioctl lock };
+allow postfix_master_t postfix_map_exec_t:file { mmap_exec_file_perms ioctl lock };
 
 allow postfix_master_t { postfix_postdrop_exec_t postfix_postqueue_exec_t }:file getattr_file_perms;
 

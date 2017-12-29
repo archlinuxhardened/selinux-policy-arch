@@ -102,7 +102,7 @@ interface(`monit_startstop_service',`
 interface(`monit_admin',`
 	gen_require(`
 		type monit_t, monit_conf_t, monit_initrc_exec_t;
-		type monit_log_t, monit_pid_t;
+		type monit_log_t, monit_runtime_t;
 		type monit_unit_t, monit_var_lib_t;
 	')
 
@@ -117,7 +117,7 @@ interface(`monit_admin',`
 	admin_pattern($1, monit_log_t)
 
 	files_search_pids($1)
-	admin_pattern($1, monit_pid_t)
+	admin_pattern($1, monit_runtime_t)
 
 	files_search_var_lib($1)
 	admin_pattern($1, monit_var_lib_t)

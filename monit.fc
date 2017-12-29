@@ -2,7 +2,8 @@
 
 /etc/monit(/.*)?			gen_context(system_u:object_r:monit_conf_t,s0)
 
-/run/monit\.pid			--	gen_context(system_u:object_r:monit_pid_t,s0)
+/run/monit\.pid			--	gen_context(system_u:object_r:monit_runtime_t,s0)
+/run/monit\.socket		-s	gen_context(system_u:object_r:monit_runtime_t,s0)
 
 /usr/bin/monit			--	gen_context(system_u:object_r:monit_exec_t,s0)
 

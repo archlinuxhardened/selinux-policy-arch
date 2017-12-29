@@ -33,8 +33,8 @@ role monit_cli_roles types monit_cli_t;
 type monit_log_t;
 logging_log_file(monit_log_t)
 
-type monit_pid_t alias monit_run_t;
-files_pid_file(monit_pid_t)
+type monit_runtime_t alias monit_pid_t;
+files_pid_file(monit_runtime_t)
 
 type monit_unit_t;
 init_unit_file(monit_unit_t)
@@ -63,15 +63,21 @@ kernel_read_system_state(monit_domain)
 dev_read_sysfs(monit_domain)
 dev_read_urand(monit_domain)
 
+files_getattr_all_mountpoints(monit_domain)
+
 fs_getattr_dos_fs(monit_domain)
 fs_getattr_dos_dirs(monit_domain)
 fs_getattr_tmpfs(monit_domain)
 fs_getattr_xattr_fs(monit_domain)
 
+miscfiles_read_generic_certs(monit_domain)
 miscfiles_read_localization(monit_domain)
+
+logging_send_syslog_msg(monit_domain)
 
 # disk usage of sd card
 storage_getattr_removable_dev(monit_domain)
+storage_getattr_fixed_disk_dev(monit_domain)
 
 ########################################
 #
@@ -88,43 +94,50 @@ dontaudit monit_t self:capability net_admin;
 allow monit_t self:fifo_file rw_fifo_file_perms;
 allow monit_t self:rawip_socket connected_socket_perms;
 allow monit_t self:tcp_socket server_stream_socket_perms;
-allow monit_t self:unix_dgram_socket { connect create };
 
 allow monit_t monit_log_t:file { create read_file_perms append_file_perms };
 logging_log_filetrans(monit_t, monit_log_t, file)
 
-allow monit_t monit_pid_t:file manage_file_perms;
-files_pid_filetrans(monit_t, monit_pid_t, file)
+allow monit_t monit_runtime_t:file manage_file_perms;
+allow monit_t monit_runtime_t:sock_file manage_sock_file_perms;
+files_pid_filetrans(monit_t, monit_runtime_t, { file sock_file })
 
 allow monit_t monit_var_lib_t:dir manage_dir_perms;
 allow monit_t monit_var_lib_t:file manage_file_perms;
 
+# entropy
+kernel_read_kernel_sysctls(monit_t)
+kernel_read_vm_overcommit_sysctl(monit_t)
+
 auth_use_nsswitch(monit_t)
 
 corecmd_exec_bin(monit_t)
+corecmd_exec_shell(monit_t)
 
 corenet_tcp_bind_generic_node(monit_t)
 corenet_tcp_bind_monit_port(monit_t)
 corenet_tcp_connect_all_ports(monit_t)
 
+domain_getattr_all_domains(monit_t)
 domain_getpgid_all_domains(monit_t)
 domain_read_all_domains_state(monit_t)
 
 files_read_all_pids(monit_t)
 
-logging_send_syslog_msg(monit_t)
+selinux_get_enforce_mode(monit_t)
 
-ifdef(`hide_broken_symptoms',`
-	# kernel bug: https://github.com/SELinuxProject/selinux-kernel/issues/6
-	dontaudit monit_t self:capability dac_override;
+userdom_dontaudit_search_user_home_dirs(monit_t)
+
+ifdef(`init_systemd',`
+	# systemctl is-system-running
+	init_stream_connect(monit_t)
+	init_get_system_status(monit_t)
 ')
 
 tunable_policy(`monit_startstop_services',`
 	init_get_all_units_status(monit_t)
-	init_get_system_status(monit_t)
 	init_start_all_units(monit_t)
 	init_stop_all_units(monit_t)
-	init_stream_connect(monit_t)
 ')
 
 optional_policy(`
@@ -136,9 +149,12 @@ optional_policy(`
 # Client policy
 #
 
+allow monit_cli_t monit_t:unix_stream_socket connectto;
+
 allow monit_cli_t monit_log_t:file { append_file_perms read_file_perms };
 
-allow monit_cli_t monit_pid_t:file rw_file_perms;
+allow monit_cli_t monit_runtime_t:file rw_file_perms;
+allow monit_cli_t monit_runtime_t:sock_file write;
 
 allow monit_cli_t monit_var_lib_t:dir search_dir_perms;
 allow monit_cli_t monit_var_lib_t:file rw_file_perms;

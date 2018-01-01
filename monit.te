@@ -123,6 +123,7 @@ domain_getpgid_all_domains(monit_t)
 domain_read_all_domains_state(monit_t)
 
 files_read_all_pids(monit_t)
+files_read_usr_files(monit_t)
 
 selinux_get_enforce_mode(monit_t)
 

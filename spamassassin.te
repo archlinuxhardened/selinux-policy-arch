@@ -549,9 +549,12 @@ optional_policy(`
 	allow spamd_gpg_t spamd_update_t:fd use;
 	allow spamd_gpg_t spamd_update_t:process sigchld;
 	allow spamd_gpg_t spamd_update_t:fifo_file { getattr write };
-	allow spamd_gpg_t spamd_var_lib_t:dir search_dir_perms;
-	allow spamd_gpg_t spamd_var_lib_t:file rw_file_perms;
+	allow spamd_gpg_t spamd_var_lib_t:dir rw_dir_perms;
+	allow spamd_gpg_t spamd_var_lib_t:file manage_file_perms;
 	allow spamd_gpg_t spamd_update_tmp_t:file read_file_perms;
+
+	# fips
+	kernel_read_crypto_sysctls(spamd_gpg_t)
 
 	domain_use_interactive_fds(spamd_gpg_t)
 
@@ -562,6 +565,7 @@ optional_policy(`
 	files_search_tmp(spamd_gpg_t)
 
 	init_use_fds(spamd_gpg_t)
+	init_rw_inherited_stream_socket(spamd_gpg_t)
 
 	miscfiles_read_localization(spamd_gpg_t)
 

@@ -1,3 +1,159 @@
+* Sun Jan 14 2018 Chris PeBenito <pebenito@ieee.org> - 2.20180114
+Chad Hanson (1):
+      Allow rpm to relabel files at all levels
+
+Chris PeBenito (46):
+      Remove deprecated interfaces more than one year old.
+      Remove complement and wildcard in allow rules.
+      Merge branch 'master' of git://github.com/teg/refpolicy-contrib
+      dbus: Module version bump for dbus-broker patch from Tom Gundersen.
+      Module version bump for patches from Guido Trentalancia.
+      Module version bumps for patches from David Sugar.
+      dhcp, logrotate: Module version bump.
+      Module version bumps for chkrootkit, dkim, dmidecode, portage, and
+         rkhunter.
+      Module version bumps.
+      spamassassin: Move lines.
+      mandb, spamassassin: Module version bumps.
+      spamassassin: Fix build error.
+      spamassassin: Add missing requirement in spamassassin_admin().
+      dphysswapfile: Module version bump.
+      gpg, pulseaudio, rpc: Module version bump.
+      dnsmasq, gnome, mon, mta, openoffice, pulseaudio, wm: Version bumps.
+      Revert "postfix: Some table drivers (notably cdb) need to mmap() their
+         databases"
+      java, mozilla, mta, postfix: Module version bump.
+      portage: Fix usr_t map interface usage.
+      apache, portage: Module version bump.
+      dbus, policykit, wm: Module version bump.
+      dbus: Add comment.
+      Merge branch 'nm_audit' of git://github.com/bigon/refpolicy-contrib
+      networkmanager: Module version bump.
+      virt: Move a line.
+      alsa, mon, virt: Module version bump.
+      gpg, mozilla, rpc: Module version bump.
+      Several module version bumps.
+      blueman, evolution, gpg, mozilla, openoffice, thunderbird, wireshark, wm:
+         Module version bump.
+      wm: Module version bump.
+      networkmanager: Move line.
+      networkmanager: Module version bump.
+      Merge branch 'pkcs' of https://github.com/dodys/refpolicy-contrib
+      pkcs: Rename pkcs_slotd_unit_file_t.
+      pkcs: Module version bump.
+      accountsd, policykit: Module version bump.
+      dbus, devicekit, modemmanager, networkmanager, virt: Module version bump.
+      modemmanager: Move lines.
+      rpm: Module version bump.
+      cachefilesd, dbus, dirmngr, gnome, gpg, pulseaudio: Module version bump.
+      Replace deprecated mmap perm sets and pattern usage.
+      gssproxy: Module version bump.
+      monit: Module version bump.
+      apache, dkim, monit: Module version bump.
+      spamassassin: Module version bump.
+      Bump module versions for release.
+
+Christian Göttsche (20):
+      dkim: align filecontexts
+      dkim: update
+      milter: align filecontexts
+      apache: align filecontexts
+      dmidecode: use userdom_use_inherited_user_terminals
+      spamassassin: align filecontexts
+      chkrootkit: update
+      rkhunter: add several missing permission
+      fakehwclock: update
+      milter: update
+      mandb: fixes for systemd timer and /usr/local/man label
+      spamassassin: update
+      dphysswapfile: fix swapfile creation
+      apache: update
+      monit: update
+      dkim: align file contexts
+      dkim: update
+      apache: update
+      monit: read /usr/share/ca-certificates for cert verification
+      spamassassin: fix missing perms
+
+Daniel Jurgens (1):
+      networkmanager: Grant access to unlabeled PKeys
+
+David Sugar (5):
+      mon: move rpc_* into optional
+      wm: consolidate networkmanger interface calls into single optional
+      cron: optional_policy for mta_* interfaces
+      Label /usr/bin/mutter
+      Allow to read /proc/sys/crypto/fips_enabled
+
+Eduardo Barretto (2):
+      Update pkcs policy to include pkccsslotd.service
+      Update missing permissions for pkcs
+
+Guido Trentalancia (13):
+      libmtp: read symlinks in user home directories
+      spamassassin: update rules for the Bayesian classifier trainer
+      wm: let gnome-shell start properly
+      gnome: keyring daemon dbus policy update
+      gnome: keyring daemon read SELinux config
+      openoffice: improve temporary directories' operations
+      pulseaudio: general update
+      wm: gnome-shell SELinux integration
+      mozilla: run Java Web Start applications
+      wm: run PolicyKit
+      dbus: read user home content files
+      mozilla: read generic SSL certificates
+      contrib: use the new SSL private keys type (was: "let the mozilla and
+         other domains read generic SSL certificates")
+
+Jason Zaman (12):
+      cgmanager: Apply auth_use_nsswitch interface
+      alsa: needs to map its tmpfs files
+      virt: add policy for virtlogd
+      virt: updated perms for starting guests
+      gssproxy: add policy
+      rpc: Allow stream connect to gssproxy
+      gpg: search dir when connecting to agent socket
+      dirmngr: allow filetrans in gpg_runtime_t
+      gpg: Add gpg_agent_use_card boolean for OpenPGP cards
+      cachefilesd: make cachefilesd_cache_t a mountpoint
+      Set user_runtime_content_type for all remaining types in /run/user/%{UID}/
+      gssproxy: allow writing kerberos rcache
+
+Jason Zaman via refpolicy (3):
+      pulseaudio: Add neccessary map permissions
+      gpg: add fcontexts for user runtime sockets
+      rpc: add sm-notify pid fcontext
+
+Laurent Bigonville (2):
+      Allow NetworkManager to write to audit
+      Call systemd_write_inherited_logind_inhibit_pipes() where needed
+
+Luis Ressel (12):
+      portage: Allow portage_t and portage_sandbox_t to access locale_t
+      postfix: Some table drivers (notably cdb) need to mmap() their databases
+      portage: Grant the map permissions neccessary for git and install
+      alsa: alsactl needs to map its configuration
+      mozilla: Add neccessary map permissions
+      mandb: man-db needs to map its 'index.db' cache
+      portage: Remove nonsensical dontaudit of an allowed permission
+      portage: Transition to ldconfig_t when calling ldconfig
+      postfix: Some table drivers (notably cdb) need to mmap() their databases
+      postfix: Silence cap_dac_read_search denials
+      portage: Grant portage the map permission on usr_t
+      Allow gtk apps to map usr_t files
+
+Nicolas Iooss (2):
+      dbus: move comments out of the file context definitions
+      logrotate: allow systemd to start logrotate
+
+Russell Coker (3):
+      udev and dhcpd
+      minor nspawn, dnsmasq, and mon patches
+      refpolicy and certs
+
+Tom Gundersen (1):
+      dbus: add policy for dbus-broker
+
 * Sat Aug 05 2017 Chris PeBenito <pebenito@ieee.org> - 2.20170805
 Chris PeBenito (82):
       Create / to /usr equivalence for bin, sbin, and lib, from Russell Coker.

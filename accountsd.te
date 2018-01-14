@@ -1,4 +1,4 @@
-policy_module(accountsd, 1.1.1)
+policy_module(accountsd, 1.2.0)
 
 gen_require(`
 	class passwd all_passwd_perms;

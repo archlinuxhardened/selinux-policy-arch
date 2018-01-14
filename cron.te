@@ -1,4 +1,4 @@
-policy_module(cron, 2.12.1)
+policy_module(cron, 2.13.0)
 
 gen_require(`
 	class passwd rootok;

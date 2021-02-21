@@ -75,13 +75,14 @@ jobs:
           echo "userspace-artifact-name=$USERSPACE_ARTIFACT_NAME" >> $GITHUB_OUTPUT
           echo "setools-artifact-name=$SETOOLS_ARTIFACT_NAME" >> $GITHUB_OUTPUT
           build_matrix='{
-            "distro": ["redhat", "debian", "gentoo"],
+            "distro": ["arch", "redhat", "debian", "gentoo"],
             "type": ["standard", "mcs", "mls"],
             "monolithic": ["y", "n"],
             "systemd": ["y", "n"],
             "direct_initrc": ["y", "n"],
             "apps-off": ["unconfined", ""],
             "exclude": [
+              {"distro": "arch", "systemd": "n" },
               {"distro": "redhat", "systemd": "n"},
               {"distro": "redhat", "direct_initrc": "y"},
               {"distro": "debian", "systemd": "n"},

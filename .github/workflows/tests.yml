@@ -63,57 +63,75 @@ jobs:
 
       matrix:
         build-opts:
+          - {type: standard, distro: arch, monolithic: y, systemd: y, direct_initrc: n}
+          - {type: standard, distro: arch, monolithic: n, systemd: y, direct_initrc: n}
           - {type: standard, distro: redhat, monolithic: y, systemd: y, direct_initrc: n}
           - {type: standard, distro: redhat, monolithic: n, systemd: y, direct_initrc: n}
           - {type: standard, distro: debian, monolithic: y, systemd: y, direct_initrc: n}
           - {type: standard, distro: debian, monolithic: n, systemd: y, direct_initrc: n}
           - {type: standard, distro: gentoo, monolithic: y, systemd: n, direct_initrc: n}
           - {type: standard, distro: gentoo, monolithic: n, systemd: n, direct_initrc: n}
+          - {type: mcs, distro: arch, monolithic: y, systemd: y, direct_initrc: n}
+          - {type: mcs, distro: arch, monolithic: n, systemd: y, direct_initrc: n}
           - {type: mcs, distro: redhat, monolithic: y, systemd: y, direct_initrc: n}
           - {type: mcs, distro: redhat, monolithic: n, systemd: y, direct_initrc: n}
           - {type: mcs, distro: debian, monolithic: y, systemd: y, direct_initrc: n}
           - {type: mcs, distro: debian, monolithic: n, systemd: y, direct_initrc: n}
           - {type: mcs, distro: gentoo, monolithic: y, systemd: n, direct_initrc: n}
           - {type: mcs, distro: gentoo, monolithic: n, systemd: n, direct_initrc: n}
+          - {type: mls, distro: arch, monolithic: y, systemd: y, direct_initrc: n}
+          - {type: mls, distro: arch, monolithic: n, systemd: y, direct_initrc: n}
           - {type: mls, distro: redhat, monolithic: y, systemd: y, direct_initrc: n}
           - {type: mls, distro: redhat, monolithic: n, systemd: y, direct_initrc: n}
           - {type: mls, distro: debian, monolithic: y, systemd: y, direct_initrc: n}
           - {type: mls, distro: debian, monolithic: n, systemd: y, direct_initrc: n}
           - {type: mls, distro: gentoo, monolithic: y, systemd: n, direct_initrc: n}
           - {type: mls, distro: gentoo, monolithic: n, systemd: n, direct_initrc: n}
+          - {type: standard, distro: arch, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: n}
           - {type: standard, distro: redhat, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: n}
           - {type: standard, distro: debian, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: n}
           - {type: standard, distro: gentoo, monolithic: y, systemd: n, apps-off: unconfined, direct_initrc: n}
+          - {type: mcs, distro: arch, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: n}
           - {type: mcs, distro: redhat, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: n}
           - {type: mcs, distro: debian, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: n}
           - {type: mcs, distro: gentoo, monolithic: y, systemd: n, apps-off: unconfined, direct_initrc: n}
+          - {type: mls, distro: arch, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: n}
           - {type: mls, distro: redhat, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: n}
           - {type: mls, distro: debian, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: n}
           - {type: mls, distro: gentoo, monolithic: y, systemd: n, apps-off: unconfined, direct_initrc: n}
+          - {type: standard, distro: arch, monolithic: y, systemd: y, direct_initrc: y}
+          - {type: standard, distro: arch, monolithic: n, systemd: y, direct_initrc: y}
           - {type: standard, distro: redhat, monolithic: y, systemd: y, direct_initrc: y}
           - {type: standard, distro: redhat, monolithic: n, systemd: y, direct_initrc: y}
           - {type: standard, distro: debian, monolithic: y, systemd: y, direct_initrc: y}
           - {type: standard, distro: debian, monolithic: n, systemd: y, direct_initrc: y}
           - {type: standard, distro: gentoo, monolithic: y, systemd: n, direct_initrc: y}
           - {type: standard, distro: gentoo, monolithic: n, systemd: n, direct_initrc: y}
+          - {type: mcs, distro: arch, monolithic: y, systemd: y, direct_initrc: y}
+          - {type: mcs, distro: arch, monolithic: n, systemd: y, direct_initrc: y}
           - {type: mcs, distro: redhat, monolithic: y, systemd: y, direct_initrc: y}
           - {type: mcs, distro: redhat, monolithic: n, systemd: y, direct_initrc: y}
           - {type: mcs, distro: debian, monolithic: y, systemd: y, direct_initrc: y}
           - {type: mcs, distro: debian, monolithic: n, systemd: y, direct_initrc: y}
           - {type: mcs, distro: gentoo, monolithic: y, systemd: n, direct_initrc: y}
           - {type: mcs, distro: gentoo, monolithic: n, systemd: n, direct_initrc: y}
+          - {type: mls, distro: arch, monolithic: y, systemd: y, direct_initrc: y}
+          - {type: mls, distro: arch, monolithic: n, systemd: y, direct_initrc: y}
           - {type: mls, distro: redhat, monolithic: y, systemd: y, direct_initrc: y}
           - {type: mls, distro: redhat, monolithic: n, systemd: y, direct_initrc: y}
           - {type: mls, distro: debian, monolithic: y, systemd: y, direct_initrc: y}
           - {type: mls, distro: debian, monolithic: n, systemd: y, direct_initrc: y}
           - {type: mls, distro: gentoo, monolithic: y, systemd: n, direct_initrc: y}
           - {type: mls, distro: gentoo, monolithic: n, systemd: n, direct_initrc: y}
+          - {type: standard, distro: arch, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: y}
           - {type: standard, distro: redhat, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: y}
           - {type: standard, distro: debian, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: y}
           - {type: standard, distro: gentoo, monolithic: y, systemd: n, apps-off: unconfined, direct_initrc: y}
+          - {type: mcs, distro: arch, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: y}
           - {type: mcs, distro: redhat, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: y}
           - {type: mcs, distro: debian, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: y}
           - {type: mcs, distro: gentoo, monolithic: y, systemd: n, apps-off: unconfined, direct_initrc: y}
+          - {type: mls, distro: arch, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: y}
           - {type: mls, distro: redhat, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: y}
           - {type: mls, distro: debian, monolithic: y, systemd: y, apps-off: unconfined, direct_initrc: y}
           - {type: mls, distro: gentoo, monolithic: y, systemd: n, apps-off: unconfined, direct_initrc: y}

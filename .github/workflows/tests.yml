@@ -52,30 +52,39 @@ jobs:
 
       matrix:
         build-opts:
+          - {type: standard, distro: arch, monolithic: y, systemd: y}
+          - {type: standard, distro: arch, monolithic: n, systemd: y}
           - {type: standard, distro: redhat, monolithic: y, systemd: y}
           - {type: standard, distro: redhat, monolithic: n, systemd: y}
           - {type: standard, distro: debian, monolithic: y, systemd: y}
           - {type: standard, distro: debian, monolithic: n, systemd: y}
           - {type: standard, distro: gentoo, monolithic: y, systemd: n}
           - {type: standard, distro: gentoo, monolithic: n, systemd: n}
+          - {type: mcs, distro: arch, monolithic: y, systemd: y}
+          - {type: mcs, distro: arch, monolithic: n, systemd: y}
           - {type: mcs, distro: redhat, monolithic: y, systemd: y}
           - {type: mcs, distro: redhat, monolithic: n, systemd: y}
           - {type: mcs, distro: debian, monolithic: y, systemd: y}
           - {type: mcs, distro: debian, monolithic: n, systemd: y}
           - {type: mcs, distro: gentoo, monolithic: y, systemd: n}
           - {type: mcs, distro: gentoo, monolithic: n, systemd: n}
+          - {type: mls, distro: arch, monolithic: y, systemd: y}
+          - {type: mls, distro: arch, monolithic: n, systemd: y}
           - {type: mls, distro: redhat, monolithic: y, systemd: y}
           - {type: mls, distro: redhat, monolithic: n, systemd: y}
           - {type: mls, distro: debian, monolithic: y, systemd: y}
           - {type: mls, distro: debian, monolithic: n, systemd: y}
           - {type: mls, distro: gentoo, monolithic: y, systemd: n}
           - {type: mls, distro: gentoo, monolithic: n, systemd: n}
+          - {type: standard, distro: arch, monolithic: y, systemd: y, apps-off: unconfined}
           - {type: standard, distro: redhat, monolithic: y, systemd: y, apps-off: unconfined}
           - {type: standard, distro: debian, monolithic: y, systemd: y, apps-off: unconfined}
           - {type: standard, distro: gentoo, monolithic: y, systemd: n, apps-off: unconfined}
+          - {type: mcs, distro: arch, monolithic: y, systemd: y, apps-off: unconfined}
           - {type: mcs, distro: redhat, monolithic: y, systemd: y, apps-off: unconfined}
           - {type: mcs, distro: debian, monolithic: y, systemd: y, apps-off: unconfined}
           - {type: mcs, distro: gentoo, monolithic: y, systemd: n, apps-off: unconfined}
+          - {type: mls, distro: arch, monolithic: y, systemd: y, apps-off: unconfined}
           - {type: mls, distro: redhat, monolithic: y, systemd: y, apps-off: unconfined}
           - {type: mls, distro: debian, monolithic: y, systemd: y, apps-off: unconfined}
           - {type: mls, distro: gentoo, monolithic: y, systemd: n, apps-off: unconfined}
